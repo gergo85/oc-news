@@ -1,0 +1,39 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    title:
+        label: indikator.news::lang.form.title
+        searchable: true
+
+    slug:
+        label: indikator.news::lang.form.slug
+        searchable: true
+        invisible: true
+
+    status:
+        label: indikator.news::lang.form.status
+        searchable: true
+        type: partial
+        path: @/plugins/indikator/news/models/posts/_status.htm
+
+    statistics:
+        label: indikator.news::lang.form.statistics
+        searchable: true
+        type: partial
+        path: @/plugins/indikator/news/models/posts/_statistics.htm
+
+    created_at:
+        label: indikator.news::lang.form.created
+        searchable: true
+        type: datetime
+        format: Y-m-d G:i
+
+    updated_at:
+        label: indikator.news::lang.form.updated
+        searchable: true
+        invisible: true
+        type: datetime
+        format: Y-m-d G:i

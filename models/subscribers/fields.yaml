@@ -1,0 +1,20 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: indikator.news::lang.form.name
+        required: true
+        span: auto
+
+    email:
+        label: indikator.news::lang.form.email
+        required: true
+        span: auto
+
+    common:
+        label: indikator.news::lang.form.common
+        type: textarea
+        size: small

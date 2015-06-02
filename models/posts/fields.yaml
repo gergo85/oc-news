@@ -1,0 +1,42 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    title:
+        label: indikator.news::lang.form.title
+        required: true
+        span: auto
+
+    slug:
+        label: indikator.news::lang.form.slug
+        span: auto
+
+    text:
+        label: indikator.news::lang.form.text
+        required: true
+        type: richeditor
+        size: huge
+
+    send:
+        label: indikator.news::lang.form.send
+        type: switch
+        default: true
+        span: auto
+
+    status:
+        label: indikator.news::lang.form.online
+        type: switch
+        default: true
+        span: auto
+
+secondaryTabs:
+    fields:
+
+        image:
+            label: indikator.news::lang.form.image
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

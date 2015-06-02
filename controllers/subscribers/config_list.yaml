@@ -1,0 +1,21 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: indikator.news::lang.menu.subscribers
+list: @/plugins/indikator/news/models/subscribers/columns.yaml
+modelClass: Indikator\News\Models\Subscribers
+recordUrl: indikator/news/subscribers/update/:id
+noRecordsMessage: backend::lang.list.no_records
+
+recordsPerPage: 15
+showCheckboxes: true
+showSetup: true
+defaultSort:
+    column: created_at
+    direction: desc
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt

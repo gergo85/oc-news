@@ -1,0 +1,36 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    name:
+        label: indikator.news::lang.form.name
+        searchable: true
+
+    email:
+        label: indikator.news::lang.form.email
+        searchable: true
+
+    common:
+        label: indikator.news::lang.form.common
+        searchable: true
+
+    statistics:
+        label: indikator.news::lang.form.statistics
+        searchable: true
+        type: partial
+        path: @/plugins/indikator/news/models/subscribers/_statistics.htm
+
+    created_at:
+        label: indikator.news::lang.form.created
+        searchable: true
+        type: datetime
+        format: Y-m-d G:i
+
+    updated_at:
+        label: indikator.news::lang.form.updated
+        searchable: true
+        invisible: true
+        type: datetime
+        format: Y-m-d G:i

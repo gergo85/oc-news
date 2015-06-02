@@ -1,0 +1,4 @@
+1.0.0:
+    - First version of News.
+    - create_posts_table.php
+    - create_subscribers_table.php

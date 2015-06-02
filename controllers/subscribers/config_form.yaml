@@ -1,0 +1,16 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: indikator.news::lang.title.subscribers
+form: @/plugins/indikator/news/models/subscribers/fields.yaml
+modelClass: Indikator\News\Models\Subscribers
+defaultRedirect: indikator/news/subscribers
+
+create:
+    redirect: indikator/news/subscribers
+    redirectClose: indikator/news/subscribers
+
+update:
+    redirect: indikator/news/subscribers
+    redirectClose: indikator/news/subscribers
