@@ -58,7 +58,7 @@ class Posts extends Model
 
                 Mail::send('indikator.news::mail.email_'.$preferences['locale'], $params, function($message)
                 {
-                    $message->to($this->email, $this->name);
+                    $message->to($this->email, $this->name)->subject($this->title);
                 });
 
                 DB::table('news_subscribers')->where('id', $user->id)->update(array('statistics' => $user->statistics++));

@@ -2,3 +2,4 @@
     - First version of News.
     - create_posts_table.php
     - create_subscribers_table.php
+1.0.1: Modified the subject of emails.
