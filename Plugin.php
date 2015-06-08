@@ -27,14 +27,16 @@ class Plugin extends PluginBase
 
                 'sideMenu' => [
                     'posts' => [
-                        'label' => 'indikator.news::lang.menu.posts',
-                        'url'   => Backend::url('indikator/news/posts'),
-                        'icon'  => 'icon-file-text'
+                        'label'       => 'indikator.news::lang.menu.posts',
+                        'url'         => Backend::url('indikator/news/posts'),
+                        'icon'        => 'icon-file-text',
+                        'permissions' => ['indikator.news.posts']
                     ],
                     'subscribers' => [
-                        'label' => 'indikator.news::lang.menu.subscribers',
-                        'url'   => Backend::url('indikator/news/subscribers'),
-                        'icon'  => 'icon-user'
+                        'label'       => 'indikator.news::lang.menu.subscribers',
+                        'url'         => Backend::url('indikator/news/subscribers'),
+                        'icon'        => 'icon-user',
+                        'permissions' => ['indikator.news.subscribers']
                     ]
                 ]
             ]
@@ -52,6 +54,14 @@ class Plugin extends PluginBase
                 'label'   => 'indikator.news::lang.menu.subscribers',
                 'context' => 'dashboard'
             ]
+        ];
+    }
+
+    public function registerComponents()
+    {
+        return [
+            'Indikator\News\Components\Form' => 'form',
+            'Indikator\News\Components\Stat' => 'stat'
         ];
     }
 

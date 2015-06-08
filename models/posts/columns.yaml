@@ -25,6 +25,13 @@ columns:
         type: partial
         path: @/plugins/indikator/news/models/posts/_statistics.htm
 
+    published_at:
+        label: indikator.news::lang.form.published
+        searchable: true
+        invisible: true
+        type: datetime
+        format: Y-m-d G:i
+
     created_at:
         label: indikator.news::lang.form.created
         searchable: true

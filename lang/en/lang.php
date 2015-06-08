@@ -31,6 +31,7 @@ return [
         'image' => 'Image',
         'status' => 'Status',
         'view' => 'view',
+        'published' => 'Published at',
         'send' => 'Send the e-mail to subscribers.',
         'online' => 'Show the post on public page.',
         // Subscribers
@@ -56,6 +57,10 @@ return [
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'total' => 'Total'
+    ],
+    'component' => [
+        'form' => 'Subscriber form',
+        'stat' => 'View statistics'
     ],
     'permission' => [
         'posts' => 'Manage posts',

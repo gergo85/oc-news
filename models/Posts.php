@@ -24,10 +24,17 @@ class Posts extends Model
         'image' => ['System\Models\File']
     ];
 
+    protected $dates = ['published_at'];
+
     public function beforeCreate()
     {
         $this->slug = Str::slug($this->slug);
         $this->statistics = 0;
+
+        if ($this->published_at == '')
+        {
+            $this->published_at = date('Y-m-d H:i:00');
+        }
     }
 
     public function beforeUpdate()
@@ -62,6 +69,8 @@ class Posts extends Model
                 });
 
                 DB::table('news_subscribers')->where('id', $user->id)->update(array('statistics' => $user->statistics++));
+
+                unset($this->email, $this->name);
             }
         }
 

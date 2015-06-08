@@ -30,7 +30,8 @@ return [
         'text' => 'Szöveg',
         'image' => 'Kép',
         'status' => 'Státusz',
-        'view' => 'megtekintve',
+        'view' => 'megtekintés',
+        'published' => 'Publikálva',
         'send' => 'Levél küldése a feliratkozottak számára.',
         'online' => 'Bejegyzés megjelenítése a publikus oldalon.',
         // Feliratkozók
@@ -56,6 +57,10 @@ return [
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'total' => 'Összes'
+    ],
+    'component' => [
+        'form' => 'Feliratkozó űrlap',
+        'stat' => 'Megtekintési statisztika'
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',

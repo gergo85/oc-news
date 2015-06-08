@@ -3,3 +3,6 @@
     - create_posts_table.php
     - create_subscribers_table.php
 1.0.1: Modified the subject of emails.
+1.1.0: Added two front-end components.
+1.1.1: Improved the permissions.
+1.1.2: Added "Published at" field.

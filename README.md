@@ -9,6 +9,10 @@ This is the simple news and newsletter plugin.
 * Posts
 * Subscribers
 
+###Available components
+* Subscriber form
+* View statistics
+
 ###Available languages
 * en - English
 * hu - Magyar
