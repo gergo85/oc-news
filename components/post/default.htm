@@ -1,0 +1,10 @@
+{% set post = __SELF__.post %}
+
+<div class="content">
+    <p><strong>{{ post.introductory|raw }}</strong></p>
+    <p>{{ post.content|raw }}</p>
+</div>
+
+<p class="info">
+    Posted on {{ post.published_at|date('Y-m-d') }}
+</p>

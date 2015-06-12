@@ -60,8 +60,10 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Indikator\News\Components\Form' => 'form',
-            'Indikator\News\Components\Stat' => 'stat'
+            'Indikator\News\Components\Posts' => 'posts',
+            'Indikator\News\Components\Post'  => 'post',
+            'Indikator\News\Components\Form'  => 'form',
+            'Indikator\News\Components\Stat'  => 'stat'
         ];
     }
 

@@ -4,12 +4,17 @@
 
 scopes:
 
-    status_active:
-        label: indikator.news::lang.button.active
+    status_published:
+        label: indikator.news::lang.form.status_published
         type: checkbox
         conditions: status = 1
 
-    status_inactive:
-        label: indikator.news::lang.button.inactive
+    status_hide:
+        label: indikator.news::lang.form.status_hide
         type: checkbox
         conditions: status = 2
+
+    status_draft:
+        label: indikator.news::lang.form.status_draft
+        type: checkbox
+        conditions: status = 3

@@ -10,6 +10,8 @@ This is the simple news and newsletter plugin.
 * Subscribers
 
 ###Available components
+* Display posts
+* Show post content
 * Subscriber form
 * View statistics
 

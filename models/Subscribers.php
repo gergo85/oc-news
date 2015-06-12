@@ -9,7 +9,7 @@ class Subscribers extends Model
     protected $table = 'news_subscribers';
 
     public $rules = [
-        'name' => 'required|between:1,100',
+        'name'  => 'required|between:1,100',
         'email' => 'required|between:1,100'
     ];
 

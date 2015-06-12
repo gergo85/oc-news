@@ -9,27 +9,28 @@ fields:
         required: true
         span: auto
 
+    introductory:
+        label: indikator.news::lang.form.introductory
+        type: richeditor
+        size: large
+        span: auto
+
     slug:
         label: indikator.news::lang.form.slug
         span: auto
-
-    text:
-        label: indikator.news::lang.form.text
-        required: true
-        type: richeditor
-        size: giant
 
     send:
         label: indikator.news::lang.form.send
         type: switch
         default: true
-        span: auto
+        span: left
 
-    status:
-        label: indikator.news::lang.form.online
-        type: switch
-        default: true
-        span: auto
+    content:
+        label: indikator.news::lang.form.content
+        required: true
+        type: richeditor
+        size: giant
+
 
 secondaryTabs:
     fields:
@@ -40,6 +41,15 @@ secondaryTabs:
             mode: image
             imageHeight: 260
             imageWidth: 260
+
+        status:
+            label: indikator.news::lang.form.status
+            required: true
+            type: dropdown
+            options:
+                1: indikator.news::lang.form.status_published
+                2: indikator.news::lang.form.status_hide
+                3: indikator.news::lang.form.status_draft
 
         published_at:
             label: indikator.news::lang.form.published

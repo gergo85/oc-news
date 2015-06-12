@@ -5,4 +5,8 @@
 1.0.1: Modified the subject of emails.
 1.1.0: Added two front-end components.
 1.1.1: Improved the permissions.
-1.1.2: Added "Published at" field.
+1.1.2: Added the Published at field.
+1.1.3: Minor improvements and bugfix.
+1.2.0: Added post front-end components.
+1.2.1: Added the Introductory field.
+1.2.2: Improvement the post status.

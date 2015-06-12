@@ -13,7 +13,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->string('slug', 100);
-            $table->text('text');
+            $table->text('introductory');
+            $table->text('content');
             $table->timestamp('published_at');
             $table->string('send', 1)->default(1);
             $table->string('status', 1)->default(1);

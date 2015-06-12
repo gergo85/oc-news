@@ -27,17 +27,21 @@ return [
         // Bejegyzések
         'title' => 'Cím',
         'slug' => 'Webcím',
-        'text' => 'Szöveg',
+        'introductory' => 'Bevezető',
+        'content' => 'Tartalom',
         'image' => 'Kép',
         'status' => 'Státusz',
+        'status_published' => 'Publikálva',
+        'status_hide' => 'Rejtve',
+        'status_draft' => 'Piszkozat',
         'view' => 'megtekintés',
         'published' => 'Publikálva',
         'send' => 'Levél küldése a feliratkozottak számára.',
-        'online' => 'Bejegyzés megjelenítése a publikus oldalon.',
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
-        'common' => 'Megjegyzés'
+        'common' => 'Megjegyzés',
+        'mail' => 'levél'
     ],
     'button' => [
         'activate' => 'Aktíválás',
@@ -59,11 +63,41 @@ return [
         'total' => 'Összes'
     ],
     'component' => [
+        'posts' => 'Hírek listázása',
+        'post' => 'Bejegyzés mutatása',
         'form' => 'Feliratkozó űrlap',
         'stat' => 'Megtekintési statisztika'
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
         'subscribers' => 'Feliratkozók kezelése'
+    ],
+    'settings' => [
+        'post_title' => 'Bejegyzés',
+        'post_description' => 'Egy bejegyzést jelez ki a lapon.',
+        'post_slug' => 'Keresőbarát cím paraméter neve',
+        'post_slug_description' => 'A webcím útvonal paramétere a bejegyzés keresőbarát címe alapján való kereséséhez.',
+        'posts_title' => 'Bejegyzések',
+        'posts_description' => 'A legújabb bejegyzéseket listázza ki a lapon.',
+        'posts_pagination' => 'Lapozósáv paraméter neve',
+        'posts_pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
+        'posts_per_page' => 'Bejegyzések laponként',
+        'posts_per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
+        'posts_no_posts' => 'Nincsenek bejegyzések üzenet ',
+        'posts_no_posts_description' => 'A bejegyzés listában kijelezendő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'posts_order' => 'Bejegyzések sorrendje',
+        'posts_order_decription' => 'Attribútum, mely alapján rendezni kell a bejegyzéseket',
+        'posts_post' => 'Bejegyzéslap',
+        'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.'
+    ],
+    'sorting' => [
+        'title_asc' => 'Név (emelkedő)',
+        'title_desc' => 'Név (csökkenő)',
+        'created_at_asc' => 'Létrehozva (emelkedő)',
+        'created_at_des' => 'Létrehozva (csökkenő)',
+        'updated_at_asc' => 'Frissítve (emelkedő)',
+        'updated_at_desc' => 'Frissítve (csökkenő)',
+        'published_at_asc' => 'Publikálva (emelkedő)',
+        'published_at_desc' => 'Publikálva (csökkenő)'
     ]
 ];

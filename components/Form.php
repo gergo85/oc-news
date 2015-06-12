@@ -18,7 +18,9 @@ class Form extends ComponentBase
     {
         $data = post();
 
-        if (DB::table('news_subscribers')->where('email', $data['email'])->count() == 1) return;
+        if (DB::table('news_subscribers')->where('email', $data['email'])->count() == 1) {
+            return;
+        }
 
         $rules = [
             'name'  => 'required|between:2,64',
@@ -35,7 +37,9 @@ class Form extends ComponentBase
             'email' => $data['email'],
             'common' => '',
             'created' => 2,
-            'statistics' => 0
+            'statistics' => 0,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
     }
 }

@@ -14,10 +14,8 @@ class Posts extends Model
     protected $table = 'news_posts';
 
     public $rules = [
-        'title' => 'required|between:1,100',
-        'slug' => ['regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i'],
-        'text' => 'required',
-        'status' => 'between:1,2|numeric'
+        'title'   => 'required|between:1,100',
+        'content' => 'required'
     ];
 
     public $attachOne = [
@@ -28,7 +26,6 @@ class Posts extends Model
 
     public function beforeCreate()
     {
-        $this->slug = Str::slug($this->slug);
         $this->statistics = 0;
 
         if ($this->published_at == '')
@@ -44,10 +41,18 @@ class Posts extends Model
 
     public function beforeSave()
     {
+        if (!isset($this->slug) || empty($this->slug))
+        {
+            $this->slug = Str::slug($this->title);
+        }
+
         if ($this->send && $this->send != '')
         {
             $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
-            if (!File::exists('plugins/indikator/news/views/mail/email_'.$preferences['locale'].'.htm')) $preferences['locale'] = 'en';
+            if (!File::exists('plugins/indikator/news/views/mail/email_'.$preferences['locale'].'.htm'))
+            {
+                $preferences['locale'] = 'en';
+            }
 
             $users = DB::table('news_subscribers')->get();
 
@@ -73,9 +78,6 @@ class Posts extends Model
                 unset($this->email, $this->name);
             }
         }
-
-        if ($this->status) $this->status = 1;
-        else $this->status = 2;
 
         if ($this->send) $this->send = 1;
         else $this->send = 2;
