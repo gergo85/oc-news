@@ -18,10 +18,6 @@ class Posts extends Model
         'content' => 'required'
     ];
 
-    public $attachOne = [
-        'image' => ['System\Models\File']
-    ];
-
     protected $dates = ['published_at'];
 
     public function beforeCreate()

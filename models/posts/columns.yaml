@@ -17,13 +17,13 @@ columns:
         label: indikator.news::lang.form.status
         searchable: true
         type: partial
-        path: @/plugins/indikator/news/models/posts/_status.htm
+        path: ~/plugins/indikator/news/models/posts/_status.htm
 
     statistics:
         label: indikator.news::lang.form.statistics
         searchable: true
         type: partial
-        path: @/plugins/indikator/news/models/posts/_statistics.htm
+        path: ~/plugins/indikator/news/models/posts/_statistics.htm
 
     published_at:
         label: indikator.news::lang.form.published

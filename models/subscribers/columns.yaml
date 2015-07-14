@@ -20,7 +20,7 @@ columns:
         label: indikator.news::lang.form.statistics
         searchable: true
         type: partial
-        path: @/plugins/indikator/news/models/subscribers/_statistics.htm
+        path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
 
     created_at:
         label: indikator.news::lang.form.created

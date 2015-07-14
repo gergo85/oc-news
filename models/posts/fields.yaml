@@ -37,10 +37,8 @@ secondaryTabs:
 
         image:
             label: indikator.news::lang.form.image
-            type: fileupload
+            type: mediafinder
             mode: image
-            imageHeight: 260
-            imageWidth: 260
 
         status:
             label: indikator.news::lang.form.status

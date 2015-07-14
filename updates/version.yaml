@@ -10,3 +10,6 @@
 1.2.0: Added post front-end components.
 1.2.1: Added the Introductory field.
 1.2.2: Improvement the post status.
+1.2.3:
+    - Select images via Media finder.
+    - add_image_field_to_table.php
