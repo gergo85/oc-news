@@ -47,11 +47,11 @@ class Plugin extends PluginBase
     {
         return [
             'Indikator\News\ReportWidgets\Posts' => [
-                'label'   => 'indikator.news::lang.menu.posts',
+                'label'   => 'indikator.news::lang.widget.posts',
                 'context' => 'dashboard'
             ],
             'Indikator\News\ReportWidgets\Subscribers' => [
-                'label'   => 'indikator.news::lang.menu.subscribers',
+                'label'   => 'indikator.news::lang.widget.subscribers',
                 'context' => 'dashboard'
             ]
         ];

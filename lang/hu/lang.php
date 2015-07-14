@@ -57,6 +57,8 @@ return [
         'remove' => 'A tételek sikeresen eltávolításra kerültek.'
     ],
     'widget' => [
+        'posts' => 'Hírek - Bejegyzések',
+        'subscribers' => 'Hírek - Feliratkozók',
         'show_total' => 'Összes mutatása',
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',

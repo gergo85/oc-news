@@ -57,6 +57,8 @@ return [
         'remove' => 'Successfully removed those items.'
     ],
     'widget' => [
+        'posts' => 'News - Posts',
+        'subscribers' => 'News - Subscribers',
         'show_total' => 'Show total',
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
