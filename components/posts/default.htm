@@ -2,28 +2,26 @@
 
 <ul class="post-list">
     {% for post in posts %}
-        <li>
-            <h3><a href="news/post/{{ post.slug }}">{{ post.title }}</a></h3>
+    <li>
+        <img src="/storage/app/media{{ post.image }}" alt="{{ post.title }}">
+        <h3><a href="news/post/{{ post.slug }}">{{ post.title }}</a></h3>
+        <p class="date">{{ post.published_at|date('Y-m-d') }}</p>
 
-            <p class="info">
-                Posted on {{ post.published_at|date('Y-m-d') }}
-            </p>
-
-            {% if post.introductory %}
-                <p class="introductory">{{ post.introductory }}</p>
-            {% else %}
-                <div class="content">{{ post.content|raw }}</div>
-            {% endif %}
-        </li>
+        {% if post.introductory %}
+        <p class="introductory">{{ post.introductory }}</p>
+        {% else %}
+        <div class="content">{{ post.content|raw }}</div>
+        {% endif %}
+    </li>
     {% else %}
-        <li class="no-data">{{ noPostsMessage }}</li>
+    <li class="no-data">{{ noPostsMessage }}</li>
     {% endfor %}
 </ul>
 
 {% if posts.lastPage > 1 %}
     <ul class="pagination">
         {% if posts.currentPage > 1 %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; {{ 'Prev'|_ }}</a></li>
         {% endif %}
 
         {% for page in 1..posts.lastPage %}
@@ -33,7 +31,7 @@
         {% endfor %}
 
         {% if posts.lastPage > posts.currentPage %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">{{ 'Next'|_ }} &rarr;</a></li>
         {% endif %}
     </ul>
 {% endif %}
