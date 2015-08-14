@@ -11,12 +11,16 @@ class Posts extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+
     protected $table = 'news_posts';
 
     public $rules = [
         'title'   => 'required|between:1,100',
         'content' => 'required'
     ];
+
+    public $translatable = ['title', 'introductory', 'content'];
 
     protected $dates = ['published_at'];
 
@@ -45,6 +49,7 @@ class Posts extends Model
         if ($this->send && $this->send != '')
         {
             $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
+
             if (!File::exists('plugins/indikator/news/views/mail/email_'.$preferences['locale'].'.htm'))
             {
                 $preferences['locale'] = 'en';
