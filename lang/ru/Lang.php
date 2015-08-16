@@ -3,7 +3,7 @@
 return [
     'plugin' => [
         'name' => 'Новости и подписчики',
-        'description' => 'Работа с новостями и подписками.',
+        'description' => 'Управление новостями и подписками.',
         'author' => 'Gergő Szabó'
     ],
     'menu' => [
@@ -21,85 +21,86 @@ return [
     ],
     'form' => [
         // General
-        'statistics' => 'Statistics',
-        'created' => 'Created at',
-        'updated' => 'Updated at',
+        'statistics' => 'Статистика',
+        'created' => 'Дата создания',
+        'updated' => 'Дата обновления',
         // Posts
-        'title' => 'Title',
-        'slug' => 'Slug',
-        'introductory' => 'Introductory',
-        'content' => 'Content',
-        'image' => 'Image',
-        'status' => 'Status',
-        'status_published' => 'Published',
-        'status_hide' => 'Hide',
-        'status_draft' => 'Draft',
-        'view' => 'view',
-        'published' => 'Published at',
-        'send' => 'Send the e-mail to subscribers.',
+        'title' => 'Заголовок',
+        'slug' => 'URL записи',
+        'introductory' => 'Введение',
+        'content' => 'Содержимое',
+        'image' => 'Изображение',
+        'status' => 'Статус',
+        'status_published' => 'Опубликовано',
+        'status_hide' => 'Скрыто',
+        'status_draft' => 'Черновик',
+        'view' => 'просмотр',
+        'published' => 'Дата публикации',
+        'send' => 'Отправить почту подписчикам.',
         // Subscribers
-        'name' => 'Name',
-        'email' => 'E-mail',
-        'common' => 'Common',
-        'mail' => 'mail'
+        'name' => 'Имя',
+        'email' => 'Почта',
+        'common' => 'Общее',
+        'mail' => 'почта'
     ],
     'button' => [
-        'activate' => 'Activate',
-        'deactivate' => 'Deactivate',
-        'active' => 'Active',
-        'inactive' => 'Inactive',
-        'return' => 'Return'
+        'activate' => 'Активировать',
+        'deactivate' => 'Деактивировать',
+        'active' => 'Активно',
+        'inactive' => 'Не активено',
+        'return' => 'Вернуть'
     ],
     'flash' => [
-        'activate' => 'Successfully activated those posts.',
-        'deactivate' => 'Successfully deactivated those posts.',
-        'delete' => 'Do you really want to delete this items?',
-        'remove' => 'Successfully removed those items.'
+        'activate' => 'Этот пост успешно активирован.',
+        'deactivate' => 'Этот пост успешно деактивирован.',
+        'delete' => 'Вы действительно хотите удалить эту запись?',
+        'remove' => 'Запись успешно удалена.'
     ],
     'widget' => [
-        'posts' => 'News - Posts',
-        'subscribers' => 'News - Subscribers',
-        'show_total' => 'Show total',
-        'show_active' => 'Show active',
-        'show_inactive' => 'Show inactive',
-        'total' => 'Total'
+        'posts' => 'Новости - Посты',
+        'subscribers' => 'Новости - Подписки',
+        'show_total' => 'Показать все',
+        'show_active' => 'Показать активные',
+        'show_inactive' => 'Показать неактивные',
+        'total' => 'Итого'
     ],
     'component' => [
-        'posts' => 'Display posts',
-        'post' => 'Show post content',
-        'form' => 'Subscriber form',
-        'stat' => 'View statistics'
+        'posts' => 'Отображение постов',
+        'post' => 'Показать содержание поста',
+        'form' => 'Форма подписки',
+        'stat' => 'Просмотр статистики'
     ],
     'permission' => [
-        'posts' => 'Manage posts',
-        'subscribers' => 'Manage subscribers'
+        'posts' => 'Управление постами',
+        'subscribers' => 'Управление подписками'
     ],
     'settings' => [
-        'post_title' => 'Post',
-        'post_description' => 'Displays a post on the page.',
-        'post_slug' => 'Post slug',
-        'post_slug_description' => "Look up the post using the supplied slug value.",
-        'posts_title' => 'Post List',
-        'posts_description' => 'Displays a list of latest posts on the page.',
-        'posts_pagination' => 'Page number',
-        'posts_pagination_description' => 'This value is used to determine what page the user is on.',
-        'posts_per_page' => 'Posts per page',
-        'posts_per_page_validation' => 'Invalid format of the posts per page value',
-        'posts_no_posts' => 'No posts message',
-        'posts_no_posts_description' => 'Message to display in the post list in case if there are no posts. This property is used by the default component partial.',
-        'posts_order' => 'Post order',
-        'posts_order_decription' => 'Attribute on which the posts should be ordered',
-        'posts_post' => 'Post page',
-        'posts_post_description' => 'Name of the post page file for the "Learn more" links. This property is used by the default component partial.',
+        'post_title' => 'Пост',
+        'post_description' => 'Отображение поста',
+        'post_slug' => 'Параметр URL',
+        'post_slug_description' => 'Параметр маршрута, необходимый для выбора конкретного поста.',
+        'posts_title' => 'Список постов',
+        'posts_description' => 'Отображает список последних постов на странице.',
+        'posts_pagination' => 'Параметр постраничной навигации',
+        'posts_pagination_description' => 'Параметр, необходимый для постраничной навигации.',
+        'posts_per_page' => 'Постов на странице',
+        'posts_per_page' => 'Постов на странице',
+        'posts_per_page_validation' => 'Недопустимый Формат. Ожидаемый тип данных - действительное число.',
+        'posts_no_posts' => 'Отсутсвие постов',
+        'posts_no_posts_description' => 'Сообщение, отображаемое в случае, если нет никаких постов. Это свойство используется по умолчанию компонентом.',
+        'posts_order' => 'Сортировка',
+        'posts_order_description' => 'Атрибут, по которому будут сортироваться посты.',
+        'posts_post' => 'Страница поста',
+        'posts_post_description' => 'Название страницы для ссылки "подробнее". Это свойство используется по умолчанию компонентом.'
     ],
     'sorting' => [
-        'title_asc' => 'Title (ascending)',
-        'title_desc' => 'Title (descending)',
-        'created_at_asc' => 'Created (ascending)',
-        'created_at_des' => 'Created (descending)',
-        'updated_at_asc' => 'Updated (ascending)',
-        'updated_at_desc' => 'Updated (descending)',
-        'published_at_asc' => 'Published (ascending)',
-        'published_at_desc' => 'Published (descending)'
+        'title_asc' => 'Заголовок (по возрастанию)',
+        'title_desc' => 'Заголовок (по убыванию)',
+        'created_at_asc' => 'Дата создания (по возрастанию)',
+        'created_at_des' => 'Дата создания (по убыванию)',
+        'updated_at_asc' => 'Дата обновления (по возрастанию)',
+        'updated_at_desc' => 'Дата обновления (по убыванию)',
+        'published_at_asc' => 'Дата публикации (по возрастанию)',
+        'published_at_desc' => 'Дата публикации по убываниюg)'
     ]
 ];
