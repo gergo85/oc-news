@@ -20,17 +20,6 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
-    public static $allowedSortingOptions = array(
-        'title asc'         => 'indikator.news.sorting.title_asc',
-        'title desc'        => 'indikator.news.sorting.title_desc',
-        'created_at asc'    => 'indikator.news.sorting.created_at_asc',
-        'created_at desc'   => 'indikator.news.sorting.created_at_desc',
-        'updated_at asc'    => 'indikator.news.sorting.updated_at_asc',
-        'updated_at desc'   => 'indikator.news.sorting.updated_at_desc',
-        'published_at asc'  => 'indikator.news.sorting.published_at_asc',
-        'published_at desc' => 'indikator.news.sorting.published_at_desc'
-    );
-
     public $preview = null;
 
     public function scopeListFrontEnd($query, $options)

@@ -1,9 +1,10 @@
 <?php namespace Indikator\News\Components;
 
-use Redirect;
-use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
+use Cms\Classes\Page;
+use Lang;
 use Indikator\News\Models\Post as NewsPost;
+use Redirect;
 
 class Posts extends ComponentBase
 {
@@ -45,21 +46,21 @@ class Posts extends ComponentBase
                 'title'             => 'indikator.news::lang.settings.posts_no_posts',
                 'description'       => 'indikator.news::lang.settings.posts_no_posts_description',
                 'type'              => 'string',
-                'default'           => 'No posts found',
+                'default'           => Lang::get('indikator.news::lang.settings.posts_no_posts_found'),
                 'showExternalParam' => false
             ],
             'sortOrder' => [
                 'title'       => 'indikator.news::lang.settings.posts_order',
                 'description' => 'indikator.news::lang.settings.posts_order_description',
                 'type'        => 'dropdown',
-                'default'     => 'published_at desc'
+                'default'     => 'published_at desc',
+                'options'     => ['title asc' => Lang::get('indikator.news::lang.sorting.title_asc'), 'title desc' => Lang::get('indikator.news::lang.sorting.title_desc'), 'created_at asc' => Lang::get('indikator.news::lang.sorting.created_at_asc'), 'created_at desc' => Lang::get('indikator.news::lang.sorting.created_at_desc'), 'updated_at asc' => Lang::get('indikator.news::lang.sorting.updated_at_asc'), 'updated_at desc' => Lang::get('indikator.news::lang.sorting.updated_at_desc'), 'published_at asc' => Lang::get('indikator.news::lang.sorting.published_at_asc'), 'published_at desc' => Lang::get('indikator.news::lang.sorting.published_at_desc')]
             ],
             'postPage' => [
                 'title'       => 'indikator.news::lang.settings.posts_post',
                 'description' => 'indikator.news::lang.settings.posts_post_description',
                 'type'        => 'dropdown',
-                'default'     => 'news/post',
-                'group'       => 'Links'
+                'default'     => 'news/post'
             ]
         ];
     }
@@ -67,11 +68,6 @@ class Posts extends ComponentBase
     public function getPostPageOptions()
     {
         return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-    }
-
-    public function getSortOrderOptions()
-    {
-        return NewsPost::$allowedSortingOptions;
     }
 
     public function onRun()
