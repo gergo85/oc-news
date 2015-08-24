@@ -12,13 +12,24 @@ class Post extends Model
     public $table = 'news_posts';
 
     public $rules = [
-        'title'   => 'required',
-        'slug'    => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i'],
+        'title'   => 'required|between:1,100',
+        'slug'    => ['between:1,100', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i'],
         'content' => 'required',
         'status'  => 'required|between:1,3|numeric'
     ];
 
     protected $dates = ['published_at'];
+
+    public static $allowedSortingOptions = [
+        'title asc'  => 'Title (ascending)',
+        'title desc' => 'Title (descending)',
+        'created_at asc'  => 'Created (ascending)',
+        'created_at desc' => 'Created (descending)',
+        'updated_at asc'  => 'Updated (ascending)',
+        'updated_at desc' => 'Updated (descending)',
+        'published_at asc'  => 'Published (ascending)',
+        'published_at desc' => 'Published (descending)'
+    ];
 
     public $preview = null;
 
@@ -38,12 +49,18 @@ class Post extends Model
             $query->isPublished();
         }
 
-        if (!is_array($sort)) $sort = [$sort];
-        foreach ($sort as $_sort) {
+        if (!is_array($sort)) {
+            $sort = [$sort];
+        }
 
+        foreach ($sort as $_sort) {
             if (in_array($_sort, array_keys(self::$allowedSortingOptions))) {
                 $parts = explode(' ', $_sort);
-                if (count($parts) < 2) array_push($parts, 'desc');
+
+                if (count($parts) < 2) {
+                    array_push($parts, 'desc');
+                }
+
                 list ($sortField, $sortDirection) = $parts;
 
                 $query->orderBy($sortField, $sortDirection);
@@ -51,6 +68,7 @@ class Post extends Model
         }
 
         $search = trim($search);
+
         if (strlen($search)) {
             $query->searchWhere($search, $searchableFields);
         }

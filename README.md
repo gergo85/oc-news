@@ -1,4 +1,4 @@
-##News plugin for OctoberCMS
+##News & Newsletter plugin for OctoberCMS
 Plugin can be used for publishing news simply on the website. In contrary of blog, chategorizing notes or writing comments is not possible, but visitors can subscribe on a newsletter system. During publishing news posts are available not just on the website but you can send them via email to subscribed users.
 
 Plugin is same like put together a blog and a newsletter plugin. The main difference is that it is simpler and contains only the most necessary functions. So this makes easier uploading new contents and inform visitors.
@@ -16,6 +16,15 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Show post content
 * Subscriber form
 * View statistics
+
+###Mail template variables
+* {{ name }} - Name of subscribers
+* {{ email }} - E-mail of subscribers
+* {{ title }} - Title of post
+* {{ slug }} - Slug of post
+* {{ introductory }} - Introductory of post
+* {{ content }} - Content of post
+* {{ image }} - Image url of post
 
 ###Available languages
 * en - English

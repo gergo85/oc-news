@@ -29,12 +29,9 @@ class Posts extends Controller
 
     public function onActivatePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds))
-        {
-            foreach ($checkedIds as $objectId)
-            {
-                if (DB::table('news_posts')->where('id', $objectId)->where('status', 2)->count() == 1)
-                {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                if (DB::table('news_posts')->where('id', $objectId)->where('status', 2)->count() == 1) {
                     DB::table('news_posts')->where('id', $objectId)->update(array('status' => 1));
                 }
             }
@@ -47,12 +44,9 @@ class Posts extends Controller
 
     public function onDeactivatePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds))
-        {
-            foreach ($checkedIds as $objectId)
-            {
-                if (DB::table('news_posts')->where('id', $objectId)->where('status', 1)->count() == 1)
-                {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                if (DB::table('news_posts')->where('id', $objectId)->where('status', 1)->count() == 1) {
                     DB::table('news_posts')->where('id', $objectId)->update(array('status' => 2));
                 }
             }
@@ -65,12 +59,9 @@ class Posts extends Controller
 
     public function onRemovePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds))
-        {
-            foreach ($checkedIds as $objectId)
-            {
-                if (DB::table('news_posts')->where('id', $objectId)->count() == 1)
-                {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                if (DB::table('news_posts')->where('id', $objectId)->count() == 1) {
                     DB::table('news_posts')->where('id', $objectId)->delete();
                 }
             }

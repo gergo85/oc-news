@@ -1,6 +1,12 @@
-subject = "Hír"
+subject = "Hírlevél"
 ==
 
-Kedves {{ name }}!
-<br><br>
-{{ post|raw }}
+<p>Kedves {{ name }}!</p>
+<p>Új bejegyzés a weboldalunkon:</p>
+<br>
+<p><em>{{ title }}</em><br>
+{{ introductory|raw }}</p>
+<p>www.weboldal.hu/hirek/{{ slug }}</p>
+<br>
+<p>Üdvözlettel:<br>
+A Szerkesztők</p>

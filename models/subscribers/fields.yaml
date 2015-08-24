@@ -6,7 +6,6 @@ fields:
 
     name:
         label: indikator.news::lang.form.name
-        required: true
         span: auto
 
     email:

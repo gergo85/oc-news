@@ -11,6 +11,7 @@ class Plugin extends PluginBase
             'name'        => 'indikator.news::lang.plugin.name',
             'description' => 'indikator.news::lang.plugin.description',
             'author'      => 'indikator.news::lang.plugin.author',
+            'icon'        => 'icon-newspaper-o',
             'homepage'    => 'https://github.com/gergo85/oc-news'
         ];
     }
@@ -78,8 +79,14 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'indikator.news.posts'       => ['tab' => 'indikator.news::lang.menu.news', 'label' => 'indikator.news::lang.permission.posts'],
-            'indikator.news.subscribers' => ['tab' => 'indikator.news::lang.menu.news', 'label' => 'indikator.news::lang.permission.subscribers']
-       ];
+            'indikator.news.posts' => [
+                'tab'   => 'indikator.news::lang.menu.news',
+                'label' => 'indikator.news::lang.permission.posts'
+            ],
+            'indikator.news.subscribers' => [
+                'tab'   => 'indikator.news::lang.menu.news',
+                'label' => 'indikator.news::lang.permission.subscribers'
+            ]
+        ];
     }
 }

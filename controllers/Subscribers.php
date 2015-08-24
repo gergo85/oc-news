@@ -27,12 +27,9 @@ class Subscribers extends Controller
 
     public function onRemoveSubscribers()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds))
-        {
-            foreach ($checkedIds as $objectId)
-            {
-                if (DB::table('news_subscribers')->where('id', $objectId)->count() == 1)
-                {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                if (DB::table('news_subscribers')->where('id', $objectId)->count() == 1) {
                     DB::table('news_subscribers')->where('id', $objectId)->delete();
                 }
             }
