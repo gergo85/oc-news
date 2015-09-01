@@ -9,28 +9,21 @@ fields:
         required: true
         span: auto
 
-    introductory:
-        label: indikator.news::lang.form.introductory
-        type: richeditor
-        size: large
-        span: auto
-
     slug:
         label: indikator.news::lang.form.slug
         span: auto
 
-    send:
-        label: indikator.news::lang.form.send
-        type: switch
-        default: true
-        span: left
+    introductory:
+        label: indikator.news::lang.form.introductory
+        type: richeditor
+        size: large
+        span: full
 
     content:
         label: indikator.news::lang.form.content
         required: true
         type: richeditor
-        size: giant
-
+        size: large
 
 secondaryTabs:
     fields:
@@ -52,4 +45,9 @@ secondaryTabs:
         published_at:
             label: indikator.news::lang.form.published
             type: datepicker
-            mode: date
+            mode: datetime
+
+        send:
+            label: indikator.news::lang.form.send
+            type: switch
+            default: true

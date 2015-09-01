@@ -3,7 +3,7 @@
 # ===================================
 
 title: indikator.news::lang.menu.subscribers
-list: @/plugins/indikator/news/models/subscribers/columns.yaml
+list: ~/plugins/indikator/news/models/subscribers/columns.yaml
 modelClass: Indikator\News\Models\Subscribers
 recordUrl: indikator/news/subscribers/update/:id
 noRecordsMessage: backend::lang.list.no_records
