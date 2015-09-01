@@ -62,6 +62,7 @@ return [
         'show_total' => 'Показать все',
         'show_active' => 'Показать активные',
         'show_inactive' => 'Показать неактивные',
+        'show_draft' => 'Показать проект',
         'total' => 'Итого'
     ],
     'component' => [

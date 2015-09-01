@@ -31,7 +31,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $objectId) {
-                if (DB::table('news_posts')->where('id', $objectId)->where('status', 2)->count() == 1) {
+                if (DB::table('news_posts')->where('id', $objectId)->where('status', '!=', 1)->count() == 1) {
                     DB::table('news_posts')->where('id', $objectId)->update(array('status' => 1));
                 }
             }
@@ -46,12 +46,27 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $objectId) {
-                if (DB::table('news_posts')->where('id', $objectId)->where('status', 1)->count() == 1) {
+                if (DB::table('news_posts')->where('id', $objectId)->where('status', '!=', 2)->count() == 1) {
                     DB::table('news_posts')->where('id', $objectId)->update(array('status' => 2));
                 }
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.deactivate'));
+        }
+
+        return $this->listRefresh('manage');
+    }
+
+    public function onDraftPosts()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                if (DB::table('news_posts')->where('id', $objectId)->where('status', '!=', 3)->count() == 1) {
+                    DB::table('news_posts')->where('id', $objectId)->update(array('status' => 3));
+                }
+            }
+
+            Flash::success(Lang::get('indikator.news::lang.flash.activate'));
         }
 
         return $this->listRefresh('manage');

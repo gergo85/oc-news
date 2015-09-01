@@ -62,6 +62,7 @@ return [
         'show_total' => 'Show total',
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
+        'show_draft' => 'Show draft',
         'total' => 'Total'
     ],
     'component' => [

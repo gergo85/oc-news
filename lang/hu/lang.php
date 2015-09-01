@@ -53,8 +53,8 @@ return [
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
-        'delete' => 'Valóban törölni akarja a tételeket?',
-        'remove' => 'A tételek sikeresen eltávolításra kerültek.'
+        'delete' => 'Valóban törölni akarja az elemeket?',
+        'remove' => 'Az elemek sikeresen eltávolításra kerültek.'
     ],
     'widget' => [
         'posts' => 'Hírek - Bejegyzések',
@@ -62,6 +62,7 @@ return [
         'show_total' => 'Összes mutatása',
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
+        'show_draft' => 'Piszkozatok mutatása',
         'total' => 'Összes'
     ],
     'component' => [

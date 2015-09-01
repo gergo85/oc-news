@@ -27,6 +27,19 @@
         <?= e(trans('indikator.news::lang.button.deactivate')) ?>
     </button>
     <button
+        class="btn btn-default oc-icon-pencil"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDraftPosts"
+        data-trigger-type="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        <?= e(trans('indikator.news::lang.form.status_draft')) ?>
+    </button>
+    <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"
         onclick="$(this).data('request-data', {
