@@ -17,9 +17,16 @@
     <?php endif ?>
 
     <?php if ($this->property('inactive')): ?>
-    <div class="scoreboard-item title-value pull-left" style="margin:20px 0 0 0;">
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
         <h4><?= e(trans('indikator.news::lang.button.inactive')) ?></h4>
         <p class="text-center"><?= $inactive ?></p>
+    </div>
+    <?php endif ?>
+
+    <?php if ($this->property('draft')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 0 0 0;">
+        <h4><?= e(trans('indikator.news::lang.form.status_draft')) ?></h4>
+        <p class="text-center"><?= $draft ?></p>
     </div>
     <?php endif ?>
 

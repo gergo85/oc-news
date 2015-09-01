@@ -23,7 +23,7 @@ class Posts extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'backend::lang.dashboard.widget_title_label',
-                'default'           => 'indikator.news::lang.menu.posts',
+                'default'           => 'indikator.news::lang.menu.news',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
@@ -42,14 +42,20 @@ class Posts extends ReportWidgetBase
                 'title'             => 'indikator.news::lang.widgets.show_inactive',
                 'default'           => true,
                 'type'              => 'checkbox'
+            ],
+            'draft' => [
+                'title'             => 'indikator.news::lang.widgets.show_draft',
+                'default'           => true,
+                'type'              => 'checkbox'
             ]
         ];
     }
 
     protected function loadData()
     {
-        $this->vars['total'] = DB::table('news_posts')->count();
         $this->vars['active'] = DB::table('news_posts')->where('status', 1)->count();
         $this->vars['inactive'] = DB::table('news_posts')->where('status', 2)->count();
+        $this->vars['draft'] = DB::table('news_posts')->where('status', 3)->count();
+        $this->vars['total'] = $this->vars['active'] + $this->vars['inactive'] + $this->vars['draft'];
     }
 }
