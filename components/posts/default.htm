@@ -8,7 +8,7 @@
         <p class="date">{{ post.published_at|date('Y-m-d') }}</p>
 
         {% if post.introductory %}
-        <p class="introductory">{{ post.introductory }}</p>
+        <p class="introductory">{{ post.introductory|raw }}</p>
         {% else %}
         <div class="content">{{ post.content|raw }}</div>
         {% endif %}
