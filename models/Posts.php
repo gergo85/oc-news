@@ -22,7 +22,7 @@ class Posts extends Model
         'status'  => 'required|between:1,3|numeric'
     ];
 
-    public $translatable = ['title'];
+    public $translatable = ['title', 'introductory', 'content'];
 
     protected $dates = ['published_at'];
 
