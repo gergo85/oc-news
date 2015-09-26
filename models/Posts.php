@@ -3,7 +3,7 @@
 use Model;
 use File;
 use Str;
-use Backend\Models\UserPreferences;
+use App;
 use DB;
 use Mail;
 
@@ -22,7 +22,7 @@ class Posts extends Model
         'status'  => 'required|between:1,3|numeric'
     ];
 
-    public $translatable = ['title', 'introductory', 'content'];
+    public $translatable = ['title'];
 
     protected $dates = ['published_at'];
 
@@ -47,10 +47,10 @@ class Posts extends Model
         }
 
         if ($this->send && $this->send != '') {
-            $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
+            $locale = App::getLocale();
 
-            if (!File::exists('plugins/indikator/news/views/mail/email_'.$preferences['locale'].'.htm')) {
-                $preferences['locale'] = 'en';
+            if (!File::exists('plugins/indikator/news/views/mail/email_'.$locale.'.htm')) {
+                $locale = 'en';
             }
 
             $users = DB::table('news_subscribers')->get();
@@ -69,7 +69,7 @@ class Posts extends Model
                 $this->email = $user->email;
                 $this->name = $user->name;
 
-                Mail::send('indikator.news::mail.email_'.$preferences['locale'], $params, function($message)
+                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message)
                 {
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
