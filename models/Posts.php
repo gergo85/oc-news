@@ -57,20 +57,19 @@ class Posts extends Model
 
             foreach ($users as $user) {
                 $params = [
-                    'name' => $user->name,
+                    'name'  => $user->name,
                     'email' => $user->email,
                     'title' => $this->title,
-                    'slug' => $this->slug,
+                    'slug'  => $this->slug,
                     'introductory' => $this->introductory,
                     'content' => $this->content,
-                    'image' => $this->image
+                    'image'   => $this->image
                 ];
 
                 $this->email = $user->email;
                 $this->name = $user->name;
 
-                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message)
-                {
+                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message) {
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
 
