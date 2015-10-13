@@ -18,17 +18,18 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * View statistics
 
 ###Mail template variables
-* {{ name }} - Name of subscribers
-* {{ email }} - E-mail of subscribers
+* {{ name }} - Name of subscriber
+* {{ email }} - E-mail of subscriber
 * {{ title }} - Title of post
 * {{ slug }} - Slug of post
 * {{ introductory }} - Introductory of post
 * {{ content }} - Content of post
-* {{ image }} - Image url of post
+* {{ image }} - Relative url of image
 
 ###Available languages
 * en - English
-* ru - Russian
+* ru - Pу́сский 
+* pl - Polski
 * hu - Magyar
 
 ###Installation
