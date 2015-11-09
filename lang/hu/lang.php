@@ -53,8 +53,8 @@ return [
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
-        'delete' => 'Valóban törölni akarja az elemeket?',
-        'remove' => 'Az elemek sikeresen eltávolításra kerültek.'
+        'delete' => 'Valóban törölni akarja?',
+        'remove' => 'Az eltávolítás sikeres volt.'
     ],
     'widget' => [
         'posts' => 'Hírek - Bejegyzések',
