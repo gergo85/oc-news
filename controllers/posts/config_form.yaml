@@ -4,6 +4,7 @@
 
 name: indikator.news::lang.title.posts
 form: ~/plugins/indikator/news/models/posts/fields.yaml
+
 modelClass: Indikator\News\Models\Posts
 defaultRedirect: indikator/news/posts
 

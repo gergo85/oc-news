@@ -4,6 +4,7 @@
 
 title: indikator.news::lang.menu.posts
 list: ~/plugins/indikator/news/models/posts/columns.yaml
+
 modelClass: Indikator\News\Models\Posts
 recordUrl: indikator/news/posts/update/:id
 noRecordsMessage: backend::lang.list.no_records
@@ -11,6 +12,7 @@ noRecordsMessage: backend::lang.list.no_records
 recordsPerPage: 15
 showCheckboxes: true
 showSetup: true
+
 defaultSort:
     column: created_at
     direction: desc

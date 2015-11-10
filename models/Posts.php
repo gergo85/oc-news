@@ -2,13 +2,13 @@
 
 use Model;
 use File;
-use Str;
 use App;
 use DB;
 use Mail;
 
 class Posts extends Model
 {
+    use \October\Rain\Database\Traits\Sluggable;
     use \October\Rain\Database\Traits\Validation;
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
@@ -21,6 +21,8 @@ class Posts extends Model
         'content' => 'required',
         'status'  => 'required|between:1,3|numeric'
     ];
+
+    protected $slugs = ['slug' => 'title'];
 
     public $translatable = ['title', 'introductory', 'content'];
 
@@ -42,10 +44,6 @@ class Posts extends Model
 
     public function beforeSave()
     {
-        if (!isset($this->slug) || empty($this->slug)) {
-            $this->slug = Str::slug($this->title);
-        }
-
         if ($this->send && $this->send != '') {
             $locale = App::getLocale();
 

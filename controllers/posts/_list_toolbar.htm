@@ -1,5 +1,9 @@
 <div data-control="toolbar">
-    <a href="<?= Backend::url('indikator/news/posts/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('indikator.news::lang.new.posts')) ?></a>
+    <a
+        href="<?= Backend::url('indikator/news/posts/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('indikator.news::lang.new.posts')) ?>
+    </a>
     <button
         class="btn btn-default oc-icon-check"
         disabled="disabled"
@@ -7,7 +11,7 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onActivatePosts"
-        data-trigger-type="enable"
+        data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-stripe-load-indicator>
@@ -20,7 +24,7 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDeactivatePosts"
-        data-trigger-type="enable"
+        data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-stripe-load-indicator>
@@ -33,7 +37,7 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDraftPosts"
-        data-trigger-type="enable"
+        data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-stripe-load-indicator>
@@ -47,7 +51,7 @@
         })"
         data-request="onRemovePosts"
         data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>"
-        data-trigger-type="enable"
+        data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-stripe-load-indicator>

@@ -4,6 +4,7 @@
 
 name: indikator.news::lang.title.subscribers
 form: ~/plugins/indikator/news/models/subscribers/fields.yaml
+
 modelClass: Indikator\News\Models\Subscribers
 defaultRedirect: indikator/news/subscribers
 

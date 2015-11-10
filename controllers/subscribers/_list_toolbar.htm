@@ -1,5 +1,9 @@
 <div data-control="toolbar">
-    <a href="<?= Backend::url('indikator/news/subscribers/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('indikator.news::lang.new.subscribers')) ?></a>
+    <a
+        href="<?= Backend::url('indikator/news/subscribers/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('indikator.news::lang.new.subscribers')) ?>
+    </a>
     <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"
@@ -8,7 +12,7 @@
         })"
         data-request="onRemoveSubscribers"
         data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>"
-        data-trigger-type="enable"
+        data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-stripe-load-indicator>
