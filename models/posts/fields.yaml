@@ -11,6 +11,7 @@ fields:
 
     slug:
         label: indikator.news::lang.form.slug
+        preset: title
         span: auto
 
     introductory:
