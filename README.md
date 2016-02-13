@@ -28,7 +28,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 ###Available languages
 * en - English
-* ru - Pу́сский 
+* ru - Pу́сский
 * pl - Polski
 * hu - Magyar
 
