@@ -28,17 +28,17 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 ###Available languages
 * en - English
-* ru - Pу́сский
+* ru - Pу́сский 
 * pl - Polski
 * hu - Magyar
 
 ###Installation
-1. Go to the __Settings > Updates__ page in Backend.
+1. Go to the __Settings -> Updates__ page in Backend.
 1. Click on the __Install Plugins__ button.
 1. Type the __News__ in search field.
 
 ###Front-end components
-Use the Components > News panel in CMS menu. At this moment there are the following components:
+Use the Components -> News panel in CMS menu. At this moment there are the following components:
 * Display posts
 * Show post content
 * Subscriber form
