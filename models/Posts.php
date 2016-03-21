@@ -71,7 +71,7 @@ class Posts extends Model
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
 
-                DB::table('news_subscribers')->where('id', $user->id)->update(array('statistics' => ($user->statistics + 1)));
+                DB::table('news_subscribers')->where('id', $user->id)->update(['statistics' => ($user->statistics + 1)]);
             }
 
             unset($this->email, $this->name);
