@@ -1,30 +1,26 @@
-<?php
-
-return [
+<?php return [
     'plugin' => [
         'name' => 'News and Newsletter',
         'description' => 'Simple news and newsletter plugin.',
-        'author' => 'Gergő Szabó'
+        'author' => 'Gergő Szabó',
     ],
     'menu' => [
         'news' => 'News',
         'posts' => 'Posts',
-        'subscribers' => 'Subscribers'
+        'subscribers' => 'Subscribers',
     ],
     'title' => [
         'posts' => 'post',
-        'subscribers' => 'subscriber'
+        'subscribers' => 'subscriber',
     ],
     'new' => [
         'posts' => 'New post',
-        'subscribers' => 'New subscriber'
+        'subscribers' => 'New subscriber',
     ],
     'form' => [
-        // General
         'statistics' => 'Statistics',
         'created' => 'Created at',
         'updated' => 'Updated at',
-        // Posts
         'title' => 'Title',
         'slug' => 'Slug',
         'introductory' => 'Introductory',
@@ -37,24 +33,24 @@ return [
         'view' => 'view',
         'published' => 'Published at',
         'send' => 'Send the e-mail to subscribers.',
-        // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
         'common' => 'Common',
-        'mail' => 'mail'
+        'mail' => 'mail',
+        'event_date' => 'Event Date',
     ],
     'button' => [
         'activate' => 'Activate',
         'deactivate' => 'Deactivate',
         'active' => 'Active',
         'inactive' => 'Inactive',
-        'return' => 'Return'
+        'return' => 'Return',
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
         'deactivate' => 'Successfully deactivated those posts.',
         'delete' => 'Do you really want to delete this items?',
-        'remove' => 'Successfully removed those items.'
+        'remove' => 'Successfully removed those items.',
     ],
     'widget' => [
         'posts' => 'News - Posts',
@@ -63,23 +59,23 @@ return [
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'show_draft' => 'Show draft',
-        'total' => 'Total'
+        'total' => 'Total',
     ],
     'component' => [
         'posts' => 'Display posts',
         'post' => 'Show post content',
         'form' => 'Subscriber form',
-        'stat' => 'View statistics'
+        'stat' => 'View statistics',
     ],
     'permission' => [
         'posts' => 'Manage posts',
-        'subscribers' => 'Manage subscribers'
+        'subscribers' => 'Manage subscribers',
     ],
     'settings' => [
         'post_title' => 'Post',
         'post_description' => 'Displays a post on the page.',
         'post_slug' => 'Post slug',
-        'post_slug_description' => "Look up the post using the supplied slug value.",
+        'post_slug_description' => 'Look up the post using the supplied slug value.',
         'posts_title' => 'Post List',
         'posts_description' => 'Displays a list of latest posts on the page.',
         'posts_pagination' => 'Page number',
@@ -102,6 +98,6 @@ return [
         'updated_at_asc' => 'Updated (ascending)',
         'updated_at_desc' => 'Updated (descending)',
         'published_at_asc' => 'Published (ascending)',
-        'published_at_desc' => 'Published (descending)'
-    ]
+        'published_at_desc' => 'Published (descending)',
+    ],
 ];
