@@ -36,7 +36,7 @@ secondaryTabs:
                 2: 'indikator.news::lang.form.status_hide'
                 3: 'indikator.news::lang.form.status_draft'
             tab: Çeşitli
-        date:
+        event_date:
             label: 'indikator.news::lang.form.event_date'
             oc.commentPosition: ''
             mode: date
