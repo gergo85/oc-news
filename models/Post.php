@@ -1,9 +1,6 @@
 <?php namespace Indikator\News\Models;
 
-use Lang;
 use Model;
-use ValidationException;
-use Backend\Models\User;
 
 class Post extends Model
 {
