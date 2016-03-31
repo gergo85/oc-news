@@ -4,45 +4,47 @@
         class="btn btn-primary oc-icon-plus">
         <?= e(trans('indikator.news::lang.new.posts')) ?>
     </a>
-    <button
-        class="btn btn-default oc-icon-check"
-        disabled="disabled"
-        onclick="$(this).data('request-data', {
-            checked: $('.control-list').listWidget('getChecked')
-        })"
-        data-request="onActivatePosts"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-stripe-load-indicator>
-        <?= e(trans('indikator.news::lang.button.activate')) ?>
-    </button>
-    <button
-        class="btn btn-default oc-icon-times"
-        disabled="disabled"
-        onclick="$(this).data('request-data', {
-            checked: $('.control-list').listWidget('getChecked')
-        })"
-        data-request="onDeactivatePosts"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-stripe-load-indicator>
-        <?= e(trans('indikator.news::lang.button.deactivate')) ?>
-    </button>
-    <button
-        class="btn btn-default oc-icon-pencil"
-        disabled="disabled"
-        onclick="$(this).data('request-data', {
-            checked: $('.control-list').listWidget('getChecked')
-        })"
-        data-request="onDraftPosts"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-stripe-load-indicator>
-        <?= e(trans('indikator.news::lang.form.status_draft')) ?>
-    </button>
+    <div class="btn-group">
+        <button
+            class="btn btn-default oc-icon-check"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onActivatePosts"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.button.activate')) ?>
+        </button>
+        <button
+            class="btn btn-default oc-icon-times"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onDeactivatePosts"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.button.deactivate')) ?>
+        </button>
+        <button
+            class="btn btn-default oc-icon-pencil"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onDraftPosts"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.form.status_draft')) ?>
+        </button>
+    </div>
     <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"
