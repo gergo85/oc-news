@@ -1,54 +1,57 @@
-# ===================================
-#  Field Definitions
-# ===================================
-
 fields:
-
     title:
-        label: indikator.news::lang.form.title
+        label: 'indikator.news::lang.form.title'
         required: true
         span: auto
-
+        type: text
     slug:
-        label: indikator.news::lang.form.slug
-        preset: title
+        label: 'indikator.news::lang.form.slug'
+        oc.commentPosition: ''
         span: auto
-
+        preset: title
+        type: text
     introductory:
-        label: indikator.news::lang.form.introductory
+        label: 'indikator.news::lang.form.introductory'
         type: richeditor
         size: large
         span: full
-
     content:
-        label: indikator.news::lang.form.content
+        label: 'indikator.news::lang.form.content'
         required: true
         type: richeditor
         size: large
-
 secondaryTabs:
     fields:
-
         image:
-            label: indikator.news::lang.form.image
+            label: 'indikator.news::lang.form.image'
             type: mediafinder
             mode: image
-
+            tab: Çeşitli
         status:
-            label: indikator.news::lang.form.status
+            label: 'indikator.news::lang.form.status'
             required: true
             type: dropdown
             options:
-                1: indikator.news::lang.form.status_published
-                2: indikator.news::lang.form.status_hide
-                3: indikator.news::lang.form.status_draft
-
-        published_at:
-            label: indikator.news::lang.form.published
+                1: 'indikator.news::lang.form.status_published'
+                2: 'indikator.news::lang.form.status_hide'
+                3: 'indikator.news::lang.form.status_draft'
+            tab: Çeşitli
+        event_date:
+            label: 'indikator.news::lang.form.event_date'
+            oc.commentPosition: ''
+            mode: date
+            span: full
             type: datepicker
+            tab: Çeşitli
+        published_at:
+            label: 'indikator.news::lang.form.published'
+            oc.commentPosition: ''
             mode: datetime
-
+            span: full
+            type: datepicker
+            tab: Çeşitli
         send:
-            label: indikator.news::lang.form.send
+            label: 'indikator.news::lang.form.send'
             type: switch
             default: true
+            tab: Çeşitli
