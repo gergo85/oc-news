@@ -95,13 +95,13 @@ return [
         'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.'
     ],
     'sorting' => [
-        'title_asc' => 'Név (emelkedő)',
+        'title_asc' => 'Név (növekvő)',
         'title_desc' => 'Név (csökkenő)',
-        'created_at_asc' => 'Létrehozva (emelkedő)',
+        'created_at_asc' => 'Létrehozva (növekvő)',
         'created_at_desc' => 'Létrehozva (csökkenő)',
-        'updated_at_asc' => 'Frissítve (emelkedő)',
+        'updated_at_asc' => 'Frissítve (növekvő)',
         'updated_at_desc' => 'Frissítve (csökkenő)',
-        'published_at_asc' => 'Publikálva (emelkedő)',
+        'published_at_asc' => 'Publikálva (növekvő)',
         'published_at_desc' => 'Publikálva (csökkenő)'
     ]
 ];
