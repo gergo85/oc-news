@@ -3,8 +3,8 @@
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Lang;
-use Indikator\News\Models\Post as NewsPost;
 use Redirect;
+use Indikator\News\Models\Posts as NewsPost;
 
 class Posts extends ComponentBase
 {
@@ -54,7 +54,16 @@ class Posts extends ComponentBase
                 'description' => 'indikator.news::lang.settings.posts_order_description',
                 'type'        => 'dropdown',
                 'default'     => 'published_at desc',
-                'options'     => ['title asc' => Lang::get('indikator.news::lang.sorting.title_asc'), 'title desc' => Lang::get('indikator.news::lang.sorting.title_desc'), 'created_at asc' => Lang::get('indikator.news::lang.sorting.created_at_asc'), 'created_at desc' => Lang::get('indikator.news::lang.sorting.created_at_desc'), 'updated_at asc' => Lang::get('indikator.news::lang.sorting.updated_at_asc'), 'updated_at desc' => Lang::get('indikator.news::lang.sorting.updated_at_desc'), 'published_at asc' => Lang::get('indikator.news::lang.sorting.published_at_asc'), 'published_at desc' => Lang::get('indikator.news::lang.sorting.published_at_desc')]
+                'options'     => [
+                    'title asc'         => Lang::get('indikator.news::lang.sorting.title_asc'),
+                    'title desc'        => Lang::get('indikator.news::lang.sorting.title_desc'),
+                    'created_at asc'    => Lang::get('indikator.news::lang.sorting.created_at_asc'),
+                    'created_at desc  ' => Lang::get('indikator.news::lang.sorting.created_at_desc'),
+                    'updated_at asc'    => Lang::get('indikator.news::lang.sorting.updated_at_asc'),
+                    'updated_at desc'   => Lang::get('indikator.news::lang.sorting.updated_at_desc'),
+                    'published_at asc'  => Lang::get('indikator.news::lang.sorting.published_at_asc'),
+                    'published_at desc' => Lang::get('indikator.news::lang.sorting.published_at_desc')
+                ]
             ],
             'postPage' => [
                 'title'       => 'indikator.news::lang.settings.posts_post',
