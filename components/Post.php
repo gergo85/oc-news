@@ -1,8 +1,7 @@
 <?php namespace Indikator\News\Components;
 
-use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use Indikator\News\Models\Post as NewsPost;
+use Indikator\News\Models\Posts as NewsPost;
 
 class Post extends ComponentBase
 {
@@ -35,8 +34,7 @@ class Post extends ComponentBase
 
     protected function loadPost()
     {
-        $slug = $this->property('slug');
-        $post = NewsPost::isPublished()->where('slug', $slug)->first();
+        $post = NewsPost::isPublished()->where('slug', $this->property('slug'))->first();
 
         return $post;
     }
