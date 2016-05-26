@@ -1,9 +1,15 @@
 <?php
 
-$status = [
-    1 => 'indikator.news::lang.form.status_published',
-    2 => 'indikator.news::lang.form.status_hide',
-    3 => 'indikator.news::lang.form.status_draft'
+$text = [
+    1 => 'published',
+    2 => 'hide',
+    3 => 'draft'
 ];
 
-echo Lang::get($status[$record->status]);
+$class = [
+    1 => 'text-info',
+    2 => 'text-danger',
+    3 => 'text-warning'
+];
+
+echo '<span class="oc-icon-circle '.$class[$record->status].'">'.Lang::get('indikator.news::lang.form.status_'.$text[$record->status]).'</span>';
