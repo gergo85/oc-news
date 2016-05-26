@@ -29,7 +29,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 ###Supported plugins
 * RainLab Translate
-* Rainlab Sitemap
+* RainLab Sitemap
 
 ###Available languages
 * en - English
