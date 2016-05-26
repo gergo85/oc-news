@@ -3,8 +3,8 @@
 <ul class="post-list">
     {% for post in posts %}
     <li>
-        <img src="/storage/app/media{{ post.image }}" alt="{{ post.title }}">
-        <h3><a href="news/post/{{ post.slug }}">{{ post.title }}</a></h3>
+        <img src="{{ post.image|media }}" alt="{{ post.title }}">
+        <h3><a href="/news/{{ post.slug }}">{{ post.title }}</a></h3>
         <p class="date">{{ post.published_at|date('Y-m-d') }}</p>
 
         {% if post.introductory %}
