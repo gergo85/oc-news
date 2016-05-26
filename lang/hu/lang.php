@@ -103,5 +103,9 @@ return [
         'updated_at_desc' => 'Frissítve (csökkenő)',
         'published_at_asc' => 'Publikálva (növekvő)',
         'published_at_desc' => 'Publikálva (csökkenő)'
+    ],
+    'sitemap' => [
+        'post_list' => 'Bejegyzés lista',
+        'post_page' => 'Bejegyzés oldal'
     ]
 ];

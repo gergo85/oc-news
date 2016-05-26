@@ -5,6 +5,8 @@ use File;
 use App;
 use DB;
 use Mail;
+use Cms\Classes\Page as CmsPage;
+use Url;
 
 class Posts extends Model
 {
@@ -57,23 +59,26 @@ class Posts extends Model
 
             foreach ($users as $user) {
                 $params = [
-                    'name'  => $user->name,
-                    'email' => $user->email,
-                    'title' => $this->title,
-                    'slug'  => $this->slug,
+                    'name'          => $user->name,
+                    'email'        => $user->email,
+                    'title'        => $this->title,
+                    'slug'         => $this->slug,
                     'introductory' => $this->introductory,
-                    'content' => $this->content,
-                    'image'   => $this->image
+                    'content'      => $this->content,
+                    'image'        => $this->image
                 ];
 
                 $this->email = $user->email;
                 $this->name = $user->name;
 
-                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message) {
+                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message)
+                {
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
 
-                DB::table('news_subscribers')->where('id', $user->id)->update(['statistics' => ($user->statistics + 1)]);
+                DB::table('news_subscribers')->where('id', $user->id)->update([
+                    'statistics' => ++$user->statistics
+                ]);
             }
 
             unset($this->email, $this->name);
@@ -135,5 +140,97 @@ class Posts extends Model
     public function scopeIsPublished($query)
     {
         return $query->where('status', 1);
+    }
+
+    public static function getMenuTypeInfo($type)
+    {
+        if ($type == 'post-page') {
+            $references = [];
+            $items = self::orderBy('title')->get();
+
+            foreach ($items as $item) {
+                $references[$item->id] = $item->title;
+            }
+
+            $result = [
+                'references'   => $references,
+                'nesting'      => false,
+                'dynamicItems' => false
+            ];
+        }
+
+        else if ($type == 'post-list') {
+            $result = [
+                'dynamicItems' => true
+            ];
+        }
+
+        if ($result) {
+            $pages = CmsPage::sortBy('baseFileName')->all();
+            $result['cmsPages'] = $pages;
+        }
+
+        return $result;
+    }
+
+    public static function resolveMenuItem($item, $url, $theme)
+    {
+        if ($item->type == 'post-page') {
+            if (!$item->reference || !$item->cmsPage) {
+                return;
+            }
+
+            $element = self::find($item->reference);
+            if (!$element) {
+                return;
+            }
+
+            $pageUrl = self::getItemUrl($item->cmsPage, $element, $theme);
+            if (!$pageUrl) {
+                return;
+            }
+
+            $pageUrl = Url::to($pageUrl);
+            $result = [];
+            $result['url'] = $pageUrl;
+            $result['isActive'] = $pageUrl == $url;
+            $result['mtime'] = $element->updated_at;
+        }
+
+        else if ($item->type == 'post-list') {
+            $result = [
+                'items' => []
+            ];
+
+            $elements = self::orderBy('title')->get();
+            foreach ($elements as $element) {
+                $listItem = [
+                    'title' => $element->title,
+                    'url'   => Url::to(self::getItemUrl($item->cmsPage, $element, $theme)),
+                    'mtime' => $element->updated_at
+                ];
+
+                $listItem['isActive'] = $listItem['url'] == $url;
+                $result['items'][] = $listItem;
+            }
+        }
+
+        return $result;
+    }
+
+    protected static function getItemUrl($pageCode, $item, $theme)
+    {
+        $page = CmsPage::loadCached($theme, $pageCode);
+        if (!$page) {
+            return;
+        }
+
+        $properties = $page->getComponentProperties('post');
+        if (!preg_match('/^\{\{([^\}]+)\}\}$/', $properties['slug'], $matches)) {
+            return;
+        }
+
+        $paramName = substr(trim($matches[1]), 1);
+        return CmsPage::url($page->getBaseFileName(), [$paramName => $item->slug]);
     }
 }

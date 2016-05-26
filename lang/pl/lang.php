@@ -20,11 +20,11 @@ return [
         'subscribers' => 'Nowy subskrybent'
     ],
     'form' => [
-        // General
+        // Geral
         'statistics' => 'Statystyki',
         'created' => 'Stworzony',
         'updated' => 'Zaktualizowany',
-        // Posts
+        // Postagens
         'title' => 'Tytuł',
         'slug' => 'Slug',
         'introductory' => 'Skrót/wstęp',
@@ -37,7 +37,7 @@ return [
         'view' => 'widok',
         'published' => 'Opublikowany',
         'send' => 'Wyślij e-mail do subskrybentów.',
-        // Subscribers
+        // Inscritos
         'name' => 'Imię',
         'email' => 'E-mail',
         'common' => 'Nazwa',
@@ -103,5 +103,9 @@ return [
         'updated_at_desc' => 'Zaktualizowany (malejąco)',
         'published_at_asc' => 'Opublikowany (rosnąco)',
         'published_at_desc' => 'Opublikowany (malejąco)'
+    ],
+    'sitemap' => [
+        'post_list' => 'Post lista',
+        'post_page' => 'Post página'
     ]
 ];

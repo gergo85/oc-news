@@ -2,6 +2,8 @@
 
 use System\Classes\PluginBase;
 use Backend;
+use Event;
+use Indikator\News\Models\Posts;
 
 class Plugin extends PluginBase
 {
@@ -88,5 +90,30 @@ class Plugin extends PluginBase
                 'label' => 'indikator.news::lang.permission.subscribers'
             ]
         ];
+    }
+
+    public function boot()
+    {
+        Event::listen('pages.menuitem.listTypes', function()
+        {
+            return [
+                'post-list' => 'indikator.news::lang.sitemap.post_list',
+                'post-page' => 'indikator.news::lang.sitemap.post_page'
+            ];
+        });
+
+        Event::listen('pages.menuitem.getTypeInfo', function($type)
+        {
+            if ($type == 'post-list' || $type == 'post-page') {
+                return Posts::getMenuTypeInfo($type);
+            }
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function($type, $item, $url, $theme)
+        {
+            if ($type == 'post-list' || $type == 'post-page') {
+                return Posts::resolveMenuItem($item, $url, $theme);
+            }
+        });
     }
 }

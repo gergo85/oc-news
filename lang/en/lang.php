@@ -69,7 +69,7 @@ return [
         'posts' => 'Display posts',
         'post' => 'Show post content',
         'form' => 'Subscriber form',
-        'stat' => 'View statistics'
+        'stat' => 'Count visitors'
     ],
     'permission' => [
         'posts' => 'Manage posts',
@@ -103,5 +103,9 @@ return [
         'updated_at_desc' => 'Updated (descending)',
         'published_at_asc' => 'Published (ascending)',
         'published_at_desc' => 'Published (descending)'
+    ],
+    'sitemap' => [
+        'post_list' => 'Post list',
+        'post_page' => 'Post page'
     ]
 ];
