@@ -37,11 +37,12 @@ secondaryTabs:
         status:
             label: indikator.news::lang.form.status
             required: true
-            type: dropdown
+            type: balloon-selector
             options:
                 1: indikator.news::lang.form.status_published
                 2: indikator.news::lang.form.status_hide
                 3: indikator.news::lang.form.status_draft
+            default: 1
 
         published_at:
             label: indikator.news::lang.form.published
