@@ -4,21 +4,6 @@
 
 scopes:
 
-    status_published:
-        label: indikator.news::lang.form.status_published
-        type: checkbox
-        conditions: status = 1
-
-    status_hide:
-        label: indikator.news::lang.form.status_hide
-        type: checkbox
-        conditions: status = 2
-
-    status_draft:
-        label: indikator.news::lang.form.status_draft
-        type: checkbox
-        conditions: status = 3
-
     created_date:
         label: indikator.news::lang.form.created
         type: daterange
