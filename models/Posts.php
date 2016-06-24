@@ -59,7 +59,7 @@ class Posts extends Model
 
             foreach ($users as $user) {
                 $params = [
-                    'name'          => $user->name,
+                    'name'         => $user->name,
                     'email'        => $user->email,
                     'title'        => $this->title,
                     'slug'         => $this->slug,

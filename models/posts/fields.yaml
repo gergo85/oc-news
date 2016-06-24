@@ -34,6 +34,11 @@ secondaryTabs:
             type: mediafinder
             mode: image
 
+        published_at:
+            label: indikator.news::lang.form.published
+            type: datepicker
+            mode: datetime
+
         status:
             label: indikator.news::lang.form.status
             required: true
@@ -43,11 +48,6 @@ secondaryTabs:
                 2: indikator.news::lang.form.status_hide
                 3: indikator.news::lang.form.status_draft
             default: 1
-
-        published_at:
-            label: indikator.news::lang.form.published
-            type: datepicker
-            mode: datetime
 
         send:
             label: indikator.news::lang.form.send

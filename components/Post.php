@@ -34,8 +34,6 @@ class Post extends ComponentBase
 
     protected function loadPost()
     {
-        $post = NewsPost::isPublished()->where('slug', $this->property('slug'))->first();
-
-        return $post;
+        return NewsPost::isPublished()->where('slug', $this->property('slug'))->first();
     }
 }
