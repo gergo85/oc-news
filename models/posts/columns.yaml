@@ -4,6 +4,13 @@
 
 columns:
 
+    image:
+        label: indikator.news::lang.form.image
+        sortable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_image.htm
+
     title:
         label: indikator.news::lang.form.title
         searchable: true
