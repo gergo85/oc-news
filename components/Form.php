@@ -33,10 +33,10 @@ class Form extends ComponentBase
         }
 
         DB::table('news_subscribers')->insertGetId([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'common' => '',
-            'created' => 2,
+            'name'       => $data['name'],
+            'email'      => $data['email'],
+            'common'     => '',
+            'created'    => 2,
             'statistics' => 0,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
