@@ -34,6 +34,6 @@
 1.4.3: Added the daterange filters for lists.
 1.4.4: Added the image column to post list.
 1.4.5:
-    - Improvements and bugfix.
+    - Minor improvements and bugfix.
     - add_new_fields_to_table.php
     - update_timestamp_nullable.php
