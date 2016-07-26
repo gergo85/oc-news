@@ -11,20 +11,23 @@ fields:
 
     slug:
         label: indikator.news::lang.form.slug
+        required: true
         preset: title
         span: auto
 
-    introductory:
-        label: indikator.news::lang.form.introductory
-        type: richeditor
-        size: large
-        span: full
+tabs:
+    fields:
 
-    content:
-        label: indikator.news::lang.form.content
-        required: true
-        type: richeditor
-        size: large
+        introductory:
+            tab: indikator.news::lang.form.introductory
+            type: richeditor
+            size: large
+
+        content:
+            tab: indikator.news::lang.form.content
+            required: true
+            type: richeditor
+            size: huge
 
 secondaryTabs:
     fields:
@@ -39,6 +42,11 @@ secondaryTabs:
             type: datepicker
             mode: datetime
 
+        send:
+            label: indikator.news::lang.form.send
+            type: switch
+            default: true
+
         status:
             label: indikator.news::lang.form.status
             required: true
@@ -48,8 +56,14 @@ secondaryTabs:
                 2: indikator.news::lang.form.status_hide
                 3: indikator.news::lang.form.status_draft
             default: 1
+            span: auto
 
-        send:
-            label: indikator.news::lang.form.send
-            type: switch
-            default: true
+        featured:
+            label: indikator.news::lang.form.featured
+            required: true
+            type: radio
+            options:
+                1: indikator.news::lang.form.yes
+                2: indikator.news::lang.form.no
+            default: 2
+            span: auto

@@ -18,10 +18,11 @@ class Posts extends Model
     protected $table = 'news_posts';
 
     public $rules = [
-        'title'   => 'required|between:1,100',
-        'slug'    => ['between:1,100', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:news_posts'],
-        'content' => 'required',
-        'status'  => 'required|between:1,3|numeric'
+        'title'    => 'required',
+        'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:news_posts'],
+        'content'  => 'required',
+        'status'   => 'required|between:1,3|numeric',
+        'featured' => 'required|between:1,2|numeric'
     ];
 
     protected $slugs = ['slug' => 'title'];
@@ -55,7 +56,7 @@ class Posts extends Model
                 $locale = 'en';
             }
 
-            $users = DB::table('news_subscribers')->get();
+            $users = DB::table('news_subscribers')->where('status', 1)->get();
 
             foreach ($users as $user) {
                 $params = [
@@ -122,7 +123,7 @@ class Posts extends Model
                     array_push($parts, 'desc');
                 }
 
-                list ($sortField, $sortDirection) = $parts;
+                list($sortField, $sortDirection) = $parts;
 
                 $query->orderBy($sortField, $sortDirection);
             }

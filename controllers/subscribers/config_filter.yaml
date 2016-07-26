@@ -4,6 +4,16 @@
 
 scopes:
 
+    status_active:
+        label: indikator.news::lang.form.status_active
+        type: checkbox
+        conditions: status = 1
+
+    status_unsubscribed:
+        label: indikator.news::lang.form.status_unsubscribed
+        type: checkbox
+        conditions: status = 2
+
     created_date:
         label: indikator.news::lang.form.created
         type: daterange

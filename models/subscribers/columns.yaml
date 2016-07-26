@@ -15,6 +15,13 @@ columns:
     common:
         label: indikator.news::lang.form.common
         searchable: true
+        invisible: true
+
+    status:
+        label: indikator.news::lang.form.status
+        searchable: true
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
     statistics:
         label: indikator.news::lang.form.statistics

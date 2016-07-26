@@ -1,6 +1,13 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.posts')) ?></li>
+        <li>
+            <span class="text-info"><strong><?= DB::table('news_posts')->where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_published')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= DB::table('news_posts')->where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_hide')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-warning"><strong><?= DB::table('news_posts')->where('status', 3)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_draft')) ?></span>
+        </li>
     </ul>
 <?php Block::endPut() ?>
 

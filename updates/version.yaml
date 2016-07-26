@@ -14,7 +14,7 @@
     - Select images via Media finder.
     - add_image_field_to_table.php
 1.2.4: Minor improvements.
-1.2.5: Support to Translate plugin.
+1.2.5: Support the Translate plugin.
 1.2.6: Improved the posts component.
 1.2.7: Added Russian translation.
 1.2.8: Fixed the translate issues.
@@ -33,3 +33,7 @@
 1.4.2: Minor UI improvements.
 1.4.3: Added the daterange filters for lists.
 1.4.4: Added the image column to post list.
+1.4.5:
+    - Improvements and bugfix.
+    - add_new_fields_to_table.php
+    - update_timestamp_nullable.php

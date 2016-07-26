@@ -1,6 +1,11 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.subscribers')) ?></li>
+        <li>
+            <span class="text-info"><strong><?= DB::table('news_subscribers')->where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_active')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= DB::table('news_subscribers')->where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_unsubscribed')) ?></span>
+        </li>
     </ul>
 <?php Block::endPut() ?>
 

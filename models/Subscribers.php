@@ -9,8 +9,8 @@ class Subscribers extends Model
     protected $table = 'news_subscribers';
 
     public $rules = [
-        'name'  => 'between:1,100',
-        'email' => 'required|between:8,100'
+        'email'  => 'required|email',
+        'status' => 'required|between:1,2|numeric'
     ];
 
     public function beforeCreate()
