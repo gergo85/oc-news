@@ -140,7 +140,7 @@ class Posts extends Model
 
     public function scopeIsPublished($query)
     {
-        return $query->where('status', 1)->where('published_at', '<', time());
+        return $query->where('status', 1)->where('published_at', '>', time());
     }
 
     public static function getMenuTypeInfo($type)
