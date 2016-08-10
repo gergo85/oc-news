@@ -107,7 +107,8 @@ class Posts extends ComponentBase
         $posts = NewsPost::listFrontEnd([
             'page'    => $this->property('pageNumber'),
             'sort'    => $this->property('sortOrder'),
-            'perPage' => $this->property('postsPerPage')
+            'perPage' => $this->property('postsPerPage'),
+            'search'  => trim(input('search'))
         ]);
 
         return $posts;
