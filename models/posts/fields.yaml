@@ -27,7 +27,7 @@ tabs:
             tab: indikator.news::lang.form.content
             required: true
             type: richeditor
-            size: huge
+            size: giant
 
 secondaryTabs:
     fields:
