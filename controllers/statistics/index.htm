@@ -1,0 +1,405 @@
+<?php
+
+$thisYear = $lastYear = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
+$now = date('Y');
+
+// Stats
+
+$news = DB::table('news_posts')->get();
+$view = DB::table('news_posts')->sum('statistics');
+
+foreach ($news as $item) {
+    $year = substr($item->published_at, 0, 4);
+    if ($year == $now) {
+        $thisYear[(int)substr($item->published_at, 5, 2)]++;
+    }
+    else if ($year == $now - 1) {
+        $lastYear[(int)substr($item->published_at, 5, 2)]++;
+        $lastYear[0]++;
+    }
+}
+
+// TOP 20
+
+$topnumber = DB::table('news_posts')->count();
+if ($topnumber > 20) {
+    $topnumber = 20;
+}
+
+$news = DB::table('news_posts')->orderBy('statistics', 'desc')->take($topnumber)->get();
+$top = '';
+$index = 1;
+
+foreach ($news as $item) {
+    $top .= '
+        <div class="col-md-1 col-sm-1">
+            '.$index.'.
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
+        </div>
+        <div class="col-md-2 col-sm-2 text-right">
+            '.number_format($item->statistics, 0, '.', ' ').'
+        </div>
+        <div class="clearfix"></div>
+    ';
+
+    if ($index == 5 || $index == 10 || $index == 15) {
+        $top .= '<br>';
+    }
+
+    $index++;
+}
+
+?>
+
+<div class="control-breadcrumb">
+    <ul>
+        <li><?= e(trans('indikator.news::lang.menu.statistics')) ?></li>
+        <li>
+            <span class="text-info"><strong><?= DB::table('news_posts')->count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', DB::table('news_posts')->count())) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= number_format($view, 0, '.', ' ') ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
+        </li>
+    </ul>
+</div>
+
+<div class="scoreboard">
+    <div class="row">
+        <div class="col-md-6">
+            <strong><?= $now ?></strong>
+            <div id="thisYear" style="height: 220px; opacity: 0;"></div>
+            <br>
+            <?php if ($lastYear[0] > 0): ?>
+            <strong><?= ($now - 1) ?></strong>
+            <div id="lastYear" style="height: 220px; opacity: 0;"></div>
+            <br>
+            <?php endif ?>
+        </div>
+        <?php if ($view > 0): ?>
+        <div class="col-md-6">
+          <strong><?= e(trans('indikator.news::lang.stat.top')) ?> <?= $topnumber ?></strong>
+          <div class="clearfix"></div><br>
+          <?= $top ?>
+        </div>
+        <?php endif ?>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var lang = $('html').attr('lang');
+
+    if (lang == 'hu') {
+        var trans = {
+            all: 'Összesen',
+            jan: 'január',
+            feb: 'február',
+            mar: 'március',
+            apr: 'április',
+            may: 'május',
+            jun: 'június',
+            jul: 'július',
+            aug: 'augusztus',
+            sep: 'szeptember',
+            oct: 'október',
+            nov: 'november',
+            dec: 'december'
+        };
+    }
+
+    else if (lang == 'pl') {
+        var trans = {
+            all: 'Összesen',
+            jan: 'styczeń',
+            feb: 'luty',
+            mar: 'marzec',
+            apr: 'kwiecień',
+            may: 'maj',
+            jun: 'czerwiec',
+            jul: 'lipiec',
+            aug: 'sierpień',
+            sep: 'wrzesień',
+            oct: 'październik',
+            nov: 'listopad',
+            dec: 'grudzień'
+        };
+    }
+
+    else if (lang == 'ru') {
+        var trans = {
+            all: 'Összesen',
+            jan: 'Январь',
+            feb: 'Февраль',
+            mar: 'Март',
+            apr: 'Апрель',
+            may: 'Май',
+            jun: 'Июнь',
+            jul: 'Июль',
+            aug: 'Август',
+            sep: 'Сентябрь',
+            oct: 'Октябрь',
+            nov: 'Ноябрь',
+            dec: 'Декабрь'
+        };
+    }
+
+    else {
+        var trans = {
+            all: 'All',
+            jan: 'January',
+            feb: 'February',
+            mar: 'March',
+            apr: 'April',
+            may: 'May',
+            jun: 'June',
+            jul: 'July',
+            aug: 'August',
+            sep: 'September',
+            oct: 'October',
+            nov: 'November',
+            dec: 'December'
+        };
+    }
+
+    new Morris.Line({
+        element: 'thisYear',
+        data: [
+            { year: year + '-01', 'all': <?= $thisYear[1] ?> },
+            { year: year + '-02', 'all': <?= $thisYear[2] ?> },
+            { year: year + '-03', 'all': <?= $thisYear[3] ?> },
+            { year: year + '-04', 'all': <?= $thisYear[4] ?> },
+            { year: year + '-05', 'all': <?= $thisYear[5] ?> },
+            { year: year + '-06', 'all': <?= $thisYear[6] ?> },
+            { year: year + '-07', 'all': <?= $thisYear[7] ?> },
+            { year: year + '-08', 'all': <?= $thisYear[8] ?> },
+            { year: year + '-09', 'all': <?= $thisYear[9] ?> },
+            { year: year + '-10', 'all': <?= $thisYear[10] ?> },
+            { year: year + '-11', 'all': <?= $thisYear[11] ?> },
+            { year: year + '-12', 'all': <?= $thisYear[12] ?> }
+        ],
+        xkey: 'year',
+        ykeys: ['all'],
+        labels: [trans.all],
+        lineColors: ['#31708f'],
+        hideHover: 'auto',
+        xLabelFormat: function(x) {
+            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            return IndexToMonth[x.getMonth()];
+        },
+        dateFormat: function(d) {
+            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+            return month = IndexToMonth[new Date(d).getMonth()];
+        },
+        resize: true,
+        gridIntegers: true,
+        ymin: 0
+    });
+
+    $('#thisYear').fadeTo(1200, 1);
+
+    new Morris.Line({
+        element: 'lastYear',
+        data: [
+            { year: (year - 1) + '-01', 'all': <?= $lastYear[1] ?> },
+            { year: (year - 1) + '-02', 'all': <?= $lastYear[2] ?> },
+            { year: (year - 1) + '-03', 'all': <?= $lastYear[3] ?> },
+            { year: (year - 1) + '-04', 'all': <?= $lastYear[4] ?> },
+            { year: (year - 1) + '-05', 'all': <?= $lastYear[5] ?> },
+            { year: (year - 1) + '-06', 'all': <?= $lastYear[6] ?> },
+            { year: (year - 1) + '-07', 'all': <?= $lastYear[7] ?> },
+            { year: (year - 1) + '-08', 'all': <?= $lastYear[8] ?> },
+            { year: (year - 1) + '-09', 'all': <?= $lastYear[9] ?> },
+            { year: (year - 1) + '-10', 'all': <?= $lastYear[10] ?> },
+            { year: (year - 1) + '-11', 'all': <?= $lastYear[11] ?> },
+            { year: (year - 1) + '-12', 'all': <?= $lastYear[12] ?> }
+            ],
+        xkey: 'year',
+        ykeys: ['all'],
+        labels: [trans.all],
+        lineColors: ['#31708f'],
+        hideHover: 'auto',
+        xLabelFormat: function(x) {
+            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            return IndexToMonth[x.getMonth()];
+        },
+        dateFormat: function(d) {
+            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+            return month = IndexToMonth[new Date(d).getMonth()];
+        },
+        resize: true,
+        gridIntegers: true,
+        ymin: 0
+    });
+
+    setTimeout(function() {
+        $('#lastYear').fadeTo(1200, 1);
+    }, 300);
+
+});
+
+(function() {
+    var $, MyMorris;
+
+    MyMorris = window.MyMorris = {};
+    $ = jQuery;
+
+    MyMorris = Object.create(Morris);
+
+    MyMorris.Grid.prototype.gridDefaults["gridIntegers"] = false;
+
+    MyMorris.Grid.prototype.setData = function (data, redraw) {
+        var e, idx, index, maxGoal, minGoal, ret, row, step, total, y, ykey, ymax, ymin, yval, _ref;
+        if (redraw == null) {
+            redraw = true;
+        }
+        this.options.data = data;
+        if ((data == null) || data.length === 0) {
+            this.data = [];
+            this.raphael.clear();
+            if (this.hover != null) {
+                this.hover.hide();
+            }
+            return;
+        }
+        ymax = this.cumulative ? 0 : null;
+        ymin = this.cumulative ? 0 : null;
+        if (this.options.goals.length > 0) {
+            minGoal = Math.min.apply(Math, this.options.goals);
+            maxGoal = Math.max.apply(Math, this.options.goals);
+            ymin = ymin != null ? Math.min(ymin, minGoal) : minGoal;
+            ymax = ymax != null ? Math.max(ymax, maxGoal) : maxGoal;
+        }
+        this.data = (function () {
+            var _i, _len, _results;
+            _results = [];
+            for (index = _i = 0, _len = data.length; _i < _len; index = ++_i) {
+                row = data[index];
+                ret = {
+                    src: row
+                };
+                ret.label = row[this.options.xkey];
+                if (this.options.parseTime) {
+                    ret.x = Morris.parseDate(ret.label);
+                    if (this.options.dateFormat) {
+                        ret.label = this.options.dateFormat(ret.x);
+                    } else if (typeof ret.label === 'number') {
+                        ret.label = new Date(ret.label).toString();
+                    }
+                } else {
+                    ret.x = index;
+                    if (this.options.xLabelFormat) {
+                        ret.label = this.options.xLabelFormat(ret);
+                    }
+                }
+                total = 0;
+                ret.y = (function () {
+                    var _j, _len1, _ref, _results1;
+                    _ref = this.options.ykeys;
+                    _results1 = [];
+                    for (idx = _j = 0, _len1 = _ref.length; _j < _len1; idx = ++_j) {
+                        ykey = _ref[idx];
+                        yval = row[ykey];
+                        if (typeof yval === 'string') {
+                            yval = parseFloat(yval);
+                        }
+                        if ((yval != null) && typeof yval !== 'number') {
+                            yval = null;
+                        }
+                        if (yval != null) {
+                            if (this.cumulative) {
+                                total += yval;
+                            } else {
+                                if (ymax != null) {
+                                    ymax = Math.max(yval, ymax);
+                                    ymin = Math.min(yval, ymin);
+                                } else {
+                                    ymax = ymin = yval;
+                                }
+                            }
+                        }
+                        if (this.cumulative && (total != null)) {
+                            ymax = Math.max(total, ymax);
+                            ymin = Math.min(total, ymin);
+                        }
+                        _results1.push(yval);
+                    }
+                    return _results1;
+                }).call(this);
+                _results.push(ret);
+            }
+            return _results;
+        }).call(this);
+        if (this.options.parseTime) {
+            this.data = this.data.sort(function (a, b) {
+                return (a.x > b.x) - (b.x > a.x);
+            });
+        }
+        this.xmin = this.data[0].x;
+        this.xmax = this.data[this.data.length - 1].x;
+        this.events = [];
+        if (this.options.events.length > 0) {
+            if (this.options.parseTime) {
+                this.events = (function () {
+                    var _i, _len, _ref, _results;
+                    _ref = this.options.events;
+                    _results = [];
+                    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                        e = _ref[_i];
+                        _results.push(Morris.parseDate(e));
+                    }
+                    return _results;
+                }).call(this);
+            } else {
+                this.events = this.options.events;
+            }
+            this.xmax = Math.max(this.xmax, Math.max.apply(Math, this.events));
+            this.xmin = Math.min(this.xmin, Math.min.apply(Math, this.events));
+        }
+        if (this.xmin === this.xmax) {
+            this.xmin -= 1;
+            this.xmax += 1;
+        }
+        this.ymin = this.yboundary('min', ymin);
+        this.ymax = this.yboundary('max', ymax);
+        if (this.ymin === this.ymax) {
+            if (ymin) {
+                this.ymin -= 1;
+            }
+            this.ymax += 1;
+        }
+        if (((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'y') || this.options.grid === true) {
+            if (this.options.ymax === this.gridDefaults.ymax && this.options.ymin === this.gridDefaults.ymin) {
+                this.grid = this.autoGridLines(this.ymin, this.ymax, this.options.numLines);
+                this.ymin = Math.min(this.ymin, this.grid[0]);
+                this.ymax = Math.max(this.ymax, this.grid[this.grid.length - 1]);
+            } else {
+                step = (this.ymax - this.ymin) / (this.options.numLines - 1);
+                if (this.options.gridIntegers) {
+                    step = Math.max(1, Math.round(step));
+                }
+                this.grid = (function () {
+                    var _i, _ref1, _ref2, _results;
+                    _results = [];
+                    for (y = _i = _ref1 = this.ymin, _ref2 = this.ymax; step > 0 ? _i <= _ref2 : _i >= _ref2; y = _i += step) {
+                        _results.push(y);
+                    }
+                    return _results;
+                }).call(this);
+            }
+        }
+        this.dirty = true;
+        if (redraw) {
+            return this.redraw();
+        }
+    };
+}).call(this);
+</script>

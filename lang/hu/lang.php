@@ -9,7 +9,8 @@ return [
     'menu' => [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
-        'subscribers' => 'Feliratkozók'
+        'subscribers' => 'Feliratkozók',
+        'statistics' => 'Statisztika'
     ],
     'title' => [
         'posts' => 'bejegyzés',
@@ -18,6 +19,11 @@ return [
     'new' => [
         'posts' => 'Új bejegyzés',
         'subscribers' => 'Új feliratkozó'
+    ],
+    'stat' => [
+        'posts' => 'Bejegyzés|Bejegyzés',
+        'view' => ' Megtekintés',
+        'top' => 'TOP'
     ],
     'form' => [
         // Általános
@@ -49,8 +55,8 @@ return [
         'mail' => 'levél'
     ],
     'button' => [
-        'activate' => 'Aktíválás',
-        'deactivate' => 'Deaktiválás',
+        'activate' => 'Publikál',
+        'deactivate' => 'Rejt',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
         'return' => 'Vissza'
@@ -78,7 +84,8 @@ return [
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
-        'subscribers' => 'Feliratkozók kezelése'
+        'subscribers' => 'Feliratkozók kezelése',
+        'statistics' => 'Statisztika megtekintése'
     ],
     'settings' => [
         'post_title' => 'Bejegyzés',

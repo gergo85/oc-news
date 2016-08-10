@@ -38,3 +38,4 @@
     - add_new_fields_to_table.php
     - update_timestamp_nullable.php
 1.4.6: Fixed the post view issue.
+1.4.7: Added the Statistics page.

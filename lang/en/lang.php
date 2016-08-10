@@ -9,7 +9,8 @@ return [
     'menu' => [
         'news' => 'News',
         'posts' => 'Posts',
-        'subscribers' => 'Subscribers'
+        'subscribers' => 'Subscribers',
+        'statistics' => 'Statistics'
     ],
     'title' => [
         'posts' => 'post',
@@ -18,6 +19,11 @@ return [
     'new' => [
         'posts' => 'New post',
         'subscribers' => 'New subscriber'
+    ],
+    'stat' => [
+        'posts' => 'Post|Posts',
+        'view' => 'View',
+        'top' => 'TOP'
     ],
     'form' => [
         // General
@@ -32,7 +38,7 @@ return [
         'image' => 'Image',
         'status' => 'Status',
         'status_published' => 'Published',
-        'status_hide' => 'Hide',
+        'status_hide' => 'Hidden',
         'status_draft' => 'Draft',
         'status_active' => 'Active',
         'status_unsubscribed' => 'Unsubscribed',
@@ -50,7 +56,7 @@ return [
     ],
     'button' => [
         'activate' => 'Activate',
-        'deactivate' => 'Deactivate',
+        'deactivate' => 'Hide',
         'active' => 'Active',
         'inactive' => 'Inactive',
         'return' => 'Return'
@@ -78,7 +84,8 @@ return [
     ],
     'permission' => [
         'posts' => 'Manage posts',
-        'subscribers' => 'Manage subscribers'
+        'subscribers' => 'Manage subscribers',
+        'statistics' => 'View statistics'
     ],
     'settings' => [
         'post_title' => 'Post',

@@ -9,7 +9,8 @@ return [
     'menu' => [
         'news' => 'Subskrypcja',
         'posts' => 'Posty',
-        'subscribers' => 'Subskrybenci'
+        'subscribers' => 'Subskrybenci',
+        'statistics' => 'Statystyka'
     ],
     'title' => [
         'posts' => 'post',
@@ -18,6 +19,11 @@ return [
     'new' => [
         'posts' => 'Nowy post',
         'subscribers' => 'Nowy subskrybent'
+    ],
+    'stat' => [
+        'posts' => 'post|blogach',
+        'view' => 'widok',
+        'top' => 'TOP'
     ],
     'form' => [
         // Geral
@@ -78,7 +84,8 @@ return [
     ],
     'permission' => [
         'posts' => 'Zarządzań postami',
-        'subscribers' => 'Zarządzaj subskrybentami'
+        'subscribers' => 'Zarządzaj subskrybentami',
+        'statistics' => 'Zobacz statystyki'
     ],
     'settings' => [
         'post_title' => 'Post',

@@ -9,7 +9,8 @@ return [
     'menu' => [
         'news' => 'Новости',
         'posts' => 'Посты',
-        'subscribers' => 'Подписчики'
+        'subscribers' => 'Подписчики',
+        'statistics' => 'Статистика'
     ],
     'title' => [
         'posts' => 'пост',
@@ -18,6 +19,11 @@ return [
     'new' => [
         'posts' => 'Новый пост',
         'subscribers' => 'Новый подписчик'
+    ],
+    'stat' => [
+        'posts' => 'Cообщение|Cообщений',
+        'view' => 'Посмотреть',
+        'top' => 'TOP'
     ],
     'form' => [
         // Генеральная
@@ -78,7 +84,8 @@ return [
     ],
     'permission' => [
         'posts' => 'Управление постами',
-        'subscribers' => 'Управление подписками'
+        'subscribers' => 'Управление подписками',
+        'statistics' => 'Просмотр статистики'
     ],
     'settings' => [
         'post_title' => 'Пост',

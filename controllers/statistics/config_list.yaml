@@ -1,0 +1,7 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: indikator.news::lang.menu.statistics
+list: ~/plugins/indikator/news/models/statistics/columns.yaml
+modelClass: Indikator\News\Models\Statistics

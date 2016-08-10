@@ -7,10 +7,11 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Managing posts
 * Managing subscribers
 * Send newsletter
+* Statistics and graphs
 
 ###Available widgets
-* Posts statistics
-* Subscribers statistics
+* Post statistics
+* Subscriber statistics
 
 ###Available components
 * Display posts

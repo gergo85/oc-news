@@ -1,0 +1,7 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: indikator.news::lang.menu.statistics
+form:
+modelClass:
