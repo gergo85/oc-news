@@ -52,7 +52,7 @@ class Posts extends Model
         if ($this->send && $this->send != '') {
             $locale = App::getLocale();
 
-            if (!File::exists('plugins/indikator/news/views/mail/email_'.$locale.'.htm')) {
+            if (!File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$locale.'.htm')) {
                 $locale = 'en';
             }
 
