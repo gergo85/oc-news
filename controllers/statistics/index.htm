@@ -1,9 +1,9 @@
 <?php
 
+// Graphs
+
 $thisYear = $lastYear = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
 $now = date('Y');
-
-// Stats
 
 $news = DB::table('news_posts')->get();
 $view = DB::table('news_posts')->sum('statistics');
@@ -21,12 +21,12 @@ foreach ($news as $item) {
 
 // TOP 20
 
-$topnumber = DB::table('news_posts')->count();
-if ($topnumber > 20) {
-    $topnumber = 20;
+$amount = DB::table('news_posts')->count();
+if ($amount > 20) {
+    $amount = 20;
 }
 
-$news = DB::table('news_posts')->orderBy('statistics', 'desc')->take($topnumber)->get();
+$news = DB::table('news_posts')->orderBy('statistics', 'desc')->take($amount)->get();
 $top = '';
 $index = 1;
 
@@ -51,6 +51,73 @@ foreach ($news as $item) {
     $index++;
 }
 
+// Posts length
+
+$news = DB::table('news_posts')->get();
+$posts = [];
+
+foreach ($news as $item) {
+    $posts[$item->id] = strlen(strip_tags($item->introductory).strip_tags($item->content));
+}
+
+// Longest posts
+
+arsort($posts);
+$longest = '';
+$index = 1;
+
+foreach ($posts as $id => $length) {
+    $item = DB::table('news_posts')->where('id', $id)->first();
+
+    $longest .= '
+        <div class="col-md-1 col-sm-1">
+            '.$index.'.
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
+        </div>
+        <div class="col-md-2 col-sm-2 text-right">
+            '.number_format($length, 0, '.', ' ').'
+        </div>
+        <div class="clearfix"></div>
+    ';
+
+    if ($index == 10) {
+        break;
+    }
+
+    $index++;
+}
+
+// Shortest posts
+
+asort($posts);
+$shortest = '';
+$index = 1;
+
+foreach ($posts as $id => $length) {
+    $item = DB::table('news_posts')->where('id', $id)->first();
+
+    $shortest .= '
+        <div class="col-md-1 col-sm-1">
+            '.$index.'.
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
+        </div>
+        <div class="col-md-2 col-sm-2 text-right">
+            '.number_format($length, 0, '.', ' ').'
+        </div>
+        <div class="clearfix"></div>
+    ';
+
+    if ($index == 10) {
+        break;
+    }
+
+    $index++;
+}
+
 ?>
 
 <div class="control-breadcrumb">
@@ -58,8 +125,10 @@ foreach ($news as $item) {
         <li><?= e(trans('indikator.news::lang.menu.statistics')) ?></li>
         <li>
             <span class="text-info"><strong><?= DB::table('news_posts')->count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', DB::table('news_posts')->count())) ?></span>
+            <?php if ($view > 0): ?>
             &nbsp; | &nbsp;
             <span class="text-danger"><strong><?= number_format($view, 0, '.', ' ') ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
+            <?php endif ?>
         </li>
     </ul>
 </div>
@@ -78,9 +147,33 @@ foreach ($news as $item) {
         </div>
         <?php if ($view > 0): ?>
         <div class="col-md-6">
-          <strong><?= e(trans('indikator.news::lang.stat.top')) ?> <?= $topnumber ?></strong>
+          <strong><?= e(trans('indikator.news::lang.stat.top')) ?></strong>
           <div class="clearfix"></div><br>
           <?= $top ?>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
+            <div class="clearfix"></div><br>
+            <?= $longest ?>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
+            <div class="clearfix"></div><br>
+            <?= $shortest ?>
+            <br>
+        </div>
+        <?php else: ?>
+        <div class="col-md-6">
+            <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
+            <div class="clearfix"></div><br>
+            <?= $longest ?>
+            <br>
+            <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
+            <div class="clearfix"></div><br>
+            <?= $shortest ?>
+            <br>
         </div>
         <?php endif ?>
     </div>

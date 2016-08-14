@@ -6,8 +6,15 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 ###Main features
 * Managing posts
 * Managing subscribers
-* Send newsletter
 * Statistics and graphs
+* Send newsletter
+
+###Statistics and graphs
+* Graph - Posts in this year
+* Graph - Posts in last year
+* List - TOP 20 view posts
+* List - TOP 10 longest posts
+* List - TOP 10 shortest posts
 
 ###Available widgets
 * Post statistics

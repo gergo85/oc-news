@@ -23,7 +23,9 @@ return [
     'stat' => [
         'posts' => 'Bejegyzés|Bejegyzés',
         'view' => ' Megtekintés',
-        'top' => 'TOP'
+        'top' => 'TOP',
+        'longest' => 'Leghosszabb',
+        'shortest' => 'Legrövidebb'
     ],
     'form' => [
         // Általános
@@ -56,7 +58,7 @@ return [
     ],
     'button' => [
         'activate' => 'Publikál',
-        'deactivate' => 'Rejt',
+        'deactivate' => 'Rejtés',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
         'return' => 'Vissza'

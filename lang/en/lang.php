@@ -23,7 +23,9 @@ return [
     'stat' => [
         'posts' => 'Post|Posts',
         'view' => 'View',
-        'top' => 'TOP'
+        'top' => 'TOP',
+        'longest' => 'Longest',
+        'shortest' => 'Shortest'
     ],
     'form' => [
         // General

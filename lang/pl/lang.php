@@ -23,7 +23,9 @@ return [
     'stat' => [
         'posts' => 'post|blogach',
         'view' => 'widok',
-        'top' => 'TOP'
+        'top' => 'TOP',
+        'longest' => 'Najdłuższy',
+        'shortest' => 'Najkrótsza'
     ],
     'form' => [
         // Geral
