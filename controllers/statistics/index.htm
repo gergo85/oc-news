@@ -300,6 +300,8 @@ $(document).ready(function() {
 
     $('#thisYear').fadeTo(1200, 1);
 
+    if ($('#lastYear').length == 1) {
+
     new Morris.Line({
         element: 'lastYear',
         data: [
@@ -337,6 +339,8 @@ $(document).ready(function() {
     setTimeout(function() {
         $('#lastYear').fadeTo(1200, 1);
     }, 300);
+
+    }
 
 });
 
