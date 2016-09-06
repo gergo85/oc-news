@@ -9,9 +9,9 @@ modelClass: Indikator\News\Models\Posts
 defaultRedirect: indikator/news/posts
 
 create:
-    redirect: indikator/news/posts
+    redirect: indikator/news/posts/update/:id
     redirectClose: indikator/news/posts
 
 update:
-    redirect: indikator/news/posts
+    redirect: indikator/news/posts/update/:id
     redirectClose: indikator/news/posts
