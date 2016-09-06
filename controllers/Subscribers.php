@@ -2,7 +2,6 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
-use DB;
 use Flash;
 use Lang;
 
@@ -29,8 +28,8 @@ class Subscribers extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $objectId) {
-                if (DB::table('news_subscribers')->where('id', $objectId)->count() == 1) {
-                    DB::table('news_subscribers')->where('id', $objectId)->delete();
+                if (Subscribers::where('id', $objectId)->count() == 1) {
+                    Subscribers::where('id', $objectId)->delete();
                 }
             }
 
