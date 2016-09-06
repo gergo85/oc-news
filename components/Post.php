@@ -34,6 +34,14 @@ class Post extends ComponentBase
 
     protected function loadPost()
     {
-        return NewsPost::isPublished()->where('slug', $this->property('slug'))->first();
+        $slug = $this->property('slug');
+
+        $post = new NewsPost;
+
+        $post = $post->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+            ? $post->transWhere('slug', $slug)
+            : $post->where('slug', $slug);
+
+        return $post->isPublished()->first();
     }
 }

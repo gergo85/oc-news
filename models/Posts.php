@@ -27,7 +27,7 @@ class Posts extends Model
 
     protected $slugs = ['slug' => 'title'];
 
-    public $translatable = ['title', 'introductory', 'content'];
+    public $translatable = ['title', 'introductory', 'content', ['slug', 'index' => true]];
 
     protected $dates = ['published_at'];
 
