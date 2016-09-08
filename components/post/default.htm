@@ -1,10 +1,13 @@
 {% set post = __SELF__.post %}
 
-<div class="content">
-    <p><strong>{{ post.introductory|raw }}</strong></p>
-    <p>{{ post.content|raw }}</p>
-</div>
+<div class="post">
+    <div class="post-content">
+        <h2 class="post-title">{{ post.title }}</h2>
+        {% if post.image %}<div class="post-image"><img src="{{ post.image|media }}" alt="{{ post.title }}"></div>{% endif %}
 
-<p class="info">
-    Posted on {{ post.published_at|date('Y-m-d') }}
-</p>
+        {% if post.introductory %}<div class="post-introductory">{{ post.introductory|raw }}</div>{% endif %}
+        {% if post.content %}<div class="post-content">{{ post.content|raw }}</div>{% endif %}
+
+        <p class="post-date">Posted on {{ post.published_at|date('Y-m-d') }}</p>
+    </div>
+</div>

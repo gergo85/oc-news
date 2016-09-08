@@ -3,7 +3,6 @@
 use Model;
 use File;
 use App;
-use DB;
 use Mail;
 use Cms\Classes\Page as CmsPage;
 use Url;
@@ -20,7 +19,6 @@ class Posts extends Model
     public $rules = [
         'title'    => 'required',
         'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:news_posts'],
-        'content'  => 'required',
         'status'   => 'required|between:1,3|numeric',
         'featured' => 'required|between:1,2|numeric'
     ];
@@ -74,7 +72,7 @@ class Posts extends Model
                 $locale = 'en';
             }
 
-            $users = DB::table('news_subscribers')->where('status', 1)->get();
+            $users = Subscribers::where('status', 1)->get();
 
             foreach ($users as $user) {
                 $params = [
@@ -95,7 +93,7 @@ class Posts extends Model
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
 
-                DB::table('news_subscribers')->where('id', $user->id)->update([
+                Subscribers::where('id', $user->id)->update([
                     'statistics' => ++$user->statistics
                 ]);
             }

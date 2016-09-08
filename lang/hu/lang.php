@@ -98,14 +98,14 @@ return [
         'posts_description' => 'A legújabb bejegyzéseket listázza ki a lapon.',
         'posts_pagination' => 'Lapozósáv paraméter neve',
         'posts_pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
-        'posts_per_page' => 'Bejegyzések laponként',
+        'posts_per_page' => 'Bejegyzések oldalanként',
         'posts_per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
         'posts_no_posts' => 'Nincsenek bejegyzések üzenet ',
         'posts_no_posts_description' => 'A bejegyzés listában kijelezendő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
         'posts_no_posts_found' => 'Nincsenek bejegyzések',
         'posts_order' => 'Bejegyzések sorrendje',
         'posts_order_decription' => 'Attribútum, mely alapján rendezni kell a bejegyzéseket',
-        'posts_post' => 'Bejegyzéslap',
+        'posts_post' => 'Bejegyzés lapja',
         'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.'
     ],
     'sorting' => [

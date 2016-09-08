@@ -10,8 +10,6 @@ class Posts extends ComponentBase
 {
     public $posts;
 
-    public $pageParam;
-
     public $noPostsMessage;
 
     public $postPage;
@@ -68,8 +66,7 @@ class Posts extends ComponentBase
             'postPage' => [
                 'title'       => 'indikator.news::lang.settings.posts_post',
                 'description' => 'indikator.news::lang.settings.posts_post_description',
-                'type'        => 'dropdown',
-                'default'     => 'news/post'
+                'default'     => 'news'
             ]
         ];
     }
@@ -81,7 +78,8 @@ class Posts extends ComponentBase
 
     public function onRun()
     {
-        $this->prepareVars();
+        $this->page['postPage'] = $this->property('postPage');
+        $this->page['noPostsMessage'] = $this->property('noPostsMessage');
 
         $this->posts = $this->page['posts'] = $this->listPosts();
 
@@ -92,14 +90,6 @@ class Posts extends ComponentBase
                 return Redirect::to($this->currentPageUrl([$pageNumberParam => $lastPage]));
             }
         }
-    }
-
-    protected function prepareVars()
-    {
-        $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
-        $this->noPostsMessage = $this->page['noPostsMessage'] = $this->property('noPostsMessage');
-
-        $this->postPage = $this->page['postPage'] = $this->property('postPage');
     }
 
     protected function listPosts()
