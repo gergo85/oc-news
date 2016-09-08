@@ -2,6 +2,7 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Indikator\News\Models\Posts as Item;
 use Flash;
 use Lang;
 
@@ -30,7 +31,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Posts::where('status', '!=', 1)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 1)->find($itemId)) {
                     continue;
                 }
 
@@ -47,7 +48,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Posts::where('status', '!=', 2)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 2)->find($itemId)) {
                     continue;
                 }
 
@@ -64,7 +65,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Posts::where('status', '!=', 3)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 3)->find($itemId)) {
                     continue;
                 }
 
@@ -81,7 +82,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Posts::find($itemId)) {
+                if (!$item = Item::find($itemId)) {
                     continue;
                 }
 

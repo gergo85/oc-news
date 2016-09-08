@@ -2,6 +2,7 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Indikator\News\Models\Subscribers as Item;
 use Flash;
 use Lang;
 
@@ -28,7 +29,7 @@ class Subscribers extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Subscribers::find($itemId)) {
+                if (!$item = Item::find($itemId)) {
                     continue;
                 }
 
