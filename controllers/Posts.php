@@ -29,60 +29,68 @@ class Posts extends Controller
     public function onActivatePosts()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $objectId) {
-                if (Posts::where('id', $objectId)->where('status', '!=', 1)->count() == 1) {
-                    Posts::where('id', $objectId)->update(['status' => 1]);
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Posts::where('status', '!=', 1)->find($itemId)) {
+                    continue;
                 }
+
+                $item->update(['status' => 1]);
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.activate'));
         }
 
-        return $this->listRefresh('manage');
+        return $this->listRefresh();
     }
 
     public function onDeactivatePosts()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $objectId) {
-                if (Posts::where('id', $objectId)->where('status', '!=', 2)->count() == 1) {
-                    Posts::where('id', $objectId)->update(['status' => 2]);
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Posts::where('status', '!=', 2)->find($itemId)) {
+                    continue;
                 }
+
+                $item->update(['status' => 2]);
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.deactivate'));
         }
 
-        return $this->listRefresh('manage');
+        return $this->listRefresh();
     }
 
     public function onDraftPosts()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $objectId) {
-                if (Posts::where('id', $objectId)->where('status', '!=', 3)->count() == 1) {
-                    Posts::where('id', $objectId)->update(array('status' => 3));
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Posts::where('status', '!=', 3)->find($itemId)) {
+                    continue;
                 }
+
+                $item->update(['status' => 3]);
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.activate'));
         }
 
-        return $this->listRefresh('manage');
+        return $this->listRefresh();
     }
 
     public function onRemovePosts()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $objectId) {
-                if (Posts::where('id', $objectId)->count() == 1) {
-                    Posts::where('id', $objectId)->delete();
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Posts::find($itemId)) {
+                    continue;
                 }
+
+                $item->delete();
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.remove'));
         }
 
-        return $this->listRefresh('manage');
+        return $this->listRefresh();
     }
 }

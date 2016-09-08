@@ -27,15 +27,17 @@ class Subscribers extends Controller
     public function onRemoveSubscribers()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $objectId) {
-                if (Subscribers::where('id', $objectId)->count() == 1) {
-                    Subscribers::where('id', $objectId)->delete();
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Subscribers::find($itemId)) {
+                    continue;
                 }
+
+                $item->delete();
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.remove'));
         }
 
-        return $this->listRefresh('manage');
+        return $this->listRefresh();
     }
 }
