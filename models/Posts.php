@@ -25,13 +25,31 @@ class Posts extends Model
         'featured' => 'required|between:1,2|numeric'
     ];
 
-    protected $slugs = ['slug' => 'title'];
+    protected $slugs = [
+        'slug' => 'title'
+    ];
 
-    public $translatable = ['title', 'introductory', 'content', ['slug', 'index' => true]];
+    public $translatable = [
+        'title',
+        ['slug', 'index' => true],
+        'introductory',
+        'content'
+    ];
 
-    protected $dates = ['published_at'];
+    protected $dates = [
+        'published_at'
+    ];
 
-    public static $allowedSorting = ['title asc', 'title desc', 'created_at asc', 'created_at desc', 'updated_at asc', 'updated_at desc', 'published_at asc', 'published_at desc'];
+    public static $allowedSorting = [
+        'title asc',
+        'title desc',
+        'created_at asc',
+        'created_at desc',
+        'updated_at asc',
+        'updated_at desc',
+        'published_at asc',
+        'published_at desc'
+    ];
 
     public function beforeCreate()
     {
@@ -105,7 +123,12 @@ class Posts extends Model
             'status'  => 1
         ], $options));
 
-        $searchableFields = ['title', 'slug', 'introductory', 'content'];
+        $searchableFields = [
+            'title',
+            'slug',
+            'introductory',
+            'content'
+        ];
 
         if ($status) {
             $query->isPublished();
