@@ -42,6 +42,17 @@ class Post extends ComponentBase
             ? $post->transWhere('slug', $slug)
             : $post->where('slug', $slug);
 
-        return $post->isPublished()->first();
+        $post = $post->isPublished()->first();
+
+        $meta_description = strip_tags($post->introductory);
+        if (strlen($meta_description) > 252) {
+            $meta_description = substr($meta_description, 0, 252).'...';
+        }
+
+        $this->page->title = $post->title;
+        $this->page->meta_title = $post->title;
+        $this->page->meta_description = $meta_description;
+
+        return $post;
     }
 }
