@@ -8,6 +8,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Managing subscribers
 * Statistics and graphs
 * Send newsletter
+* Front-end components
 
 ## Statistics and graphs
 * Graph - Posts in this year
@@ -36,8 +37,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * {{ image }} - Relative url of image
 
 ## Supported plugins
-* RainLab Translate
-* RainLab Sitemap
+* [RainLab Translate](http://octobercms.com/plugin/rainlab-translate)
+* [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
 
 ## Available languages
 * en - English
