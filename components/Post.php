@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Indikator\News\Models\Posts as NewsPost;
+use Redirect;
 
 class Post extends ComponentBase
 {
@@ -42,7 +43,13 @@ class Post extends ComponentBase
             ? $post->transWhere('slug', $slug)
             : $post->where('slug', $slug);
 
-        $post = $post->isPublished()->first();
+        $post = $post->isPublished();
+
+        if ($post->count() == 0) {
+            return Redirect::to('404');
+        }
+
+        $post = $post->first();
 
         $meta_description = strip_tags($post->introductory);
         if (strlen($meta_description) > 252) {
