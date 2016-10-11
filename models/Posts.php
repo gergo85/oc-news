@@ -224,7 +224,7 @@ class Posts extends Model
                 'items' => []
             ];
 
-            $elements = self::orderBy('title')->get();
+            $elements = self::where('status', 1)->orderBy('title')->get();
             foreach ($elements as $element) {
                 $listItem = [
                     'title' => $element->title,
