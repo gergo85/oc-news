@@ -33,6 +33,7 @@ return [
         'created' => 'Létrehozva',
         'updated' => 'Módosítva',
         // Bejegyzések
+        'id' => 'ID',
         'title' => 'Cím',
         'slug' => 'Webcím',
         'introductory' => 'Bevezető',

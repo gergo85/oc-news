@@ -4,6 +4,10 @@
 
 columns:
 
+    id:
+        label: indikator.news::lang.form.id
+        invisible: true
+
     name:
         label: indikator.news::lang.form.name
         searchable: true

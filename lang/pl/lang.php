@@ -33,6 +33,7 @@ return [
         'created' => 'Stworzony',
         'updated' => 'Zaktualizowany',
         // Postagens
+        'id' => 'ID',
         'title' => 'Tytuł',
         'slug' => 'Slug',
         'introductory' => 'Skrót/wstęp',

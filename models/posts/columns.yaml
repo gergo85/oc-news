@@ -4,6 +4,10 @@
 
 columns:
 
+    id:
+        label: indikator.news::lang.form.id
+        invisible: true
+
     image:
         label: indikator.news::lang.form.image
         sortable: false

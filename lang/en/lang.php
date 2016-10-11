@@ -33,6 +33,7 @@ return [
         'created' => 'Created at',
         'updated' => 'Updated at',
         // Posts
+        'id' => 'ID',
         'title' => 'Title',
         'slug' => 'Slug',
         'introductory' => 'Introductory',
