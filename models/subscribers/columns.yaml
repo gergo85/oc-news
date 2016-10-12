@@ -21,17 +21,17 @@ columns:
         searchable: true
         invisible: true
 
-    status:
-        label: indikator.news::lang.form.status
-        searchable: true
-        type: partial
-        path: ~/plugins/indikator/news/models/subscribers/_status.htm
-
     statistics:
         label: indikator.news::lang.stat.mail
         searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
+
+    status:
+        label: indikator.news::lang.form.status
+        searchable: true
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
     created_at:
         label: indikator.news::lang.form.created

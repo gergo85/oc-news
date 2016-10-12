@@ -24,14 +24,14 @@ columns:
         searchable: true
         invisible: true
 
+    statistics:
+        label: indikator.news::lang.stat.view
+
     status:
         label: indikator.news::lang.form.status
         searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/posts/_status.htm
-
-    statistics:
-        label: indikator.news::lang.stat.view
 
     published_at:
         label: indikator.news::lang.form.published
