@@ -23,6 +23,7 @@ return [
     'stat' => [
         'posts' => 'post|blogach',
         'view' => 'widok',
+        'mail' => 'Zapisane',
         'top' => 'TOP',
         'longest' => 'Najdłuższy',
         'shortest' => 'Najkrótsza'

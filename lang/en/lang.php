@@ -23,6 +23,7 @@ return [
     'stat' => [
         'posts' => 'Post|Posts',
         'view' => 'View',
+        'mail' => 'Sent',
         'top' => 'TOP',
         'longest' => 'Longest',
         'shortest' => 'Shortest'

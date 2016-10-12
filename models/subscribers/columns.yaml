@@ -28,7 +28,7 @@ columns:
         path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
     statistics:
-        label: indikator.news::lang.form.statistics
+        label: indikator.news::lang.stat.mail
         searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm

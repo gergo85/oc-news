@@ -23,6 +23,7 @@ return [
     'stat' => [
         'posts' => 'Bejegyzés|Bejegyzés',
         'view' => ' Megtekintés',
+        'mail' => 'Elküldve',
         'top' => 'TOP',
         'longest' => 'Leghosszabb',
         'shortest' => 'Legrövidebb'
