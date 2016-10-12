@@ -49,7 +49,7 @@ return [
         'yes' => 'Igen',
         'no' => 'Nem',
         'view' => 'megtekintés',
-        'published' => 'Publikálva',
+        'published' => 'Közzétéve',
         'send' => 'Levél küldése a feliratkozottak számára.',
         // Feliratkozók
         'name' => 'Név',
