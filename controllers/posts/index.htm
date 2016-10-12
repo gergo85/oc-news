@@ -2,11 +2,11 @@
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.posts')) ?></li>
         <li>
-            <span class="text-info"><strong><?= DB::table('news_posts')->where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_published')) ?></span>
+            <span class="text-info"><strong><?= Indikator\News\Models\Posts::where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_published')) ?></span>
             &nbsp; | &nbsp;
-            <span class="text-danger"><strong><?= DB::table('news_posts')->where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_hide')) ?></span>
+            <span class="text-danger"><strong><?= Indikator\News\Models\Posts::where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_hide')) ?></span>
             &nbsp; | &nbsp;
-            <span class="text-warning"><strong><?= DB::table('news_posts')->where('status', 3)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_draft')) ?></span>
+            <span class="text-warning"><strong><?= Indikator\News\Models\Posts::where('status', 3)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_draft')) ?></span>
         </li>
     </ul>
 <?php Block::endPut() ?>

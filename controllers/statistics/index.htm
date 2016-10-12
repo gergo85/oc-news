@@ -124,7 +124,7 @@ foreach ($posts as $id => $length) {
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.statistics')) ?></li>
         <li>
-            <span class="text-info"><strong><?= DB::table('news_posts')->count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', DB::table('news_posts')->count())) ?></span>
+            <span class="text-info"><strong><?= Indikator\News\Models\Posts::count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', DB::table('news_posts')->count())) ?></span>
             <?php if ($view > 0): ?>
             &nbsp; | &nbsp;
             <span class="text-danger"><strong><?= number_format($view, 0, '.', ' ') ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
