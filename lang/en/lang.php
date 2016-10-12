@@ -29,7 +29,6 @@ return [
     ],
     'form' => [
         // General
-        'statistics' => 'Statistics',
         'created' => 'Created at',
         'updated' => 'Updated at',
         // Posts

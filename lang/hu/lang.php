@@ -29,7 +29,6 @@ return [
     ],
     'form' => [
         // Általános
-        'statistics' => 'Statisztika',
         'created' => 'Létrehozva',
         'updated' => 'Módosítva',
         // Bejegyzések

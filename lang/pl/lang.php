@@ -29,7 +29,6 @@ return [
     ],
     'form' => [
         // Geral
-        'statistics' => 'Statystyki',
         'created' => 'Stworzony',
         'updated' => 'Zaktualizowany',
         // Postagens
