@@ -40,8 +40,8 @@ return [
         'content' => 'Tartalom',
         'image' => 'Kép',
         'status' => 'Státusz',
-        'status_published' => 'Publikálva',
-        'status_hide' => 'Rejtve',
+        'status_published' => 'Közzétéve',
+        'status_hide' => 'Rejtett',
         'status_draft' => 'Piszkozat',
         'status_active' => 'Aktív',
         'status_unsubscribed' => 'Leiratkozott',
@@ -58,7 +58,7 @@ return [
         'mail' => 'levél'
     ],
     'button' => [
-        'activate' => 'Publikál',
+        'activate' => 'Közzétesz',
         'deactivate' => 'Rejtés',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
