@@ -37,18 +37,15 @@ columns:
         label: indikator.news::lang.form.published
         searchable: true
         type: datetime
-        format: Y-m-d G:i
 
     created_at:
         label: indikator.news::lang.form.created
         searchable: true
         invisible: true
         type: datetime
-        format: Y-m-d G:i
 
     updated_at:
         label: indikator.news::lang.form.updated
         searchable: true
         invisible: true
         type: datetime
-        format: Y-m-d G:i
