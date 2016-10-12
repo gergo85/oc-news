@@ -3,8 +3,8 @@
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Lang;
-use Redirect;
 use Indikator\News\Models\Posts as NewsPost;
+use Redirect;
 
 class Posts extends ComponentBase
 {

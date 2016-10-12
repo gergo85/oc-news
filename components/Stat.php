@@ -1,23 +1,20 @@
 <?php namespace Indikator\News\Components;
 
 use Cms\Classes\ComponentBase;
-use DB;
+use Indikator\News\Models\Posts as NewsPost;
 
 class Stat extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name' => 'indikator.news::lang.component.stat'
+            'name'        => 'indikator.news::lang.component.stat',
+            'description' => ''
         ];
     }
 
     public function onRun()
     {
-        $stat = DB::table('news_posts')->where('slug', $this->param('slug'))->pluck('statistics');
-
-        DB::table('news_posts')->where('slug', $this->param('slug'))->update([
-            'statistics' => ++$stat
-        ]);
+        NewsPost::where('slug', $this->param('slug'))->increment('statistics');
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace Indikator\News\Components;
 
 use Cms\Classes\ComponentBase;
-use DB;
+use Indikator\News\Models\Subscribers;
 use Validator;
 use ValidationException;
 
@@ -10,7 +10,8 @@ class Form extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'indikator.news::lang.component.form'
+            'name'        => 'indikator.news::lang.component.form',
+            'description' => ''
         ];
     }
 
@@ -18,7 +19,7 @@ class Form extends ComponentBase
     {
         $data = post();
 
-        if (DB::table('news_subscribers')->where('email', $data['email'])->count() == 1) {
+        if (Subscribers::where('email', $data['email'])->count() == 1) {
             return;
         }
 
@@ -32,7 +33,7 @@ class Form extends ComponentBase
             throw new ValidationException($validation);
         }
 
-        DB::table('news_subscribers')->insertGetId([
+        Subscribers::insertGetId([
             'name'       => $data['name'],
             'email'      => $data['email'],
             'common'     => '',

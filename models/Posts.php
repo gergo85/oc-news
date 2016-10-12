@@ -93,9 +93,7 @@ class Posts extends Model
                     $message->to($this->email, $this->name)->subject($this->title);
                 });
 
-                Subscribers::where('id', $user->id)->update([
-                    'statistics' => ++$user->statistics
-                ]);
+                Subscribers::whereId($user->id)->increment('statistics');
             }
 
             unset($this->email, $this->name);
