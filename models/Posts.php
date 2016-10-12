@@ -245,7 +245,7 @@ class Posts extends Model
             return;
         }
 
-        $properties = $page->getComponentProperties('post');
+        $properties = $page->getComponentProperties('newsPost');
         if (!preg_match('/^\{\{([^\}]+)\}\}$/', $properties['slug'], $matches)) {
             return;
         }
