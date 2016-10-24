@@ -31,7 +31,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 1)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 1)->whereId($itemId)) {
                     continue;
                 }
 
@@ -48,7 +48,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 2)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 2)->whereId($itemId)) {
                     continue;
                 }
 
@@ -65,7 +65,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 3)->find($itemId)) {
+                if (!$item = Item::where('status', '!=', 3)->whereId($itemId)) {
                     continue;
                 }
 
@@ -82,7 +82,7 @@ class Posts extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Item::find($itemId)) {
+                if (!$item = Item::whereId($itemId)) {
                     continue;
                 }
 

@@ -29,7 +29,7 @@ class Subscribers extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
-                if (!$item = Item::find($itemId)) {
+                if (!$item = Item::whereId($itemId)) {
                     continue;
                 }
 
