@@ -5,8 +5,8 @@
 $thisYear = $lastYear = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
 $now = date('Y');
 
-$news = DB::table('news_posts')->get();
-$view = DB::table('news_posts')->sum('statistics');
+$news = Indikator\News\Models\Posts::get();
+$view = Indikator\News\Models\Posts::sum('statistics');
 
 foreach ($news as $item) {
     $year = substr($item->published_at, 0, 4);
@@ -21,12 +21,12 @@ foreach ($news as $item) {
 
 // TOP 20
 
-$amount = DB::table('news_posts')->count();
+$amount = Indikator\News\Models\Posts::count();
 if ($amount > 20) {
     $amount = 20;
 }
 
-$news = DB::table('news_posts')->orderBy('statistics', 'desc')->take($amount)->get();
+$news = Indikator\News\Models\Posts::orderBy('statistics', 'desc')->take($amount)->get();
 $top = '';
 $index = 1;
 
@@ -53,7 +53,7 @@ foreach ($news as $item) {
 
 // Posts length
 
-$news = DB::table('news_posts')->get();
+$news = Indikator\News\Models\Posts::get();
 $posts = [];
 
 foreach ($news as $item) {
@@ -67,7 +67,7 @@ $longest = '';
 $index = 1;
 
 foreach ($posts as $id => $length) {
-    $item = DB::table('news_posts')->where('id', $id)->first();
+    $item = Indikator\News\Models\Posts::whereId($id)->first();
 
     $longest .= '
         <div class="col-md-1 col-sm-1">
@@ -96,7 +96,7 @@ $shortest = '';
 $index = 1;
 
 foreach ($posts as $id => $length) {
-    $item = DB::table('news_posts')->where('id', $id)->first();
+    $item = Indikator\News\Models\Posts::whereId($id)->first();
 
     $shortest .= '
         <div class="col-md-1 col-sm-1">
@@ -124,7 +124,7 @@ foreach ($posts as $id => $length) {
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.statistics')) ?></li>
         <li>
-            <span class="text-info"><strong><?= Indikator\News\Models\Posts::count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', DB::table('news_posts')->count())) ?></span>
+            <span class="text-info"><strong><?= Indikator\News\Models\Posts::count() ?></strong> <?= e(trans_choice('indikator.news::lang.stat.posts', Indikator\News\Models\Posts::count())) ?></span>
             <?php if ($view > 0): ?>
             &nbsp; | &nbsp;
             <span class="text-danger"><strong><?= number_format($view, 0, '.', ' ') ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
