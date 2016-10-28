@@ -39,6 +39,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 ## Supported plugins
 * [RainLab Translate](http://octobercms.com/plugin/rainlab-translate)
 * [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
+* [OFFLINE SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
 
 ## Available languages
 * en - English
@@ -49,7 +50,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 ## Installation
 1. Go to the __Settings > Updates & Plugins__ page in the Backend.
 1. Click on the __Install plugins__ button.
-1. Type the __News__ text in the search field.
+1. Type the __News & Newsletter__ text in the search field.
 
 ## Front-end components
 Use the Components > News panel in CMS menu. At this moment there are the following components:
