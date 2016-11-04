@@ -12,6 +12,7 @@ columns:
     image: indikator.news::lang.form.image
     statistics: indikator.news::lang.stat.view
     status: indikator.news::lang.form.status
+    featured: indikator.news::lang.form.featured
     published_at: indikator.news::lang.form.published
     created_at: indikator.news::lang.form.created
     updated_at: indikator.news::lang.form.updated
