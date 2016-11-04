@@ -2,7 +2,6 @@
 
 use Backend\Classes\ReportWidgetBase;
 use Exception;
-use DB;
 
 class Subscribers extends ReportWidgetBase
 {
@@ -38,6 +37,6 @@ class Subscribers extends ReportWidgetBase
 
     protected function loadData()
     {
-        $this->vars['total'] = DB::table('news_subscribers')->count();
+        $this->vars['total'] = Indikator\News\Models\Subscribers::count();
     }
 }
