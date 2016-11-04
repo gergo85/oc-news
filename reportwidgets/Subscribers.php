@@ -37,6 +37,6 @@ class Subscribers extends ReportWidgetBase
 
     protected function loadData()
     {
-        $this->vars['total'] = Indikator\News\Models\Subscribers::count();
+        $this->vars['total'] = \Indikator\News\Models\Subscribers::count();
     }
 }
