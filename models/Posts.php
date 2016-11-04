@@ -51,16 +51,13 @@ class Posts extends Model
 
     public function beforeCreate()
     {
-        $this->statistics = 0;
+        if ($this->statistics == '') {
+            $this->statistics = 0;
+        }
 
         if ($this->published_at == '') {
             $this->published_at = date('Y-m-d H:i:00');
         }
-    }
-
-    public function beforeUpdate()
-    {
-        unset($this->statistics);
     }
 
     public function beforeSave()

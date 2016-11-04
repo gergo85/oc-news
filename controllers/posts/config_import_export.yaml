@@ -1,0 +1,18 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: indikator.news::lang.menu.import
+    modelClass: Indikator\News\Models\PostsImport
+    list: $/indikator/news/models/postsimport/columns.yaml
+    redirect: indikator/news/posts
+    permissions: indikator.news.import_export
+
+export:
+    title: indikator.news::lang.menu.export
+    modelClass: Indikator\News\Models\PostsExport
+    list: $/indikator/news/models/postsexport/columns.yaml
+    redirect: indikator/news/posts
+    permissions: indikator.news.import_export
+    filename: posts.csv

@@ -1,0 +1,17 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id: indikator.news::lang.form.id
+    title: indikator.news::lang.form.title
+    slug: indikator.news::lang.form.slug
+    introductory: indikator.news::lang.form.introductory
+    content: indikator.news::lang.form.content
+    image: indikator.news::lang.form.image
+    statistics: indikator.news::lang.stat.view
+    status: indikator.news::lang.form.status
+    published_at: indikator.news::lang.form.published
+    created_at: indikator.news::lang.form.created
+    updated_at: indikator.news::lang.form.updated

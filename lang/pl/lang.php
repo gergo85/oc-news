@@ -10,7 +10,9 @@ return [
         'news' => 'Subskrypcja',
         'posts' => 'Posty',
         'subscribers' => 'Subskrybenci',
-        'statistics' => 'Statystyka'
+        'statistics' => 'Statystyka',
+        'import' => 'Import',
+        'export' => 'Eksport'
     ],
     'title' => [
         'posts' => 'post',
@@ -62,6 +64,8 @@ return [
         'deactivate' => 'Dezaktywuj',
         'active' => 'Aktywny',
         'inactive' => 'Nieaktywny',
+        'import' => 'Import',
+        'export' => 'Eksport',
         'return' => 'Powrót'
     ],
     'flash' => [
@@ -88,7 +92,8 @@ return [
     'permission' => [
         'posts' => 'Zarządzań postami',
         'subscribers' => 'Zarządzaj subskrybentami',
-        'statistics' => 'Zobacz statystyki'
+        'statistics' => 'Zobacz statystyki',
+        'import_export' => 'Import & eksport'
     ],
     'settings' => [
         'post_title' => 'Post',

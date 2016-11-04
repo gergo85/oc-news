@@ -10,7 +10,9 @@ return [
         'news' => 'News',
         'posts' => 'Posts',
         'subscribers' => 'Subscribers',
-        'statistics' => 'Statistics'
+        'statistics' => 'Statistics',
+        'import' => 'Import',
+        'export' => 'Export'
     ],
     'title' => [
         'posts' => 'post',
@@ -62,6 +64,8 @@ return [
         'deactivate' => 'Hide',
         'active' => 'Active',
         'inactive' => 'Inactive',
+        'import' => 'Import',
+        'export' => 'Export',
         'return' => 'Return'
     ],
     'flash' => [
@@ -88,7 +92,8 @@ return [
     'permission' => [
         'posts' => 'Manage posts',
         'subscribers' => 'Manage subscribers',
-        'statistics' => 'View statistics'
+        'statistics' => 'View statistics',
+        'import_export' => 'Import and Export'
     ],
     'settings' => [
         'post_title' => 'Post',

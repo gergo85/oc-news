@@ -10,7 +10,9 @@ return [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
         'subscribers' => 'Feliratkozók',
-        'statistics' => 'Statisztika'
+        'statistics' => 'Statisztika',
+        'import' => 'Importálás',
+        'export' => 'Exportálás'
     ],
     'title' => [
         'posts' => 'bejegyzés',
@@ -62,6 +64,8 @@ return [
         'deactivate' => 'Rejtés',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
+        'import' => 'Importálás',
+        'export' => 'Exportálás',
         'return' => 'Vissza'
     ],
     'flash' => [
@@ -88,7 +92,8 @@ return [
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
         'subscribers' => 'Feliratkozók kezelése',
-        'statistics' => 'Statisztika megtekintése'
+        'statistics' => 'Statisztika megtekintése',
+        'import_export' => 'Importálás és exportálás'
     ],
     'settings' => [
         'post_title' => 'Bejegyzés',

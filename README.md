@@ -6,8 +6,10 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 ## Main features
 * Managing posts
 * Managing subscribers
+* Export & Import data
 * Statistics and graphs
 * Send newsletter
+* Back-end widgets
 * Front-end components
 
 ## Statistics and graphs

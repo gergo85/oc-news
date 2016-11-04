@@ -20,4 +20,18 @@
         <?= e(trans('system::lang.plugins.remove')) ?>
     </button>
     <?php endif ?>
+    <?php if ($this->user->hasAccess('indikator.news.import_export')): ?>
+    <div class="btn-group">
+        <a
+            href="<?= Backend::url('indikator/news/subscribers/export') ?>"
+            class="btn btn-default oc-icon-download">
+            <?= e(trans('indikator.news::lang.button.export')) ?>
+        </a>
+        <a
+            href="<?= Backend::url('indikator/news/subscribers/import') ?>"
+            class="btn btn-default oc-icon-upload">
+            <?= e(trans('indikator.news::lang.button.import')) ?>
+        </a>
+    </div>
+    <?php endif ?>
 </div>

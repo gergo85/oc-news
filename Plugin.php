@@ -98,6 +98,10 @@ class Plugin extends PluginBase
             'indikator.news.statistics' => [
                 'tab'   => 'indikator.news::lang.menu.news',
                 'label' => 'indikator.news::lang.permission.statistics'
+            ],
+            'indikator.news.import_export' => [
+                'tab'   => 'indikator.news::lang.menu.news',
+                'label' => 'indikator.news::lang.permission.import_export'
             ]
         ];
     }

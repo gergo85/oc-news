@@ -1,0 +1,14 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id: indikator.news::lang.form.id
+    name: indikator.news::lang.form.name
+    email: indikator.news::lang.form.email
+    common: indikator.news::lang.form.common
+    statistics: indikator.news::lang.stat.mail
+    status: indikator.news::lang.form.status
+    created_at: indikator.news::lang.form.created
+    updated_at: indikator.news::lang.form.updated

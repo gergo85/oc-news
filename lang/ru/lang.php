@@ -10,7 +10,9 @@ return [
         'news' => 'Новости',
         'posts' => 'Посты',
         'subscribers' => 'Подписчики',
-        'statistics' => 'Статистика'
+        'statistics' => 'Статистика',
+        'import' => 'Импортировать',
+        'export' => 'экспорт'
     ],
     'title' => [
         'posts' => 'пост',
@@ -62,6 +64,8 @@ return [
         'deactivate' => 'Деактивировать',
         'active' => 'Активных',
         'inactive' => 'Неактивных',
+        'import' => 'Импортировать',
+        'export' => 'экспорт',
         'return' => 'Вернуть'
     ],
     'flash' => [
@@ -88,7 +92,8 @@ return [
     'permission' => [
         'posts' => 'Управление постами',
         'subscribers' => 'Управление подписками',
-        'statistics' => 'Просмотр статистики'
+        'statistics' => 'Просмотр статистики',
+        'import_export' => 'Импортировать & экспорт'
     ],
     'settings' => [
         'post_title' => 'Пост',
