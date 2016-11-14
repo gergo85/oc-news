@@ -13,7 +13,7 @@ class CreateSubscribersTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('email', 100);
-            $table->text('common');
+            $table->text('common')->nullable();
             $table->string('created', 1)->default(1);
             $table->string('statistics', 4)->default(0);
             $table->timestamps();
