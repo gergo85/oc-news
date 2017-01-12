@@ -50,3 +50,4 @@
 1.5.7:
     - Fixed the statistics columns sorting.
     - change_columns_type.php
+1.5.8: Added featured filtering on PostList.
