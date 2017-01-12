@@ -124,6 +124,13 @@ return [
         'published_at_asc' => 'Published (ascending)',
         'published_at_desc' => 'Published (descending)'
     ],
+    'featured' => [
+        'title' => 'Featured Listing',
+        'description' => 'Choose which Posts to show',
+        'opt_all' => 'All',
+        'opt_featured' => 'Only Featured',
+        'opt_all' => 'Not featured',
+    ],
     'sitemap' => [
         'post_list' => 'Post list',
         'post_page' => 'Post page'
