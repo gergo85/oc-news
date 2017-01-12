@@ -117,7 +117,7 @@ return [
         'posts_featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
         'posts_list_all' => 'Összes',
         'posts_list_featured' => 'Csak a kiemeltek',
-        'posts_list_notfeatured' => 'Csa a nem kiemeltek'
+        'posts_list_notfeatured' => 'Csak a nem kiemeltek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',
