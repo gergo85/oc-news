@@ -76,7 +76,8 @@ class Posts extends ComponentBase
                 'options'     => [
                     0 => 'indikator.news::lang.featured.otp_all',
                     1 => 'indikator.news::lang.featured.otp_featured',
-                    2 => 'indikator.news::lang.featured.otp_notfeatured']
+                    2 => 'indikator.news::lang.featured.otp_notfeatured'
+                ]
             ]
         ];
     }
@@ -105,11 +106,11 @@ class Posts extends ComponentBase
     protected function listPosts()
     {
         $posts = NewsPost::listFrontEnd([
-            'page'    => $this->property('pageNumber'),
-            'sort'    => $this->property('sortOrder'),
-            'perPage' => $this->property('postsPerPage'),
-            'search'  => trim(input('search')),
-            'featured' => $this->property('postFeatured')
+            'page'     => $this->property('pageNumber'),
+            'sort'     => $this->property('sortOrder'),
+            'perPage'  => $this->property('postsPerPage'),
+            'featured' => $this->property('postFeatured'),
+            'search'   => trim(input('search'))
         ]);
 
         return $posts;
