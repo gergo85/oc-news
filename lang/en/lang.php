@@ -129,7 +129,7 @@ return [
         'description' => 'Choose which Posts to show',
         'opt_all' => 'All',
         'opt_featured' => 'Only Featured',
-        'opt_all' => 'Not featured',
+        'opt_notfeatured' => 'Not featured'
     ],
     'sitemap' => [
         'post_list' => 'Post list',
