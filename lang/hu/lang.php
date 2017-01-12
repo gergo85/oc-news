@@ -113,11 +113,11 @@ return [
         'posts_order_description' => 'Ez alapján rendeződnek a bejegyzések.',
         'posts_post_title' => 'Bejegyzés lapja',
         'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
-        'posts_featured_title' => 'Listázás szűrése',
-        'posts_featured_description' => 'Bejegyzések megjelenítése:',
+        'posts_featured_title' => 'Bejegyzések megjelenítése',
+        'posts_featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
         'posts_list_all' => 'Összes',
-        'posts_list_featured' => 'Csak kiemeltek',
-        'posts_list_notfeatured' => 'Nem kiemeltek'
+        'posts_list_featured' => 'Csak a kiemeltek',
+        'posts_list_notfeatured' => 'Csa a nem kiemeltek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',
