@@ -98,21 +98,26 @@ return [
     'settings' => [
         'post_title' => 'Post',
         'post_description' => 'Displays a post on the page.',
-        'post_slug' => 'Post slug',
+        'post_slug_title' => 'Post slug',
         'post_slug_description' => "Look up the post using the supplied slug value.",
         'posts_title' => 'Post List',
         'posts_description' => 'Displays a list of latest posts on the page.',
-        'posts_pagination' => 'Page number',
+        'posts_pagination_title' => 'Page number',
         'posts_pagination_description' => 'This value is used to determine what page the user is on.',
-        'posts_per_page' => 'Posts per page',
+        'posts_per_page_title' => 'Posts per page',
         'posts_per_page_validation' => 'Invalid format of the posts per page value',
-        'posts_no_posts' => 'No posts message',
+        'posts_no_posts_title' => 'No posts message',
         'posts_no_posts_description' => 'Message to display in the post list in case if there are no posts. This property is used by the default component partial.',
         'posts_no_posts_found' => 'No posts found',
-        'posts_order' => 'Post order',
-        'posts_order_decription' => 'Attribute on which the posts should be ordered',
-        'posts_post' => 'Post page',
+        'posts_order_title' => 'Post order',
+        'posts_order_description' => 'Attribute on which the posts should be ordered',
+        'posts_post_title' => 'Post page',
         'posts_post_description' => 'Name of the post page file for the "Learn more" links. This property is used by the default component partial.',
+        'posts_featured_title' => 'Featured Listing',
+        'posts_featured_description' => 'Choose which Posts to show',
+        'posts_list_all' => 'All',
+        'posts_list_featured' => 'Only Featured',
+        'posts_list_notfeatured' => 'Not featured'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
@@ -123,13 +128,6 @@ return [
         'updated_at_desc' => 'Updated (descending)',
         'published_at_asc' => 'Published (ascending)',
         'published_at_desc' => 'Published (descending)'
-    ],
-    'featured' => [
-        'title' => 'Featured Listing',
-        'description' => 'Choose which Posts to show',
-        'opt_all' => 'All',
-        'opt_featured' => 'Only Featured',
-        'opt_notfeatured' => 'Not featured'
     ],
     'sitemap' => [
         'post_list' => 'Post list',

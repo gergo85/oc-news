@@ -98,21 +98,26 @@ return [
     'settings' => [
         'post_title' => 'Bejegyzés',
         'post_description' => 'Megjelenítése a lapon.',
-        'post_slug' => 'Keresőbarát cím',
+        'post_slug_title' => 'Keresőbarát cím',
         'post_slug_description' => 'A webcím paramétere a bejegyzés keresőbarát címe alapján való kereséséhez.',
         'posts_title' => 'Bejegyzések',
         'posts_description' => 'Listázása a lapon.',
-        'posts_pagination' => 'Lapozósáv paraméter neve',
+        'posts_pagination_title' => 'Lapozósáv paraméter neve',
         'posts_pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
-        'posts_per_page' => 'Bejegyzések oldalanként',
+        'posts_per_page_title' => 'Bejegyzések oldalanként',
         'posts_per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
-        'posts_no_posts' => 'Nincsenek bejegyzések',
+        'posts_no_posts_title' => 'Nincsenek bejegyzések',
         'posts_no_posts_description' => 'A bejegyzés listában megjelenő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
         'posts_no_posts_found' => 'Nincsenek bejegyzések',
-        'posts_order' => 'Bejegyzések sorrendje',
-        'posts_order_decription' => 'Ez alapján rendeződnek a bejegyzések.',
-        'posts_post' => 'Bejegyzés lapja',
-        'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.'
+        'posts_order_title' => 'Bejegyzések sorrendje',
+        'posts_order_description' => 'Ez alapján rendeződnek a bejegyzések.',
+        'posts_post_title' => 'Bejegyzés lapja',
+        'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'posts_featured_title' => 'Listázás szűrése',
+        'posts_featured_description' => 'Bejegyzések megjelenítése:',
+        'posts_list_all' => 'Összes',
+        'posts_list_featured' => 'Csak kiemeltek',
+        'posts_list_notfeatured' => 'Nem kiemeltek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',
@@ -123,13 +128,6 @@ return [
         'updated_at_desc' => 'Frissítve (csökkenő)',
         'published_at_asc' => 'Publikálva (növekvő)',
         'published_at_desc' => 'Publikálva (csökkenő)'
-    ],
-    'featured' => [
-        'title' => 'Listázás szűrése',
-        'description' => 'Bejegyzések megjelenítése:',
-        'opt_all' => 'Összes',
-        'opt_featured' => 'Csak kiemeltek',
-        'opt_notfeatured' => 'Nem kiemeltek'
     ],
     'sitemap' => [
         'post_list' => 'Bejegyzés lista',
