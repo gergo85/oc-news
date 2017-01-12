@@ -74,9 +74,9 @@ class Posts extends ComponentBase
                 'type'        => 'dropdown',
                 'default'     => 0,
                 'options'     => [
-                    0 => Lang::get('indikator.news::lang.featured.otp_all'),
-                    1 => Lang::get('indikator.news::lang.featured.otp_featured'),
-                    2 => Lang::get('indikator.news::lang.featured.otp_notfeatured')
+                    0 => Lang::get('indikator.news::lang.settings.posts_list_all'),
+                    1 => Lang::get('indikator.news::lang.settings.posts_list_featured'),
+                    2 => Lang::get('indikator.news::lang.settings.posts_list_notfeatured')
                 ]
             ]
         ];
