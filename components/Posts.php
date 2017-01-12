@@ -69,11 +69,14 @@ class Posts extends ComponentBase
                 'default'     => 'news'
             ],
             'postFeatured' => [
-                'title'       => 'indikator.news::lang.settings.featured_posts_post',
-                'description' => 'indikator.news::lang.settings.featured_posts_post_description',
+                'title'       => 'indikator.news::lang.featured.title',
+                'description' => 'indikator.news::lang.featured.description',
                 'type'        => 'dropdown',
                 'default'     => 0,
-                'options'     => [0 => "All", 1 => "Featured", 2 => "Not Featured"]
+                'options'     => [
+                    0 => 'indikator.news::lang.featured.otp_all',
+                    1 => 'indikator.news::lang.featured.otp_featured',
+                    2 => 'indikator.news::lang.featured.otp_notfeatured']
             ]
         ];
     }
