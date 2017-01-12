@@ -67,6 +67,13 @@ class Posts extends ComponentBase
                 'title'       => 'indikator.news::lang.settings.posts_post',
                 'description' => 'indikator.news::lang.settings.posts_post_description',
                 'default'     => 'news'
+            ],
+            'postFeatured' => [
+                'title'       => 'indikator.news::lang.settings.featured_posts_post',
+                'description' => 'indikator.news::lang.settings.featured_posts_post_description',
+                'type'        => 'dropdown',
+                'default'     => 0,
+                'options'     => [0 => "All", 1 => "Featured", 2 => "Not Featured"]
             ]
         ];
     }
@@ -98,7 +105,8 @@ class Posts extends ComponentBase
             'page'    => $this->property('pageNumber'),
             'sort'    => $this->property('sortOrder'),
             'perPage' => $this->property('postsPerPage'),
-            'search'  => trim(input('search'))
+            'search'  => trim(input('search')),
+            'featured' => $this->property('postFeatured')
         ]);
 
         return $posts;

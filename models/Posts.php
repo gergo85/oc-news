@@ -113,7 +113,8 @@ class Posts extends Model
             'perPage' => 10,
             'sort'    => 'created_at',
             'search'  => '',
-            'status'  => 1
+            'status'  => 1,
+            'featured' => 0
         ], $options));
 
         $searchableFields = [
@@ -127,6 +128,10 @@ class Posts extends Model
             $query->isPublished();
         }
 
+        if ($featured != 0) {
+            $query->isFeatured($featured);
+        }
+        
         if (!is_array($sort)) {
             $sort = [$sort];
         }
@@ -159,6 +164,11 @@ class Posts extends Model
         return $query->where('status', 1)->where('published_at', '>', time());
     }
 
+    public function scopeIsFeatured($query, $value = 1)
+    {
+        return $query->where('featured', $value);
+    }
+    
     public static function getMenuTypeInfo($type)
     {
         if ($type == 'post-page') {
