@@ -124,6 +124,13 @@ return [
         'published_at_asc' => 'Publikálva (növekvő)',
         'published_at_desc' => 'Publikálva (csökkenő)'
     ],
+    'featured' => [
+        'title' => 'Listázás szűrése',
+        'description' => 'Bejegyzések megjelenítése:',
+        'opt_all' => 'Összes',
+        'opt_featured' => 'Csak kiemeltek',
+        'opt_notfeatured' => 'Nem kiemeltek'
+    ],
     'sitemap' => [
         'post_list' => 'Bejegyzés lista',
         'post_page' => 'Bejegyzés oldal'
