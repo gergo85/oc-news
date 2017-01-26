@@ -5,18 +5,19 @@ use BackendMenu;
 
 class Statistics extends Controller
 {
-    public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
-    ];
-
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
+    public $requiredPermissions = ['indikator.news.statistics'];
 
     public function __construct()
     {
         parent::__construct();
 
         BackendMenu::setContext('Indikator.News', 'news', 'statistics');
+
+        $this->pageTitle = trans('indikator.news::lang.menu.statistics');
+    }
+
+    public function index()
+    {
+        // ...
     }
 }

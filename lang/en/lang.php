@@ -71,7 +71,7 @@ return [
     'flash' => [
         'activate' => 'Successfully activated those posts.',
         'deactivate' => 'Successfully deactivated those posts.',
-        'delete' => 'Do you really want to delete this items?',
+        'delete' => 'Do you want to delete this items?',
         'remove' => 'Successfully removed those items.'
     ],
     'widget' => [

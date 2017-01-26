@@ -44,7 +44,7 @@ foreach ($news as $item) {
         <div class="clearfix"></div>
     ';
 
-    if ($index == 5 || $index == 10 || $index == 15) {
+    if ($index % 5 == 0) {
         $top .= '<br>';
     }
 
@@ -57,7 +57,7 @@ $news = Indikator\News\Models\Posts::get();
 $posts = [];
 
 foreach ($news as $item) {
-    $posts[$item->id] = strlen(strip_tags($item->introductory).strip_tags($item->content));
+    $posts[$item->id] = strlen(strip_tags($item->introductory.$item->content));
 }
 
 // Longest posts
