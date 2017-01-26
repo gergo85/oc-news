@@ -51,3 +51,4 @@
     - Fixed the statistics columns sorting.
     - change_columns_type.php
 1.5.8: Added featured filtering on PostList.
+1.6.0: Added the sending test email feature.
