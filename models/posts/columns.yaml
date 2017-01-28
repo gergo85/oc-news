@@ -27,6 +27,12 @@ columns:
     statistics:
         label: indikator.news::lang.stat.view
 
+    length:
+        label: indikator.news::lang.form.length
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_length.htm
+
     status:
         label: indikator.news::lang.form.status
         searchable: true

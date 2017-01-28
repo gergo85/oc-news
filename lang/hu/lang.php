@@ -53,6 +53,7 @@ return [
         'view' => 'megtekintés',
         'published' => 'Közzétéve',
         'send' => 'Levél küldése a feliratkozottak számára.',
+        'length' => 'Hossz',
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',

@@ -53,6 +53,7 @@ return [
         'view' => 'widok',
         'published' => 'Opublikowany',
         'send' => 'Wyślij e-mail do subskrybentów.',
+        'length' => 'Długość',
         // Inscritos
         'name' => 'Imię',
         'email' => 'E-mail',

@@ -53,6 +53,7 @@ return [
         'view' => 'view',
         'published' => 'Published at',
         'send' => 'Send the e-mail to subscribers.',
+        'length' => 'Length',
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
