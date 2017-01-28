@@ -12,12 +12,10 @@ class Statistics extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Indikator.News', 'news', 'statistics');
-
-        $this->pageTitle = trans('indikator.news::lang.menu.statistics');
     }
 
     public function index()
     {
-        // ...
+        $this->pageTitle = 'indikator.news::lang.menu.statistics';
     }
 }
