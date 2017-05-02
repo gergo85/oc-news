@@ -25,6 +25,7 @@ class Plugin extends PluginBase
                 'label'       => 'indikator.news::lang.menu.news',
                 'url'         => Backend::url('indikator/news/posts'),
                 'icon'        => 'icon-newspaper-o',
+                'iconSvg'     => 'plugins/indikator/news/assets/images/news-icon.svg',
                 'permissions' => ['indikator.news.*'],
                 'order'       => 500,
 
