@@ -67,7 +67,9 @@ return [
         'inactive' => 'Inactive',
         'import' => 'Import',
         'export' => 'Export',
-        'return' => 'Return'
+        'return' => 'Return',
+        'unsubscribe' => 'Unsubscribe',
+        'subscribe' => 'Subscription',
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -133,5 +135,12 @@ return [
     'sitemap' => [
         'post_list' => 'Post list',
         'post_page' => 'Post page'
+    ],
+    'ajax' => [
+        'messages' => [
+            'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
+            'not_subscribed' => 'You do not have subscribed account.',
+            'subscribed' => 'Thank you for your subscription to our newsletter!'
+        ]
     ]
 ];

@@ -63,6 +63,8 @@
         'import' => 'Import',
         'export' => 'Export',
         'return' => 'Zurück',
+        'unsubscribe' => 'Deabonnieren',
+        'subscribe' => 'Abonnieren',
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
@@ -84,6 +86,7 @@
         'post' => 'Nachricht',
         'form' => 'Abonnentenform',
         'stat' => 'Besucher',
+        'unsubscribe' => 'Deabonnieren'
     ],
     'permission' => [
         'posts' => 'Nachrichten verwalten',
@@ -129,4 +132,11 @@
         'post_list' => 'Nachrichten',
         'post_page' => 'Nachricht',
     ],
+    'ajax' => [
+        'messages' => [
+            'unsubscribed' => 'Wir haben Sie erfolgreich aus den Newsletter ausgetragen.',
+            'not_subscribed' => 'Sie haben hier keinen Newsletter abonniert.',
+            'subscribed' => 'Danke, dass Sie unseren Newsletter abonniert haben.'
+        ]
+    ]
 ];

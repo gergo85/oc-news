@@ -19,10 +19,7 @@ class Form extends ComponentBase
     {
         $data = post();
 
-        if (Subscribers::where('email', $data['email'])->count() == 1) {
-            return;
-        }
-
+        // Validate input data
         $rules = [
             'name'  => 'required|between:2,64',
             'email' => 'required|email|between:8,64'
@@ -33,6 +30,22 @@ class Form extends ComponentBase
             throw new ValidationException($validation);
         }
 
+        // look for unsubscribed subscribers
+        $subscriberResult = Subscribers::email($data['email']);
+
+        if ($subscriberResult->count() > 0)
+        {
+            $subscriber = $subscriberResult->first();
+            if(!$subscriber->isActive())
+            {
+                $subscriber->name = $data['name'];
+                $subscriber->activate();
+            }
+
+            return ;
+        }
+
+        // register new one
         Subscribers::insertGetId([
             'name'       => $data['name'],
             'email'      => $data['email'],
