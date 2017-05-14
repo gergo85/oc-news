@@ -1,13 +1,13 @@
-<form data-request="onSubscription" data-request-success="alert('{{ lang('indikator.news::lang.ajax.messages.subscribed') }}')">
+<form data-request="onSubscription" data-request-success="alert('{{ trans('indikator.news::lang.ajax.messages.subscribed') }}')">
     <div class="form-group">
-        <label for="subscribersName">{{ lang('indikator.news::lang.form.name') }}</label>
+        <label for="subscribersName">{{ trans('indikator.news::lang.form.name') }}</label>
         <input name="name" type="text" class="form-control" id="subscribersName" placeholder="Enter your name">
     </div>
 
     <div class="form-group">
-        <label for="subscribersEmail">{{ lang('indikator.news::lang.form.email') }}</label>
+        <label for="subscribersEmail">{{ trans('indikator.news::lang.form.email') }}</label>
         <input name="email" type="email" class="form-control" id="subscribersEmail" placeholder="Enter your email">
     </div>
 
-    <button type="submit" class="btn btn-default">{{ lang('indikator.news::lang.button.subscribe') }}</button>
+    <button type="submit" class="btn btn-default">{{ trans('indikator.news::lang.button.subscribe') }}</button>
 </form>
