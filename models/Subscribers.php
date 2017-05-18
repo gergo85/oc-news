@@ -48,7 +48,7 @@ class Subscribers extends Model
 
     public function scopeEmail($query, $email)
     {
-        return $query->where('email',$email);
+        return $query->where('email', $email);
     }
 
     public function scopeIsSubscribed($query)
@@ -60,5 +60,4 @@ class Subscribers extends Model
     {
         return $query->where('status', 2);
     }
-
 }

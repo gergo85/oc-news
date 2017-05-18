@@ -8,7 +8,6 @@ use File;
 
 class NewsSender
 {
-
     /**
      * @var Posts
      */
@@ -27,7 +26,7 @@ class NewsSender
     /**
      * @var string namespace of the template
      */
-    protected $templateNamespace = "indikator.news::mail.email";
+    protected $templateNamespace = 'indikator.news::mail.email';
 
     /**
      * @param $locale string
@@ -54,11 +53,12 @@ class NewsSender
     public function __construct($news, $locale = null)
     {
         $this->news = $news;
-
         $locale = App::getLocale();
+
         if (File::exists($this->templateFile($locale))) {
             $this->locale = $locale;
-        } else {
+        }
+        else {
             $this->locale = config('app.fallback_locale');
         }
     }
@@ -68,13 +68,14 @@ class NewsSender
      * @param $receivers array or single user with attribute name and email
      * @return void
      */
-    public function sendNewsletter($receivers) {
-
-        if(is_array($receivers) || $receivers instanceof Collection) {
+    public function sendNewsletter($receivers)
+    {
+        if (is_array($receivers) || $receivers instanceof Collection) {
             foreach ($receivers as $receiver) {
                 $this->sendNewsletter($receiver);
             }
-        } else {
+        }
+        else {
             $this->send($receivers);
         }
     }
@@ -84,10 +85,10 @@ class NewsSender
      * @param $receiver object of the news with name and email attribute
      * @return void
      */
-    protected function send($receiver) {
-
+    protected function send($receiver)
+    {
         // Replace all relative URL src attributes to absolute URL's
-        if($this->replacedContent === null) {
+        if ($this->replacedContent === null) {
             $url = url('/');
             $this->replacedContent = preg_replace( '/src="\/([^"]*)"/i', 'src="'.$url.'/$1"', $this->news->content);
         }
@@ -98,6 +99,7 @@ class NewsSender
             'title'        => $this->news->title,
             'slug'         => $this->news->slug,
             'introductory' => $this->news->introductory,
+            'summary'      => $this->news->introductory,
             'content'      => $this->replacedContent,
             'image'        => $this->news->image
         ];

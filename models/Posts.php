@@ -64,14 +64,12 @@ class Posts extends Model
     public function beforeSave()
     {
         if ($this->send && $this->send != '') {
-
             $activeSubscribers = Subscribers::where('status', 1)->get();
 
             $sender = new NewsSender($this);
             $sender->sendNewsletter($activeSubscribers);
 
             foreach ($activeSubscribers as $subscriber) {
-
                 Subscribers::whereId($subscriber->id)->increment('statistics');
             }
         }
@@ -89,11 +87,11 @@ class Posts extends Model
     public function scopeListFrontEnd($query, $options)
     {
         extract(array_merge([
-            'page'    => 1,
-            'perPage' => 10,
-            'sort'    => 'created_at',
-            'search'  => '',
-            'status'  => 1,
+            'page'     => 1,
+            'perPage'  => 10,
+            'sort'     => 'created_at',
+            'search'   => '',
+            'status'   => 1,
             'featured' => 0
         ], $options));
 
@@ -111,7 +109,7 @@ class Posts extends Model
         if ($featured != 0) {
             $query->isFeatured($featured);
         }
-        
+
         if (!is_array($sort)) {
             $sort = [$sort];
         }
@@ -148,7 +146,7 @@ class Posts extends Model
     {
         return $query->where('featured', $value);
     }
-    
+
     public static function getMenuTypeInfo($type)
     {
         if ($type == 'post-page') {
