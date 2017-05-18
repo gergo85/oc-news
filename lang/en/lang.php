@@ -67,9 +67,9 @@ return [
         'inactive' => 'Inactive',
         'import' => 'Import',
         'export' => 'Export',
-        'return' => 'Return',
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
+        'return' => 'Return'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -88,9 +88,9 @@ return [
     ],
     'component' => [
         'posts' => 'Display posts',
-        'post' => 'Show post content',
-        'form' => 'Subscriber form',
-        'stat' => 'Count visitors'
+        'post' => 'Post content',
+        'subscribe' => 'Subscriber form',
+        'unsubscribe' => 'Unsubscribe form'
     ],
     'permission' => [
         'posts' => 'Manage posts',
@@ -99,28 +99,24 @@ return [
         'import_export' => 'Import and Export'
     ],
     'settings' => [
-        'post_title' => 'Post',
-        'post_description' => 'Displays a post on the page.',
-        'post_slug_title' => 'Post slug',
-        'post_slug_description' => "Look up the post using the supplied slug value.",
-        'posts_title' => 'Post List',
-        'posts_description' => 'Displays a list of latest posts on the page.',
-        'posts_pagination_title' => 'Page number',
-        'posts_pagination_description' => 'This value is used to determine what page the user is on.',
-        'posts_per_page_title' => 'Posts per page',
-        'posts_per_page_validation' => 'Invalid format of the posts per page value',
-        'posts_no_posts_title' => 'No posts message',
-        'posts_no_posts_description' => 'Message to display in the post list in case if there are no posts. This property is used by the default component partial.',
-        'posts_no_posts_found' => 'No posts found',
+        'slug_title' => 'Post slug',
+        'slug_description' => 'Look up the post using the supplied slug value.',
+        'pagination_title' => 'Page number',
+        'pagination_description' => 'This value is used to determine what page the user is on.',
+        'per_page_title' => 'Posts per page',
+        'per_page_validation' => 'Invalid format of the posts per page value',
+        'no_posts_title' => 'No posts message',
+        'no_posts_description' => 'Message to display in the post list in case if there are no posts. This property is used by the default component partial.',
+        'no_posts_found' => 'No posts found',
         'posts_order_title' => 'Post order',
         'posts_order_description' => 'Attribute on which the posts should be ordered',
-        'posts_post_title' => 'Post page',
-        'posts_post_description' => 'Name of the post page file for the "Learn more" links. This property is used by the default component partial.',
-        'posts_featured_title' => 'Featured Listing',
-        'posts_featured_description' => 'Choose which Posts to show',
-        'posts_list_all' => 'All',
-        'posts_list_featured' => 'Only Featured',
-        'posts_list_notfeatured' => 'Not featured'
+        'post_title' => 'Post page',
+        'post_description' => 'Name of the post page file for the "Learn more" links. This property is used by the default component partial.',
+        'featured_title' => 'Featured Listing',
+        'featured_description' => 'Choose which Posts to show',
+        'list_all' => 'All',
+        'list_featured' => 'Only Featured',
+        'list_notfeatured' => 'Not featured'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
@@ -136,11 +132,9 @@ return [
         'post_list' => 'Post list',
         'post_page' => 'Post page'
     ],
-    'ajax' => [
-        'messages' => [
-            'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
-            'not_subscribed' => 'You do not have subscribed account.',
-            'subscribed' => 'Thank you for your subscription to our newsletter!'
-        ]
+    'messages' => [
+        'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
+        'not_subscribed' => 'Already subscribed to our newsletter.',
+        'subscribed' => 'Thank you for your subscription to our newsletter!'
     ]
 ];

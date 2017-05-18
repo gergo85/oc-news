@@ -67,6 +67,8 @@ return [
         'inactive' => 'Nieaktywny',
         'import' => 'Import',
         'export' => 'Eksport',
+        'unsubscribe' => 'Anuluj subskrypcję',
+        'subscribe' => 'Subskrypcja',
         'return' => 'Powrót'
     ],
     'flash' => [
@@ -87,8 +89,8 @@ return [
     'component' => [
         'posts' => 'Pokaż posty',
         'post' => 'Pokaż zawartość postów',
-        'form' => 'Formularz subskrybentów',
-        'stat' => 'Pokaż statystyki'
+        'subscribe' => 'Formularz subskrybentów',
+        'unsubscribe' => 'Formularz wyrejestrowuj'
     ],
     'permission' => [
         'posts' => 'Zarządzań postami',
@@ -97,23 +99,24 @@ return [
         'import_export' => 'Import & eksport'
     ],
     'settings' => [
-        'post_title' => 'Post',
-        'post_description' => 'Pokaż post na stronie.',
-        'post_slug' => 'Slug posta',
-        'post_slug_description' => "Pokaż posta używając sluga.",
-        'posts_title' => 'Lista postów',
-        'posts_description' => 'Pokazuje listę ostatnich postów na stronie.',
-        'posts_pagination' => 'Numer strony',
-        'posts_pagination_description' => 'Ta wartość służy do przetrzymywania strony na której obecnie znajduje się użytkownik.',
-        'posts_per_page' => 'Postów na stronie',
-        'posts_per_page_validation' => 'Niepoprawny format liczby postów na stronie',
-        'posts_no_posts' => 'Brak wiadomości do postów',
-        'posts_no_posts_description' => 'Wiadomość do wyświetlenia w liście postów w przypadku braku postów. Ta własność jest używana przez domyślny fragment komponentu.',
-        'posts_no_posts_found' => 'Nie znaleziono postów',
-        'posts_order' => 'Kolejność postów',
+        'slug_title' => 'Slug posta',
+        'slug_description' => 'Pokaż posta używając sluga.',
+        'pagination_title' => 'Numer strony',
+        'pagination_description' => 'Ta wartość służy do przetrzymywania strony na której obecnie znajduje się użytkownik.',
+        'per_page_title' => 'Postów na stronie',
+        'per_page_validation' => 'Niepoprawny format liczby postów na stronie',
+        'no_posts_title' => 'Brak wiadomości do postów',
+        'no_posts_description' => 'Wiadomość do wyświetlenia w liście postów w przypadku braku postów. Ta własność jest używana przez domyślny fragment komponentu.',
+        'no_posts_found' => 'Nie znaleziono postów',
+        'posts_order_title' => 'Kolejność postów',
         'posts_order_decription' => 'Atrybut po którym powinno się odbyć sortowanie',
-        'posts_post' => 'Strona postów',
-        'posts_post_description' => 'Nazwa pliku strony postu dla linków "Więcej szczegółów". Ta własność jest używana przez domyślny fragment komponentu.',
+        'post_title' => 'Strona postów',
+        'post_description' => 'Nazwa pliku strony postu dla linków "Więcej szczegółów". Ta własność jest używana przez domyślny fragment komponentu.',
+        'featured_title' => 'Featured Listing',
+        'featured_description' => 'Choose which Posts to show',
+        'list_all' => 'Wszystko',
+        'list_featured' => 'Tylko wyróżnione',
+        'list_notfeatured' => 'Nie jest opisywany'
     ],
     'sorting' => [
         'title_asc' => 'Tytuł (rosnąco)',
@@ -128,5 +131,10 @@ return [
     'sitemap' => [
         'post_list' => 'Post lista',
         'post_page' => 'Post página'
+    ],
+    'messages' => [
+        'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
+        'not_subscribed' => 'You do not have subscribed account.',
+        'subscribed' => 'Thank you for your subscription to our newsletter!'
     ]
 ];

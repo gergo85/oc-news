@@ -19,8 +19,8 @@ class Posts extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'indikator.news::lang.settings.posts_title',
-            'description' => 'indikator.news::lang.settings.posts_description'
+            'name'        => 'indikator.news::lang.component.posts',
+            'description' => ''
         ];
     }
 
@@ -28,23 +28,23 @@ class Posts extends ComponentBase
     {
         return [
             'pageNumber' => [
-                'title'       => 'indikator.news::lang.settings.posts_pagination_title',
-                'description' => 'indikator.news::lang.settings.posts_pagination_description',
+                'title'       => 'indikator.news::lang.settings.pagination_title',
+                'description' => 'indikator.news::lang.settings.pagination_description',
                 'type'        => 'string',
                 'default'     => '{{ :page }}'
             ],
             'postsPerPage' => [
-                'title'             => 'indikator.news::lang.settings.posts_per_page_title',
+                'title'             => 'indikator.news::lang.settings.per_page_title',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
-                'validationMessage' => 'indikator.news::lang.settings.posts_per_page_validation',
+                'validationMessage' => 'indikator.news::lang.settings.per_page_validation',
                 'default'           => '10'
             ],
             'noPostsMessage' => [
-                'title'             => 'indikator.news::lang.settings.posts_no_posts_title',
-                'description'       => 'indikator.news::lang.settings.posts_no_posts_description',
+                'title'             => 'indikator.news::lang.settings.no_posts_title',
+                'description'       => 'indikator.news::lang.settings.no_posts_description',
                 'type'              => 'string',
-                'default'           => Lang::get('indikator.news::lang.settings.posts_no_posts_found'),
+                'default'           => Lang::get('indikator.news::lang.settings.no_posts_found'),
                 'showExternalParam' => false
             ],
             'sortOrder' => [
@@ -64,19 +64,19 @@ class Posts extends ComponentBase
                 ]
             ],
             'postPage' => [
-                'title'       => 'indikator.news::lang.settings.posts_post_title',
-                'description' => 'indikator.news::lang.settings.posts_post_description',
+                'title'       => 'indikator.news::lang.settings.post_title',
+                'description' => 'indikator.news::lang.settings.post_description',
                 'default'     => 'news'
             ],
             'postFeatured' => [
-                'title'       => 'indikator.news::lang.settings.posts_featured_title',
-                'description' => 'indikator.news::lang.settings.posts_featured_description',
+                'title'       => 'indikator.news::lang.settings.featured_title',
+                'description' => 'indikator.news::lang.settings.featured_description',
                 'type'        => 'dropdown',
                 'default'     => 0,
                 'options'     => [
-                    0 => Lang::get('indikator.news::lang.settings.posts_list_all'),
-                    1 => Lang::get('indikator.news::lang.settings.posts_list_featured'),
-                    2 => Lang::get('indikator.news::lang.settings.posts_list_notfeatured')
+                    0 => Lang::get('indikator.news::lang.settings.list_all'),
+                    1 => Lang::get('indikator.news::lang.settings.list_featured'),
+                    2 => Lang::get('indikator.news::lang.settings.list_notfeatured')
                 ]
             ]
         ];

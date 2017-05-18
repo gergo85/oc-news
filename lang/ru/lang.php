@@ -67,6 +67,8 @@ return [
         'inactive' => 'Неактивных',
         'import' => 'Импортировать',
         'export' => 'экспорт',
+        'unsubscribe' => 'Отказаться',
+        'subscribe' => 'Подписка',
         'return' => 'Вернуть'
     ],
     'flash' => [
@@ -87,8 +89,8 @@ return [
     'component' => [
         'posts' => 'Отображение постов',
         'post' => 'Показать содержание поста',
-        'form' => 'Форма подписки',
-        'stat' => 'Просмотр статистики'
+        'subscribe' => 'Форма подписки',
+        'unsubscribe' => 'Отменить подписку'
     ],
     'permission' => [
         'posts' => 'Управление постами',
@@ -97,23 +99,24 @@ return [
         'import_export' => 'Импортировать & экспорт'
     ],
     'settings' => [
-        'post_title' => 'Пост',
-        'post_description' => 'Отображение поста',
-        'post_slug' => 'Параметр URL',
-        'post_slug_description' => 'Параметр маршрута, необходимый для выбора конкретного поста.',
-        'posts_title' => 'Список постов',
-        'posts_description' => 'Отображает список последних постов на странице.',
-        'posts_pagination' => 'Параметр постраничной навигации',
-        'posts_pagination_description' => 'Параметр, необходимый для постраничной навигации.',
-        'posts_per_page' => 'Постов на странице',
-        'posts_per_page_validation' => 'Недопустимый Формат. Ожидаемый тип данных - действительное число.',
-        'posts_no_posts' => 'Отсутсвие постов',
-        'posts_no_posts_description' => 'Сообщение, отображаемое в случае, если нет никаких постов. Это свойство используется по умолчанию компонентом.',
-        'posts_no_posts_found' => 'Отсутсвие постов',
-        'posts_order' => 'Сортировка',
+        'slug_title' => 'Параметр URL',
+        'slug_description' => 'Параметр маршрута, необходимый для выбора конкретного поста.',
+        'pagination_title' => 'Параметр постраничной навигации',
+        'pagination_description' => 'Параметр, необходимый для постраничной навигации.',
+        'per_page_title' => 'Постов на странице',
+        'per_page_validation' => 'Недопустимый Формат. Ожидаемый тип данных - действительное число.',
+        'no_posts_title' => 'Отсутсвие постов',
+        'no_posts_description' => 'Сообщение, отображаемое в случае, если нет никаких постов. Это свойство используется по умолчанию компонентом.',
+        'no_posts_found' => 'Отсутсвие постов',
+        'posts_order_title' => 'Сортировка',
         'posts_order_description' => 'Атрибут, по которому будут сортироваться посты.',
-        'posts_post' => 'Страница поста',
-        'posts_post_description' => 'Название страницы для ссылки "подробнее". Это свойство используется по умолчанию компонентом.'
+        'post_title' => 'Страница поста',
+        'post_description' => 'Название страницы для ссылки "подробнее". Это свойство используется по умолчанию компонентом.',
+        'featured_title' => 'Featured Listing',
+        'featured_description' => 'Choose which Posts to show',
+        'list_all' => 'Все',
+        'list_featured' => 'Только Избранные',
+        'list_notfeatured' => 'Не указано'
     ],
     'sorting' => [
         'title_asc' => 'Заголовок (по возрастанию)',
@@ -128,5 +131,10 @@ return [
     'sitemap' => [
         'post_list' => 'пост список',
         'post_page' => 'пост страница'
+    ],
+    'messages' => [
+        'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
+        'not_subscribed' => 'You do not have subscribed account.',
+        'subscribed' => 'Thank you for your subscription to our newsletter!'
     ]
 ];
