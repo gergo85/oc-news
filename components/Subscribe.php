@@ -2,17 +2,26 @@
 
 use Cms\Classes\ComponentBase;
 use Indikator\News\Models\Subscribers;
+use Lang;
 use Validator;
 use ValidationException;
 
-class Form extends ComponentBase
+class Subscribe extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name'        => 'indikator.news::lang.component.form',
+            'name'        => 'indikator.news::lang.component.subscribe',
             'description' => ''
         ];
+    }
+
+    public function onRun()
+    {
+        $this->page['text_messages'] = Lang::get('indikator.news::lang.messages.subscribed');
+        $this->page['text_name']     = Lang::get('indikator.news::lang.form.name');
+        $this->page['text_email']    = Lang::get('indikator.news::lang.form.email');
+        $this->page['text_button']   = Lang::get('indikator.news::lang.button.subscribe');
     }
 
     public function onSubscription()
@@ -33,19 +42,17 @@ class Form extends ComponentBase
         // look for unsubscribed subscribers
         $subscriberResult = Subscribers::email($data['email']);
 
-        if ($subscriberResult->count() > 0)
-        {
+        if ($subscriberResult->count() > 0) {
             $subscriber = $subscriberResult->first();
-            if(!$subscriber->isActive())
-            {
+            if (!$subscriber->isActive()) {
                 $subscriber->name = $data['name'];
                 $subscriber->activate();
             }
 
-            return ;
+            return;
         }
 
-        // register new one
+        // Register new one
         Subscribers::insertGetId([
             'name'       => $data['name'],
             'email'      => $data['email'],

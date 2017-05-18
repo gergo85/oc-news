@@ -1,0 +1,13 @@
+<form data-request="onSubscription" data-request-success="alert('{{ text_messages }}')">
+    <div class="form-group">
+        <label for="subscribersName">{{ text_name }}</label>
+        <input name="name" type="text" class="form-control" id="subscribersName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="subscribersEmail">{{ text_email }}</label>
+        <input name="email" type="email" class="form-control" id="subscribersEmail" required>
+    </div>
+
+    <button type="submit" class="btn btn-default">{{ text_button }}</button>
+</form>
