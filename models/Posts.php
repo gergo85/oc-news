@@ -1,5 +1,6 @@
 <?php namespace Indikator\News\Models;
 
+use Indikator\News\Classes\NewsSender;
 use Model;
 use File;
 use App;
@@ -63,37 +64,16 @@ class Posts extends Model
     public function beforeSave()
     {
         if ($this->send && $this->send != '') {
-            $locale = App::getLocale();
 
-            if (!File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$locale.'.htm')) {
-                $locale = 'en';
+            $activeSubscribers = Subscribers::where('status', 1)->get();
+
+            $sender = new NewsSender($this);
+            $sender->sendNewsletter($activeSubscribers);
+
+            foreach ($activeSubscribers as $subscriber) {
+
+                Subscribers::whereId($subscriber->id)->increment('statistics');
             }
-
-            $users = Subscribers::where('status', 1)->get();
-
-            foreach ($users as $user) {
-                $params = [
-                    'name'         => $user->name,
-                    'email'        => $user->email,
-                    'title'        => $this->title,
-                    'slug'         => $this->slug,
-                    'introductory' => $this->introductory,
-                    'content'      => $this->content,
-                    'image'        => $this->image
-                ];
-
-                $this->email = $user->email;
-                $this->name = $user->name;
-
-                Mail::send('indikator.news::mail.email_'.$locale, $params, function($message)
-                {
-                    $message->to($this->email, $this->name)->subject($this->title);
-                });
-
-                Subscribers::whereId($user->id)->increment('statistics');
-            }
-
-            unset($this->email, $this->name);
         }
 
         if ($this->send) {

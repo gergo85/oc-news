@@ -10,6 +10,7 @@ use Mail;
 use Indikator\News\Models\Posts as Item;
 use Flash;
 use Lang;
+use Indikator\News\Classes\NewsSender;
 
 class Posts extends Controller
 {
@@ -36,31 +37,11 @@ class Posts extends Controller
 
     public function onTest()
     {
-        $locale = App::getLocale();
         $uri = explode('/', Request::path());
         $news = Item::whereId($uri[count($uri) - 1])->first();
 
-        if (!File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$locale.'.htm')) {
-            $locale = 'en';
-        }
-
-        $user = BackendAuth::getUser();
-
-        $params = [
-            'name'         => $user->login,
-            'email'        => $user->email,
-            'title'        => $news->title,
-            'slug'         => $news->slug,
-            'introductory' => $news->introductory,
-            'content'      => $news->content,
-            'image'        => $news->image
-        ];
-
-        Mail::send('indikator.news::mail.email_'.$locale, $params, function($message)
-        {
-            $user = BackendAuth::getUser();
-            $message->to($user->email, $user->login);
-        });
+        $sender = new NewsSender($news);
+        $sender->sendNewsletter(BackendAuth::getUser());
 
         Flash::success(trans('system::lang.mail_templates.test_success'));
     }

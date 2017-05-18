@@ -23,4 +23,42 @@ class Subscribers extends Model
     {
         unset($this->created, $this->statistics);
     }
+
+    public function isActive()
+    {
+        return $this->status == 1;
+    }
+
+    public function isUnsubscribed()
+    {
+        return $this->status == 2;
+    }
+
+    public function activate()
+    {
+        $this->status = 1;
+        $this->save();
+    }
+
+    public function unsubscribe()
+    {
+        $this->status = 2;
+        $this->save();
+    }
+
+    public function scopeEmail($query, $email)
+    {
+        return $query->where('email',$email);
+    }
+
+    public function scopeIsSubscribed($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeIsUnsubscribed($query)
+    {
+        return $query->where('status', 2);
+    }
+
 }

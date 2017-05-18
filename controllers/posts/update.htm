@@ -43,6 +43,7 @@
                     class="btn btn-info">
                     <?= e(trans('system::lang.mail_templates.test_send')) ?>
                 </button>
+                <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
