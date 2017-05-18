@@ -54,3 +54,7 @@
 1.6.0: Added the sending test email feature.
 1.6.1: Added the Length column for Post list.
 1.6.2: Added new icon for main navigation.
+1.7.0: Added unsubscribe feature.
+1.7.1: Added Deutsch translation.
+1.7.2: Translated the front-end components.
+1.7.3: Post view statistics now automatic.
