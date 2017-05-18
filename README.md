@@ -11,7 +11,6 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 - [Supported plugins](#supported_plugins)
 - [Available languages](#available_languages)
 - [Installation](#installation)
-- [Front-end components](#frontend_components)
 - [Add back-end widgets](#backend_widgets)
 - [Credits](#credits)
 
@@ -22,8 +21,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Export & Import data
 * Statistics and graphs
 * Send newsletter
+* Front-end forms
 * Back-end widgets
-* Front-end components
 
 <a name="statistics"></a>
 ## Statistics and graphs
@@ -35,15 +34,17 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 <a name="available_widgets"></a>
 ## Available widgets
+You can use the following widgets on the back-end Dashboard:
 * Post statistics
 * Subscriber statistics
 
 <a name="available_components"></a>
 ## Available components
+Use the __Components > News__ panel in CMS menu. At this moment there are the following components:
 * Display posts
-* Show post content
+* Post content
 * Subscriber form
-* Count visitors
+* Unsubscribe form
 
 <a name="mail_template"></a>
 ## Mail template variables
@@ -52,18 +53,21 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * {{ title }} - Title of post
 * {{ slug }} - Slug of post
 * {{ introductory }} - Introductory of post
+* {{ summary }} - alias of Introductory
 * {{ content }} - Content of post
-* {{ image }} - Relative url of image
+* {{ image }} - Relative path of image
 
 <a name="supported_plugins"></a>
 ## Supported plugins
 * [RainLab Translate](http://octobercms.com/plugin/rainlab-translate)
 * [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
 * [Offline SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
+* [Indikator Popup](http://octobercms.com/plugin/indikator-popup)
 
 <a name="available_languages"></a>
 ## Available languages
 * en - English
+* de - Deutsch
 * ru - Pу́сский
 * pl - Polski
 * hu - Magyar
@@ -73,14 +77,6 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 1. Go to the __Settings > Updates & Plugins__ page in the Backend.
 1. Click on the __Install plugins__ button.
 1. Type the __News & Newsletter__ text in the search field.
-
-<a name="frontend_components"></a>
-## Front-end components
-Use the __Components > News__ panel in CMS menu. At this moment there are the following components:
-* Display posts
-* Show post content
-* Subscriber form
-* View statistics
 
 <a name="backend_widgets"></a>
 ## Add back-end widgets
