@@ -58,3 +58,6 @@
 1.7.1: Added Deutsch translation.
 1.7.2: Translated the front-end components.
 1.7.3: Post view statistics now automatic.
+1.7.4:
+    - Added the multilingual subscription.
+    - add_locale_field_to_table.php

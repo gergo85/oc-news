@@ -58,6 +58,8 @@ return [
         'name' => 'Имя',
         'email' => 'Почта',
         'common' => 'Общее',
+        'locale' => 'язык',
+        'lang' => 'ru',
         'mail' => 'почта'
     ],
     'button' => [

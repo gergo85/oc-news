@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use Indikator\News\Models\Subscribers;
 use Lang;
+use App;
 use Validator;
 use ValidationException;
 
@@ -57,6 +58,7 @@ class Subscribe extends ComponentBase
             'name'       => $data['name'],
             'email'      => $data['email'],
             'common'     => '',
+            'locale'     => App::getLocale(),
             'created'    => 2,
             'statistics' => 0,
             'created_at' => date('Y-m-d H:i:s'),

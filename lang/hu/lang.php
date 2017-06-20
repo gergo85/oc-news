@@ -58,6 +58,8 @@ return [
         'name' => 'Név',
         'email' => 'E-mail',
         'common' => 'Megjegyzés',
+        'locale' => 'Nyelv',
+        'lang' => 'hu',
         'mail' => 'levél'
     ],
     'button' => [

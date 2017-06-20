@@ -58,6 +58,8 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'common' => 'Common',
+        'locale' => 'Sprache',
+        'lang' => 'de',
         'mail' => 'Mail'
     ],
     'button' => [

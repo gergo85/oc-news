@@ -1,22 +1,23 @@
 <?php namespace Indikator\News\Classes;
 
 use App;
+use File;
+use Mail;
+use System\Classes\PluginManager;
 use Illuminate\Support\Collection;
 use Indikator\News\Models\Posts;
-use Mail;
-use File;
 
 class NewsSender
 {
     /**
-     * @var Posts
+     * @var Post
      */
     protected $news;
 
     /**
      * @var string of the used locale
      */
-    protected $locale;
+    protected $locale = false;
 
     /**
      * @var string replaced content
@@ -26,45 +27,43 @@ class NewsSender
     /**
      * @var string namespace of the template
      */
-    protected $templateNamespace = 'indikator.news::mail.email';
+    protected $templateNamespace = 'indikator.news::mail.email_';
+
+    /**
+     * NewsSender constructor
+     *
+     * @param $news Posts should be send.
+     */
+    public function __construct($news)
+    {
+        $this->news = $news;
+
+        $pluginManager = PluginManager::instance()->findByIdentifier('RainLab.Translate');
+        if ($pluginManager && !$pluginManager->disabled) {
+            $this->locale = true;
+        }
+    }
 
     /**
      * @param $locale string
-     * @return string path of the template file with respect to $locale
-     */
-    protected function templateFile($locale)
-    {
-        return base_path().'/plugins/indikator/news/views/mail/email_'.$locale.'.htm';
-    }
-
-    /**
      * @return string template name with current locale
      */
-    protected function template()
+    protected function template($locale)
     {
-        return 'indikator.news::mail.email_'.$this->locale;
-    }
+        $langs = [$locale, App::getLocale(), 'en'];
 
-    /**
-     * NewsSender constructor.
-     * @param $news Posts should be send.
-     * @param $locale string of the locale, default App::getLocale()
-     */
-    public function __construct($news, $locale = null)
-    {
-        $this->news = $news;
-        $locale = App::getLocale();
+        foreach ($langs as $lang) {
+            if (File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$lang.'.htm')) {
+                return $this->templateNamespace.$lang;
+            }
+        }
 
-        if (File::exists($this->templateFile($locale))) {
-            $this->locale = $locale;
-        }
-        else {
-            $this->locale = config('app.fallback_locale');
-        }
+        return false;
     }
 
     /**
      * Sends the news to one or multiple receivers
+     *
      * @param $receivers array or single user with attribute name and email
      * @return void
      */
@@ -82,17 +81,27 @@ class NewsSender
 
     /**
      * Sends the news to a receiver
+     *
      * @param $receiver object of the news with name and email attribute
      * @return void
      */
     protected function send($receiver)
     {
+        // Locale
+        if ($receiver->locale != '' && $this->locale) {
+            $content = $this->news->lang($receiver->locale)->content;
+        }
+        else {
+            $content = $this->news->content;
+        }
+
         // Replace all relative URL src attributes to absolute URL's
         if ($this->replacedContent === null) {
             $url = url('/');
             $this->replacedContent = preg_replace( '/src="\/([^"]*)"/i', 'src="'.$url.'/$1"', $this->news->content);
         }
 
+        // Parameters
         $params = [
             'name'         => $receiver->name,
             'email'        => $receiver->email,
@@ -104,7 +113,14 @@ class NewsSender
             'image'        => $this->news->image
         ];
 
-        Mail::send($this->template(), $params, function($message) use ($receiver)
+        // Template file
+        $template = $this->template($receiver->locale);
+        if (!$template) {
+            return;
+        }
+
+        // Send email
+        Mail::send($template, $params, function($message) use ($receiver)
         {
             $message->to($receiver->email, $receiver->name)->subject($this->news->title);
         });
