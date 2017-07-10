@@ -86,6 +86,7 @@ return [
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'show_draft' => 'Show draft',
+        'show_unsub' => 'Show unsubscribed',
         'total' => 'Total'
     ],
     'component' => [

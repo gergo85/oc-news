@@ -86,6 +86,7 @@ return [
         'show_active' => 'Показать активные',
         'show_inactive' => 'Показать неактивные',
         'show_draft' => 'Показать проект',
+        'show_unsub' => 'Показать Oтписались',
         'total' => 'Всего'
     ],
     'component' => [

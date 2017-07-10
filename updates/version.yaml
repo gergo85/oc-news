@@ -61,3 +61,4 @@
 1.7.4:
     - Added the multilingual subscription.
     - add_locale_field_to_table.php
+1.7.5: Redesigned the report widgets.

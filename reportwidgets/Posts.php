@@ -2,6 +2,7 @@
 
 use Backend\Classes\ReportWidgetBase;
 use Exception;
+use Indikator\News\Models\Posts as Post;
 
 class Posts extends ReportWidgetBase
 {
@@ -28,22 +29,22 @@ class Posts extends ReportWidgetBase
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
             ],
             'total' => [
-                'title'             => 'indikator.news::lang.widgets.show_total',
+                'title'             => 'indikator.news::lang.widget.show_total',
                 'default'           => true,
                 'type'              => 'checkbox'
             ],
             'active' => [
-                'title'             => 'indikator.news::lang.widgets.show_active',
+                'title'             => 'indikator.news::lang.widget.show_active',
                 'default'           => true,
                 'type'              => 'checkbox'
             ],
             'inactive' => [
-                'title'             => 'indikator.news::lang.widgets.show_inactive',
+                'title'             => 'indikator.news::lang.widget.show_inactive',
                 'default'           => true,
                 'type'              => 'checkbox'
             ],
             'draft' => [
-                'title'             => 'indikator.news::lang.widgets.show_draft',
+                'title'             => 'indikator.news::lang.widget.show_draft',
                 'default'           => true,
                 'type'              => 'checkbox'
             ]
@@ -52,9 +53,9 @@ class Posts extends ReportWidgetBase
 
     protected function loadData()
     {
-        $this->vars['active']   = \Indikator\News\Models\Posts::where('status', 1)->count();
-        $this->vars['inactive'] = \Indikator\News\Models\Posts::where('status', 2)->count();
-        $this->vars['draft']    = \Indikator\News\Models\Posts::where('status', 3)->count();
+        $this->vars['active']   = Post::where('status', 1)->count();
+        $this->vars['inactive'] = Post::where('status', 2)->count();
+        $this->vars['draft']    = Post::where('status', 3)->count();
         $this->vars['total']    = $this->vars['active'] + $this->vars['inactive'] + $this->vars['draft'];
     }
 }

@@ -86,6 +86,7 @@ return [
         'show_active' => 'Zeige aktive',
         'show_inactive' => 'Zeige inaktive',
         'show_draft' => 'Zeige Entwurf',
+        'show_unsub' => 'Zeige Deabonniert',
         'total' => 'Alle'
     ],
     'component' => [

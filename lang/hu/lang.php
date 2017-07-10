@@ -86,6 +86,7 @@ return [
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'show_draft' => 'Piszkozatok mutatása',
+        'show_unsub' => 'Leiratkozottak mutatása',
         'total' => 'Összes'
     ],
     'component' => [

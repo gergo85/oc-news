@@ -86,6 +86,7 @@ return [
         'show_active' => 'Pokaż aktywne',
         'show_inactive' => 'Pokaż nieaktywne',
         'show_draft' => 'Pokaż szkice',
+        'show_unsub' => 'Pokaż wypisać',
         'total' => 'Razem'
     ],
     'component' => [
