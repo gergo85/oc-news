@@ -37,6 +37,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 You can use the following widgets on the back-end Dashboard:
 * Post statistics
 * Subscriber statistics
+* List of TOP posts
+* List of new posts
 
 <a name="available_components"></a>
 ## Available components
