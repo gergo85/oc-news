@@ -23,7 +23,7 @@ class Posts extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'backend::lang.dashboard.widget_title_label',
-                'default'           => 'indikator.news::lang.menu.news',
+                'default'           => 'indikator.news::lang.widget.posts',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'

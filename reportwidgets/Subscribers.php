@@ -23,7 +23,7 @@ class Subscribers extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'backend::lang.dashboard.widget_title_label',
-                'default'           => 'indikator.news::lang.menu.subscribers',
+                'default'           => 'indikator.news::lang.widget.subscribers',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
