@@ -76,16 +76,22 @@ return [
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
         'deactivate' => 'Nachrichten erfolgreich deaktiviert.',
+        'subscribe' => 'Diese Benutzer erfolgreich abonniert.',
+        'unsubscribe' => 'Diese Benutzer wurden erfolgreich abgemeldet.',
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
         'remove' => 'Einträge erfolgreich gelöscht.'
     ],
     'widget' => [
         'posts' => 'News - Nachrichten',
+        'newposts' => 'News - Neue Nachrichten',
+        'topposts' => 'News - Top Nachrichten',
         'subscribers' => 'News - Abonneten',
         'show_total' => 'Zeige alle',
         'show_active' => 'Zeige aktive',
         'show_inactive' => 'Zeige inaktive',
         'show_draft' => 'Zeige Entwurf',
+        'show_piece' => 'Anzahl der Beiträge',
+        'show_date' => 'Zeige Datum',
         'show_unsub' => 'Zeige Deabonniert',
         'total' => 'Alle'
     ],

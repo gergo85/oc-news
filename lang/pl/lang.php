@@ -76,16 +76,22 @@ return [
     'flash' => [
         'activate' => 'Pomyślnie aktywowano zaznaczone posty.',
         'deactivate' => 'Pomyślnie zdezaktywowano zaznaczone posty.',
+        'subscribe' => 'Pomyślnie subskrypcję tych użytkowników.',
+        'unsubscribe' => 'Pomyślnie anulowano subskrypcję tych użytkowników.',
         'delete' => 'Czy na pewno chcesz usunąć zaznaczone elementy?',
         'remove' => 'Pomyślnie usunięto zaznaczone posty.'
     ],
     'widget' => [
         'posts' => 'Aktualności - Posty',
+        'newposts' => 'Aktualności - Nowe posty',
+        'topposts' => 'Aktualności - Popularny posty',
         'subscribers' => 'Aktualności - Subskrybenci',
         'show_total' => 'Pokaż wszystkie',
         'show_active' => 'Pokaż aktywne',
         'show_inactive' => 'Pokaż nieaktywne',
         'show_draft' => 'Pokaż szkice',
+        'show_piece' => 'Liczba stanowisk',
+        'show_date' => 'Pokaż data',
         'show_unsub' => 'Pokaż wypisać',
         'total' => 'Razem'
     ],

@@ -76,16 +76,22 @@ return [
     'flash' => [
         'activate' => 'Successfully activated those posts.',
         'deactivate' => 'Successfully deactivated those posts.',
+        'subscribe' => 'Successfully subscribed those users.',
+        'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
         'remove' => 'Successfully removed those items.'
     ],
     'widget' => [
         'posts' => 'News - Posts',
+        'newposts' => 'News - New posts',
+        'topposts' => 'News - Top posts',
         'subscribers' => 'News - Subscribers',
         'show_total' => 'Show total',
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'show_draft' => 'Show draft',
+        'show_piece' => 'Number of posts',
+        'show_date' => 'Show date',
         'show_unsub' => 'Show unsubscribed',
         'total' => 'Total'
     ],

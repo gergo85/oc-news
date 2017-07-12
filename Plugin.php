@@ -60,6 +60,14 @@ class Plugin extends PluginBase
                 'label'   => 'indikator.news::lang.widget.posts',
                 'context' => 'dashboard'
             ],
+            'Indikator\News\ReportWidgets\NewPosts' => [
+                'label'   => 'indikator.news::lang.widget.newposts',
+                'context' => 'dashboard'
+            ],
+            'Indikator\News\ReportWidgets\TopPosts' => [
+                'label'   => 'indikator.news::lang.widget.topposts',
+                'context' => 'dashboard'
+            ],
             'Indikator\News\ReportWidgets\Subscribers' => [
                 'label'   => 'indikator.news::lang.widget.subscribers',
                 'context' => 'dashboard'

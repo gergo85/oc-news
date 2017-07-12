@@ -76,16 +76,22 @@ return [
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
+        'subscribe' => 'A felhasználók feliratkozása megtörtént.',
+        'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
-        'remove' => 'Az eltávolítás sikeres volt.'
+        'remove' => 'Az eltávolítás sikeresen megtörtént.'
     ],
     'widget' => [
-        'posts' => 'Hírek - Bejegyzések',
+        'posts' => 'Hírek - Gyors statisztika',
+        'newposts' => 'Hírek - Új bejegyzések',
+        'topposts' => 'Hírek - Népszerű bejegyzések',
         'subscribers' => 'Hírek - Feliratkozók',
         'show_total' => 'Összes mutatása',
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'show_draft' => 'Piszkozatok mutatása',
+        'show_piece' => 'Bejegyzések száma',
+        'show_date' => 'Dátum mutatása',
         'show_unsub' => 'Leiratkozottak mutatása',
         'total' => 'Összes'
     ],
