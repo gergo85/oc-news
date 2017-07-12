@@ -27,6 +27,40 @@ class Subscribers extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'subscribers');
     }
 
+    public function onSubscribe()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Item::where('status', 2)->whereId($itemId)) {
+                    continue;
+                }
+
+                $item->update(['status' => 1]);
+            }
+
+            Flash::success(Lang::get('indikator.content::lang.flash.subscribe'));
+        }
+
+        return $this->listRefresh();
+    }
+
+    public function onUnsubscribe()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $itemId) {
+                if (!$item = Item::where('status', 1)->whereId($itemId)) {
+                    continue;
+                }
+
+                $item->update(['status' => 2]);
+            }
+
+            Flash::success(Lang::get('indikator.content::lang.flash.unsubscribe'));
+        }
+
+        return $this->listRefresh();
+    }
+
     public function onRemoveSubscribers()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
