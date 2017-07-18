@@ -45,8 +45,10 @@ class NewsSender
     }
 
     /**
+     * Get the current template name
+     *
      * @param $locale string
-     * @return string template name with current locale
+     * @return string template name or bool
      */
     protected function template($locale)
     {
@@ -95,15 +97,14 @@ class NewsSender
             $content = $this->news->content;
         }
 
-
+        // Replace
         if ($this->replacedContent === null) {
-            
-            // Replace all relative URL src attributes to absolute URL's
+            // Replace all relative URL of images to absolute URL's
             $url = url('/');
             $this->replacedContent = preg_replace( '/src="\/([^"]*)"/i', 'src="'.$url.'/$1"', $this->news->content);
-            
-            //Bugfix while displaying images in Microsoft Outlook
-            //height/width must be set as img attribute and not as style
+
+            // Bugfix while displaying images in Microsoft Outlook
+            // height/width must be set as img attribute and not as style
             $this->replacedContent = preg_replace('/<img (.+)?style="width: (.+)px; height: (.+)px;"/i', '<img $1 width="$2" height="$3"', $this->replacedContent);
         }
 
