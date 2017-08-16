@@ -65,6 +65,7 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
 * [Offline SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
 * [Indikator Popup](http://octobercms.com/plugin/indikator-popup)
+* [TimFoerster NewsPdf](http://octobercms.com/plugin/timfoerster-newspdf)
 
 <a name="available_languages"></a>
 ## Available languages
