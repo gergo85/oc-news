@@ -25,6 +25,8 @@ columns:
         label: indikator.news::lang.form.locale
         searchable: true
         invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_locale.htm
 
     statistics:
         label: indikator.news::lang.stat.mail

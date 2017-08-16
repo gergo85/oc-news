@@ -26,6 +26,7 @@ return [
         'posts' => 'Bejegyzés|Bejegyzés',
         'view' => ' Megtekintés',
         'mail' => 'Elküldve',
+        'loss' => 'Veszteség',
         'top' => 'TOP',
         'longest' => 'Leghosszabb',
         'shortest' => 'Legrövidebb'

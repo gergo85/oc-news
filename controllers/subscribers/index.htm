@@ -5,6 +5,10 @@
             <span class="text-info"><strong><?= Indikator\News\Models\Subscribers::where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_active')) ?></span>
             &nbsp; | &nbsp;
             <span class="text-danger"><strong><?= Indikator\News\Models\Subscribers::where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_unsubscribed')) ?></span>
+            <?php if (Indikator\News\Models\Subscribers::where('status', 2)->count() > 0): ?>
+            &nbsp; | &nbsp;
+            <span class="text-warning"><strong><?= round(Indikator\News\Models\Subscribers::where('status', 2)->count() / Indikator\News\Models\Subscribers::count() * 100, 0) ?>%</strong> <?= e(trans('indikator.news::lang.stat.loss')) ?></span>
+            <?php endif; ?>
         </li>
     </ul>
 <?php Block::endPut() ?>

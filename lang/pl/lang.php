@@ -26,6 +26,7 @@ return [
         'posts' => 'post|blogach',
         'view' => 'widok',
         'mail' => 'Zapisane',
+        'loss' => 'Utrata',
         'top' => 'TOP',
         'longest' => 'Najdłuższy',
         'shortest' => 'Najkrótsza'

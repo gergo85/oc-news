@@ -26,6 +26,7 @@ return [
         'posts' => 'Post|Posts',
         'view' => 'View',
         'mail' => 'Sent',
+        'loss' => 'Loss',
         'top' => 'TOP',
         'longest' => 'Longest',
         'shortest' => 'Shortest'

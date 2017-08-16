@@ -26,6 +26,7 @@ return [
         'posts' => 'Nachricht|Nachrichten',
         'view' => 'Gesehen',
         'mail' => 'Gesendet',
+        'loss' => 'Verlust',
         'top' => 'TOP',
         'longest' => 'Längste',
         'shortest' => 'Kürzeste'
