@@ -20,6 +20,7 @@ class SendNews
         {
             $message->to($receiver->email, $receiver->name)->subject($subject);
         });
+
         $job->delete();
     }
 

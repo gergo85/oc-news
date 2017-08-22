@@ -6,6 +6,7 @@ use Mail;
 use System\Classes\PluginManager;
 use Illuminate\Support\Collection;
 use Indikator\News\Models\Posts;
+use Queue;
 
 class NewsSender
 {
@@ -126,10 +127,11 @@ class NewsSender
             return;
         }
 
-        // Send email
-        Mail::send($template, $params, function($message) use ($receiver)
-        {
-            $message->to($receiver->email, $receiver->name)->subject($this->news->title);
-        });
+        Queue::push('\Indikator\News\Classes\SendNews', [
+            'template' => $template,
+            'params' => $params,
+            'receiver' => $receiver,
+            'subject' => $this->news->title
+        ]);
     }
 }
