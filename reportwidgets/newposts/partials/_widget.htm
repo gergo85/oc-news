@@ -1,0 +1,24 @@
+<div class="report-widget">
+    <h3><?= e(trans($this->property('title'))) ?></h3>
+
+    <?php if (!isset($error)): ?>
+    <div class="control-status-list">
+        <ul>
+            <?php foreach ($posts as $post): ?>
+            <li>
+                <span class="status-text">
+                    <?= $post->title ?>
+                    <?php if ($this->property('date')): ?>
+                    &nbsp; <em style="color:#b9b9b9"><?= substr($post->published_at, 0, -3) ?></em>
+                    <?php endif ?>
+                </span>
+                <span class="status-label primary"><?= $post->statistics ?></span>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <?php else: ?>
+    <p class="flash-message static warning"><?= e($error) ?></p>
+    <?php endif ?>
+</div>

@@ -1,8 +1,10 @@
-<?php return [
+<?php
+
+return [
     'plugin' => [
         'name' => 'News und Newsletters',
         'description' => 'Einfaches News und Newsletter plugin.',
-        'author' => 'Gergő Szabó',
+        'author' => 'Gergő Szabó'
     ],
     'menu' => [
         'news' => 'News',
@@ -10,27 +12,30 @@
         'subscribers' => 'Abonnenten',
         'statistics' => 'Statistik',
         'import' => 'Import',
-        'export' => 'Export',
+        'export' => 'Export'
     ],
     'title' => [
         'posts' => 'Nachrichten',
-        'subscribers' => 'Abonnenten',
+        'subscribers' => 'Abonnenten'
     ],
     'new' => [
         'posts' => 'Neue Nachricht',
-        'subscribers' => 'Neuen Abonnenten',
+        'subscribers' => 'Neuen Abonnenten'
     ],
     'stat' => [
         'posts' => 'Nachricht|Nachrichten',
         'view' => 'Gesehen',
         'mail' => 'Gesendet',
+        'loss' => 'Verlust',
         'top' => 'TOP',
         'longest' => 'Längste',
-        'shortest' => 'Kürzeste',
+        'shortest' => 'Kürzeste'
     ],
     'form' => [
+        // General
         'created' => 'Erstellt am',
         'updated' => 'Aktualisiert am',
+        // Posts
         'id' => 'ID',
         'title' => 'Titel',
         'slug' => 'Slug',
@@ -50,10 +55,13 @@
         'published' => 'Veröffentlicht am',
         'send' => 'Sende die Nachricht an Abonneten.',
         'length' => 'Länge',
+        // Subscribers
         'name' => 'Name',
         'email' => 'Email',
         'common' => 'Common',
-        'mail' => 'Mail',
+        'locale' => 'Sprache',
+        'lang' => 'de',
+        'mail' => 'Mail'
     ],
     'button' => [
         'activate' => 'Aktivieren',
@@ -62,61 +70,63 @@
         'inactive' => 'Inaktiv',
         'import' => 'Import',
         'export' => 'Export',
-        'return' => 'Zurück',
         'unsubscribe' => 'Deabonnieren',
         'subscribe' => 'Abonnieren',
+        'return' => 'Zurück'
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
         'deactivate' => 'Nachrichten erfolgreich deaktiviert.',
+        'subscribe' => 'Diese Benutzer erfolgreich abonniert.',
+        'unsubscribe' => 'Diese Benutzer wurden erfolgreich abgemeldet.',
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
-        'remove' => 'Einträge erfolgreich gelöscht.',
+        'remove' => 'Einträge erfolgreich gelöscht.'
     ],
     'widget' => [
         'posts' => 'News - Nachrichten',
+        'newposts' => 'News - Neue Nachrichten',
+        'topposts' => 'News - Top Nachrichten',
         'subscribers' => 'News - Abonneten',
         'show_total' => 'Zeige alle',
         'show_active' => 'Zeige aktive',
         'show_inactive' => 'Zeige inaktive',
         'show_draft' => 'Zeige Entwurf',
-        'total' => 'Alle',
+        'show_piece' => 'Anzahl der Beiträge',
+        'show_date' => 'Zeige Datum',
+        'show_unsub' => 'Zeige Deabonniert',
+        'total' => 'Alle'
     ],
     'component' => [
         'posts' => 'Nachrichten',
         'post' => 'Nachricht',
-        'form' => 'Abonnentenform',
-        'stat' => 'Besucher',
+        'subscribe' => 'Abonnentenform',
         'unsubscribe' => 'Deabonnieren'
     ],
     'permission' => [
         'posts' => 'Nachrichten verwalten',
         'subscribers' => 'Abonnenten verwalten',
         'statistics' => 'Zeige Statistik',
-        'import_export' => 'Import und Export',
+        'import_export' => 'Import und Export'
     ],
     'settings' => [
-        'post_title' => 'Nachricht',
-        'post_description' => 'Zeigt eine Nachricht auf der Seite.',
-        'post_slug_title' => 'Nachrichten slug',
-        'post_slug_description' => 'Slug parameter nach dem die Nachricht gesucht wird.',
-        'posts_title' => 'Nachrichtenliste',
-        'posts_description' => 'Zeigt eine Liste von den letzten Nachrichten.',
-        'posts_pagination_title' => 'Seitennummer',
-        'posts_pagination_description' => 'Parameter für die Seitennummer.',
-        'posts_per_page_title' => 'Nachrichten pro Seite',
-        'posts_per_page_validation' => 'Ungültiges Format der Nachrichten pro Seite',
-        'posts_no_posts_title' => 'Keine Nachrichten Benachrichtigung',
-        'posts_no_posts_description' => 'Benachrichtigung die angezeigt wird, wenn keine Nachrichten vorhanden sind.',
-        'posts_no_posts_found' => 'Keine Nachrichten gefunden',
+        'slug_title' => 'Nachrichten slug',
+        'slug_description' => 'Slug parameter nach dem die Nachricht gesucht wird.',
+        'pagination_title' => 'Seitennummer',
+        'pagination_description' => 'Parameter für die Seitennummer.',
+        'per_page_title' => 'Nachrichten pro Seite',
+        'per_page_validation' => 'Ungültiges Format der Nachrichten pro Seite',
+        'no_posts_title' => 'Keine Nachrichten Benachrichtigung',
+        'no_posts_description' => 'Benachrichtigung die angezeigt wird, wenn keine Nachrichten vorhanden sind.',
+        'no_posts_found' => 'Keine Nachrichten gefunden',
         'posts_order_title' => 'Sortierungsattribut',
         'posts_order_description' => 'Attribut nachdem die Nachrichten sortiert werden sollen.',
-        'posts_post_title' => 'Seite der einzelnen Nachricht',
-        'posts_post_description' => 'Name der Seite, auf dennen die einzelne Nachricht verlinkt werden soll.',
-        'posts_featured_title' => 'Nachrichtenart',
-        'posts_featured_description' => 'Wählen Sie welche Nachrichten angezeigt werden sollen',
-        'posts_list_all' => 'Alle',
-        'posts_list_featured' => 'Nur hervorgehobene',
-        'posts_list_notfeatured' => 'Keine hervorgehobene',
+        'post_title' => 'Seite der einzelnen Nachricht',
+        'post_description' => 'Name der Seite, auf dennen die einzelne Nachricht verlinkt werden soll.',
+        'featured_title' => 'Nachrichtenart',
+        'featured_description' => 'Wählen Sie welche Nachrichten angezeigt werden sollen',
+        'list_all' => 'Alle',
+        'list_featured' => 'Nur hervorgehobene',
+        'list_notfeatured' => 'Keine hervorgehobene'
     ],
     'sorting' => [
         'title_asc' => 'Titel (aufsteigend)',
@@ -126,17 +136,15 @@
         'updated_at_asc' => 'Aktualisiert (aufsteigend)',
         'updated_at_desc' => 'Aktualisiert (absteigend)',
         'published_at_asc' => 'Veröffentlicht (aufsteigend)',
-        'published_at_desc' => 'Veröffentlicht (absteigend)',
+        'published_at_desc' => 'Veröffentlicht (absteigend)'
     ],
     'sitemap' => [
         'post_list' => 'Nachrichten',
-        'post_page' => 'Nachricht',
+        'post_page' => 'Nachricht'
     ],
-    'ajax' => [
-        'messages' => [
-            'unsubscribed' => 'Wir haben Sie erfolgreich aus den Newsletter ausgetragen.',
-            'not_subscribed' => 'Sie haben hier keinen Newsletter abonniert.',
-            'subscribed' => 'Danke, dass Sie unseren Newsletter abonniert haben.'
-        ]
+    'messages' => [
+        'unsubscribed' => 'Wir haben Sie erfolgreich aus den Newsletter ausgetragen.',
+        'not_subscribed' => 'Sie haben hier keinen Newsletter abonniert.',
+        'subscribed' => 'Danke, dass Sie unseren Newsletter abonniert haben.'
     ]
 ];

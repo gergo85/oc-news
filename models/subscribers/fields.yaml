@@ -19,12 +19,17 @@ fields:
         size: small
         span: auto
 
+    locale:
+        label: indikator.news::lang.form.locale
+        placeholder: indikator.news::lang.form.lang
+        span: right
+
     status:
         label: indikator.news::lang.form.status
         required: true
-        type: radio
+        type: balloon-selector
         options:
             1: indikator.news::lang.form.status_active
             2: indikator.news::lang.form.status_unsubscribed
         default: 1
-        span: auto
+        span: right

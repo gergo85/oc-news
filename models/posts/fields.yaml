@@ -44,7 +44,7 @@ secondaryTabs:
         send:
             label: indikator.news::lang.form.send
             type: switch
-            default: true
+            default: false
 
         status:
             label: indikator.news::lang.form.status

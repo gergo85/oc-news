@@ -5,6 +5,34 @@
         <?= e(trans('indikator.news::lang.new.subscribers')) ?>
     </a>
     <?php if (Indikator\News\Models\Subscribers::count() > 0): ?>
+    <div class="btn-group">
+        <button
+            class="btn btn-default oc-icon-check"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onSubscribe"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.button.subscribe')) ?>
+        </button>
+        <button
+            class="btn btn-default oc-icon-times"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onUnsubscribe"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.button.unsubscribe')) ?>
+        </button>
+    </div>
     <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"

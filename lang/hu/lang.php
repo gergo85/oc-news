@@ -26,6 +26,7 @@ return [
         'posts' => 'Bejegyzés|Bejegyzés',
         'view' => ' Megtekintés',
         'mail' => 'Elküldve',
+        'loss' => 'Veszteség',
         'top' => 'TOP',
         'longest' => 'Leghosszabb',
         'shortest' => 'Legrövidebb'
@@ -58,6 +59,8 @@ return [
         'name' => 'Név',
         'email' => 'E-mail',
         'common' => 'Megjegyzés',
+        'locale' => 'Nyelv',
+        'lang' => 'hu',
         'mail' => 'levél'
     ],
     'button' => [
@@ -67,28 +70,37 @@ return [
         'inactive' => 'Inaktív',
         'import' => 'Importálás',
         'export' => 'Exportálás',
+        'unsubscribe' => 'Leiratkozás',
+        'subscribe' => 'Feliratkozás',
         'return' => 'Vissza'
     ],
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
+        'subscribe' => 'A felhasználók feliratkozása megtörtént.',
+        'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
-        'remove' => 'Az eltávolítás sikeres volt.'
+        'remove' => 'Az eltávolítás sikeresen megtörtént.'
     ],
     'widget' => [
-        'posts' => 'Hírek - Bejegyzések',
+        'posts' => 'Hírek - Gyors statisztika',
+        'newposts' => 'Hírek - Új bejegyzések',
+        'topposts' => 'Hírek - Népszerű bejegyzések',
         'subscribers' => 'Hírek - Feliratkozók',
         'show_total' => 'Összes mutatása',
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'show_draft' => 'Piszkozatok mutatása',
+        'show_piece' => 'Bejegyzések száma',
+        'show_date' => 'Dátum mutatása',
+        'show_unsub' => 'Leiratkozottak mutatása',
         'total' => 'Összes'
     ],
     'component' => [
         'posts' => 'Hírek listázása',
         'post' => 'Bejegyzés mutatása',
-        'form' => 'Feliratkozó űrlap',
-        'stat' => 'Megtekintési statisztika'
+        'subscribe' => 'Űrlap feliratkozáshoz',
+        'unsubscribe' => 'Űrlap leiratkozáshoz'
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
@@ -97,28 +109,24 @@ return [
         'import_export' => 'Importálás és exportálás'
     ],
     'settings' => [
-        'post_title' => 'Bejegyzés',
-        'post_description' => 'Megjelenítése a lapon.',
-        'post_slug_title' => 'Keresőbarát cím',
-        'post_slug_description' => 'A webcím paramétere a bejegyzés keresőbarát címe alapján való kereséséhez.',
-        'posts_title' => 'Bejegyzések',
-        'posts_description' => 'Listázása a lapon.',
-        'posts_pagination_title' => 'Lapozósáv paraméter neve',
-        'posts_pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
-        'posts_per_page_title' => 'Bejegyzések oldalanként',
-        'posts_per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
-        'posts_no_posts_title' => 'Nincsenek bejegyzések',
-        'posts_no_posts_description' => 'A bejegyzés listában megjelenő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
-        'posts_no_posts_found' => 'Nincsenek bejegyzések',
+        'slug_title' => 'Keresőbarát cím',
+        'slug_description' => 'A webcím paramétere a bejegyzés keresőbarát címe alapján való kereséséhez.',
+        'pagination_title' => 'Lapozósáv paraméter neve',
+        'pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
+        'per_page_title' => 'Bejegyzések oldalanként',
+        'per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
+        'no_posts_title' => 'Nincsenek bejegyzések',
+        'no_posts_description' => 'A bejegyzés listában megjelenő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'no_posts_found' => 'Nincsenek bejegyzések',
         'posts_order_title' => 'Bejegyzések sorrendje',
         'posts_order_description' => 'Ez alapján rendeződnek a bejegyzések.',
-        'posts_post_title' => 'Bejegyzés lapja',
-        'posts_post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
-        'posts_featured_title' => 'Bejegyzések megjelenítése',
-        'posts_featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
-        'posts_list_all' => 'Összes',
-        'posts_list_featured' => 'Csak a kiemeltek',
-        'posts_list_notfeatured' => 'Csak a nem kiemeltek'
+        'post_title' => 'Bejegyzés lapja',
+        'post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'featured_title' => 'Bejegyzések megjelenítése',
+        'featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
+        'list_all' => 'Összes',
+        'list_featured' => 'Csak a kiemeltek',
+        'list_notfeatured' => 'Csak a nem kiemeltek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',
@@ -133,5 +141,10 @@ return [
     'sitemap' => [
         'post_list' => 'Bejegyzés lista',
         'post_page' => 'Bejegyzés oldal'
+    ],
+    'messages' => [
+        'unsubscribed' => 'Sikeresen leiratkozott a hírlevelünkről.',
+        'not_subscribed' => 'Már leiratkozott a hírlevelünkről.',
+        'subscribed' => 'Köszönjük, hogy feliratkozott a hírlevelünkre!'
     ]
 ];

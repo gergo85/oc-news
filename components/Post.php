@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use Indikator\News\Models\Posts as NewsPost;
 use Redirect;
+use BackendAuth;
 
 class Post extends ComponentBase
 {
@@ -11,8 +12,8 @@ class Post extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'indikator.news::lang.settings.post_title',
-            'description' => 'indikator.news::lang.settings.post_description'
+            'name'        => 'indikator.news::lang.component.post',
+            'description' => ''
         ];
     }
 
@@ -20,8 +21,8 @@ class Post extends ComponentBase
     {
         return [
             'slug' => [
-                'title'       => 'indikator.news::lang.settings.post_slug',
-                'description' => 'indikator.news::lang.settings.post_slug_description',
+                'title'       => 'indikator.news::lang.settings.slug_title',
+                'description' => 'indikator.news::lang.settings.slug_description',
                 'default'     => '{{ :slug }}',
                 'type'        => 'string'
             ]
@@ -50,6 +51,10 @@ class Post extends ComponentBase
         }
 
         $post = $post->first();
+
+        if (!BackendAuth::check()) {
+            NewsPost::where('slug', $slug)->increment('statistics');
+        }
 
         $meta_description = strip_tags($post->introductory);
         if (strlen($meta_description) > 252) {

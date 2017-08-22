@@ -1,0 +1,13 @@
+<?php
+
+$text = [
+    1 => 'true',
+    2 => 'false'
+];
+
+$class = [
+    1 => 'text-info',
+    2 => ''
+];
+
+echo '<span class="oc-icon-circle '.$class[$record->featured].'">'.Lang::get('backend::lang.list.column_switch_'.$text[$record->featured]).'</span>';
