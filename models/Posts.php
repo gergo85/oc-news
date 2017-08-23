@@ -15,11 +15,11 @@ class Posts extends Model
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
-    protected $table = 'news_posts';
+    protected $table = 'indikator_news_posts';
 
     public $rules = [
         'title'    => 'required',
-        'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:news_posts'],
+        'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts'],
         'status'   => 'required|between:1,3|numeric',
         'featured' => 'required|between:1,2|numeric'
     ];
