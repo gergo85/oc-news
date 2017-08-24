@@ -40,5 +40,22 @@ class NewsletterLog extends Model
         $this->hash = md5(time().rand(1, 100000));
     }
 
+    public function scopeIsQueued($query) {
+        return $query->whereNull('send_at');
+    }
+
+    public function scopeIsSend($query) {
+        return $query->whereNotNull('send_at');
+    }
+
+    public function scopeIsViewed($query) {
+        return $query->whereNotNull('viewed_At');
+    }
+
+    public function scopeIsClicked($query) {
+        return $query->whereNotNull('clicked_at');
+    }
+
+
 
 }

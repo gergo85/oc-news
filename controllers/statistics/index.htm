@@ -1,124 +1,3 @@
-<?php
-
-// Graphs
-
-$thisYear = $lastYear = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
-$now = date('Y');
-
-$news = Indikator\News\Models\Posts::get();
-$view = Indikator\News\Models\Posts::sum('statistics');
-
-foreach ($news as $item) {
-    $year = substr($item->published_at, 0, 4);
-    if ($year == $now) {
-        $thisYear[(int)substr($item->published_at, 5, 2)]++;
-    }
-    else if ($year == $now - 1) {
-        $lastYear[(int)substr($item->published_at, 5, 2)]++;
-        $lastYear[0]++;
-    }
-}
-
-// TOP 20
-
-$amount = Indikator\News\Models\Posts::count();
-if ($amount > 20) {
-    $amount = 20;
-}
-
-$news = Indikator\News\Models\Posts::orderBy('statistics', 'desc')->take($amount)->get();
-$top = '';
-$index = 1;
-
-foreach ($news as $item) {
-    $top .= '
-        <div class="col-md-1 col-sm-1">
-            '.$index.'.
-        </div>
-        <div class="col-md-9 col-sm-9">
-            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
-        </div>
-        <div class="col-md-2 col-sm-2 text-right">
-            '.number_format($item->statistics, 0, '.', ' ').'
-        </div>
-        <div class="clearfix"></div>
-    ';
-
-    if ($index % 5 == 0) {
-        $top .= '<br>';
-    }
-
-    $index++;
-}
-
-// Posts length
-
-$news = Indikator\News\Models\Posts::get();
-$posts = [];
-
-foreach ($news as $item) {
-    $posts[$item->id] = strlen(strip_tags($item->introductory.$item->content));
-}
-
-// Longest posts
-
-arsort($posts);
-$longest = '';
-$index = 1;
-
-foreach ($posts as $id => $length) {
-    $item = Indikator\News\Models\Posts::whereId($id)->first();
-
-    $longest .= '
-        <div class="col-md-1 col-sm-1">
-            '.$index.'.
-        </div>
-        <div class="col-md-9 col-sm-9">
-            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
-        </div>
-        <div class="col-md-2 col-sm-2 text-right">
-            '.number_format($length, 0, '.', ' ').'
-        </div>
-        <div class="clearfix"></div>
-    ';
-
-    if ($index == 10) {
-        break;
-    }
-
-    $index++;
-}
-
-// Shortest posts
-
-asort($posts);
-$shortest = '';
-$index = 1;
-
-foreach ($posts as $id => $length) {
-    $item = Indikator\News\Models\Posts::whereId($id)->first();
-
-    $shortest .= '
-        <div class="col-md-1 col-sm-1">
-            '.$index.'.
-        </div>
-        <div class="col-md-9 col-sm-9">
-            <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
-        </div>
-        <div class="col-md-2 col-sm-2 text-right">
-            '.number_format($length, 0, '.', ' ').'
-        </div>
-        <div class="clearfix"></div>
-    ';
-
-    if ($index == 10) {
-        break;
-    }
-
-    $index++;
-}
-
-?>
 
 <div class="control-breadcrumb">
     <ul>
@@ -136,11 +15,11 @@ foreach ($posts as $id => $length) {
 <div class="scoreboard">
     <div class="row">
         <div class="col-md-6">
-            <strong><?= $now ?></strong>
+            <strong><?= e(trans('indikator.news::lang.stat.news_amount')) ?> <?= $now ?></strong>
             <div id="thisYear" style="height: 220px; opacity: 0;"></div>
             <br>
             <?php if ($lastYear[0] > 0): ?>
-            <strong><?= ($now - 1) ?></strong>
+            <strong><?= e(trans('indikator.news::lang.stat.news_amount')) ?> <?= ($now - 1) ?></strong>
             <div id="lastYear" style="height: 220px; opacity: 0;"></div>
             <br>
             <?php endif ?>
@@ -177,6 +56,20 @@ foreach ($posts as $id => $length) {
             <br>
         </div>
         <?php endif ?>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <strong><?= e(trans('indikator.news::lang.stat.log.events')) ?></strong>
+            <div id="log-this-year"></div>
+        </div>
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <strong><?= e(trans('indikator.news::lang.stat.log.overall')) ?></strong>
+            <div id="log-overall"></div>
+        </div>
     </div>
 </div>
 
@@ -302,46 +195,104 @@ $(document).ready(function() {
 
     if ($('#lastYear').length == 1) {
 
-    new Morris.Line({
-        element: 'lastYear',
-        data: [
-            { year: (year - 1) + '-01', 'all': <?= $lastYear[1] ?> },
-            { year: (year - 1) + '-02', 'all': <?= $lastYear[2] ?> },
-            { year: (year - 1) + '-03', 'all': <?= $lastYear[3] ?> },
-            { year: (year - 1) + '-04', 'all': <?= $lastYear[4] ?> },
-            { year: (year - 1) + '-05', 'all': <?= $lastYear[5] ?> },
-            { year: (year - 1) + '-06', 'all': <?= $lastYear[6] ?> },
-            { year: (year - 1) + '-07', 'all': <?= $lastYear[7] ?> },
-            { year: (year - 1) + '-08', 'all': <?= $lastYear[8] ?> },
-            { year: (year - 1) + '-09', 'all': <?= $lastYear[9] ?> },
-            { year: (year - 1) + '-10', 'all': <?= $lastYear[10] ?> },
-            { year: (year - 1) + '-11', 'all': <?= $lastYear[11] ?> },
-            { year: (year - 1) + '-12', 'all': <?= $lastYear[12] ?> }
-            ],
-        xkey: 'year',
-        ykeys: ['all'],
-        labels: [trans.all],
-        lineColors: ['#31708f'],
-        hideHover: 'auto',
-        xLabelFormat: function(x) {
-            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            return IndexToMonth[x.getMonth()];
-        },
-        dateFormat: function(d) {
-            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
-            return month = IndexToMonth[new Date(d).getMonth()];
-        },
-        resize: true,
-        gridIntegers: true,
-        ymin: 0
-    });
+        new Morris.Line({
+            element: 'lastYear',
+            data: [
+                { year: (year - 1) + '-01', 'all': <?= $lastYear[1] ?> },
+                { year: (year - 1) + '-02', 'all': <?= $lastYear[2] ?> },
+                { year: (year - 1) + '-03', 'all': <?= $lastYear[3] ?> },
+                { year: (year - 1) + '-04', 'all': <?= $lastYear[4] ?> },
+                { year: (year - 1) + '-05', 'all': <?= $lastYear[5] ?> },
+                { year: (year - 1) + '-06', 'all': <?= $lastYear[6] ?> },
+                { year: (year - 1) + '-07', 'all': <?= $lastYear[7] ?> },
+                { year: (year - 1) + '-08', 'all': <?= $lastYear[8] ?> },
+                { year: (year - 1) + '-09', 'all': <?= $lastYear[9] ?> },
+                { year: (year - 1) + '-10', 'all': <?= $lastYear[10] ?> },
+                { year: (year - 1) + '-11', 'all': <?= $lastYear[11] ?> },
+                { year: (year - 1) + '-12', 'all': <?= $lastYear[12] ?> }
+                ],
+            xkey: 'year',
+            ykeys: ['all'],
+            labels: [trans.all],
+            lineColors: ['#31708f'],
+            hideHover: 'auto',
+            xLabelFormat: function(x) {
+                var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+                return IndexToMonth[x.getMonth()];
+            },
+            dateFormat: function(d) {
+                var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+                return month = IndexToMonth[new Date(d).getMonth()];
+            },
+            resize: true,
+            gridIntegers: true,
+            ymin: 0
+        });
 
-    setTimeout(function() {
-        $('#lastYear').fadeTo(1200, 1);
-    }, 300);
+        setTimeout(function() {
+            $('#lastYear').fadeTo(1200, 1);
+        }, 300);
 
     }
 
+    Morris.Line({
+        element: 'log-this-year',
+        data: [
+            <?php
+
+            foreach($logResults as $year => $logYear) {
+
+                foreach($logYear as $month => $logMonth)
+                {
+                    $print = "{ year: '".$year."-".$month."'";
+                    foreach($logMonth as $entry => $value) {
+                        $print.= ", '".$entry."' : ".$value;
+                    }
+                    $print.= "},";
+                    echo $print;
+                }
+            }
+
+            ?>
+        ],
+        xkey: 'year',
+        ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
+        labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
+        pointSize: 2,
+        hideHover: 'auto'
+    });
+
+    Morris.Line({
+        element: 'log-overall',
+        data: [
+            <?php
+
+                $sum = [];
+                foreach($logResultsFields as $field) {
+                    $sum[$field] = 0;
+                }
+
+                foreach($logResults as $year => $logYear) {
+
+                    foreach($logYear as $month => $logMonth)
+                    {
+                        $print = "{ year: '".$year."-".$month."'";
+                        foreach($logMonth as $entry => $value) {
+                            $sum[$entry]+= $value;
+                            $print.= ", '".$entry."' : ".$sum[$entry];
+                        }
+                        $print.= "},";
+                        echo $print;
+                    }
+                }
+            ?>
+        ],
+        xkey: 'year',
+        ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
+        labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
+        pointSize: 2,
+        hideHover: 'auto'
+    });
 });
 
 (function() {

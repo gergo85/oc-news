@@ -2,7 +2,9 @@
 
 
 use Indikator\News\Models\NewsletterLog;
+use Indikator\News\Models\Settings;
 use Jenssegers\Date\Date;
+
 
 class NewsletterLogger
 {
@@ -26,6 +28,7 @@ class NewsletterLogger
     }
 
     static public function sent($id) {
+
         $log = NewsletterLog::findOrFail($id);
         $log->status = "Sent";
         $log->send_at = Date::now();
@@ -33,6 +36,7 @@ class NewsletterLogger
     }
 
     static public function sendingFailed($id) {
+
         $log = NewsletterLog::findOrFail($id);
         $log->status = "Sending Failed";
         $log->send_at = null;
@@ -40,23 +44,30 @@ class NewsletterLogger
     }
 
     static public function viewed($id) {
-        $log = NewsletterLog::find($id);
-        if($log && !$log->viewed_at) {
-            if(!$log->clicked_at) {
-                $log->status = "Viewed";
+        if(Settings::get('email_view_tracking', false)) {
+            $log = NewsletterLog::find($id);
+            if($log && !$log->viewed_at) {
+                if(!$log->clicked_at) {
+                    $log->status = "Viewed";
+                }
+                $log->viewed_at = Date::now();
+                $log->save();
             }
-            $log->viewed_at = Date::now();
-            $log->save();
         }
+
     }
 
     static public function clicked($id) {
-        $log = NewsletterLog::find($id);
-        if($log && !$log->clicked_at) {
-            $log->status = "Clicked";
-            $log->clicked_at = Date::now();
-            $log->save();
+
+        if(Settings::get('click_tracking', true)) {
+            $log = NewsletterLog::find($id);
+            if($log && !$log->clicked_at) {
+                $log->status = "Clicked";
+                $log->clicked_at = Date::now();
+                $log->save();
+            }
         }
+
     }
 
 

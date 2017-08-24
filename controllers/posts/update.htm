@@ -2,13 +2,21 @@
     <ul>
         <li><a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('indikator.news::lang.menu.posts')) ?></a></li>
         <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
+        <li>
+            <span class="text-danger"><strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.viewed')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.clicked')) ?></span>
+        </li>
     </ul>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
 
     <?php Block::put('form-contents') ?>
-
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
         </div>

@@ -50,6 +50,36 @@ class Posts extends Model
         'published_at desc'
     ];
 
+    public $hasMany = [
+        'logs' => ['Indikator\News\Models\NewsletterLog', 'key' => 'news_id'],
+        'logs_queued_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'news_id',
+            'scope' => 'isQueued',
+            'count' => true
+        ],
+        'logs_send_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'news_id',
+            'scope' => 'isSend',
+            'count' => true
+        ],
+        'logs_viewed_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'news_id',
+            'scope' => 'isViewed',
+            'count' => true
+        ],
+        'logs_clicked_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'news_id',
+            'scope' => 'isClicked',
+            'count' => true
+        ]
+    ];
+
+
+
     public function beforeCreate()
     {
         if ($this->statistics == '') {

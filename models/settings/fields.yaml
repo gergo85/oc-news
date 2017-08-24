@@ -1,0 +1,25 @@
+fields:
+    main_section:
+        label: indikator.news::lang.backend_settings.main_section
+        comment: indikator.news::lang.backend_settings.main_section_comment
+        type: section
+
+    click_tracking:
+        span: left
+        type: switch
+        label: indikator.news::lang.backend_settings.click_tracking
+        comment: indikator.news::lang.backend_settings.click_tracking_comment
+        default: true
+
+    email_view_tracking:
+        span: right
+        type: switch
+        label: indikator.news::lang.backend_settings.email_view_tracking
+        comment: indikator.news::lang.backend_settings.email_view_tracking_comment
+        default: false
+
+    email_view_tracking_warning:
+        type: partial
+        span: right
+        path: $/indikator/news/models/settings/_email_view_tracking_warning.htm
+

@@ -68,3 +68,5 @@
 1.8.0:
     - Adding feature of logging newsletters
     - builder_table_create_indikator_news_newsletter_logs.php
+    - rename_news_posts_table_with_prefix.php
+    - rename_news_subscribers_table_with_prefix.php

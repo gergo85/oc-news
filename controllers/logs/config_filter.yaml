@@ -1,0 +1,25 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    status_active:
+        label: indikator.news::lang.form.status_active
+        type: checkbox
+        conditions: status = 1
+
+    status_unsubscribed:
+        label: indikator.news::lang.form.status_unsubscribed
+        type: checkbox
+        conditions: status = 2
+
+    created_date:
+        label: indikator.news::lang.form.created
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+
+    updated_date:
+        label: indikator.news::lang.form.updated
+        type: daterange
+        conditions: updated_at >= ':after' AND updated_at <= ':before'
