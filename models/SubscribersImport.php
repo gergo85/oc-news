@@ -6,7 +6,7 @@ use Exception;
 
 class SubscribersImport extends ImportModel
 {
-    public $table = 'news_subscribers';
+    public $table = 'indikator_news_subscribers';
 
     public $rules = [
         'email' => 'required|email'
