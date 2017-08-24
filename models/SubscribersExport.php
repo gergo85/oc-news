@@ -4,7 +4,7 @@ use Backend\Models\ExportModel;
 
 class SubscribersExport extends ExportModel
 {
-    public $table = 'news_subscribers';
+    public $table = 'indikator_news_subscribers';
 
     public function exportData($columns, $sessionKey = null)
     {

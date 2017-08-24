@@ -6,7 +6,7 @@ class Subscribers extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    protected $table = 'news_subscribers';
+    protected $table = 'indikator_news_subscribers';
 
     public $rules = [
         'email'  => 'required|email',
