@@ -79,6 +79,8 @@ return [
         'view' => 'Gesehen',
         'published' => 'Veröffentlicht am',
         'send' => 'Sende die Nachricht an Abonneten.',
+        'sent' => 'Nachricht an Abonneten versendet',
+        'last_send_at' => 'Zuletzt versendet am',
         'length' => 'Länge',
         // Subscribers
         'name' => 'Name',
@@ -105,7 +107,9 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Deabonnieren',
         'subscribe' => 'Abonnieren',
-        'return' => 'Zurück'
+        'return' => 'Zurück',
+        'newsletter_resend' => 'Newsletter erneut versenden',
+        'newsletter_resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
@@ -113,7 +117,9 @@ return [
         'subscribe' => 'Diese Benutzer erfolgreich abonniert.',
         'unsubscribe' => 'Diese Benutzer wurden erfolgreich abgemeldet.',
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
-        'remove' => 'Einträge erfolgreich gelöscht.'
+        'remove' => 'Einträge erfolgreich gelöscht.',
+        'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
     ],
     'widget' => [
         'posts' => 'News - Nachrichten',

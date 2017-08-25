@@ -11,6 +11,7 @@ use Indikator\News\Models\Posts as Item;
 use Flash;
 use Lang;
 use Indikator\News\Classes\NewsSender;
+use Redirect;
 
 class Posts extends Controller
 {
@@ -35,15 +36,48 @@ class Posts extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'posts');
     }
 
+
+
     public function onTest()
     {
+        $news = $this->getNewsByPathOrFail();
+        $sender = new NewsSender($news);
+        if($sender->sendNewsletter(BackendAuth::getUser(), true)){
+            Flash::success(trans('system::lang.mail_templates.test_success'));
+        } else {
+            Flash::failed(trans('system::lang.mail_templates.test_failed'));
+        }
+    }
+
+    protected function getNewsByPathOrFail()
+    {
         $uri = explode('/', Request::path());
-        $news = Item::whereId($uri[count($uri) - 1])->first();
+        return Item::findOrFail($uri[count($uri) - 1]);
+    }
 
-        $sender = new NewsSender($news, false);
-        $sender->sendNewsletter(BackendAuth::getUser());
+    public function onNewsResend()
+    {
+        $news = $this->getNewsByPathOrFail();
 
-        Flash::success(trans('system::lang.mail_templates.test_success'));
+        $sender = new NewsSender($news);
+        if($sender->resendNewsletter()) {
+            Flash::success(trans('indikator.news::lang.flash.newsletter_resend_success'));
+        } else {
+            Flash::success(trans('indikator.news::lang.flash.newsletter_resend_error'));
+        }
+
+        return Redirect::refresh();
+    }
+
+    public function formAfterSave($news)
+    {
+        if($news->send === true && $news->last_send_at === null){
+            $sender = new NewsSender($news);
+            $sender->sendNewsletter();
+
+            // We want to refresh the page to update the current view
+            Request::offsetSet('redirect', "1");
+        }
     }
 
     public function onActivatePosts()

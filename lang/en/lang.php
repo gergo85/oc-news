@@ -75,6 +75,8 @@
         'view' => 'view',
         'published' => 'Published at',
         'send' => 'Send the e-mail to subscribers.',
+        'sent' => 'Post was sent to subscribers.',
+        'last_send_at' => 'Last send at',
         'length' => 'Length',
         'name' => 'Name',
         'email' => 'E-mail',
@@ -101,6 +103,8 @@
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
         'return' => 'Return',
+        'newsletter_resend' => 'Resend newsletter',
+        'newsletter_resend_confirmation' => 'Are you sure that you want to resend the newsletter?',
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -109,6 +113,8 @@
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
         'remove' => 'Successfully removed those items.',
+        'newsletter_resend_success' => 'Newsletter was successfully resend.',
+        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
     ],
     'widget' => [
         'posts' => 'News - Posts',
