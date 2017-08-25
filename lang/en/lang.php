@@ -77,6 +77,7 @@
         'send' => 'Send the e-mail to subscribers.',
         'sent' => 'Post was sent to subscribers.',
         'last_send_at' => 'Last send at',
+        'last_send' => 'Last send',
         'length' => 'Length',
         'name' => 'Name',
         'email' => 'E-mail',

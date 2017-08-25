@@ -81,6 +81,7 @@ return [
         'send' => 'Sende die Nachricht an Abonneten.',
         'sent' => 'Nachricht an Abonneten versendet',
         'last_send_at' => 'Zuletzt versendet am',
+        'last_send' => 'Zuletzt versendet',
         'length' => 'Länge',
         // Subscribers
         'name' => 'Name',

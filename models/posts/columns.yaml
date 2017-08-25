@@ -46,6 +46,11 @@ columns:
         type: partial
         path: ~/plugins/indikator/news/models/posts/_status.htm
 
+    last_send_at:
+        label: indikator.news::lang.form.last_send
+        searchable: true
+        type: timesince
+
     published_at:
         label: indikator.news::lang.form.published
         searchable: true
