@@ -70,3 +70,6 @@
     - builder_table_create_indikator_news_newsletter_logs.php
     - rename_news_posts_table_with_prefix.php
     - rename_news_subscribers_table_with_prefix.php
+1.8.1:
+    - Reworked sending newsletter and resend feature
+    - update_indikator_news_posts_last_send_at_and_send.php

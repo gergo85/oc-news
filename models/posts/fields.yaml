@@ -41,11 +41,6 @@ secondaryTabs:
             type: datepicker
             mode: datetime
 
-        send:
-            label: indikator.news::lang.form.send
-            type: switch
-            default: false
-
         status:
             label: indikator.news::lang.form.status
             required: true
@@ -54,7 +49,7 @@ secondaryTabs:
                 1: indikator.news::lang.form.status_published
                 2: indikator.news::lang.form.status_hide
                 3: indikator.news::lang.form.status_draft
-            default: 1
+            default: 3
             span: auto
 
         featured:
@@ -66,3 +61,15 @@ secondaryTabs:
                 2: indikator.news::lang.form.no
             default: 2
             span: auto
+
+        send:
+            label: indikator.news::lang.form.send
+            type: switch
+            default: false
+
+        last_send_at:
+            label: indikator.news::lang.form.last_send_at
+            type: datepicker
+            readOnly: true
+            mode: datetime
+            disabled: disabeld

@@ -48,8 +48,17 @@
                     type="button"
                     data-request="onTest"
                     data-request-confirm="<?= e(trans('system::lang.mail_templates.test_confirm', [ 'email' => e(BackendAuth::getUser()->email)])) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
                     class="btn btn-info">
                     <?= e(trans('system::lang.mail_templates.test_send')) ?>
+                </button>
+                <button
+                    type="button"
+                    data-request="onNewsResend"
+                    data-request-confirm="<?= e(trans('indikator.news::lang.button.newsletter_resend_confirmation')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                    class="btn btn-info<?= $formModel->last_send_at === null ? ' disabled' : '' ?>">
+                    <?= e(trans('indikator.news::lang.button.newsletter_resend')) ?>
                 </button>
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">

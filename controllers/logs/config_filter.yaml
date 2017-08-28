@@ -4,22 +4,54 @@
 
 scopes:
 
-    status_active:
-        label: indikator.news::lang.form.status_active
-        type: checkbox
-        conditions: status = 1
+    news:
+        label: indikator.news::lang.form.news
+        modelClass: Indikator\News\Models\Posts
+        conditions: news_id in (:filtered)
+        nameFrom: title
 
-    status_unsubscribed:
-        label: indikator.news::lang.form.status_unsubscribed
-        type: checkbox
-        conditions: status = 2
+    subscriber:
+        label: indikator.news::lang.form.subscriber_email
+        modelClass: Indikator\News\Models\Subscribers
+        conditions: subscriber_id in (:filtered)
+        nameFrom: email
 
-    created_date:
-        label: indikator.news::lang.form.created
+    queued_at:
+        label: indikator.news::lang.form.queued_at
         type: daterange
-        conditions: created_at >= ':after' AND created_at <= ':before'
+        conditions: queued_at >= ':after' AND queued_at <= ':before'
 
-    updated_date:
-        label: indikator.news::lang.form.updated
+    send_at:
+        label: indikator.news::lang.form.send_at
         type: daterange
-        conditions: updated_at >= ':after' AND updated_at <= ':before'
+        conditions: send_at >= ':after' AND send_at <= ':before'
+
+    viewed_at:
+        label: indikator.news::lang.form.viewed_at
+        type: daterange
+        conditions: viewed_at >= ':after' AND viewed_at <= ':before'
+
+    clicked_at:
+        label: indikator.news::lang.form.clicked_at
+        type: daterange
+        conditions: clicked_at >= ':after' AND clicked_at <= ':before'
+
+    status_queued:
+        label: indikator.news::lang.stat.queued
+        type: checkbox
+        conditions: status = 'Queued'
+
+    status_sent:
+        label: indikator.news::lang.stat.sent
+        type: checkbox
+        conditions: status = 'Sent'
+
+    status_viewed:
+        label: indikator.news::lang.stat.viewed
+        type: checkbox
+        conditions: status = 'Viewed'
+
+    status_clicked:
+        label: indikator.news::lang.stat.clicked
+        type: checkbox
+        conditions: status = 'Clicked'
