@@ -1,0 +1,25 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: indikator.news::lang.menu.logs
+list: ~/plugins/indikator/news/models/newsletterlog/columns.yaml
+
+modelClass: Indikator\News\Models\NewsletterLog
+#recordUrl: indikator/news/logs/update/:id
+noRecordsMessage: backend::lang.list.no_records
+
+recordsPerPage: 50
+showCheckboxes: true
+showSetup: true
+
+defaultSort:
+    column: id
+    direction: desc
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt
+
+# filter: config_filter.yaml

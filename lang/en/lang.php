@@ -1,10 +1,22 @@
-<?php
-
-return [
+<?php return [
     'plugin' => [
         'name' => 'News and Newsletter',
         'description' => 'Simple news and newsletter plugin.',
-        'author' => 'Gergő Szabó'
+        'author' => 'Gergő Szabó',
+    ],
+    'backend_settings' => [
+        'description' => 'Control settings',
+        'main_section' => 'Settngs about sending and handling newsletters',
+        'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
+        'click_tracking' => 'Track clicks',
+        'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
+        'email_view_tracking' => 'Track newsletter views',
+        'email_view_tracking_comment' => 'Tracks when a person looks at the newsletter.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Be careful about using this feature',
+            'subheading' => 'It is not allowed in every country!',
+            'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.',
+        ],
     ],
     'menu' => [
         'news' => 'News',
@@ -12,15 +24,16 @@ return [
         'subscribers' => 'Subscribers',
         'statistics' => 'Statistics',
         'import' => 'Import',
-        'export' => 'Export'
+        'export' => 'Export',
+        'logs' => 'Logs',
     ],
     'title' => [
         'posts' => 'post',
-        'subscribers' => 'subscriber'
+        'subscribers' => 'subscriber',
     ],
     'new' => [
         'posts' => 'New post',
-        'subscribers' => 'New subscriber'
+        'subscribers' => 'New subscriber',
     ],
     'stat' => [
         'posts' => 'Post|Posts',
@@ -29,13 +42,21 @@ return [
         'loss' => 'Loss',
         'top' => 'TOP',
         'longest' => 'Longest',
-        'shortest' => 'Shortest'
+        'shortest' => 'Shortest',
+        'queued' => 'In queue',
+        'send' => 'Send',
+        'sent' => 'Sent',
+        'viewed' => 'Viewed',
+        'clicked' => 'Clicked',
+        'news_amount' => 'Newsletter amount',
+        'log' => [
+            'events' => 'Log - Events',
+            'overall' => 'Log - Overall',
+        ],
     ],
     'form' => [
-        // General
         'created' => 'Created at',
         'updated' => 'Updated at',
-        // Posts
         'id' => 'ID',
         'title' => 'Title',
         'slug' => 'Slug',
@@ -55,13 +76,20 @@ return [
         'published' => 'Published at',
         'send' => 'Send the e-mail to subscribers.',
         'length' => 'Length',
-        // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
         'common' => 'Common',
         'locale' => 'Locale',
         'lang' => 'en',
-        'mail' => 'mail'
+        'mail' => 'mail',
+        'news' => 'Post',
+        'subscriber_name' => 'Subscriber name',
+        'subscriber_email' => 'Subscriber email',
+        'queued_at' => 'In queue',
+        'send_at' => 'Sent',
+        'viewed_at' => 'Viewed',
+        'clicked_at' => 'Clicked',
+        'logs_count' => 'Logsentries',
     ],
     'button' => [
         'activate' => 'Activate',
@@ -72,7 +100,7 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
-        'return' => 'Return'
+        'return' => 'Return',
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -80,7 +108,7 @@ return [
         'subscribe' => 'Successfully subscribed those users.',
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
-        'remove' => 'Successfully removed those items.'
+        'remove' => 'Successfully removed those items.',
     ],
     'widget' => [
         'posts' => 'News - Posts',
@@ -94,19 +122,21 @@ return [
         'show_piece' => 'Number of posts',
         'show_date' => 'Show date',
         'show_unsub' => 'Show unsubscribed',
-        'total' => 'Total'
+        'total' => 'Total',
     ],
     'component' => [
         'posts' => 'Display posts',
         'post' => 'Post content',
         'subscribe' => 'Subscriber form',
-        'unsubscribe' => 'Unsubscribe form'
+        'unsubscribe' => 'Unsubscribe form',
     ],
     'permission' => [
         'posts' => 'Manage posts',
         'subscribers' => 'Manage subscribers',
         'statistics' => 'View statistics',
-        'import_export' => 'Import and Export'
+        'import_export' => 'Import and Export',
+        'settings' => 'Change Settings',
+        'logs' => 'Detailed views for logs',
     ],
     'settings' => [
         'slug_title' => 'Post slug',
@@ -126,7 +156,7 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'All',
         'list_featured' => 'Only Featured',
-        'list_notfeatured' => 'Not featured'
+        'list_notfeatured' => 'Not featured',
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
@@ -136,15 +166,15 @@ return [
         'updated_at_asc' => 'Updated (ascending)',
         'updated_at_desc' => 'Updated (descending)',
         'published_at_asc' => 'Published (ascending)',
-        'published_at_desc' => 'Published (descending)'
+        'published_at_desc' => 'Published (descending)',
     ],
     'sitemap' => [
         'post_list' => 'Post list',
-        'post_page' => 'Post page'
+        'post_page' => 'Post page',
     ],
     'messages' => [
         'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
         'not_subscribed' => 'Already subscribed to our newsletter.',
-        'subscribed' => 'Thank you for your subscription to our newsletter!'
-    ]
+        'subscribed' => 'Thank you for your subscription to our newsletter!',
+    ],
 ];

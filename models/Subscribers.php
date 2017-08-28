@@ -6,11 +6,39 @@ class Subscribers extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    protected $table = 'news_subscribers';
+    protected $table = 'indikator_news_subscribers';
 
     public $rules = [
         'email'  => 'required|email',
         'status' => 'required|between:1,2|numeric'
+    ];
+
+    public $hasMany = [
+        'logs' => ['Indikator\News\Models\NewsletterLog', 'key' => 'subscriber_id'],
+        'logs_queued_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'subscriber_id',
+            'scope' => 'isQueued',
+            'count' => true
+        ],
+        'logs_send_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'subscriber_id',
+            'scope' => 'isSend',
+            'count' => true
+        ],
+        'logs_viewed_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'subscriber_id',
+            'scope' => 'isViewed',
+            'count' => true
+        ],
+        'logs_clicked_count' => [
+            'Indikator\News\Models\NewsletterLog',
+            'key' => 'subscriber_id',
+            'scope' => 'isClicked',
+            'count' => true
+        ]
     ];
 
     public function beforeCreate()

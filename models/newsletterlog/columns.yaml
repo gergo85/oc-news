@@ -1,0 +1,59 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: indikator.news::lang.form.id
+        invisible: true
+
+    news:
+        label: indikator.news::lang.form.news
+        searchable: true
+        relation: news
+        select: title
+
+    subscriber_name:
+        label: indikator.news::lang.form.subscriber_name
+        searchable: true
+        relation: subscriber
+        select: name
+
+    subscriber_email:
+        label: indikator.news::lang.form.subscriber_email
+        searchable: true
+        relation: subscriber
+        select: email
+
+    queued_at:
+        label: indikator.news::lang.form.queued_at
+        searchable: true
+        type: timesince
+
+    send_at:
+        label: indikator.news::lang.form.send_at
+        searchable: true
+        type: timesince
+
+    viewed_at:
+        label: indikator.news::lang.form.viewed_at
+        searchable: true
+        type: timesince
+
+    clicked_at:
+        label: indikator.news::lang.form.clicked_at
+        searchable: true
+        type: timesince
+
+    status:
+        label: indikator.news::lang.form.status
+        searchable: true
+        type: partial
+        path: ~/plugins/indikator/news/models/newsletterlog/_status.htm
+
+    job_id:
+        label: indikator.news::lang.form.job
+        searchable: true
+        invisible: true
+

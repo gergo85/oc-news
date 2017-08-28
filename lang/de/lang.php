@@ -4,7 +4,21 @@ return [
     'plugin' => [
         'name' => 'News und Newsletters',
         'description' => 'Einfaches News und Newsletter plugin.',
-        'author' => 'Gergő Szabó'
+        'author' => 'Gergő Szabó',
+    ],
+    'backend_settings' => [
+        'description' => 'Einstellungen verwalten',
+        'main_section' => 'Einstellung über das versenden von Newslettern',
+        'main_section_comment' => 'Es können Einstellungen über das Tracking der Abonnenten eingestellt werden',
+        'click_tracking' => 'Klicken verfolgen',
+        'click_tracking_comment' =>  'Trackt wenn eine Person auf einen Link in der Email klickt.',
+        'email_view_tracking' => 'Emailbetrachtung verfolgen',
+        'email_view_tracking_comment' => 'Trackt wenn eine Person eine Email öffnet.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
+            'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
+            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.',
+        ],
     ],
     'menu' => [
         'news' => 'News',
@@ -12,7 +26,8 @@ return [
         'subscribers' => 'Abonnenten',
         'statistics' => 'Statistik',
         'import' => 'Import',
-        'export' => 'Export'
+        'export' => 'Export',
+        'logs' => 'Logs'
     ],
     'title' => [
         'posts' => 'Nachrichten',
@@ -27,9 +42,19 @@ return [
         'view' => 'Gesehen',
         'mail' => 'Gesendet',
         'loss' => 'Verlust',
-        'top' => 'TOP',
-        'longest' => 'Längste',
-        'shortest' => 'Kürzeste'
+        'top' => 'Am besten besucht',
+        'longest' => 'Längste Einträge',
+        'shortest' => 'Kürzeste Eingträge',
+        'queued' => 'In Warteschlange',
+        'send' => 'Gesendet',
+        'sent' => 'Gesendet',
+        'viewed' => 'Betrachtet',
+        'clicked' => 'Geklickt',
+        'news_amount' => 'Newsletter Anzahl',
+        'log' => [
+            'events' => 'Log - Ereignisse',
+            'overall' => 'Log - Gesamt'
+        ]
     ],
     'form' => [
         // General
@@ -61,7 +86,15 @@ return [
         'common' => 'Common',
         'locale' => 'Sprache',
         'lang' => 'de',
-        'mail' => 'Mail'
+        'mail' => 'Mail',
+        'news' => 'Nachricht',
+        'subscriber_name' => 'Abonnent Name',
+        'subscriber_email' => 'Abonnent Email',
+        'queued_at' => 'In Warteschlange',
+        'send_at' => 'Gesendet',
+        'viewed_at' => 'Betrachtet',
+        'clicked_at' => 'Geklickt',
+        'logs_count' => 'Logeinträge'
     ],
     'button' => [
         'activate' => 'Aktivieren',
@@ -106,7 +139,9 @@ return [
         'posts' => 'Nachrichten verwalten',
         'subscribers' => 'Abonnenten verwalten',
         'statistics' => 'Zeige Statistik',
-        'import_export' => 'Import und Export'
+        'import_export' => 'Import und Export',
+        'settings' => 'Einstellungen verwalten',
+        'logs' => 'Detailierte Logeinsicht',
     ],
     'settings' => [
         'slug_title' => 'Nachrichten slug',

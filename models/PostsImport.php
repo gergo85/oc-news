@@ -6,11 +6,11 @@ use Exception;
 
 class PostsImport extends ImportModel
 {
-    public $table = 'news_posts';
+    public $table = 'indikator_news_posts';
 
     public $rules = [
         'title' => 'required',
-        'slug'  => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:news_posts']
+        'slug'  => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts']
     ];
 
     public function importData($results, $sessionKey = null)

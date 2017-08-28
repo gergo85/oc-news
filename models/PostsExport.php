@@ -4,7 +4,7 @@ use Backend\Models\ExportModel;
 
 class PostsExport extends ExportModel
 {
-    public $table = 'news_posts';
+    public $table = 'indikator_news_posts';
 
     public function exportData($columns, $sessionKey = null)
     {

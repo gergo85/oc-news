@@ -2,6 +2,7 @@
 
 use App;
 use File;
+use Indikator\News\Models\NewsletterLog;
 use Mail;
 use System\Classes\PluginManager;
 use Illuminate\Support\Collection;
@@ -135,12 +136,21 @@ class NewsSender
         }
 
         if($this->queued) {
-            Queue::push('\Indikator\News\Classes\SendNews', [
+
+            $logEntry = NewsletterLogger::queued($this->news->id, $receiver->id);
+
+            $qId = Queue::push('\Indikator\News\Classes\SendNews', [
                 'template' => $template,
                 'params' => $params,
                 'receiver' => $receiver,
-                'subject' => $this->news->title
+                'subject' => $this->news->title,
+                'log_id' => $logEntry->id
             ], 'newsletter');
+
+            if($qId) {
+                NewsletterLog::where('id',$logEntry->id)->update(['job_id' => $qId]);
+            }
+
         } else {
             Mail::send($template, $params, function($message) use ($receiver)
             {
