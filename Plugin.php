@@ -115,6 +115,11 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerSchedule($schedule)
+    {
+        $schedule->command('queue:work --daemon --queue=newsletter')->everyMinute()->withoutOverlapping();
+    }
+
     public function boot()
     {
         Event::listen('pages.menuitem.listTypes', function()

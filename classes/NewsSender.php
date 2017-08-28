@@ -6,6 +6,7 @@ use Mail;
 use System\Classes\PluginManager;
 use Illuminate\Support\Collection;
 use Indikator\News\Models\Posts;
+use Queue;
 
 class NewsSender
 {
@@ -30,11 +31,17 @@ class NewsSender
     protected $templateNamespace = 'indikator.news::mail.email_';
 
     /**
+     * @var bool if the sending should be queued.
+     */
+    protected $queued;
+
+    /**
      * NewsSender constructor
      *
      * @param $news Posts should be send.
+     * @param $queued boolean if the email sending should be queued
      */
-    public function __construct($news)
+    public function __construct($news, $queued = true)
     {
         $this->news = $news;
 
@@ -42,6 +49,7 @@ class NewsSender
         if ($pluginManager && !$pluginManager->disabled) {
             $this->locale = true;
         }
+        $this->queued = $queued;
     }
 
     /**
@@ -126,10 +134,19 @@ class NewsSender
             return;
         }
 
-        // Send email
-        Mail::send($template, $params, function($message) use ($receiver)
-        {
-            $message->to($receiver->email, $receiver->name)->subject($this->news->title);
-        });
+        if($this->queued) {
+            Queue::push('\Indikator\News\Classes\SendNews', [
+                'template' => $template,
+                'params' => $params,
+                'receiver' => $receiver,
+                'subject' => $this->news->title
+            ], 'newsletter');
+        } else {
+            Mail::send($template, $params, function($message) use ($receiver)
+            {
+                $message->to($receiver->email, $receiver->name)->subject($this->news->title);
+            });
+        }
+
     }
 }

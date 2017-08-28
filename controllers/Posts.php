@@ -40,7 +40,7 @@ class Posts extends Controller
         $uri = explode('/', Request::path());
         $news = Item::whereId($uri[count($uri) - 1])->first();
 
-        $sender = new NewsSender($news);
+        $sender = new NewsSender($news, false);
         $sender->sendNewsletter(BackendAuth::getUser());
 
         Flash::success(trans('system::lang.mail_templates.test_success'));
