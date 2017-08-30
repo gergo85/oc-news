@@ -6,13 +6,28 @@ return [
         'description' => 'Egyszerű kezelése a hírek közzétételének.',
         'author' => 'Szabó Gergő'
     ],
+    'backend_settings' => [
+        'description' => 'A hírlevelek küldésére vonatkozó beállítások.',
+        'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
+        'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
+        'click_tracking' => 'Kattintás követése',
+        'click_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó egy levélben lévő hivatkozásra kattint.',
+        'email_view_tracking' => 'Megtekintés követése',
+        'email_view_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó megtekinti a levelet.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Legyen óvatos ennek a használatával',
+            'subheading' => 'Nem elfogadott minden országban!',
+            'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
+        ]
+    ],
     'menu' => [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
         'subscribers' => 'Feliratkozók',
         'statistics' => 'Statisztika',
         'import' => 'Importálás',
-        'export' => 'Exportálás'
+        'export' => 'Exportálás',
+        'logs' => 'Naplózás'
     ],
     'title' => [
         'posts' => 'bejegyzés',
@@ -29,7 +44,17 @@ return [
         'loss' => 'Veszteség',
         'top' => 'TOP',
         'longest' => 'Leghosszabb',
-        'shortest' => 'Legrövidebb'
+        'shortest' => 'Legrövidebb',
+        'queued' => 'Folyamatban',
+        'send' => 'Elküldve',
+        'sent' => 'Elküldve',
+        'viewed' => 'Megtekinve',
+        'click' => 'Kattintás',
+        'clicked' => 'Kattintva',
+        'log' => [
+            'events' => 'Események',
+            'overall' => 'Összegzés'
+        ]
     ],
     'form' => [
         // Általános
@@ -53,7 +78,10 @@ return [
         'no' => 'Nem',
         'view' => 'megtekintés',
         'published' => 'Közzétéve',
-        'send' => 'Levél küldése a feliratkozottak számára.',
+        'send' => 'Hírlevél küldése a feliratkozott emberek számára.',
+        'sent' => 'A feliratkozók már kaptak hírlevelet.',
+        'last_send_at' => 'Utoljára elküldve',
+        'last_send' => 'Levélküldés',
         'length' => 'Hossz',
         // Feliratkozók
         'name' => 'Név',
@@ -61,7 +89,16 @@ return [
         'common' => 'Megjegyzés',
         'locale' => 'Nyelv',
         'lang' => 'hu',
-        'mail' => 'levél'
+        'mail' => 'levél',
+        // Naplózás
+        'news' => 'Bejegyzés',
+        'subscriber_name' => 'Feliratkozó neve',
+        'subscriber_email' => 'Feliratkozó címe',
+        'queued_at' => 'Folyamatban',
+        'send_at' => 'Elküldve',
+        'viewed_at' => 'Megnézve',
+        'clicked_at' => 'Kattintva',
+        'logs_count' => 'Bejegyzés'
     ],
     'button' => [
         'activate' => 'Közzétesz',
@@ -72,7 +109,9 @@ return [
         'export' => 'Exportálás',
         'unsubscribe' => 'Leiratkozás',
         'subscribe' => 'Feliratkozás',
-        'return' => 'Vissza'
+        'return' => 'Vissza',
+        'newsletter_resend' => 'Hírlevél újraküldése',
+        'newsletter_resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?'
     ],
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
@@ -80,7 +119,9 @@ return [
         'subscribe' => 'A felhasználók feliratkozása megtörtént.',
         'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
-        'remove' => 'Az eltávolítás sikeresen megtörtént.'
+        'remove' => 'Az eltávolítás sikeresen megtörtént.',
+        'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
+        'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
     ],
     'widget' => [
         'posts' => 'Hírek - Gyors statisztika',
@@ -106,7 +147,9 @@ return [
         'posts' => 'Bejegyzések kezelése',
         'subscribers' => 'Feliratkozók kezelése',
         'statistics' => 'Statisztika megtekintése',
-        'import_export' => 'Importálás és exportálás'
+        'import_export' => 'Importálás és exportálás',
+        'settings' => 'Beállítások módosítása',
+        'logs' => 'Naplózás megtekintése'
     ],
     'settings' => [
         'slug_title' => 'Keresőbarát cím',

@@ -17,8 +17,8 @@ return [
         'email_view_tracking_warning' => [
             'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
             'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
-            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.',
-        ],
+            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
+        ]
     ],
     'menu' => [
         'news' => 'News',
@@ -49,11 +49,11 @@ return [
         'send' => 'Gesendet',
         'sent' => 'Gesendet',
         'viewed' => 'Betrachtet',
+        'click' => 'Klicks',
         'clicked' => 'Geklickt',
-        'news_amount' => 'Newsletter Anzahl',
         'log' => [
-            'events' => 'Log - Ereignisse',
-            'overall' => 'Log - Gesamt'
+            'events' => 'Ereignisse',
+            'overall' => 'Gesamt'
         ]
     ],
     'form' => [
@@ -110,7 +110,7 @@ return [
         'subscribe' => 'Abonnieren',
         'return' => 'Zurück',
         'newsletter_resend' => 'Newsletter erneut versenden',
-        'newsletter_resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
+        'newsletter_resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?'
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',

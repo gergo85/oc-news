@@ -6,7 +6,6 @@ columns:
 
     id:
         label: indikator.news::lang.form.id
-        invisible: true
 
     news:
         label: indikator.news::lang.form.news
@@ -28,6 +27,7 @@ columns:
 
     queued_at:
         label: indikator.news::lang.form.queued_at
+        invisible: true
         searchable: true
         type: timesince
 
@@ -38,11 +38,13 @@ columns:
 
     viewed_at:
         label: indikator.news::lang.form.viewed_at
+        invisible: true
         searchable: true
         type: timesince
 
     clicked_at:
         label: indikator.news::lang.form.clicked_at
+        invisible: true
         searchable: true
         type: timesince
 
@@ -51,9 +53,3 @@ columns:
         searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/newsletterlog/_status.htm
-
-    job_id:
-        label: indikator.news::lang.form.job
-        searchable: true
-        invisible: true
-

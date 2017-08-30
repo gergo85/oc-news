@@ -1,4 +1,6 @@
-<?php return [
+<?php
+
+return [
     'plugin' => [
         'name' => 'News and Newsletter',
         'description' => 'Simple news and newsletter plugin.',
@@ -6,7 +8,7 @@
     ],
     'backend_settings' => [
         'description' => 'Control settings',
-        'main_section' => 'Settngs about sending and handling newsletters',
+        'main_section' => 'Settings about sending and handling newsletters',
         'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
         'click_tracking' => 'Track clicks',
         'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
@@ -15,8 +17,8 @@
         'email_view_tracking_warning' => [
             'heading' => 'Be careful about using this feature',
             'subheading' => 'It is not allowed in every country!',
-            'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.',
-        ],
+            'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
+        ]
     ],
     'menu' => [
         'news' => 'News',
@@ -25,7 +27,7 @@
         'statistics' => 'Statistics',
         'import' => 'Import',
         'export' => 'Export',
-        'logs' => 'Logs',
+        'logs' => 'Logs'
     ],
     'title' => [
         'posts' => 'post',
@@ -47,12 +49,12 @@
         'send' => 'Send',
         'sent' => 'Sent',
         'viewed' => 'Viewed',
+        'click' => 'Clicks',
         'clicked' => 'Clicked',
-        'news_amount' => 'Newsletter amount',
         'log' => [
-            'events' => 'Log - Events',
-            'overall' => 'Log - Overall',
-        ],
+            'events' => 'Events',
+            'overall' => 'Overall'
+        ]
     ],
     'form' => [
         'created' => 'Created at',
@@ -92,7 +94,7 @@
         'send_at' => 'Sent',
         'viewed_at' => 'Viewed',
         'clicked_at' => 'Clicked',
-        'logs_count' => 'Logsentries',
+        'logs_count' => 'Logs entries',
     ],
     'button' => [
         'activate' => 'Activate',
@@ -105,7 +107,7 @@
         'subscribe' => 'Subscription',
         'return' => 'Return',
         'newsletter_resend' => 'Resend newsletter',
-        'newsletter_resend_confirmation' => 'Are you sure that you want to resend the newsletter?',
+        'newsletter_resend_confirmation' => 'Are you sure that you want to resend the newsletter?'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -115,7 +117,7 @@
         'delete' => 'Do you want to delete this items?',
         'remove' => 'Successfully removed those items.',
         'newsletter_resend_success' => 'Newsletter was successfully resend.',
-        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.'
     ],
     'widget' => [
         'posts' => 'News - Posts',
@@ -143,7 +145,7 @@
         'statistics' => 'View statistics',
         'import_export' => 'Import and Export',
         'settings' => 'Change Settings',
-        'logs' => 'Detailed views for logs',
+        'logs' => 'Detailed views for logs'
     ],
     'settings' => [
         'slug_title' => 'Post slug',

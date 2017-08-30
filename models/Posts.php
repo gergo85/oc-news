@@ -40,7 +40,7 @@ class Posts extends Model
 
     protected $dates = [
         'published_at',
-        'send_last_At'
+        'last_send_at'
     ];
 
     public static $allowedSorting = [
@@ -55,28 +55,31 @@ class Posts extends Model
     ];
 
     public $hasMany = [
-        'logs' => ['Indikator\News\Models\NewsletterLog', 'key' => 'news_id'],
+        'logs' => [
+            'Indikator\News\Models\Logs',
+            'key' => 'news_id'
+        ],
         'logs_queued_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'news_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
             'scope' => 'isQueued',
             'count' => true
         ],
         'logs_send_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'news_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
             'scope' => 'isSend',
             'count' => true
         ],
         'logs_viewed_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'news_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
             'scope' => 'isViewed',
             'count' => true
         ],
         'logs_clicked_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'news_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
             'scope' => 'isClicked',
             'count' => true
         ]
@@ -84,17 +87,16 @@ class Posts extends Model
 
     public $preview = null;
 
-
     /**
      * Keep the original send and last_send_at attribute because they are read only
      */
-    public function beforeUpdate(){
-
-        if($this->getOriginal('send')) {
+    public function beforeUpdate()
+    {
+        if ($this->getOriginal('send')) {
             $this->send = true;
         }
 
-        if(($lastSend = $this->getOriginal('last_send_at')) != null) {
+        if (($lastSend = $this->getOriginal('last_send_at')) != null) {
             $this->last_send_at = $lastSend;
         }
     }
@@ -259,10 +261,8 @@ class Posts extends Model
         if ($fields->send->value === true) {
             $fields->send->disabled = true;
             $fields->send->readonly = true;
-            $fields->send->type = "checkbox";
-            $fields->send->label = "indikator.news::lang.form.sent";
+            $fields->send->type = 'checkbox';
+            $fields->send->label = 'indikator.news::lang.form.sent';
         }
     }
-
-
 }

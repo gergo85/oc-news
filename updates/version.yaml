@@ -66,10 +66,9 @@
 1.7.7: Added Featured column and minor bugfix.
 1.7.8: Improved the list of Subscribers.
 1.8.0:
-    - Adding feature of logging newsletters
-    - builder_table_create_indikator_news_newsletter_logs.php
-    - rename_news_posts_table_with_prefix.php
-    - rename_news_subscribers_table_with_prefix.php
+    - Adding feature of logging newsletters.
+    - create_logs_table.php
+    - add_prefix_to_tables.php
 1.8.1:
-    - Reworked sending newsletter and resend feature
-    - update_indikator_news_posts_last_send_at_and_send.php
+    - Reworked sending newsletter and resend feature.
+    - update_send_feature.php

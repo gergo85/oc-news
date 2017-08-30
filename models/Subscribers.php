@@ -14,28 +14,31 @@ class Subscribers extends Model
     ];
 
     public $hasMany = [
-        'logs' => ['Indikator\News\Models\NewsletterLog', 'key' => 'subscriber_id'],
+        'logs' => [
+            'Indikator\News\Models\Logs',
+            'key' => 'subscriber_id'
+        ],
         'logs_queued_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'subscriber_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'subscriber_id',
             'scope' => 'isQueued',
             'count' => true
         ],
         'logs_send_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'subscriber_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'subscriber_id',
             'scope' => 'isSend',
             'count' => true
         ],
         'logs_viewed_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'subscriber_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'subscriber_id',
             'scope' => 'isViewed',
             'count' => true
         ],
         'logs_clicked_count' => [
-            'Indikator\News\Models\NewsletterLog',
-            'key' => 'subscriber_id',
+            'Indikator\News\Models\Logs',
+            'key'   => 'subscriber_id',
             'scope' => 'isClicked',
             'count' => true
         ]

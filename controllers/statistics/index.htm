@@ -14,12 +14,18 @@
 
 <div class="scoreboard">
     <div class="row">
+        <div class="col-md-12">
+            <div class="field-section">
+                <h4><?= e(trans('indikator.news::lang.menu.posts')) ?></h4>
+            </div>
+            <br>
+        </div>
         <div class="col-md-6">
-            <strong><?= e(trans('indikator.news::lang.stat.news_amount')) ?> <?= $now ?></strong>
+            <strong><?= $now ?></strong>
             <div id="thisYear" style="height: 220px; opacity: 0;"></div>
             <br>
             <?php if ($lastYear[0] > 0): ?>
-            <strong><?= e(trans('indikator.news::lang.stat.news_amount')) ?> <?= ($now - 1) ?></strong>
+            <strong><?= ($now - 1) ?></strong>
             <div id="lastYear" style="height: 220px; opacity: 0;"></div>
             <br>
             <?php endif ?>
@@ -59,14 +65,17 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+            <br>
+            <div class="field-section">
+                <h4><?= e(trans('indikator.news::lang.menu.logs')) ?></h4>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-6">
             <strong><?= e(trans('indikator.news::lang.stat.log.events')) ?></strong>
             <div id="log-this-year"></div>
         </div>
-        <br>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <strong><?= e(trans('indikator.news::lang.stat.log.overall')) ?></strong>
             <div id="log-overall"></div>
         </div>
@@ -100,6 +109,24 @@ $(document).ready(function() {
             oct: 'október',
             nov: 'november',
             dec: 'december'
+        };
+    }
+
+    else if (lang == 'de') {
+        var trans = {
+            all: 'Alle',
+            jan: 'Januar',
+            feb: 'Februar',
+            mar: 'März',
+            apr: 'April',
+            may: 'Mai',
+            jun: 'Juni',
+            jul: 'Juli',
+            aug: 'August',
+            sep: 'September',
+            oct: 'Oktober',
+            nov: 'November',
+            dec: 'Dezember'
         };
     }
 
@@ -194,7 +221,6 @@ $(document).ready(function() {
     $('#thisYear').fadeTo(1200, 1);
 
     if ($('#lastYear').length == 1) {
-
         new Morris.Line({
             element: 'lastYear',
             data: [
@@ -232,79 +258,86 @@ $(document).ready(function() {
         setTimeout(function() {
             $('#lastYear').fadeTo(1200, 1);
         }, 300);
-
     }
 
     Morris.Line({
         element: 'log-this-year',
         data: [
             <?php
-
-            foreach($logResults as $year => $logYear) {
-
-                foreach($logYear as $month => $logMonth)
-                {
+            foreach ($logResults as $year => $logYear) {
+                foreach ($logYear as $month => $logMonth) {
                     $print = "{ year: '".$year."-".$month."'";
-                    foreach($logMonth as $entry => $value) {
-                        $print.= ", '".$entry."' : ".$value;
+                    foreach ($logMonth as $entry => $value) {
+                        $print .= ", '".$entry."' : ".$value;
                     }
-                    $print.= "},";
-                    echo $print;
+                    echo $print."},";
                 }
             }
-
             ?>
         ],
         xkey: 'year',
         ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
         labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
         pointSize: 2,
-        hideHover: 'auto'
+        hideHover: 'auto',
+        xLabelFormat: function(x) {
+            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            return IndexToMonth[x.getMonth()];
+        },
+        dateFormat: function(d) {
+            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+            return month = IndexToMonth[new Date(d).getMonth()];
+        },
+        resize: true,
+        gridIntegers: true,
+        ymin: 0
     });
 
     Morris.Line({
         element: 'log-overall',
         data: [
             <?php
-
-                $sum = [];
-                foreach($logResultsFields as $field) {
-                    $sum[$field] = 0;
-                }
-
-                foreach($logResults as $year => $logYear) {
-
-                    foreach($logYear as $month => $logMonth)
-                    {
-                        $print = "{ year: '".$year."-".$month."'";
-                        foreach($logMonth as $entry => $value) {
-                            $sum[$entry]+= $value;
-                            $print.= ", '".$entry."' : ".$sum[$entry];
-                        }
-                        $print.= "},";
-                        echo $print;
+            $sum = [];
+            foreach ($logResultsFields as $field) {
+                $sum[$field] = 0;
+            }
+            foreach ($logResults as $year => $logYear) {
+                foreach($logYear as $month => $logMonth) {
+                    $print = "{ year: '".$year."-".$month."'";
+                    foreach ($logMonth as $entry => $value) {
+                        $sum[$entry] += $value;
+                        $print .= ", '".$entry."' : ".$sum[$entry];
                     }
+                    echo $print."},";
                 }
+            }
             ?>
         ],
         xkey: 'year',
         ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
         labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
         pointSize: 2,
-        hideHover: 'auto'
+        hideHover: 'auto',
+        xLabelFormat: function(x) {
+            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            return IndexToMonth[x.getMonth()];
+        },
+        dateFormat: function(d) {
+            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+            return month = IndexToMonth[new Date(d).getMonth()];
+        },
+        resize: true,
+        gridIntegers: true,
+        ymin: 0
     });
 });
 
 (function() {
     var $, MyMorris;
-
     MyMorris = window.MyMorris = {};
     $ = jQuery;
-
     MyMorris = Object.create(Morris);
-
-    MyMorris.Grid.prototype.gridDefaults["gridIntegers"] = false;
-
+    MyMorris.Grid.prototype.gridDefaults['gridIntegers'] = false;
     MyMorris.Grid.prototype.setData = function (data, redraw) {
         var e, idx, index, maxGoal, minGoal, ret, row, step, total, y, ykey, ymax, ymin, yval, _ref;
         if (redraw == null) {

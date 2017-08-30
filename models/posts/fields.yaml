@@ -64,7 +64,7 @@ secondaryTabs:
 
         send:
             label: indikator.news::lang.form.send
-            type: switch
+            type: checkbox
             default: false
 
         last_send_at:

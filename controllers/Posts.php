@@ -4,13 +4,14 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use BackendAuth;
 use App;
-use Request;
 use File;
 use Mail;
+use Request;
 use Indikator\News\Models\Posts as Item;
+use Indikator\News\Classes\NewsSender;
+use Jenssegers\Date\Date;
 use Flash;
 use Lang;
-use Indikator\News\Classes\NewsSender;
 use Redirect;
 
 class Posts extends Controller
@@ -36,15 +37,15 @@ class Posts extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'posts');
     }
 
-
-
     public function onTest()
     {
-        $news = $this->getNewsByPathOrFail();
+        $news   = $this->getNewsByPathOrFail();
         $sender = new NewsSender($news);
-        if($sender->sendNewsletter(BackendAuth::getUser(), true)){
+
+        if ($sender->sendNewsletter(BackendAuth::getUser(), true)) {
             Flash::success(trans('system::lang.mail_templates.test_success'));
-        } else {
+        }
+        else {
             Flash::failed(trans('system::lang.mail_templates.test_failed'));
         }
     }
@@ -52,17 +53,21 @@ class Posts extends Controller
     protected function getNewsByPathOrFail()
     {
         $uri = explode('/', Request::path());
+
         return Item::findOrFail($uri[count($uri) - 1]);
     }
 
     public function onNewsResend()
     {
         $news = $this->getNewsByPathOrFail();
-
         $sender = new NewsSender($news);
-        if($sender->resendNewsletter()) {
+
+        if ($sender->resendNewsletter()) {
+            Item::where('id', $news->id)->update(['last_send_at' => Date::now()]);
+
             Flash::success(trans('indikator.news::lang.flash.newsletter_resend_success'));
-        } else {
+        }
+        else {
             Flash::success(trans('indikator.news::lang.flash.newsletter_resend_error'));
         }
 
@@ -71,12 +76,12 @@ class Posts extends Controller
 
     public function formAfterSave($news)
     {
-        if($news->send === true && $news->last_send_at === null){
+        if ($news->send === true && $news->last_send_at === null) {
             $sender = new NewsSender($news);
             $sender->sendNewsletter();
 
             // We want to refresh the page to update the current view
-            Request::offsetSet('redirect', "1");
+            Request::offsetSet('redirect', '1');
         }
     }
 
