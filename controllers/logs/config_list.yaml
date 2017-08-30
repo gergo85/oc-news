@@ -3,14 +3,13 @@
 # ===================================
 
 title: indikator.news::lang.menu.logs
-list: ~/plugins/indikator/news/models/newsletterlog/columns.yaml
+list: ~/plugins/indikator/news/models/logs/columns.yaml
 
-modelClass: Indikator\News\Models\NewsletterLog
-#recordUrl: indikator/news/logs/update/:id
+modelClass: Indikator\News\Models\Logs
 noRecordsMessage: backend::lang.list.no_records
 
 recordsPerPage: 50
-showCheckboxes: true
+showCheckboxes: false
 showSetup: true
 
 defaultSort:

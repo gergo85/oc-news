@@ -2,16 +2,16 @@
 
 use App;
 use File;
-use Indikator\News\Models\NewsletterLog;
-use Jenssegers\Date\Date;
 use Mail;
-use System\Classes\PluginManager;
-use Illuminate\Support\Collection;
-use Indikator\News\Models\Posts;
 use Queue;
 use Log;
-use Indikator\News\Models\Subscribers;
 use BackendAuth;
+use Jenssegers\Date\Date;
+use Illuminate\Support\Collection;
+use System\Classes\PluginManager;
+use Indikator\News\Models\Logs;
+use Indikator\News\Models\Posts;
+use Indikator\News\Models\Subscribers;
 
 class NewsSender
 {
@@ -84,6 +84,7 @@ class NewsSender
         $result = $this->sendToActiveSubscribers();
         $this->news->last_send_at = new Date();
         $this->news->save();
+
         return $result;
     }
 
@@ -95,6 +96,7 @@ class NewsSender
         $result = $this->sendToActiveSubscribers();
         $this->news->last_send_at = new Date();
         $this->news->save();
+
         return $result;
     }
 
@@ -114,6 +116,7 @@ class NewsSender
     {
         $activeSubscribers = Subscribers::where('status', 1)->get();
         $results = true;
+
         foreach ($activeSubscribers as $receiver) {
             $results = $results && $this->send($receiver);
         }
@@ -133,7 +136,8 @@ class NewsSender
         // Locale
         if ($receiver->locale != '' && $this->locale) {
             $content = $this->news->lang($receiver->locale)->content;
-        } else {
+        }
+        else {
             $content = $this->news->content;
         }
 
@@ -150,14 +154,14 @@ class NewsSender
 
         // Parameters
         return [
-            'name' => $receiver->name,
+            'name'  => $receiver->name,
             'email' => $receiver->email,
             'title' => $this->news->title,
-            'slug' => $this->news->slug,
+            'slug'  => $this->news->slug,
             'introductory' => $this->news->introductory,
             'summary' => $this->news->introductory,
             'content' => $this->replacedContent,
-            'image' => $this->news->image
+            'image'   => $this->news->image
         ];
     }
 
@@ -171,11 +175,11 @@ class NewsSender
     {
         // Template file
         return $this->template($receiver->locale);
-
     }
 
     /**
      * Sends a test message to the receiver that didn't get logged.
+     *
      * @param $receiver
      * @return bool
      */
@@ -198,27 +202,25 @@ class NewsSender
         $params = $this->prepareNewsletterParametersForReceiver($receiver);
         $template = $this->getTemplateForReceiver($receiver);
 
-        $logEntry = NewsletterLogger::queued($this->news->id, $receiver->id);
+        $logEntry = Logger::queued($this->news->id, $receiver->id);
 
         if ($this->queued) {
-
             $qId = Queue::push('\Indikator\News\Classes\SendNews', [
                 'template' => $template,
-                'params' => $params,
+                'params'   => $params,
                 'receiver' => $receiver,
-                'subject' => $this->news->title,
-                'log_id' => $logEntry->id
+                'subject'  => $this->news->title,
+                'log_id'   => $logEntry->id
             ], 'newsletter');
 
             if ($qId) {
-                NewsletterLog::where('id', $logEntry->id)->update(['job_id' => $qId]);
+                Logs::where('id', $logEntry->id)->update(['job_id' => $qId]);
             }
 
             return true;
-
-        } else {
+        }
+        else {
             return SendNews::sendWithLogger($template, $params, $receiver, $this->news->title, $logEntry);
         }
-
     }
 }

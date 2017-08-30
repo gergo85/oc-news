@@ -4,38 +4,6 @@
 
 scopes:
 
-    news:
-        label: indikator.news::lang.form.news
-        modelClass: Indikator\News\Models\Posts
-        conditions: news_id in (:filtered)
-        nameFrom: title
-
-    subscriber:
-        label: indikator.news::lang.form.subscriber_email
-        modelClass: Indikator\News\Models\Subscribers
-        conditions: subscriber_id in (:filtered)
-        nameFrom: email
-
-    queued_at:
-        label: indikator.news::lang.form.queued_at
-        type: daterange
-        conditions: queued_at >= ':after' AND queued_at <= ':before'
-
-    send_at:
-        label: indikator.news::lang.form.send_at
-        type: daterange
-        conditions: send_at >= ':after' AND send_at <= ':before'
-
-    viewed_at:
-        label: indikator.news::lang.form.viewed_at
-        type: daterange
-        conditions: viewed_at >= ':after' AND viewed_at <= ':before'
-
-    clicked_at:
-        label: indikator.news::lang.form.clicked_at
-        type: daterange
-        conditions: clicked_at >= ':after' AND clicked_at <= ':before'
-
     status_queued:
         label: indikator.news::lang.stat.queued
         type: checkbox
@@ -55,3 +23,30 @@ scopes:
         label: indikator.news::lang.stat.clicked
         type: checkbox
         conditions: status = 'Clicked'
+
+    news:
+        label: indikator.news::lang.form.news
+        modelClass: Indikator\News\Models\Posts
+        conditions: news_id in (:filtered)
+        nameFrom: title
+
+    subscriber:
+        label: indikator.news::lang.form.subscriber_email
+        modelClass: Indikator\News\Models\Subscribers
+        conditions: subscriber_id in (:filtered)
+        nameFrom: email
+
+    send_at:
+        label: indikator.news::lang.form.send_at
+        type: daterange
+        conditions: send_at >= ':after' AND send_at <= ':before'
+
+    viewed_at:
+        label: indikator.news::lang.form.viewed_at
+        type: daterange
+        conditions: viewed_at >= ':after' AND viewed_at <= ':before'
+
+    clicked_at:
+        label: indikator.news::lang.form.clicked_at
+        type: daterange
+        conditions: clicked_at >= ':after' AND clicked_at <= ':before'

@@ -1,13 +1,11 @@
 <?php namespace Indikator\News\Controllers;
 
 use Backend\Classes\Controller;
-use Indikator\News\Classes\NewsletterLogger;
-use Indikator\News\Models\NewsletterLog;
+use Indikator\News\Classes\Logger;
+use Indikator\News\Models\Logs;
 use Redirect;
 use Request;
-/**
- * Back-end Controller
- */
+
 class Newsletter extends Controller
 {
     /**
@@ -24,15 +22,14 @@ class Newsletter extends Controller
     public function image($id = null, $hash = null)
     {
         $hash = str_replace('.png', '', $hash);
-        $log = NewsletterLog::where('hash',$hash)->find($id);
+        $log = Logs::where('hash', $hash)->find($id);
 
-        if($log) {
-            NewsletterLogger::viewed($log->id);
+        if ($log) {
+            Logger::viewed($log->id);
         }
         // Log the email open
 
-
-        // output img
+        // Output img
         header('Content-Type: image/png');
         header('Cache-Control: no-cache, max-age=0');
         echo base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=');
@@ -43,10 +40,10 @@ class Newsletter extends Controller
 
         $url = Request::get('url', url('/'));
 
-        $log = NewsletterLog::where('hash',$hash)->find($id);
+        $log = Logs::where('hash', $hash)->find($id);
 
-        if($log) {
-            NewsletterLogger::clicked($log->id);
+        if ($log) {
+            Logger::clicked($log->id);
         }
 
         return Redirect::to($url);

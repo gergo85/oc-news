@@ -2,9 +2,9 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
-use Indikator\News\Models\NewsletterLog;
-use DB;
+use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
+use Db;
 use Backend;
 
 class Statistics extends Controller
@@ -18,16 +18,16 @@ class Statistics extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'statistics');
     }
 
-
     public function index()
     {
-
         $this->prepareLog();
         $this->prepareGraphs();
+
         $this->pageTitle = 'indikator.news::lang.menu.statistics';
     }
-    
-    protected function prepareGraphs() {
+
+    protected function prepareGraphs()
+    {
         // Graphs
 
         $this->vars['thisYear'] = $this->vars['lastYear'] = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
@@ -153,46 +153,43 @@ class Statistics extends Controller
     }
 
     protected function prepareLog() {
-        $log['queued'] = DB::table('indikator_news_newsletter_logs')
-            ->select(DB::raw("count(id) as c, YEAR(queued_at) as y, MONTH(queued_at) as m"))
-            ->groupBy(DB::raw("YEAR(queued_at), MONTH(queued_at)"))
+        $log['queued'] = Db::table('indikator_news_newsletter_logs')
+            ->select(Db::raw("count(id) as c, YEAR(queued_at) as y, MONTH(queued_at) as m"))
+            ->groupBy(Db::raw("YEAR(queued_at), MONTH(queued_at)"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
-        $log['send'] = DB::table('indikator_news_newsletter_logs')
-            ->select(DB::raw("count(id) as c, YEAR(send_at) as y, MONTH(send_at) as m"))
+        $log['send'] = Db::table('indikator_news_newsletter_logs')
+            ->select(Db::raw("count(id) as c, YEAR(send_at) as y, MONTH(send_at) as m"))
             ->whereNotNull('send_at')
-            ->groupBy(DB::raw("YEAR(send_at), MONTH(send_at)"))
+            ->groupBy(Db::raw("YEAR(send_at), MONTH(send_at)"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
-        $log['viewed'] = DB::table('indikator_news_newsletter_logs')
-            ->select(DB::raw("count(id) as c, YEAR(viewed_at) as y, MONTH(viewed_at) as m"))
+        $log['viewed'] = Db::table('indikator_news_newsletter_logs')
+            ->select(Db::raw("count(id) as c, YEAR(viewed_at) as y, MONTH(viewed_at) as m"))
             ->whereNotNull('viewed_at')
-            ->groupBy(DB::raw("YEAR(viewed_at), MONTH(viewed_at)"))
+            ->groupBy(Db::raw("YEAR(viewed_at), MONTH(viewed_at)"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
-        $log['clicked'] = DB::table('indikator_news_newsletter_logs')
-            ->select(DB::raw("count(id) as c, YEAR(clicked_at) as y, MONTH(clicked_at) as m"))
+        $log['clicked'] = Db::table('indikator_news_newsletter_logs')
+            ->select(Db::raw("count(id) as c, YEAR(clicked_at) as y, MONTH(clicked_at) as m"))
             ->whereNotNull('clicked_at')
-            ->groupBy(DB::raw("YEAR(clicked_at), MONTH(clicked_at)"))
+            ->groupBy(Db::raw("YEAR(clicked_at), MONTH(clicked_at)"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
 
         $result = [];
-        foreach($log as $name => $l)
-        {
-            foreach($l as $entry) {
+        foreach ($log as $name => $l) {
+            foreach ($l as $entry) {
                 $result[$entry->y][$entry->m][$name] = $entry->c;
             }
         }
 
-
-        foreach($result as $year => $entry) {
+        foreach ($result as $year => $entry) {
             for ($i = 1; $i < 13; $i++) {
-
                 foreach ($log as $name => $l) {
                     if (!isset($result[$year][$i][$name])) {
                         $result[$year][$i][$name] = 0;
@@ -209,5 +206,4 @@ class Statistics extends Controller
             return trans('indikator.news::lang.stat.'.$t);
         }, array_keys($log));
     }
-
 }

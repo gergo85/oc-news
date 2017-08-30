@@ -1,6 +1,4 @@
-<?php
-
-namespace Indikator\News\Models;
+<?php namespace Indikator\News\Models;
 
 use Model;
 
@@ -11,5 +9,4 @@ class Settings extends Model
     public $settingsCode = 'indikator_news_settings';
 
     public $settingsFields = 'fields.yaml';
-
 }

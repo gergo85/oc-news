@@ -29,8 +29,8 @@ class Plugin extends PluginBase
                 'class'       => 'Indikator\News\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'news newsletter',
-                'permissions' => ['indikator.news.settings'],
-            ],
+                'permissions' => ['indikator.news.settings']
+            ]
         ];
     }
 
