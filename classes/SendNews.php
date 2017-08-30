@@ -87,7 +87,7 @@ class SendNews
      * @param $params
      * @param $receiver
      * @param $subject
-     * @param NewsletterLog $logEntry
+     * @param Logs $logEntry
      * @return bool result of the sending email
      */
     static function sendWithLogger($template, $params, $receiver, $subject, $logEntry = null)

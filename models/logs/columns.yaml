@@ -52,4 +52,4 @@ columns:
         label: indikator.news::lang.form.status
         searchable: true
         type: partial
-        path: ~/plugins/indikator/news/models/newsletterlog/_status.htm
+        path: ~/plugins/indikator/news/models/logs/_status.htm
