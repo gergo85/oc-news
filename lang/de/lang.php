@@ -53,15 +53,15 @@ return [
         'clicked' => 'Geklickt',
         'log' => [
             'events' => 'Ereignisse',
-            'overall' => 'Gesamt'
+            'summary' => 'Gesamt'
         ]
     ],
     'form' => [
         // General
+        'id' => 'ID',
         'created' => 'Erstellt am',
         'updated' => 'Aktualisiert am',
         // Posts
-        'id' => 'ID',
         'title' => 'Titel',
         'slug' => 'Slug',
         'introductory' => 'Einleitung',
@@ -90,6 +90,7 @@ return [
         'locale' => 'Sprache',
         'lang' => 'de',
         'mail' => 'Mail',
+        // Logs
         'news' => 'Nachricht',
         'subscriber_name' => 'Abonnent Name',
         'subscriber_email' => 'Abonnent Email',
@@ -148,7 +149,7 @@ return [
         'statistics' => 'Zeige Statistik',
         'import_export' => 'Import und Export',
         'settings' => 'Einstellungen verwalten',
-        'logs' => 'Detailierte Logeinsicht',
+        'logs' => 'Detailierte Logeinsicht'
     ],
     'settings' => [
         'slug_title' => 'Nachrichten slug',

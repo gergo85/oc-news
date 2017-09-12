@@ -25,7 +25,7 @@ columns:
         invisible: true
 
     statistics:
-        label: indikator.news::lang.stat.view
+        label: indikator.news::lang.stat.viewed
 
     length:
         label: indikator.news::lang.form.length

@@ -53,13 +53,15 @@ return [
         'clicked' => 'Clicked',
         'log' => [
             'events' => 'Events',
-            'overall' => 'Overall'
+            'summary' => 'Summary'
         ]
     ],
     'form' => [
+        // General
+        'id' => 'ID',
         'created' => 'Created at',
         'updated' => 'Updated at',
-        'id' => 'ID',
+        // Posts
         'title' => 'Title',
         'slug' => 'Slug',
         'introductory' => 'Introductory',
@@ -81,12 +83,14 @@ return [
         'last_send_at' => 'Last send at',
         'last_send' => 'Last send',
         'length' => 'Length',
+        // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
         'common' => 'Common',
         'locale' => 'Locale',
         'lang' => 'en',
         'mail' => 'mail',
+        // Logs
         'news' => 'Post',
         'subscriber_name' => 'Subscriber name',
         'subscriber_email' => 'Subscriber email',
@@ -94,7 +98,7 @@ return [
         'send_at' => 'Sent',
         'viewed_at' => 'Viewed',
         'clicked_at' => 'Clicked',
-        'logs_count' => 'Logs entries',
+        'logs_count' => 'Logs entries'
     ],
     'button' => [
         'activate' => 'Activate',

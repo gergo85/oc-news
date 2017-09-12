@@ -48,20 +48,20 @@ return [
         'queued' => 'Folyamatban',
         'send' => 'Elküldve',
         'sent' => 'Elküldve',
-        'viewed' => 'Megtekinve',
+        'viewed' => 'Megtekintve',
         'click' => 'Kattintás',
         'clicked' => 'Kattintva',
         'log' => [
             'events' => 'Események',
-            'overall' => 'Összegzés'
+            'summary' => 'Összegzés'
         ]
     ],
     'form' => [
         // Általános
+        'id' => 'ID',
         'created' => 'Létrehozva',
         'updated' => 'Módosítva',
         // Bejegyzések
-        'id' => 'ID',
         'title' => 'Cím',
         'slug' => 'Webcím',
         'introductory' => 'Bevezető',
