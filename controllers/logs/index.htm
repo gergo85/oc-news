@@ -2,7 +2,7 @@
     <ul>
         <li><?= e(trans('indikator.news::lang.menu.logs')) ?></li>
         <li>
-            <span class="text-info"><strong><?= Indikator\News\Models\NewsletterLog::count() ?></strong> <?= e(trans('indikator.news::lang.form.logs_count')) ?></span>
+            <span class="text-info"><strong><?= Indikator\News\Models\Logs::count() ?></strong> <?= e(trans('indikator.news::lang.form.logs_count')) ?></span>
         </li>
     </ul>
 <?php Block::endPut() ?>
