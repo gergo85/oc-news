@@ -21,6 +21,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Export & Import data
 * Statistics and graphs
 * Send newsletter
+* Detailed mail logs
 * Front-end forms
 * Back-end widgets
 
@@ -31,6 +32,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * List - TOP 20 view posts
 * List - TOP 10 longest posts
 * List - TOP 10 shortest posts
+* Graph - Mail events
+* Graph - Mail summary
 
 <a name="available_widgets"></a>
 ## Available widgets
