@@ -19,6 +19,11 @@ scopes:
         type: checkbox
         conditions: status = 3
 
+    last_send_at:
+        label: indikator.news::lang.form.last_send
+        type: daterange
+        conditions: last_send_at >= ':after' AND last_send_at <= ':before'
+
     published_date:
         label: indikator.news::lang.form.published
         type: daterange
