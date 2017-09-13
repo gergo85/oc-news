@@ -42,7 +42,7 @@ class Posts extends Controller
         $news   = $this->getNewsByPathOrFail();
         $sender = new NewsSender($news);
 
-        if ($sender->sendNewsletter(BackendAuth::getUser(), true)) {
+        if ($sender->sendTestNewsletter()) {
             Flash::success(trans('system::lang.mail_templates.test_success'));
         }
         else {
