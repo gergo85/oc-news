@@ -106,7 +106,7 @@ class NewsSender
     public function sendTestNewsletter()
     {
         $receiver = BackendAuth::getUser();
-        $this->sendTest($receiver);
+        return $this->sendTest($receiver);
     }
 
     /**
