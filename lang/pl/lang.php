@@ -6,13 +6,28 @@ return [
         'description' => 'Plugin do zarządzania aktualnościami i newsletterem.',
         'author' => 'Gergő Szabó'
     ],
+    'backend_settings' => [
+        'description' => 'Ustawienia sterowania',
+        'main_section' => 'Ustawienia dotyczące wysyłania i obsługi biuletynów',
+        'main_section_comment' => 'Ustawienia śledzenia można zmieniać w biuletynie newsletterów.',
+        'click_tracking' => 'Śledzenie kliknięć',
+        'click_tracking_comment' => 'Śledź, gdy osoba kliknie link biuletynu.',
+        'email_view_tracking' => 'Śledzenie wyświetleń biuletynów',
+        'email_view_tracking_comment' => 'Śledź, gdy osoba przegląda biuletyn.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Будьте осторожны при использовании этой функции',
+            'subheading' => 'Nie jest dozwolone w każdym kraju!',
+            'text' => 'Podczas korzystania z tej funkcji należy mieć pewność, co robisz! Upewnij się, że nie złamasz żadnych praw.'
+        ]
+    ],
     'menu' => [
         'news' => 'Subskrypcja',
         'posts' => 'Posty',
         'subscribers' => 'Subskrybenci',
         'statistics' => 'Statystyka',
         'import' => 'Import',
-        'export' => 'Eksport'
+        'export' => 'Eksport',
+        'logs' => 'Logi'
     ],
     'title' => [
         'posts' => 'post',
@@ -29,14 +44,24 @@ return [
         'loss' => 'Utrata',
         'top' => 'TOP',
         'longest' => 'Najdłuższy',
-        'shortest' => 'Najkrótsza'
+        'shortest' => 'Najkrótsza',
+        'queued' => 'W kolejce',
+        'send' => 'Wysłać',
+        'sent' => 'Wysłano',
+        'viewed' => 'Oglądane',
+        'click' => 'Kliknięcia',
+        'clicked' => 'Kliknij',
+        'log' => [
+            'events' => 'Wydarzenia',
+            'summary' => 'Podsumowanie'
+        ]
     ],
     'form' => [
         // Geral
+        'id' => 'ID',
         'created' => 'Stworzony',
         'updated' => 'Zaktualizowany',
         // Postagens
-        'id' => 'ID',
         'title' => 'Tytuł',
         'slug' => 'Slug',
         'introductory' => 'Skrót/wstęp',
@@ -61,7 +86,16 @@ return [
         'common' => 'Nazwa',
         'locale' => 'Idioma',
         'lang' => 'pl',
-        'mail' => 'mail'
+        'mail' => 'mail',
+        // Dzienniki
+        'news' => 'Stanowisko',
+        'subscriber_name' => 'Nazwa subskrybenta',
+        'subscriber_email' => 'E-mail subskrybenta',
+        'queued_at' => 'W kolejce',
+        'send_at' => 'Wysłano',
+        'viewed_at' => 'Oglądane',
+        'clicked_at' => 'Kliknij',
+        'logs_count' => 'Wpisy dzienników'
     ],
     'button' => [
         'activate' => 'Aktywuj',
@@ -72,7 +106,9 @@ return [
         'export' => 'Eksport',
         'unsubscribe' => 'Anuluj subskrypcję',
         'subscribe' => 'Subskrypcja',
-        'return' => 'Powrót'
+        'return' => 'Powrót',
+        'newsletter_resend' => 'Wyślij ponownie biuletyn',
+        'newsletter_resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?'
     ],
     'flash' => [
         'activate' => 'Pomyślnie aktywowano zaznaczone posty.',
@@ -80,7 +116,9 @@ return [
         'subscribe' => 'Pomyślnie subskrypcję tych użytkowników.',
         'unsubscribe' => 'Pomyślnie anulowano subskrypcję tych użytkowników.',
         'delete' => 'Czy na pewno chcesz usunąć zaznaczone elementy?',
-        'remove' => 'Pomyślnie usunięto zaznaczone posty.'
+        'remove' => 'Pomyślnie usunięto zaznaczone posty.',
+        'newsletter_resend_success' => 'Newsletter został z powodzeniem wysłany.',
+        'newsletter_resend_error' => 'Podczas wysyłania biuletynu wystąpił błąd. Przed ponownym wysyłaniem zapoznaj się z logu, aby uzyskać więcej informacji na temat aktualnego stanu.'
     ],
     'widget' => [
         'posts' => 'Aktualności - Posty',
@@ -106,7 +144,8 @@ return [
         'posts' => 'Zarządzań postami',
         'subscribers' => 'Zarządzaj subskrybentami',
         'statistics' => 'Zobacz statystyki',
-        'import_export' => 'Import & eksport'
+        'import_export' => 'Import & eksport',
+        'logs' => 'Szczegółowe widoki dzienników'
     ],
     'settings' => [
         'slug_title' => 'Slug posta',
