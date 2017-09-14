@@ -18,7 +18,10 @@ return [
             'heading' => 'Будьте осторожны при использовании этой функции',
             'subheading' => 'Nie jest dozwolone w każdym kraju!',
             'text' => 'Podczas korzystania z tej funkcji należy mieć pewność, co robisz! Upewnij się, że nie złamasz żadnych praw.'
-        ]
+        ],
+        'statistic_section' => 'Ustawienia statystyk',
+        'statistic_show_longest_posts' => 'Pokaż najdłuższe posty',
+        'statistic_show_shortest_posts' => 'Pokaż krótkie posty'
     ],
     'menu' => [
         'news' => 'Subskrypcja',

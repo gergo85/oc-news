@@ -18,7 +18,10 @@ return [
             'heading' => 'Legyen óvatos ennek a használatával',
             'subheading' => 'Nem elfogadott minden országban!',
             'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
-        ]
+        ],
+        'statistic_section' => 'A statisztikára vonatkozó beállítások',
+        'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
+        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
     ],
     'menu' => [
         'news' => 'Hírek',

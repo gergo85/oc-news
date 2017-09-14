@@ -19,7 +19,7 @@ return [
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
         ],
-        'statistic_section' => 'Statistic settings',
+        'statistic_section' => 'Statistics settings',
         'statistic_show_longest_posts' => 'Show longest posts',
         'statistic_show_shortest_posts' => 'Show shortest posts'
     ],
