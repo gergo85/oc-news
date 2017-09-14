@@ -23,3 +23,18 @@ fields:
         span: right
         path: $/indikator/news/models/settings/_email_view_tracking_warning.htm
 
+    statistic_section:
+        label: indikator.news::lang.backend_settings.statistic_section
+        type: section
+
+    statistic_show_longest_posts:
+        span: left
+        type: switch
+        label: indikator.news::lang.backend_settings.statistic_show_longest_posts
+        default: true
+
+    statistic_show_shortest_posts:
+        span: right
+        type: switch
+        label: indikator.news::lang.backend_settings.statistic_show_shortest_posts
+        default: true

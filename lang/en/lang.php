@@ -18,7 +18,10 @@ return [
             'heading' => 'Be careful about using this feature',
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
-        ]
+        ],
+        'statistic_section' => 'Statistic settings',
+        'statistic_show_longest_posts' => 'Show longest posts',
+        'statistic_show_shortest_posts' => 'Show shortest posts'
     ],
     'menu' => [
         'news' => 'News',

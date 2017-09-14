@@ -31,36 +31,44 @@
             <?php endif ?>
         </div>
         <?php if ($view > 0): ?>
-        <div class="col-md-6">
-          <strong><?= e(trans('indikator.news::lang.stat.top')) ?></strong>
-          <div class="clearfix"></div><br>
-          <?= $top ?>
-          <br>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-md-6">
-            <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
-            <div class="clearfix"></div><br>
-            <?= $longest ?>
-            <br>
-        </div>
-        <div class="col-md-6">
-            <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
-            <div class="clearfix"></div><br>
-            <?= $shortest ?>
-            <br>
-        </div>
+            <div class="col-md-6">
+              <strong><?= e(trans('indikator.news::lang.stat.top')) ?></strong>
+              <div class="clearfix"></div><br>
+              <?= $top ?>
+              <br>
+            </div>
+            <div class="clearfix"></div>
+            <?php if (isset($longest)): ?>
+                <div class="col-md-6">
+                    <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
+                    <div class="clearfix"></div><br>
+                    <?= $longest ?>
+                    <br>
+                </div>
+            <?php endif ?>
+            <?php if (isset($shortest)): ?>
+                <div class="col-md-6">
+                    <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
+                    <div class="clearfix"></div><br>
+                    <?= $shortest ?>
+                    <br>
+                </div>
+            <?php endif ?>
         <?php else: ?>
-        <div class="col-md-6">
-            <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
-            <div class="clearfix"></div><br>
-            <?= $longest ?>
-            <br>
-            <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
-            <div class="clearfix"></div><br>
-            <?= $shortest ?>
-            <br>
-        </div>
+            <div class="col-md-6">
+                <?php if (isset($longest)): ?>
+                    <strong><?= e(trans('indikator.news::lang.stat.longest')) ?></strong>
+                    <div class="clearfix"></div><br>
+                    <?= $longest ?>
+                    <br>
+                <?php endif ?>
+                <?php if (isset($shortest)): ?>
+                    <strong><?= e(trans('indikator.news::lang.stat.shortest')) ?></strong>
+                    <div class="clearfix"></div><br>
+                    <?= $shortest ?>
+                    <br>
+                <?php endif ?>
+            </div>
         <?php endif ?>
     </div>
     <div class="row">

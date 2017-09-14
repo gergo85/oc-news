@@ -6,6 +6,7 @@ use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
 use Db;
 use Backend;
+use Indikator\News\Models\Settings;
 
 class Statistics extends Controller
 {
@@ -90,66 +91,72 @@ class Statistics extends Controller
         }
 
         // Longest posts
+        if(Settings::get('statistic_show_longest_posts', true)) {
 
-        arsort($posts);
-        $longest = '';
-        $index = 1;
+            arsort($posts);
+            $longest = '';
+            $index = 1;
 
-        foreach ($posts as $id => $length) {
-            $item = Posts::whereId($id)->first();
+            foreach ($posts as $id => $length) {
+                $item = Posts::whereId($id)->first();
 
-            $longest .= '
-                <div class="col-md-1 col-sm-1">
-                    '.$index.'.
-                </div>
-                <div class="col-md-9 col-sm-9">
-                    <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
-                </div>
-                <div class="col-md-2 col-sm-2 text-right">
-                    '.number_format($length, 0, '.', ' ').'
-                </div>
-                <div class="clearfix"></div>
-            ';
+                $longest .= '
+                    <div class="col-md-1 col-sm-1">
+                        ' . $index . '.
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <a href="' . Backend::url('indikator/news/posts/update/' . $item->id) . '">' . $item->title . '</a>
+                    </div>
+                    <div class="col-md-2 col-sm-2 text-right">
+                        ' . number_format($length, 0, '.', ' ') . '
+                    </div>
+                    <div class="clearfix"></div>
+                ';
 
-            if ($index == 10) {
-                break;
+                if ($index == 10) {
+                    break;
+                }
+
+                $index++;
             }
 
-            $index++;
+            $this->vars['longest'] = $longest;
         }
 
-        $this->vars['longest'] = $longest;
 
         // Shortest posts
+        if(Settings::get('statistic_show_shortest_posts', true)) {
 
-        asort($posts);
-        $shortest = '';
-        $index = 1;
+            asort($posts);
+            $shortest = '';
+            $index = 1;
 
-        foreach ($posts as $id => $length) {
-            $item = Posts::whereId($id)->first();
+            foreach ($posts as $id => $length) {
+                $item = Posts::whereId($id)->first();
 
-            $shortest .= '
-                <div class="col-md-1 col-sm-1">
-                    '.$index.'.
-                </div>
-                <div class="col-md-9 col-sm-9">
-                    <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
-                </div>
-                <div class="col-md-2 col-sm-2 text-right">
-                    '.number_format($length, 0, '.', ' ').'
-                </div>
-                <div class="clearfix"></div>
-            ';
+                $shortest .= '
+                    <div class="col-md-1 col-sm-1">
+                        ' . $index . '.
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <a href="' . Backend::url('indikator/news/posts/update/' . $item->id) . '">' . $item->title . '</a>
+                    </div>
+                    <div class="col-md-2 col-sm-2 text-right">
+                        ' . number_format($length, 0, '.', ' ') . '
+                    </div>
+                    <div class="clearfix"></div>
+                ';
 
-            if ($index == 10) {
-                break;
+                if ($index == 10) {
+                    break;
+                }
+
+                $index++;
             }
 
-            $index++;
+            $this->vars['shortest'] = $shortest;
         }
 
-        $this->vars['shortest'] = $shortest;
     }
 
     protected function prepareLog() {

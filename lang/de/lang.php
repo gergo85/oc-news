@@ -18,7 +18,10 @@ return [
             'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
             'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
             'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
-        ]
+        ],
+        'statistic_section' => 'Statistik Einstellungen',
+        'statistic_show_longest_posts' => 'Zeige längste Einträge',
+        'statistic_show_shortest_posts' => 'Zeige kürzeste Einträge'
     ],
     'menu' => [
         'news' => 'News',
