@@ -74,3 +74,4 @@
     - update_send_feature.php
 1.8.2: Minor improvements and bugfix.
 1.8.3: Fixed the sending bug and added new settings.
+1.8.4: Added the preview feature for posts.

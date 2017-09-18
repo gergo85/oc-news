@@ -1,9 +1,8 @@
 <?php namespace Indikator\News\Models;
 
 use Model;
-use File;
-use App;
-use Mail;
+use BackendAuth;
+use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use Url;
 
@@ -17,7 +16,7 @@ class Posts extends Model
     protected $table = 'indikator_news_posts';
 
     protected $casts = [
-        'send' => 'boolean',
+        'send' => 'boolean'
     ];
 
     public $rules = [
@@ -156,7 +155,15 @@ class Posts extends Model
 
     public function scopeIsPublished($query)
     {
-        return $query->where('status', 1)->where('published_at', '>', time());
+      if (BackendAuth::check()) {
+          return $query;
+      }
+
+      return $query
+          ->where('status', 1)
+          ->whereNotNull('published_at')
+          ->where('published_at', '<', Carbon::now())
+      ;
     }
 
     public function scopeIsFeatured($query, $value = 1)

@@ -1,3 +1,15 @@
+<?php
+
+$pages = Cms\Classes\Page::withComponent('newsPost');
+foreach ($pages as $page) {
+    $url = str_replace(':slug', '', $page->url);
+}
+
+$uri = explode('/', Request::path());
+$slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
+
+?>
+
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('indikator.news::lang.menu.posts')) ?></a></li>
@@ -50,15 +62,15 @@
                     data-request-confirm="<?= e(trans('system::lang.mail_templates.test_confirm', [ 'email' => e(BackendAuth::getUser()->email)])) ?>"
                     data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
                     class="btn btn-info">
-                    <?= e(trans('system::lang.mail_templates.test_send')) ?>
+                    <?= e(trans('indikator.news::lang.button.test')) ?>
                 </button>
                 <button
                     type="button"
                     data-request="onNewsResend"
-                    data-request-confirm="<?= e(trans('indikator.news::lang.button.newsletter_resend_confirmation')) ?>"
+                    data-request-confirm="<?= e(trans('indikator.news::lang.button.resend_confirmation')) ?>"
                     data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
                     class="btn btn-info<?= $formModel->last_send_at === null ? ' disabled' : '' ?>">
-                    <?= e(trans('indikator.news::lang.button.newsletter_resend')) ?>
+                    <?= e(trans('indikator.news::lang.button.resend')) ?>
                 </button>
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">
@@ -70,6 +82,11 @@
                     data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>"
                     class="oc-icon-trash-o btn-icon danger pull-right">
                 </button>
+                <?php if (isset($url)): ?>
+                <span class="btn-text pull-right">
+                    <a href="<?php echo $url.$slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
+                </span>
+                <?php endif ?>
             </div>
         </div>
 
