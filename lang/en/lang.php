@@ -7,7 +7,7 @@ return [
         'author' => 'Gergő Szabó',
     ],
     'backend_settings' => [
-        'description' => 'Control settings',
+        'description' => 'Settings about sending newsletters and statistics view.',
         'main_section' => 'Settings about sending and handling newsletters',
         'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
         'click_tracking' => 'Track clicks',
@@ -34,11 +34,11 @@ return [
     ],
     'title' => [
         'posts' => 'post',
-        'subscribers' => 'subscriber',
+        'subscribers' => 'subscriber'
     ],
     'new' => [
         'posts' => 'New post',
-        'subscribers' => 'New subscriber',
+        'subscribers' => 'New subscriber'
     ],
     'stat' => [
         'posts' => 'Post|Posts',
@@ -112,9 +112,10 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
-        'return' => 'Return',
-        'newsletter_resend' => 'Resend newsletter',
-        'newsletter_resend_confirmation' => 'Are you sure that you want to resend the newsletter?'
+        'test' => 'Send test mail',
+        'resend' => 'Resend newsletter',
+        'resend_confirmation' => 'Are you sure that you want to resend the newsletter?',
+        'return' => 'Return'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -138,20 +139,20 @@ return [
         'show_piece' => 'Number of posts',
         'show_date' => 'Show date',
         'show_unsub' => 'Show unsubscribed',
-        'total' => 'Total',
+        'total' => 'Total'
     ],
     'component' => [
         'posts' => 'Display posts',
         'post' => 'Post content',
         'subscribe' => 'Subscriber form',
-        'unsubscribe' => 'Unsubscribe form',
+        'unsubscribe' => 'Unsubscribe form'
     ],
     'permission' => [
         'posts' => 'Manage posts',
         'subscribers' => 'Manage subscribers',
         'statistics' => 'View statistics',
         'import_export' => 'Import and Export',
-        'settings' => 'Change Settings',
+        'settings' => 'Change settings',
         'logs' => 'Detailed views for logs'
     ],
     'settings' => [
@@ -172,7 +173,7 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'All',
         'list_featured' => 'Only Featured',
-        'list_notfeatured' => 'Not featured',
+        'list_notfeatured' => 'Not featured'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
@@ -182,15 +183,15 @@ return [
         'updated_at_asc' => 'Updated (ascending)',
         'updated_at_desc' => 'Updated (descending)',
         'published_at_asc' => 'Published (ascending)',
-        'published_at_desc' => 'Published (descending)',
+        'published_at_desc' => 'Published (descending)'
     ],
     'sitemap' => [
         'post_list' => 'Post list',
-        'post_page' => 'Post page',
+        'post_page' => 'Post page'
     ],
     'messages' => [
         'unsubscribed' => 'We successfully unsubscribed you from our newsletter.',
         'not_subscribed' => 'Already subscribed to our newsletter.',
-        'subscribed' => 'Thank you for your subscription to our newsletter!',
-    ],
+        'subscribed' => 'Thank you for your subscription to our newsletter!'
+    ]
 ];

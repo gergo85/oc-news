@@ -7,7 +7,7 @@ return [
         'author' => 'Szabó Gergő'
     ],
     'backend_settings' => [
-        'description' => 'A hírlevelek küldésére vonatkozó beállítások.',
+        'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
         'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
         'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
         'click_tracking' => 'Kattintás követése',
@@ -112,9 +112,10 @@ return [
         'export' => 'Exportálás',
         'unsubscribe' => 'Leiratkozás',
         'subscribe' => 'Feliratkozás',
-        'return' => 'Vissza',
-        'newsletter_resend' => 'Hírlevél újraküldése',
-        'newsletter_resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?'
+        'test' => 'Tesztlevél küldése',
+        'resend' => 'Hírlevél újraküldése',
+        'resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?',
+        'return' => 'Vissza'
     ],
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',

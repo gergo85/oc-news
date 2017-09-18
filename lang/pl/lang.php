@@ -109,9 +109,10 @@ return [
         'export' => 'Eksport',
         'unsubscribe' => 'Anuluj subskrypcję',
         'subscribe' => 'Subskrypcja',
-        'return' => 'Powrót',
-        'newsletter_resend' => 'Wyślij ponownie biuletyn',
-        'newsletter_resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?'
+        'test' => 'Wyślij pocztę testową',
+        'resend' => 'Wyślij ponownie biuletyn',
+        'resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?',
+        'return' => 'Powrót'
     ],
     'flash' => [
         'activate' => 'Pomyślnie aktywowano zaznaczone posty.',

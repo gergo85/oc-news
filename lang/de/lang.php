@@ -112,9 +112,10 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Deabonnieren',
         'subscribe' => 'Abonnieren',
-        'return' => 'Zurück',
-        'newsletter_resend' => 'Newsletter erneut versenden',
-        'newsletter_resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?'
+        'test' => 'Testpost senden',
+        'resend' => 'Newsletter erneut versenden',
+        'resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
+        'return' => 'Zurück'
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
