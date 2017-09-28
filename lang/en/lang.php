@@ -6,23 +6,6 @@ return [
         'description' => 'Simple news and newsletter plugin.',
         'author' => 'Gergő Szabó',
     ],
-    'backend_settings' => [
-        'description' => 'Settings about sending newsletters and statistics view.',
-        'main_section' => 'Settings about sending and handling newsletters',
-        'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
-        'click_tracking' => 'Track clicks',
-        'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
-        'email_view_tracking' => 'Track newsletter views',
-        'email_view_tracking_comment' => 'Tracks when a person looks at the newsletter.',
-        'email_view_tracking_warning' => [
-            'heading' => 'Be careful about using this feature',
-            'subheading' => 'It is not allowed in every country!',
-            'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
-        ],
-        'statistic_section' => 'Statistics settings',
-        'statistic_show_longest_posts' => 'Show longest posts',
-        'statistic_show_shortest_posts' => 'Show shortest posts'
-    ],
     'menu' => [
         'news' => 'News',
         'posts' => 'Posts',
@@ -30,7 +13,8 @@ return [
         'statistics' => 'Statistics',
         'import' => 'Import',
         'export' => 'Export',
-        'logs' => 'Logs'
+        'logs' => 'Logs',
+        'settings' => 'Settings'
     ],
     'title' => [
         'posts' => 'post',
@@ -126,6 +110,25 @@ return [
         'remove' => 'Successfully removed those items.',
         'newsletter_resend_success' => 'Newsletter was successfully resend.',
         'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.'
+    ],
+    'backend_settings' => [
+        'description' => 'Settings about sending newsletters and statistics view.',
+        'main_section' => 'Settings about sending and handling newsletters',
+        'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
+        'click_tracking' => 'Track clicks',
+        'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
+        'email_view_tracking' => 'Track newsletter views',
+        'email_view_tracking_comment' => 'Tracks when a person looks at the newsletter.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Be careful about using this feature',
+            'subheading' => 'It is not allowed in every country!',
+            'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
+        ],
+        'statistic_section' => 'Statistics settings',
+        'statistic_show_posts' => 'Show posts',
+        'statistic_show_mails' => 'Show mail logs',
+        'statistic_show_longest_posts' => 'Show longest posts',
+        'statistic_show_shortest_posts' => 'Show shortest posts'
     ],
     'widget' => [
         'posts' => 'News - Posts',

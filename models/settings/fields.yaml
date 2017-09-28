@@ -32,14 +32,26 @@ fields:
         label: indikator.news::lang.backend_settings.statistic_section
         type: section
 
+    statistic_show_posts:
+        label: indikator.news::lang.backend_settings.statistic_show_posts
+        type: switch
+        default: true
+        span: auto
+
+    statistic_show_mails:
+        label: indikator.news::lang.backend_settings.statistic_show_mails
+        type: switch
+        default: true
+        span: auto
+
     statistic_show_longest_posts:
         label: indikator.news::lang.backend_settings.statistic_show_longest_posts
         type: switch
         default: true
-        span: left
+        span: auto
 
     statistic_show_shortest_posts:
         label: indikator.news::lang.backend_settings.statistic_show_shortest_posts
         type: switch
         default: true
-        span: right
+        span: auto

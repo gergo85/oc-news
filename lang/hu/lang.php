@@ -6,23 +6,6 @@ return [
         'description' => 'Egyszerű kezelése a hírek közzétételének.',
         'author' => 'Szabó Gergő'
     ],
-    'backend_settings' => [
-        'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
-        'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
-        'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
-        'click_tracking' => 'Kattintás követése',
-        'click_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó egy levélben lévő hivatkozásra kattint.',
-        'email_view_tracking' => 'Megtekintés követése',
-        'email_view_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó megtekinti a levelet.',
-        'email_view_tracking_warning' => [
-            'heading' => 'Legyen óvatos ennek a használatával',
-            'subheading' => 'Nem elfogadott minden országban!',
-            'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
-        ],
-        'statistic_section' => 'A statisztikára vonatkozó beállítások',
-        'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
-        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
-    ],
     'menu' => [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
@@ -30,7 +13,8 @@ return [
         'statistics' => 'Statisztika',
         'import' => 'Importálás',
         'export' => 'Exportálás',
-        'logs' => 'Naplózás'
+        'logs' => 'Naplózás',
+        'settings' => 'Beállítások'
     ],
     'title' => [
         'posts' => 'bejegyzés',
@@ -126,6 +110,25 @@ return [
         'remove' => 'Az eltávolítás sikeresen megtörtént.',
         'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
         'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
+    ],
+    'backend_settings' => [
+        'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
+        'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
+        'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
+        'click_tracking' => 'Kattintás követése',
+        'click_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó egy levélben lévő hivatkozásra kattint.',
+        'email_view_tracking' => 'Megtekintés követése',
+        'email_view_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó megtekinti a levelet.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Legyen óvatos ennek a használatával',
+            'subheading' => 'Nem elfogadott minden országban!',
+            'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
+        ],
+        'statistic_section' => 'A statisztikára vonatkozó beállítások',
+        'statistic_show_posts' => 'Bejegyzések mutatása',
+        'statistic_show_mails' => 'Levél logolás mutatása',
+        'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
+        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
     ],
     'widget' => [
         'posts' => 'Hírek - Gyors statisztika',

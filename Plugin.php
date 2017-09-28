@@ -18,22 +18,6 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function registerSettings()
-    {
-        return [
-            'settings' => [
-                'label'       => 'indikator.news::lang.plugin.name',
-                'description' => 'indikator.news::lang.backend_settings.description',
-                'category'    => 'system::lang.system.categories.cms',
-                'icon'        => 'icon-newspaper-o',
-                'class'       => 'Indikator\News\Models\Settings',
-                'order'       => 500,
-                'keywords'    => 'news newsletter',
-                'permissions' => ['indikator.news.settings']
-            ]
-        ];
-    }
-
     public function registerNavigation()
     {
         return [
@@ -43,7 +27,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-newspaper-o',
                 'iconSvg'     => 'plugins/indikator/news/assets/images/news-icon.svg',
                 'permissions' => ['indikator.news.*'],
-                'order'       => 500,
+                'order'       => 201,
 
                 'sideMenu' => [
                     'posts' => [
@@ -69,8 +53,30 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('indikator/news/logs'),
                         'icon'        => 'icon-bar-chart',
                         'permissions' => ['indikator.news.logs']
+                    ],
+                    'settings' => [
+                        'label'       => 'indikator.news::lang.menu.settings',
+                        'url'         => Backend::url('system/settings/update/indikator/news/settings'),
+                        'icon'        => 'icon-cogs',
+                        'permissions' => ['indikator.news.settings']
                     ]
                 ]
+            ]
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'       => 'indikator.news::lang.plugin.name',
+                'description' => 'indikator.news::lang.backend_settings.description',
+                'category'    => 'system::lang.system.categories.cms',
+                'icon'        => 'icon-newspaper-o',
+                'class'       => 'Indikator\News\Models\Settings',
+                'order'       => 500,
+                'keywords'    => 'news newsletter email statistics',
+                'permissions' => ['indikator.news.settings']
             ]
         ];
     }

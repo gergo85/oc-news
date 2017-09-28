@@ -13,6 +13,7 @@
 </div>
 
 <div class="scoreboard">
+    <?php if ($posts): ?>
     <div class="row">
         <div class="col-md-12">
             <div class="field-section">
@@ -71,6 +72,8 @@
             </div>
         <?php endif ?>
     </div>
+    <?php endif ?>
+    <?php if ($mails): ?>
     <div class="row">
         <div class="col-md-12">
             <br>
@@ -88,6 +91,7 @@
             <div id="log-overall"></div>
         </div>
     </div>
+    <?php endif ?>
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -192,41 +196,43 @@ $(document).ready(function() {
         };
     }
 
-    new Morris.Line({
-        element: 'thisYear',
-        data: [
-            { year: year + '-01', 'all': <?= $thisYear[1] ?> },
-            { year: year + '-02', 'all': <?= $thisYear[2] ?> },
-            { year: year + '-03', 'all': <?= $thisYear[3] ?> },
-            { year: year + '-04', 'all': <?= $thisYear[4] ?> },
-            { year: year + '-05', 'all': <?= $thisYear[5] ?> },
-            { year: year + '-06', 'all': <?= $thisYear[6] ?> },
-            { year: year + '-07', 'all': <?= $thisYear[7] ?> },
-            { year: year + '-08', 'all': <?= $thisYear[8] ?> },
-            { year: year + '-09', 'all': <?= $thisYear[9] ?> },
-            { year: year + '-10', 'all': <?= $thisYear[10] ?> },
-            { year: year + '-11', 'all': <?= $thisYear[11] ?> },
-            { year: year + '-12', 'all': <?= $thisYear[12] ?> }
-        ],
-        xkey: 'year',
-        ykeys: ['all'],
-        labels: [trans.all],
-        lineColors: ['#31708f'],
-        hideHover: 'auto',
-        xLabelFormat: function(x) {
-            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            return IndexToMonth[x.getMonth()];
-        },
-        dateFormat: function(d) {
-            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
-            return month = IndexToMonth[new Date(d).getMonth()];
-        },
-        resize: true,
-        gridIntegers: true,
-        ymin: 0
-    });
+    if ($('#thisYear').length == 1) {
+        new Morris.Line({
+            element: 'thisYear',
+            data: [
+                { year: year + '-01', 'all': <?= $thisYear[1] ?> },
+                { year: year + '-02', 'all': <?= $thisYear[2] ?> },
+                { year: year + '-03', 'all': <?= $thisYear[3] ?> },
+                { year: year + '-04', 'all': <?= $thisYear[4] ?> },
+                { year: year + '-05', 'all': <?= $thisYear[5] ?> },
+                { year: year + '-06', 'all': <?= $thisYear[6] ?> },
+                { year: year + '-07', 'all': <?= $thisYear[7] ?> },
+                { year: year + '-08', 'all': <?= $thisYear[8] ?> },
+                { year: year + '-09', 'all': <?= $thisYear[9] ?> },
+                { year: year + '-10', 'all': <?= $thisYear[10] ?> },
+                { year: year + '-11', 'all': <?= $thisYear[11] ?> },
+                { year: year + '-12', 'all': <?= $thisYear[12] ?> }
+            ],
+            xkey: 'year',
+            ykeys: ['all'],
+            labels: [trans.all],
+            lineColors: ['#31708f'],
+            hideHover: 'auto',
+            xLabelFormat: function(x) {
+                var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+                return IndexToMonth[x.getMonth()];
+            },
+            dateFormat: function(d) {
+                var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+                return month = IndexToMonth[new Date(d).getMonth()];
+            },
+            resize: true,
+            gridIntegers: true,
+            ymin: 0
+        });
 
-    $('#thisYear').fadeTo(1200, 1);
+        $('#thisYear').fadeTo(1200, 1);
+    }
 
     if ($('#lastYear').length == 1) {
         new Morris.Line({
@@ -268,76 +274,86 @@ $(document).ready(function() {
         }, 300);
     }
 
-    Morris.Line({
-        element: 'log-this-year',
-        data: [
-            <?php
-            foreach ($logResults as $year => $logYear) {
-                foreach ($logYear as $month => $logMonth) {
-                    $print = "{ year: '".$year."-".$month."'";
-                    foreach ($logMonth as $entry => $value) {
-                        $print .= ", '".$entry."' : ".$value;
+    if ($('#log-this-year').length == 1) {
+        new Morris.Line({
+            element: 'log-this-year',
+            data: [
+                <?php
+                foreach ($logResults as $year => $logYear) {
+                    foreach ($logYear as $month => $logMonth) {
+                        $print = "{ year: '".$year."-".$month."'";
+                        foreach ($logMonth as $entry => $value) {
+                            $print .= ", '".$entry."' : ".$value;
+                        }
+                        echo $print."},";
                     }
-                    echo $print."},";
                 }
-            }
-            ?>
-        ],
-        xkey: 'year',
-        ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
-        labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
-        pointSize: 2,
-        hideHover: 'auto',
-        xLabelFormat: function(x) {
-            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            return IndexToMonth[x.getMonth()];
-        },
-        dateFormat: function(d) {
-            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
-            return month = IndexToMonth[new Date(d).getMonth()];
-        },
-        resize: true,
-        gridIntegers: true,
-        ymin: 0
-    });
+                ?>
+            ],
+            xkey: 'year',
+            ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
+            labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
+            pointSize: 2,
+            hideHover: 'auto',
+            xLabelFormat: function(x) {
+                var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+                return IndexToMonth[x.getMonth()];
+            },
+            dateFormat: function(d) {
+                var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+                return month = IndexToMonth[new Date(d).getMonth()];
+            },
+            resize: true,
+            gridIntegers: true,
+            ymin: 0
+        });
 
-    Morris.Line({
-        element: 'log-overall',
-        data: [
-            <?php
-            $sum = [];
-            foreach ($logResultsFields as $field) {
-                $sum[$field] = 0;
-            }
-            foreach ($logResults as $year => $logYear) {
-                foreach($logYear as $month => $logMonth) {
-                    $print = "{ year: '".$year."-".$month."'";
-                    foreach ($logMonth as $entry => $value) {
-                        $sum[$entry] += $value;
-                        $print .= ", '".$entry."' : ".$sum[$entry];
-                    }
-                    echo $print."},";
+        $('#log-this-year').fadeTo(1200, 1);
+    }
+
+    if ($('#log-overall').length == 1) {
+        new Morris.Line({
+            element: 'log-overall',
+            data: [
+                <?php
+                $sum = [];
+                foreach ($logResultsFields as $field) {
+                    $sum[$field] = 0;
                 }
-            }
-            ?>
-        ],
-        xkey: 'year',
-        ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
-        labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
-        pointSize: 2,
-        hideHover: 'auto',
-        xLabelFormat: function(x) {
-            var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            return IndexToMonth[x.getMonth()];
-        },
-        dateFormat: function(d) {
-            var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
-            return month = IndexToMonth[new Date(d).getMonth()];
-        },
-        resize: true,
-        gridIntegers: true,
-        ymin: 0
-    });
+                foreach ($logResults as $year => $logYear) {
+                    foreach($logYear as $month => $logMonth) {
+                        $print = "{ year: '".$year."-".$month."'";
+                        foreach ($logMonth as $entry => $value) {
+                            $sum[$entry] += $value;
+                            $print .= ", '".$entry."' : ".$sum[$entry];
+                        }
+                        echo $print."},";
+                    }
+                }
+                ?>
+            ],
+            xkey: 'year',
+            ykeys: ['<?php echo implode("','",$logResultsFields); ?>'],
+            labels: ['<?php echo implode("','",$logResultsFieldsTrans); ?>'],
+            pointSize: 2,
+            hideHover: 'auto',
+            xLabelFormat: function(x) {
+                var IndexToMonth = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+                return IndexToMonth[x.getMonth()];
+            },
+            dateFormat: function(d) {
+                var IndexToMonth = [trans.jan, trans.feb, trans.mar, trans.apr, trans.may, trans.jun, trans.jul, trans.aug, trans.sep, trans.oct, trans.nov, trans.dec];
+                return month = IndexToMonth[new Date(d).getMonth()];
+            },
+            resize: true,
+            gridIntegers: true,
+            ymin: 0
+        });
+
+        setTimeout(function() {
+            $('#log-overall').fadeTo(1200, 1);
+        }, 300);
+    }
 });
 
 (function() {
