@@ -5,6 +5,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 - [Main features](#main_features)
 - [Statistics and graphs](#statistics)
+- [Automatic statistics](#autostat)
+- [Preview feature](#preview)
 - [Available widgets](#available_widgets)
 - [Available components](#available_components)
 - [Mail template variables](#mail_template)
@@ -34,6 +36,14 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * List - TOP 10 shortest posts
 * Graph - Mail events
 * Graph - Mail summary
+
+<a name="autostat"></a>
+## Automatic statistics
+You just add the "Post content" frontend component to the page, where the post appears. If you are logged in as administrator, the counter will not grow. It works any cases, when the visitors open the post details.
+
+<a name="preview"></a>
+## Preview feature
+You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too. 
 
 <a name="available_widgets"></a>
 ## Available widgets

@@ -1,40 +1,57 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
 fields:
+
     main_section:
         label: indikator.news::lang.backend_settings.main_section
         comment: indikator.news::lang.backend_settings.main_section_comment
         type: section
 
     click_tracking:
-        span: left
-        type: switch
         label: indikator.news::lang.backend_settings.click_tracking
         comment: indikator.news::lang.backend_settings.click_tracking_comment
+        type: switch
         default: true
+        span: left
 
     email_view_tracking:
-        span: right
-        type: switch
         label: indikator.news::lang.backend_settings.email_view_tracking
         comment: indikator.news::lang.backend_settings.email_view_tracking_comment
+        type: switch
         default: false
+        span: right
 
     email_view_tracking_warning:
         type: partial
-        span: right
         path: $/indikator/news/models/settings/_email_view_tracking_warning.htm
+        span: right
 
     statistic_section:
         label: indikator.news::lang.backend_settings.statistic_section
         type: section
 
-    statistic_show_longest_posts:
-        span: left
+    statistic_show_posts:
+        label: indikator.news::lang.backend_settings.statistic_show_posts
         type: switch
-        label: indikator.news::lang.backend_settings.statistic_show_longest_posts
         default: true
+        span: auto
+
+    statistic_show_mails:
+        label: indikator.news::lang.backend_settings.statistic_show_mails
+        type: switch
+        default: true
+        span: auto
+
+    statistic_show_longest_posts:
+        label: indikator.news::lang.backend_settings.statistic_show_longest_posts
+        type: switch
+        default: true
+        span: auto
 
     statistic_show_shortest_posts:
-        span: right
-        type: switch
         label: indikator.news::lang.backend_settings.statistic_show_shortest_posts
+        type: switch
         default: true
+        span: auto

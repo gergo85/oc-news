@@ -4,9 +4,9 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
+use Indikator\News\Models\Settings;
 use Db;
 use Backend;
-use Indikator\News\Models\Settings;
 
 class Statistics extends Controller
 {
@@ -29,6 +29,11 @@ class Statistics extends Controller
 
     protected function prepareGraphs()
     {
+        // Permissions
+
+        $this->vars['posts'] = Settings::get('statistic_show_posts', true);
+        $this->vars['mails'] = Settings::get('statistic_show_mails', true);
+
         // Graphs
 
         $this->vars['thisYear'] = $this->vars['lastYear'] = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
@@ -79,6 +84,7 @@ class Statistics extends Controller
 
             $index++;
         }
+
         $this->vars['top'] = $top;
 
         // Posts length
@@ -91,8 +97,8 @@ class Statistics extends Controller
         }
 
         // Longest posts
-        if(Settings::get('statistic_show_longest_posts', true)) {
 
+        if (Settings::get('statistic_show_longest_posts', true)) {
             arsort($posts);
             $longest = '';
             $index = 1;
@@ -102,13 +108,13 @@ class Statistics extends Controller
 
                 $longest .= '
                     <div class="col-md-1 col-sm-1">
-                        ' . $index . '.
+                        '.$index.'.
                     </div>
                     <div class="col-md-9 col-sm-9">
-                        <a href="' . Backend::url('indikator/news/posts/update/' . $item->id) . '">' . $item->title . '</a>
+                        <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
                     </div>
                     <div class="col-md-2 col-sm-2 text-right">
-                        ' . number_format($length, 0, '.', ' ') . '
+                        '.number_format($length, 0, '.', ' ').'
                     </div>
                     <div class="clearfix"></div>
                 ';
@@ -123,10 +129,9 @@ class Statistics extends Controller
             $this->vars['longest'] = $longest;
         }
 
-
         // Shortest posts
-        if(Settings::get('statistic_show_shortest_posts', true)) {
 
+        if (Settings::get('statistic_show_shortest_posts', true)) {
             asort($posts);
             $shortest = '';
             $index = 1;
@@ -136,13 +141,13 @@ class Statistics extends Controller
 
                 $shortest .= '
                     <div class="col-md-1 col-sm-1">
-                        ' . $index . '.
+                        '.$index.'.
                     </div>
                     <div class="col-md-9 col-sm-9">
-                        <a href="' . Backend::url('indikator/news/posts/update/' . $item->id) . '">' . $item->title . '</a>
+                        <a href="'.Backend::url('indikator/news/posts/update/'.$item->id).'">'.$item->title.'</a>
                     </div>
                     <div class="col-md-2 col-sm-2 text-right">
-                        ' . number_format($length, 0, '.', ' ') . '
+                        '.number_format($length, 0, '.', ' ').'
                     </div>
                     <div class="clearfix"></div>
                 ';
@@ -156,16 +161,17 @@ class Statistics extends Controller
 
             $this->vars['shortest'] = $shortest;
         }
-
     }
 
-    protected function prepareLog() {
+    protected function prepareLog()
+    {
         $log['queued'] = Db::table('indikator_news_newsletter_logs')
             ->select(Db::raw("count(id) as c, YEAR(queued_at) as y, MONTH(queued_at) as m"))
             ->groupBy(Db::raw("YEAR(queued_at), MONTH(queued_at)"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
+
         $log['send'] = Db::table('indikator_news_newsletter_logs')
             ->select(Db::raw("count(id) as c, YEAR(send_at) as y, MONTH(send_at) as m"))
             ->whereNotNull('send_at')
@@ -173,6 +179,7 @@ class Statistics extends Controller
             ->orderBy('y')
             ->orderBy('m')
             ->get();
+
         $log['viewed'] = Db::table('indikator_news_newsletter_logs')
             ->select(Db::raw("count(id) as c, YEAR(viewed_at) as y, MONTH(viewed_at) as m"))
             ->whereNotNull('viewed_at')
@@ -180,6 +187,7 @@ class Statistics extends Controller
             ->orderBy('y')
             ->orderBy('m')
             ->get();
+
         $log['clicked'] = Db::table('indikator_news_newsletter_logs')
             ->select(Db::raw("count(id) as c, YEAR(clicked_at) as y, MONTH(clicked_at) as m"))
             ->whereNotNull('clicked_at')
@@ -189,6 +197,7 @@ class Statistics extends Controller
             ->get();
 
         $result = [];
+
         foreach ($log as $name => $l) {
             foreach ($l as $entry) {
                 $result[$entry->y][$entry->m][$name] = $entry->c;

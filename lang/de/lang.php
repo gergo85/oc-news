@@ -6,23 +6,6 @@ return [
         'description' => 'Einfaches News und Newsletter plugin.',
         'author' => 'Gergő Szabó',
     ],
-    'backend_settings' => [
-        'description' => 'Einstellungen verwalten',
-        'main_section' => 'Einstellung über das versenden von Newslettern',
-        'main_section_comment' => 'Es können Einstellungen über das Tracking der Abonnenten eingestellt werden',
-        'click_tracking' => 'Klicken verfolgen',
-        'click_tracking_comment' =>  'Trackt wenn eine Person auf einen Link in der Email klickt.',
-        'email_view_tracking' => 'Emailbetrachtung verfolgen',
-        'email_view_tracking_comment' => 'Trackt wenn eine Person eine Email öffnet.',
-        'email_view_tracking_warning' => [
-            'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
-            'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
-            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
-        ],
-        'statistic_section' => 'Statistik Einstellungen',
-        'statistic_show_longest_posts' => 'Zeige längste Einträge',
-        'statistic_show_shortest_posts' => 'Zeige kürzeste Einträge'
-    ],
     'menu' => [
         'news' => 'News',
         'posts' => 'Nachrichten',
@@ -30,7 +13,8 @@ return [
         'statistics' => 'Statistik',
         'import' => 'Import',
         'export' => 'Export',
-        'logs' => 'Logs'
+        'logs' => 'Logs',
+        'settings' => 'Einstellungen'
     ],
     'title' => [
         'posts' => 'Nachrichten',
@@ -112,9 +96,10 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Deabonnieren',
         'subscribe' => 'Abonnieren',
-        'return' => 'Zurück',
-        'newsletter_resend' => 'Newsletter erneut versenden',
-        'newsletter_resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?'
+        'test' => 'Testpost senden',
+        'resend' => 'Newsletter erneut versenden',
+        'resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
+        'return' => 'Zurück'
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',
@@ -125,6 +110,25 @@ return [
         'remove' => 'Einträge erfolgreich gelöscht.',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
         'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+    ],
+    'backend_settings' => [
+        'description' => 'Einstellungen verwalten',
+        'main_section' => 'Einstellung über das versenden von Newslettern',
+        'main_section_comment' => 'Es können Einstellungen über das Tracking der Abonnenten eingestellt werden',
+        'click_tracking' => 'Klicken verfolgen',
+        'click_tracking_comment' =>  'Trackt wenn eine Person auf einen Link in der Email klickt.',
+        'email_view_tracking' => 'Emailbetrachtung verfolgen',
+        'email_view_tracking_comment' => 'Trackt wenn eine Person eine Email öffnet.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
+            'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
+            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
+        ],
+        'statistic_section' => 'Statistik Einstellungen',
+        'statistic_show_posts' => 'Zeige Einträge',
+        'statistic_show_mails' => 'Zeige Mail-Logs',
+        'statistic_show_longest_posts' => 'Zeige längste Einträge',
+        'statistic_show_shortest_posts' => 'Zeige kürzeste Einträge'
     ],
     'widget' => [
         'posts' => 'News - Nachrichten',

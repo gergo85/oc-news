@@ -6,20 +6,6 @@ return [
         'description' => 'Plugin do zarządzania aktualnościami i newsletterem.',
         'author' => 'Gergő Szabó'
     ],
-    'backend_settings' => [
-        'description' => 'Ustawienia sterowania',
-        'main_section' => 'Ustawienia dotyczące wysyłania i obsługi biuletynów',
-        'main_section_comment' => 'Ustawienia śledzenia można zmieniać w biuletynie newsletterów.',
-        'click_tracking' => 'Śledzenie kliknięć',
-        'click_tracking_comment' => 'Śledź, gdy osoba kliknie link biuletynu.',
-        'email_view_tracking' => 'Śledzenie wyświetleń biuletynów',
-        'email_view_tracking_comment' => 'Śledź, gdy osoba przegląda biuletyn.',
-        'email_view_tracking_warning' => [
-            'heading' => 'Будьте осторожны при использовании этой функции',
-            'subheading' => 'Nie jest dozwolone w każdym kraju!',
-            'text' => 'Podczas korzystania z tej funkcji należy mieć pewność, co robisz! Upewnij się, że nie złamasz żadnych praw.'
-        ]
-    ],
     'menu' => [
         'news' => 'Subskrypcja',
         'posts' => 'Posty',
@@ -27,7 +13,8 @@ return [
         'statistics' => 'Statystyka',
         'import' => 'Import',
         'export' => 'Eksport',
-        'logs' => 'Logi'
+        'logs' => 'Logi',
+        'settings' => 'Ustawienia'
     ],
     'title' => [
         'posts' => 'post',
@@ -106,9 +93,10 @@ return [
         'export' => 'Eksport',
         'unsubscribe' => 'Anuluj subskrypcję',
         'subscribe' => 'Subskrypcja',
-        'return' => 'Powrót',
-        'newsletter_resend' => 'Wyślij ponownie biuletyn',
-        'newsletter_resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?'
+        'test' => 'Wyślij pocztę testową',
+        'resend' => 'Wyślij ponownie biuletyn',
+        'resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?',
+        'return' => 'Powrót'
     ],
     'flash' => [
         'activate' => 'Pomyślnie aktywowano zaznaczone posty.',
@@ -119,6 +107,25 @@ return [
         'remove' => 'Pomyślnie usunięto zaznaczone posty.',
         'newsletter_resend_success' => 'Newsletter został z powodzeniem wysłany.',
         'newsletter_resend_error' => 'Podczas wysyłania biuletynu wystąpił błąd. Przed ponownym wysyłaniem zapoznaj się z logu, aby uzyskać więcej informacji na temat aktualnego stanu.'
+    ],
+    'backend_settings' => [
+        'description' => 'Ustawienia sterowania',
+        'main_section' => 'Ustawienia dotyczące wysyłania i obsługi biuletynów',
+        'main_section_comment' => 'Ustawienia śledzenia można zmieniać w biuletynie newsletterów.',
+        'click_tracking' => 'Śledzenie kliknięć',
+        'click_tracking_comment' => 'Śledź, gdy osoba kliknie link biuletynu.',
+        'email_view_tracking' => 'Śledzenie wyświetleń biuletynów',
+        'email_view_tracking_comment' => 'Śledź, gdy osoba przegląda biuletyn.',
+        'email_view_tracking_warning' => [
+            'heading' => 'Будьте осторожны при использовании этой функции',
+            'subheading' => 'Nie jest dozwolone w każdym kraju!',
+            'text' => 'Podczas korzystania z tej funkcji należy mieć pewność, co robisz! Upewnij się, że nie złamasz żadnych praw.'
+        ],
+        'statistic_section' => 'Ustawienia statystyk',
+        'statistic_show_posts' => 'Pokaż posty',
+        'statistic_show_mails' => 'Pokaż dzienniki poczty',
+        'statistic_show_longest_posts' => 'Pokaż najdłuższe posty',
+        'statistic_show_shortest_posts' => 'Pokaż krótkie posty'
     ],
     'widget' => [
         'posts' => 'Aktualności - Posty',
