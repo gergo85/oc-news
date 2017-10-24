@@ -99,7 +99,7 @@ class SendNews
         $sendResult = self::send($template, $params, $receiver, $subject);
 
         if ($sendResult === true) {
-            Subscribers::find($receiver->id)->increment('statistics');
+            Subscribers::find($receiver['id'])->increment('statistics');
 
             if ($logEntry !== null) {
                 Logger::sent($logEntry->id);
@@ -107,7 +107,7 @@ class SendNews
         }
 
         if ($sendResult === false && $logEntry !== null) {
-            Logger::sendingFailed($logEntry->id);
+            Logger::sendingFailed($logEntry['id']);
         }
 
         return $sendResult;
@@ -124,9 +124,7 @@ class SendNews
      */
     static function send($template, $params, $receiver, $subject)
     {
-        Mail::send($template, $params, function ($message) use ($receiver, $subject) {
-            $message->to($receiver->email, $receiver->name)->subject($subject);
-        });
+        Mail::send(new NewsletterMail($template, $params, $receiver, $subject));
 
         // Check for failures
         if (Mail::failures()) {

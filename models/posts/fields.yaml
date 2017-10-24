@@ -62,11 +62,6 @@ secondaryTabs:
             default: 2
             span: auto
 
-        send:
-            label: indikator.news::lang.form.send
-            type: checkbox
-            default: false
-
         last_send_at:
             label: indikator.news::lang.form.last_send_at
             type: datepicker

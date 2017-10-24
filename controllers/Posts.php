@@ -17,9 +17,9 @@ use Redirect;
 class Posts extends Controller
 {
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        'Backend.Behaviors.ImportExportController'
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\ImportExportController::class
     ];
 
     public $formConfig = 'config_form.yaml';
@@ -57,6 +57,11 @@ class Posts extends Controller
         return Item::findOrFail($uri[count($uri) - 1]);
     }
 
+    /**
+     * Sends a newsletter again to the subscribers.
+     * Returns a refresh with attached Flash message.
+     * @return mixed
+     */
     public function onNewsResend()
     {
         $news = $this->getNewsByPathOrFail();
@@ -74,15 +79,31 @@ class Posts extends Controller
         return Redirect::refresh();
     }
 
-    public function formAfterSave($news)
+    /**
+     * Sends a newsletter the first time if last_send_at is null.
+     * Flash message will be attached.
+     * @return mixed
+     */
+    public function onNewsSend()
     {
-        if ($news->send === true && $news->last_send_at === null) {
-            $sender = new NewsSender($news);
-            $sender->sendNewsletter();
+        $news = $this->getNewsByPathOrFail();
 
-            // We want to refresh the page to update the current view
-            Request::offsetSet('redirect', '1');
+        if ($news->last_send_at === null) {
+
+            $sender = new NewsSender($news);
+
+            if($sender->sendNewsletter()) {
+                Flash::success(trans('indikator.news::lang.flash.newsletter_send_success'));
+            }
+            else {
+                Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
+            }
+
+        } else {
+            Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
         }
+
+        return Redirect::refresh();
     }
 
     public function onActivatePosts()
