@@ -1,3 +1,5 @@
+__1.8.5 > 1.8.6__ - The minimum requirement are October 420 and PHP 7.
+
 __1.7.8 > 1.8.0__ - Added the "indikator_" prefix to the tables.
 
 __1.7.2 > 1.7.3__ - Removed the Stat front-end component.

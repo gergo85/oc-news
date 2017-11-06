@@ -89,17 +89,16 @@ class Posts extends Controller
         $news = $this->getNewsByPathOrFail();
 
         if ($news->last_send_at === null) {
-
             $sender = new NewsSender($news);
 
-            if($sender->sendNewsletter()) {
+            if ($sender->sendNewsletter()) {
                 Flash::success(trans('indikator.news::lang.flash.newsletter_send_success'));
             }
             else {
                 Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
             }
-
-        } else {
+        }
+        else {
             Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
         }
 

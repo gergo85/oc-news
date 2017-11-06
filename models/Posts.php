@@ -98,7 +98,6 @@ class Posts extends Model
 
     public function scopeListFrontEnd($query, $options)
     {
-
         extract(array_merge([
             'page'     => 1,
             'perPage'  => 10,
@@ -148,21 +147,19 @@ class Posts extends Model
         }
 
         return $query->paginate($perPage, $page);
-
     }
 
     public function scopeIsPublished($query)
     {
+        if (BackendAuth::check()) {
+            return $query;
+        }
 
-      if (BackendAuth::check()) {
-          return $query;
-      }
-
-      return $query
-          ->where('status', 1)
-          ->whereNotNull('published_at')
-          ->where('published_at', '<', Carbon::now())
-      ;
+        return $query
+            ->where('status', 1)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<', Carbon::now())
+        ;
     }
 
     public function scopeIsFeatured($query, $value = 1)
@@ -172,7 +169,6 @@ class Posts extends Model
 
     public static function getMenuTypeInfo($type)
     {
-        
         if ($type == 'post-page') {
             $references = [];
             $items = self::orderBy('title')->get();
@@ -204,7 +200,6 @@ class Posts extends Model
 
     public static function resolveMenuItem($item, $url, $theme)
     {
-
         if ($item->type == 'post-page') {
             if (!$item->reference || !$item->cmsPage) {
                 return;
@@ -246,7 +241,6 @@ class Posts extends Model
         }
 
         return $result;
-
     }
 
     protected static function getItemUrl($pageCode, $item, $theme)
@@ -262,7 +256,7 @@ class Posts extends Model
         }
 
         $paramName = substr(trim($matches[1]), 1);
+
         return CmsPage::url($page->getBaseFileName(), [$paramName => $item->slug]);
     }
-
 }

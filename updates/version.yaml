@@ -77,5 +77,5 @@
 1.8.4: Added the preview feature for posts.
 1.8.5: Added more options for Settings page.
 1.8.6:
-    - Reworke sending newsletter
-    - update_send_feature2.php
+    - Reworked again the sending newsletter feature.
+    - update_send_feature_2.php

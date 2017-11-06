@@ -65,8 +65,6 @@ return [
         'no' => 'No',
         'view' => 'view',
         'published' => 'Published at',
-        'send' => 'Send the e-mail to subscribers.',
-        'sent' => 'Post was sent to subscribers.',
         'last_send_at' => 'Last send at',
         'last_send' => 'Last send',
         'length' => 'Length',
@@ -98,9 +96,9 @@ return [
         'subscribe' => 'Subscription',
         'test' => 'Send test mail',
         'send' => 'Send newsletter',
-        'send_confirmation' => 'Are you sure that you want to send the newsletter?',
+        'send_confirmation' => 'Do you want to send the newsletter?',
         'resend' => 'Resend newsletter',
-        'resend_confirmation' => 'Are you sure that you want to resend the newsletter?',
+        'resend_confirmation' => 'Do you want to resend the newsletter?',
         'return' => 'Return'
     ],
     'flash' => [
