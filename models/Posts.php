@@ -15,10 +15,6 @@ class Posts extends Model
 
     protected $table = 'indikator_news_posts';
 
-    protected $casts = [
-        'send' => 'boolean'
-    ];
-
     public $rules = [
         'title'    => 'required',
         'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts'],
@@ -86,15 +82,15 @@ class Posts extends Model
 
     public $preview = null;
 
+    public function getSendAttribute() {
+        return $this->last_send_at != null;
+    }
+
     /**
      * Keep the original send and last_send_at attribute because they are read only
      */
     public function beforeUpdate()
     {
-        if ($this->getOriginal('send')) {
-            $this->send = true;
-        }
-
         if (($lastSend = $this->getOriginal('last_send_at')) != null) {
             $this->last_send_at = $lastSend;
         }
@@ -102,6 +98,7 @@ class Posts extends Model
 
     public function scopeListFrontEnd($query, $options)
     {
+
         extract(array_merge([
             'page'     => 1,
             'perPage'  => 10,
@@ -151,10 +148,12 @@ class Posts extends Model
         }
 
         return $query->paginate($perPage, $page);
+
     }
 
     public function scopeIsPublished($query)
     {
+
       if (BackendAuth::check()) {
           return $query;
       }
@@ -173,6 +172,7 @@ class Posts extends Model
 
     public static function getMenuTypeInfo($type)
     {
+        
         if ($type == 'post-page') {
             $references = [];
             $items = self::orderBy('title')->get();
@@ -204,6 +204,7 @@ class Posts extends Model
 
     public static function resolveMenuItem($item, $url, $theme)
     {
+
         if ($item->type == 'post-page') {
             if (!$item->reference || !$item->cmsPage) {
                 return;
@@ -245,6 +246,7 @@ class Posts extends Model
         }
 
         return $result;
+
     }
 
     protected static function getItemUrl($pageCode, $item, $theme)
@@ -263,13 +265,4 @@ class Posts extends Model
         return CmsPage::url($page->getBaseFileName(), [$paramName => $item->slug]);
     }
 
-    public function filterFields($fields, $context = null)
-    {
-        if ($fields->send->value === true) {
-            $fields->send->disabled = true;
-            $fields->send->readonly = true;
-            $fields->send->type = 'checkbox';
-            $fields->send->label = 'indikator.news::lang.form.sent';
-        }
-    }
 }

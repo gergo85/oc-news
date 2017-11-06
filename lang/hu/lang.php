@@ -97,6 +97,7 @@ return [
         'unsubscribe' => 'Leiratkozás',
         'subscribe' => 'Feliratkozás',
         'test' => 'Tesztlevél küldése',
+        'send' => 'Hírlevél küldése a feliratkozott emberek számára.',
         'resend' => 'Hírlevél újraküldése',
         'resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?',
         'return' => 'Vissza'

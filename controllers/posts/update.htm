@@ -14,20 +14,21 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
     <ul>
         <li><a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('indikator.news::lang.menu.posts')) ?></a></li>
         <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
-        <li>
-            <span class="text-danger"><strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
-        </li>
+        <?php if (!$this->fatalError): ?>
+            <li>
+                <span class="text-danger"><strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
+            </li>
+        <?php endif ?>
     </ul>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
@@ -64,14 +65,25 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
                     class="btn btn-info">
                     <?= e(trans('indikator.news::lang.button.test')) ?>
                 </button>
-                <button
-                    type="button"
-                    data-request="onNewsResend"
-                    data-request-confirm="<?= e(trans('indikator.news::lang.button.resend_confirmation')) ?>"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
-                    class="btn btn-info<?= $formModel->last_send_at === null ? ' disabled' : '' ?>">
-                    <?= e(trans('indikator.news::lang.button.resend')) ?>
-                </button>
+                <?php if ($formModel->last_send_at == null) : ?>
+                    <button
+                            type="button"
+                            data-request="onNewsSend"
+                            data-request-confirm="<?= e(trans('indikator.news::lang.button.send_confirmation')) ?>"
+                            data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                            class="btn btn-info">
+                        <?= e(trans('indikator.news::lang.button.send')) ?>
+                    </button>
+                <?php else : ?>
+                    <button
+                            type="button"
+                            data-request="onNewsResend"
+                            data-request-confirm="<?= e(trans('indikator.news::lang.button.resend_confirmation')) ?>"
+                            data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                            class="btn btn-info">
+                        <?= e(trans('indikator.news::lang.button.resend')) ?>
+                    </button>
+                <?php endif ?>
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>

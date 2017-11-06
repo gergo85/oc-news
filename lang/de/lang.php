@@ -97,6 +97,8 @@ return [
         'unsubscribe' => 'Deabonnieren',
         'subscribe' => 'Abonnieren',
         'test' => 'Testpost senden',
+        'send' => 'Newsletter versenden',
+        'send_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter versenden möchten?',
         'resend' => 'Newsletter erneut versenden',
         'resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
         'return' => 'Zurück'
@@ -109,7 +111,9 @@ return [
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
         'remove' => 'Einträge erfolgreich gelöscht.',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
-        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'newsletter_send_success' => 'Newsletter wurde erfolgreich versendet.',
+        'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',
