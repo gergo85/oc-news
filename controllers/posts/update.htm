@@ -66,23 +66,23 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
                     <?= e(trans('indikator.news::lang.button.test')) ?>
                 </button>
                 <?php if ($formModel->last_send_at == null) : ?>
-                    <button
-                            type="button"
-                            data-request="onNewsSend"
-                            data-request-confirm="<?= e(trans('indikator.news::lang.button.send_confirmation')) ?>"
-                            data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
-                            class="btn btn-info">
-                        <?= e(trans('indikator.news::lang.button.send')) ?>
-                    </button>
+                <button
+                    type="button"
+                    data-request="onNewsSend"
+                    data-request-confirm="<?= e(trans('indikator.news::lang.button.send_confirmation')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                    class="btn btn-info">
+                    <?= e(trans('indikator.news::lang.button.send')) ?>
+                </button>
                 <?php else : ?>
-                    <button
-                            type="button"
-                            data-request="onNewsResend"
-                            data-request-confirm="<?= e(trans('indikator.news::lang.button.resend_confirmation')) ?>"
-                            data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
-                            class="btn btn-info">
-                        <?= e(trans('indikator.news::lang.button.resend')) ?>
-                    </button>
+                <button
+                    type="button"
+                    data-request="onNewsResend"
+                    data-request-confirm="<?= e(trans('indikator.news::lang.button.resend_confirmation')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                    class="btn btn-info">
+                    <?= e(trans('indikator.news::lang.button.resend')) ?>
+                </button>
                 <?php endif ?>
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">

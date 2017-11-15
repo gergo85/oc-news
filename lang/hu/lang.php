@@ -108,10 +108,11 @@ return [
         'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
         'remove' => 'Az eltávolítás sikeresen megtörtént.',
-        'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
-        'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
+        'newsletter_test_error' => 'A teszt levél elküldése során hiba történt.',
         'newsletter_send_success' => 'A hírlevél sikeresen el lett küldve.',
-        'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
+        'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
+        'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
+        'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
     ],
     'backend_settings' => [
         'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',

@@ -108,10 +108,11 @@ return [
         'unsubscribe' => 'Diese Benutzer wurden erfolgreich abgemeldet.',
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
         'remove' => 'Einträge erfolgreich gelöscht.',
-        'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
-        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'newsletter_test_error' => 'Ein Fehler trat beim versenden auf.',
         'newsletter_send_success' => 'Newsletter wurde erfolgreich versendet.',
-        'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+        'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',

@@ -54,6 +54,7 @@ class NewsSender
         if ($pluginManager && !$pluginManager->disabled) {
             $this->locale = true;
         }
+
         $this->queued = $queued;
     }
 
@@ -68,8 +69,8 @@ class NewsSender
         $langs = [$locale, App::getLocale(), 'en'];
 
         foreach ($langs as $lang) {
-            if (File::exists(base_path() . '/plugins/indikator/news/views/mail/email_' . $lang . '.htm')) {
-                return $this->templateNamespace . $lang;
+            if (File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$lang.'.htm')) {
+                return $this->templateNamespace.$lang;
             }
         }
 
@@ -77,15 +78,13 @@ class NewsSender
     }
 
     /**
-     * Resends the newsletter to all active subscribers
+     * Sends a test newsletter to the current logged in backend user
      */
-    public function resendNewsletter()
+    public function sendTestNewsletter()
     {
-        $result = $this->sendToActiveSubscribers();
-        $this->news->last_send_at = new Date();
-        $this->news->save();
+        $receiver = BackendAuth::getUser();
 
-        return $result;
+        return $this->sendTest($receiver);
     }
 
     /**
@@ -101,12 +100,15 @@ class NewsSender
     }
 
     /**
-     * Sends a test newsletter to the current logged in backend user.
+     * Resends the newsletter to all active subscribers
      */
-    public function sendTestNewsletter()
+    public function resendNewsletter()
     {
-        $receiver = BackendAuth::getUser();
-        return $this->sendTest($receiver);
+        $result = $this->sendToActiveSubscribers();
+        $this->news->last_send_at = new Date();
+        $this->news->save();
+
+        return $result;
     }
 
     /**
@@ -178,14 +180,14 @@ class NewsSender
     }
 
     /**
-     * Sends a test message to the receiver that didn't get logged.
+     * Sends a test message to the receiver that didn't get logged
      *
      * @param $receiver
      * @return bool
      */
     protected function sendTest($receiver)
     {
-        $params = $this->prepareNewsletterParametersForReceiver($receiver);
+        $params   = $this->prepareNewsletterParametersForReceiver($receiver);
         $template = $this->getTemplateForReceiver($receiver);
 
         return SendNews::send($template, $params, $receiver, $this->news->title);
@@ -199,7 +201,7 @@ class NewsSender
      */
     protected function send($receiver)
     {
-        $params = $this->prepareNewsletterParametersForReceiver($receiver);
+        $params   = $this->prepareNewsletterParametersForReceiver($receiver);
         $template = $this->getTemplateForReceiver($receiver);
 
         $logEntry = Logger::queued($this->news->id, $receiver->id);

@@ -107,11 +107,12 @@ return [
         'subscribe' => 'Successfully subscribed those users.',
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
-        'remove' => 'Successfully removed those items.',
-        'newsletter_resend_success' => 'Newsletter was successfully resend.',
-        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'remove' => 'Successfully removed those items.',,
+        'newsletter_test_error' => 'An error occurred during sending the test newsletter.',
         'newsletter_send_success' => 'Newsletter was successfully send.',
-        'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!'
+        'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!',
+        'newsletter_resend_success' => 'Newsletter was successfully resend.',
+        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.'
     ],
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',

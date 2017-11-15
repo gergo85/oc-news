@@ -37,6 +37,13 @@ class Posts extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'posts');
     }
 
+    protected function getNewsByPathOrFail()
+    {
+        $uri = explode('/', Request::path());
+
+        return Item::findOrFail($uri[count($uri) - 1]);
+    }
+
     public function onTest()
     {
         $news   = $this->getNewsByPathOrFail();
@@ -46,37 +53,8 @@ class Posts extends Controller
             Flash::success(trans('system::lang.mail_templates.test_success'));
         }
         else {
-            Flash::failed(trans('system::lang.mail_templates.test_failed'));
+            Flash::error(trans('indikator.news::lang.flash.newsletter_test_error'));
         }
-    }
-
-    protected function getNewsByPathOrFail()
-    {
-        $uri = explode('/', Request::path());
-
-        return Item::findOrFail($uri[count($uri) - 1]);
-    }
-
-    /**
-     * Sends a newsletter again to the subscribers.
-     * Returns a refresh with attached Flash message.
-     * @return mixed
-     */
-    public function onNewsResend()
-    {
-        $news = $this->getNewsByPathOrFail();
-        $sender = new NewsSender($news);
-
-        if ($sender->resendNewsletter()) {
-            Item::where('id', $news->id)->update(['last_send_at' => Date::now()]);
-
-            Flash::success(trans('indikator.news::lang.flash.newsletter_resend_success'));
-        }
-        else {
-            Flash::success(trans('indikator.news::lang.flash.newsletter_resend_error'));
-        }
-
-        return Redirect::refresh();
     }
 
     /**
@@ -95,11 +73,33 @@ class Posts extends Controller
                 Flash::success(trans('indikator.news::lang.flash.newsletter_send_success'));
             }
             else {
-                Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
+                Flash::error(trans('indikator.news::lang.flash.newsletter_send_error'));
             }
         }
         else {
-            Flash::success(trans('indikator.news::lang.flash.newsletter_send_error'));
+            Flash::error(trans('indikator.news::lang.flash.newsletter_send_error'));
+        }
+
+        return Redirect::refresh();
+    }
+
+    /**
+     * Sends a newsletter again to the subscribers.
+     * Returns a refresh with attached Flash message.
+     * @return mixed
+     */
+    public function onNewsResend()
+    {
+        $news = $this->getNewsByPathOrFail();
+        $sender = new NewsSender($news);
+
+        if ($sender->resendNewsletter()) {
+            Item::where('id', $news->id)->update(['last_send_at' => Date::now()]);
+
+            Flash::success(trans('indikator.news::lang.flash.newsletter_resend_success'));
+        }
+        else {
+            Flash::error(trans('indikator.news::lang.flash.newsletter_resend_error'));
         }
 
         return Redirect::refresh();
