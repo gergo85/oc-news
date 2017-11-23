@@ -44,6 +44,6 @@ class TopPosts extends ReportWidgetBase
 
     protected function loadData()
     {
-        $this->vars['posts'] = Post::where('status', 1)->orderBy('statistics', 'desc')->take($this->property('piece'))->get();
+        $this->vars['posts'] = Post::where('status', 1)->orderBy('statistics', 'desc')->take($this->property('piece'))->get()->all();
     }
 }
