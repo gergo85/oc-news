@@ -38,6 +38,7 @@ return [
         'viewed' => 'Viewed',
         'click' => 'Clicks',
         'clicked' => 'Clicked',
+        'failed' => 'Failed',
         'log' => [
             'events' => 'Events',
             'summary' => 'Summary'

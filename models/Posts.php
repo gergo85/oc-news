@@ -171,7 +171,7 @@ class Posts extends Model
     {
         if ($type == 'post-page') {
             $references = [];
-            $items = self::orderBy('title')->get();
+            $items = self::orderBy('title')->get()->all();
 
             foreach ($items as $item) {
                 $references[$item->id] = $item->title;
@@ -227,7 +227,7 @@ class Posts extends Model
                 'items' => []
             ];
 
-            $elements = self::where('status', 1)->where('published_at', '<', date('Y-m-d H:i:s'))->orderBy('title')->get();
+            $elements = self::where('status', 1)->where('published_at', '<', date('Y-m-d H:i:s'))->orderBy('title')->get()->all();
             foreach ($elements as $element) {
                 $listItem = [
                     'title' => $element->title,

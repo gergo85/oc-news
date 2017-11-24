@@ -35,7 +35,7 @@ class Logger
     static public function sendingFailed($id)
     {
         $log = Logs::findOrFail($id);
-        $log->status = 'Sending Failed';
+        $log->status = 'Failed';
         $log->send_at = null;
         $log->save();
     }

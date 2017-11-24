@@ -38,6 +38,7 @@ return [
         'viewed' => 'Betrachtet',
         'click' => 'Klicks',
         'clicked' => 'Geklickt',
+        'failed' => 'Gescheitert',
         'log' => [
             'events' => 'Ereignisse',
             'summary' => 'Gesamt'

@@ -38,6 +38,7 @@ return [
         'viewed' => 'Megtekintve',
         'click' => 'Kattintás',
         'clicked' => 'Kattintva',
+        'failed' => 'Sikertelen',
         'log' => [
             'events' => 'Események',
             'summary' => 'Összegzés'
