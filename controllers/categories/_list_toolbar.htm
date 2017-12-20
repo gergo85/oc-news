@@ -1,0 +1,43 @@
+<div data-control="toolbar">
+    <a
+        href="<?= Backend::url('indikator/news/categories/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('indikator.news::lang.new.categories')) ?>
+    </a>
+    <?php if (Indikator\News\Models\Categories::count() > 0): ?>
+    <a
+        href="<?= Backend::url('indikator/news/categories/reorder') ?>"
+        class="btn btn-default oc-icon-random">
+        <?= e(trans('indikator.news::lang.button.reorder')) ?>
+    </a>
+    <div class="btn-group">
+        <button
+            class="btn btn-default oc-icon-eye-slash"
+            disabled="disabled"
+            onclick="$(this).data('request-data', {
+                checked: $('.control-list').listWidget('getChecked')
+            })"
+            data-request="onDeactivate"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-stripe-load-indicator>
+            <?= e(trans('indikator.news::lang.button.deactivate')) ?>
+        </button>
+    </div>
+    <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onRemove"
+        data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        <?= e(trans('system::lang.plugins.remove')) ?>
+    </button>
+    <?php endif ?>
+</div>

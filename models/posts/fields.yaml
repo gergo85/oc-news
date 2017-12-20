@@ -41,6 +41,10 @@ secondaryTabs:
             type: datepicker
             mode: datetime
 
+        category:
+            label: indikator.news::lang.form.category
+            type: relation
+
         status:
             label: indikator.news::lang.form.status
             required: true

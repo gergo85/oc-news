@@ -49,6 +49,13 @@ class Posts extends Model
         'published_at desc'
     ];
 
+    public $belongsTo = [
+        'category' => [
+            'Indikator\News\Models\Categories',
+            'order' => 'name'
+        ]
+    ];
+
     public $hasMany = [
         'logs' => [
             'Indikator\News\Models\Logs',
@@ -77,6 +84,12 @@ class Posts extends Model
             'key'   => 'news_id',
             'scope' => 'isClicked',
             'count' => true
+        ],
+        'logs_failed_count' => [
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
+            'scope' => 'isFailed',
+            'count' => true
         ]
     ];
 
@@ -84,6 +97,16 @@ class Posts extends Model
 
     public function getSendAttribute() {
         return $this->last_send_at != null;
+    }
+
+    /**
+     * Check the ID of category
+     */
+    public function beforeSave()
+    {
+        if (!isset($this->category_id) || empty($this->category_id)) {
+            $this->category_id = 0;
+        }
     }
 
     /**

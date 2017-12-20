@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'News',
         'posts' => 'Posts',
+        'categories' => 'Categories',
         'subscribers' => 'Subscribers',
         'statistics' => 'Statistics',
         'import' => 'Import',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'post',
+        'categories' => 'category',
         'subscribers' => 'subscriber'
     ],
     'new' => [
         'posts' => 'New post',
+        'categories' => 'New category',
         'subscribers' => 'New subscriber'
     ],
     'stat' => [
@@ -55,13 +58,16 @@ return [
         'introductory' => 'Introductory',
         'content' => 'Content',
         'image' => 'Image',
+        'category' => 'Category',
         'status' => 'Status',
         'status_published' => 'Published',
         'status_hide' => 'Hidden',
         'status_draft' => 'Draft',
         'status_active' => 'Active',
+        'status_inactive' => 'Inactive',
         'status_unsubscribed' => 'Unsubscribed',
         'featured' => 'Featured',
+        'hidden' => 'Is hidden?',
         'yes' => 'Yes',
         'no' => 'No',
         'view' => 'view',
@@ -72,7 +78,8 @@ return [
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
-        'common' => 'Common',
+        'categories_comment' => 'If no category is selected then the subscriber will receive the all newsletters.',
+        'comment' => 'Comment',
         'locale' => 'Locale',
         'lang' => 'en',
         'mail' => 'mail',
@@ -91,6 +98,7 @@ return [
         'deactivate' => 'Hide',
         'active' => 'Active',
         'inactive' => 'Inactive',
+        'reorder' => 'Reorder',
         'import' => 'Import',
         'export' => 'Export',
         'unsubscribe' => 'Unsubscribe',
@@ -156,6 +164,7 @@ return [
     ],
     'permission' => [
         'posts' => 'Manage posts',
+        'categories' => 'Manage categories',
         'subscribers' => 'Manage subscribers',
         'statistics' => 'View statistics',
         'import_export' => 'Import and Export',

@@ -36,6 +36,12 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-file-text',
                         'permissions' => ['indikator.news.posts']
                     ],
+                    'categories' => [
+                        'label'       => 'indikator.news::lang.menu.categories',
+                        'url'         => Backend::url('indikator/news/categories'),
+                        'icon'        => 'icon-tags',
+                        'permissions' => ['indikator.news.categories']
+                    ],
                     'subscribers' => [
                         'label'        => 'indikator.news::lang.menu.subscribers',
                         'url'         => Backend::url('indikator/news/subscribers'),
@@ -127,6 +133,10 @@ class Plugin extends PluginBase
             'indikator.news.posts' => [
                 'tab'   => 'indikator.news::lang.menu.news',
                 'label' => 'indikator.news::lang.permission.posts'
+            ],
+            'indikator.news.categories' => [
+                'tab'   => 'indikator.news::lang.menu.news',
+                'label' => 'indikator.news::lang.permission.categories'
             ],
             'indikator.news.subscribers' => [
                 'tab'   => 'indikator.news::lang.menu.news',

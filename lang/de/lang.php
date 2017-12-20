@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'News',
         'posts' => 'Nachrichten',
+        'categories' => 'Kategorien',
         'subscribers' => 'Abonnenten',
         'statistics' => 'Statistik',
         'import' => 'Import',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'Nachrichten',
+        'categories' => 'Kategorie',
         'subscribers' => 'Abonnenten'
     ],
     'new' => [
         'posts' => 'Neue Nachricht',
+        'categories' => 'Neue Kategorie',
         'subscribers' => 'Neuen Abonnenten'
     ],
     'stat' => [
@@ -55,13 +58,16 @@ return [
         'introductory' => 'Einleitung',
         'content' => 'Inhalt',
         'image' => 'Bild',
+        'category' => 'Kategorie',
         'status' => 'Status',
         'status_published' => 'Veröffentlicht',
         'status_hide' => 'Versteckt',
         'status_draft' => 'Entwurf',
         'status_active' => 'Aktiv',
+        'status_inactive' => 'Inaktiv',
         'status_unsubscribed' => 'Deabonniert',
         'featured' => 'Hervorgehoben',
+        'hidden' => 'Versteckt',
         'yes' => 'Ja',
         'no' => 'Nein',
         'view' => 'Gesehen',
@@ -72,7 +78,7 @@ return [
         // Subscribers
         'name' => 'Name',
         'email' => 'Email',
-        'common' => 'Common',
+        'comment' => 'Kommentar',
         'locale' => 'Sprache',
         'lang' => 'de',
         'mail' => 'Mail',

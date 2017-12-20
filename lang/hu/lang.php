@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
+        'categories' => 'Kategóriák',
         'subscribers' => 'Feliratkozók',
         'statistics' => 'Statisztika',
         'import' => 'Importálás',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'bejegyzés',
+        'categories' => 'kategória',
         'subscribers' => 'feliratkozó'
     ],
     'new' => [
         'posts' => 'Új bejegyzés',
+        'categories' => 'Új kategória',
         'subscribers' => 'Új feliratkozó'
     ],
     'stat' => [
@@ -55,13 +58,16 @@ return [
         'introductory' => 'Bevezető',
         'content' => 'Tartalom',
         'image' => 'Kép',
+        'category' => 'Kategória',
         'status' => 'Státusz',
         'status_published' => 'Közzétéve',
         'status_hide' => 'Rejtett',
         'status_draft' => 'Piszkozat',
         'status_active' => 'Aktív',
+        'status_inactive' => 'Inaktív',
         'status_unsubscribed' => 'Leiratkozott',
         'featured' => 'Kiemelt',
+        'hidden' => 'Rejtett',
         'yes' => 'Igen',
         'no' => 'Nem',
         'view' => 'megtekintés',
@@ -72,7 +78,8 @@ return [
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
-        'common' => 'Megjegyzés',
+        'categories_comment' => 'Ha nincs kijelölve egyik kategória sem, akkor a feliratkozó minden hirlevelet meg fog kapni.',
+        'comment' => 'Megjegyzés',
         'locale' => 'Nyelv',
         'lang' => 'hu',
         'mail' => 'levél',
@@ -91,6 +98,7 @@ return [
         'deactivate' => 'Rejtés',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
+        'reorder' => 'Sorrend',
         'import' => 'Importálás',
         'export' => 'Exportálás',
         'unsubscribe' => 'Leiratkozás',
@@ -156,6 +164,7 @@ return [
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
+        'categories' => 'Kategóriák kezelése',
         'subscribers' => 'Feliratkozók kezelése',
         'statistics' => 'Statisztika megtekintése',
         'import_export' => 'Importálás és exportálás',

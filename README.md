@@ -19,6 +19,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 <a name="main_features"></a>
 ## Main features
 * Managing posts
+* Managing categories
 * Managing subscribers
 * Export & Import data
 * Statistics and graphs
@@ -43,7 +44,7 @@ You just add the "Post content" frontend component to the page, where the post a
 
 <a name="preview"></a>
 ## Preview feature
-You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too. 
+You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
 
 <a name="available_widgets"></a>
 ## Available widgets

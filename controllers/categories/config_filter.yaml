@@ -4,26 +4,20 @@
 
 scopes:
 
+    hidden:
+        label: indikator.news::lang.form.hidden
+        type: checkbox
+        conditions: hidden = 1
+
     status_active:
-        label: indikator.news::lang.form.status_active
+        label: indikator.news::lang.button.active
         type: checkbox
         conditions: status = 1
 
-    status_unsubscribed:
-        label: indikator.news::lang.form.status_unsubscribed
+    status_inactive:
+        label: indikator.news::lang.button.inactive
         type: checkbox
         conditions: status = 2
-
-    categories:
-        label: indikator.news::lang.form.category
-        modelClass: Indikator\News\Models\Categories
-        nameFrom: name
-        scope: FilterCategories
-
-    statistics:
-        label: indikator.news::lang.stat.mail
-        type: numberrange
-        conditions: statistics >= ':min' and statistics <= ':max'
 
     created_date:
         label: indikator.news::lang.form.created

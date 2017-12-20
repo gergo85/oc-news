@@ -13,6 +13,15 @@ class Subscribers extends Model
         'status' => 'required|between:1,2|numeric'
     ];
 
+    public $belongsToMany = [
+        'categories' => [
+            'Indikator\News\Models\Categories',
+            'table' => 'indikator_news_relations',
+            'key'   => 'subscriber_id',
+            'order' => 'name'
+        ]
+    ];
+
     public $hasMany = [
         'logs' => [
             'Indikator\News\Models\Logs',
@@ -40,6 +49,12 @@ class Subscribers extends Model
             'Indikator\News\Models\Logs',
             'key'   => 'subscriber_id',
             'scope' => 'isClicked',
+            'count' => true
+        ],
+        'logs_failed_count' => [
+            'Indikator\News\Models\Logs',
+            'key'   => 'subscriber_id',
+            'scope' => 'isFailed',
             'count' => true
         ]
     ];
@@ -75,6 +90,13 @@ class Subscribers extends Model
     {
         $this->status = 2;
         $this->save();
+    }
+
+    public function scopeFilterCategories($query, $categories)
+    {
+        return $query->whereHas('categories', function($q) use ($categories) {
+            $q->whereIn('id', $categories);
+        });
     }
 
     public function scopeEmail($query, $email)

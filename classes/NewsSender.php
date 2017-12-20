@@ -6,11 +6,13 @@ use Mail;
 use Queue;
 use Log;
 use BackendAuth;
+use Db;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Collection;
 use System\Classes\PluginManager;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
+use Indikator\News\Models\Categories;
 use Indikator\News\Models\Subscribers;
 
 class NewsSender
@@ -116,7 +118,29 @@ class NewsSender
      */
     protected function sendToActiveSubscribers()
     {
-        $activeSubscribers = Subscribers::where('status', 1)->get();
+        $activeSubscribers = Subscribers::where('status', 1);
+        $category = $this->news->category_id;
+
+        if (Categories::count() > 0) {
+            $ids[] = 0;
+            $relations = Db::table('indikator_news_relations');
+
+            $items = $relations->where('categories_id', $category)->get()->all();
+            foreach ($items as $item) {
+                $ids[] = $item->subscriber_id;
+            }
+
+            $items = $activeSubscribers->get()->all();
+            foreach ($items as $item) {
+                if ($relations->where('subscriber_id', $item->id)->count() == 0) {
+                    $ids[] = $item->id;
+                }
+            }
+
+            $activeSubscribers = $activeSubscribers->whereIn('id', $ids);
+        }
+
+        $activeSubscribers = $activeSubscribers->get();
         $results = true;
 
         foreach ($activeSubscribers as $receiver) {
