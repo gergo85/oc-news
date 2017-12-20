@@ -27,19 +27,16 @@ class Newsletter extends Controller
         if ($log) {
             Logger::viewed($log->id);
         }
-        // Log the email open
 
-        // Output img
         header('Content-Type: image/png');
         header('Cache-Control: no-cache, max-age=0');
         echo base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=');
         die;
     }
 
-    public function open($id = null, $hash = null) {
-
+    public function open($id = null, $hash = null)
+    {
         $url = Request::get('url', url('/'));
-
         $log = Logs::where('hash', $hash)->find($id);
 
         if ($log) {

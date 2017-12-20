@@ -16,13 +16,15 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
         <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
         <?php if (!$this->fatalError): ?>
         <li>
-            <span class="text-danger"><strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></span>
+            <strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?>
             &nbsp; | &nbsp;
             <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
             &nbsp; | &nbsp;
             <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
             &nbsp; | &nbsp;
             <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= $formModel->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?></span>
         </li>
         <?php endif ?>
     </ul>
@@ -96,7 +98,7 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
                 </button>
                 <?php if (isset($url)): ?>
                 <span class="btn-text pull-right">
-                    <a href="<?php echo $url.$slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
+                    <a href="<?= $url.$slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
                 </span>
                 <?php endif ?>
             </div>

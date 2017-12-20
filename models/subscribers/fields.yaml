@@ -4,25 +4,31 @@
 
 fields:
 
-    name:
-        label: indikator.news::lang.form.name
-        span: auto
-
-    email:
-        label: indikator.news::lang.form.email
-        required: true
-        span: auto
-
-    common:
-        label: indikator.news::lang.form.common
-        type: textarea
-        size: small
-        span: auto
-
     locale:
         label: indikator.news::lang.form.locale
         placeholder: indikator.news::lang.form.lang
         span: right
+
+    name:
+        label: indikator.news::lang.form.name
+        span: left
+
+    email:
+        label: indikator.news::lang.form.email
+        required: true
+        span: left
+
+    categories:
+        label: indikator.news::lang.menu.categories
+        type: relation
+        comment: indikator.news::lang.form.categories_comment
+        span: right
+
+    common:
+        label: indikator.news::lang.form.comment
+        type: textarea
+        size: small
+        span: left
 
     status:
         label: indikator.news::lang.form.status

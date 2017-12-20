@@ -61,7 +61,7 @@ class Subscribers extends Controller
         return $this->listRefresh();
     }
 
-    public function onRemoveSubscribers()
+    public function onRemove()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
@@ -70,6 +70,8 @@ class Subscribers extends Controller
                 }
 
                 $item->delete();
+
+                Db::table('indikator_news_relations')->where('subscriber_id', $itemId)->delete();
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.remove'));

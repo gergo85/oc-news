@@ -43,7 +43,7 @@ class Logs extends Model
 
     public function scopeIsQueued($query)
     {
-        return $query->whereNull('send_at');
+        return $query->whereNull('send_at')->where('status', '!=', 'Failed');
     }
 
     public function scopeIsSend($query)
@@ -59,5 +59,10 @@ class Logs extends Model
     public function scopeIsClicked($query)
     {
         return $query->whereNotNull('clicked_at');
+    }
+
+    public function scopeIsFailed($query)
+    {
+        return $query->where('status', 'Failed');
     }
 }
