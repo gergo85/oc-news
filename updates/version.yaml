@@ -83,3 +83,4 @@
     - Added categories feature.
     - create_categories_table.php
     - add_category_field_to_table.php
+1.9.1: Minor improvements and bugfix.

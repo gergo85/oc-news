@@ -132,31 +132,45 @@ class Plugin extends PluginBase
         return [
             'indikator.news.posts' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.posts'
+                'label' => 'indikator.news::lang.permission.posts',
+                'order' => 100,
+                'roles' => ['publisher']
             ],
             'indikator.news.categories' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.categories'
+                'label' => 'indikator.news::lang.permission.categories',
+                'order' => 200,
+                'roles' => ['publisher']
             ],
             'indikator.news.subscribers' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.subscribers'
+                'label' => 'indikator.news::lang.permission.subscribers',
+                'order' => 300,
+                'roles' => ['publisher']
             ],
             'indikator.news.statistics' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.statistics'
+                'label' => 'indikator.news::lang.permission.statistics',
+                'order' => 400,
+                'roles' => ['publisher']
             ],
             'indikator.news.import_export' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.import_export'
+                'label' => 'indikator.news::lang.permission.import_export',
+                'order' => 500,
+                'roles' => ['publisher']
             ],
             'indikator.news.logs' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.logs'
+                'label' => 'indikator.news::lang.permission.logs',
+                'order' => 600,
+                'roles' => ['publisher']
             ],
             'indikator.news.settings' => [
                 'tab'   => 'indikator.news::lang.menu.news',
-                'label' => 'indikator.news::lang.permission.settings'
+                'label' => 'indikator.news::lang.permission.settings',
+                'order' => 700,
+                'roles' => ['publisher']
             ]
         ];
     }

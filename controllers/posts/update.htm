@@ -6,7 +6,7 @@ foreach ($pages as $page) {
 }
 
 $uri = explode('/', Request::path());
-$slug = \Indikator\News\Models\Posts::whereId($uri[5])->pluck('slug');
+$slug = \Indikator\News\Models\Posts::whereId($uri[5])->value('slug');
 
 ?>
 
