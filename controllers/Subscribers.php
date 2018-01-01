@@ -2,6 +2,7 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use DB;
 use Indikator\News\Models\Subscribers as Item;
 use Flash;
 use Lang;
