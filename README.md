@@ -9,6 +9,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 - [Preview feature](#preview)
 - [Available widgets](#available_widgets)
 - [Available components](#available_components)
+- [HTML template variables](#html_template)
 - [Mail template variables](#mail_template)
 - [Supported plugins](#supported_plugins)
 - [Available languages](#available_languages)
@@ -61,6 +62,19 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * Post content
 * Subscriber form
 * Unsubscribe form
+
+<a name="html_template"></a>
+## HTML template variables
+* {{ posts }} - List of posts in array
+* {{ post.title }} - Title of post
+* {{ post.slug }} - Slug of post
+* {{ post.image|media }} - Full url of post image
+* {{ post.introductory|raw }} - Summary of post
+* {{ post.content|raw }} - Content of post
+* {{ post.published_at }} - Published date of post
+* {{ post.category }} - ID of category (0: no category selected) 
+* {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
+* {{ post.featured }} - Is post featured? (1: yes, 2: no)
 
 <a name="mail_template"></a>
 ## Mail template variables
