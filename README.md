@@ -72,7 +72,7 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * {{ post.introductory|raw }} - Summary of post
 * {{ post.content|raw }} - Content of post
 * {{ post.published_at }} - Published date of post
-* {{ post.category }} - ID of category (0: no category selected) 
+* {{ post.category }} - ID of category (0: no category selected)
 * {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
 * {{ post.featured }} - Is post featured? (1: yes, 2: no)
 
