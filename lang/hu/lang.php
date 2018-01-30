@@ -189,7 +189,9 @@ return [
         'featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
         'list_all' => 'Összes',
         'list_featured' => 'Csak a kiemeltek',
-        'list_notfeatured' => 'Csak a nem kiemeltek'
+        'list_notfeatured' => 'Csak a nem kiemeltek',
+        'translated_title' => 'Lefordított bejegyzések mutatása',
+        'translated_description' => 'Bejegyzés elrejtése, ha annak a nyelve nem egyezik meg a honlapéval.'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',

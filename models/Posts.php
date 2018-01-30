@@ -5,6 +5,8 @@ use BackendAuth;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use Url;
+use App;
+use Db;
 
 class Posts extends Model
 {
@@ -127,7 +129,8 @@ class Posts extends Model
             'sort'     => 'created_at',
             'search'   => '',
             'status'   => 1,
-            'featured' => 0
+            'featured' => 0,
+            'isTrans'  => false
         ], $options));
 
         $searchableFields = [
@@ -167,6 +170,16 @@ class Posts extends Model
 
         if (strlen($search)) {
             $query->searchWhere($search, $searchableFields);
+        }
+
+        if ($isTrans) {
+            $current_locale = App::getLocale();
+            $default_locale = Db::table('rainlab_translate_locales')->where('is_default', 1)->value('code');
+
+            if ($current_locale != $default_locale) {
+                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->pluck('model_id')->toArray();
+                $query->whereIn('id', $ids);
+            }
         }
 
         return $query->paginate($perPage, $page);

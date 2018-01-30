@@ -85,3 +85,4 @@
     - add_category_field_to_table.php
 1.9.1: Minor improvements and bugfix.
 1.9.2: Added HTML variables to docs.
+1.9.3: Added show only translated posts option.

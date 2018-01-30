@@ -78,7 +78,13 @@ class Posts extends ComponentBase
                     1 => Lang::get('indikator.news::lang.settings.list_featured'),
                     2 => Lang::get('indikator.news::lang.settings.list_notfeatured')
                 ]
-            ]
+            ],
+            'postTranslated' => [
+                'title'       => 'indikator.news::lang.settings.translated_title',
+                'description' => 'indikator.news::lang.settings.translated_description',
+                'default'     => false,
+                'type'        => 'checkbox'
+            ],
         ];
     }
 
@@ -105,14 +111,13 @@ class Posts extends ComponentBase
 
     protected function listPosts()
     {
-        $posts = NewsPost::listFrontEnd([
+        return NewsPost::listFrontEnd([
             'page'     => $this->property('pageNumber'),
             'sort'     => $this->property('sortOrder'),
             'perPage'  => $this->property('postsPerPage'),
             'featured' => $this->property('postFeatured'),
-            'search'   => trim(input('search'))
+            'search'   => trim(input('search')),
+            'isTrans'  => $this->property('postTranslated')
         ]);
-
-        return $posts;
     }
 }

@@ -189,7 +189,9 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'All',
         'list_featured' => 'Only Featured',
-        'list_notfeatured' => 'Not featured'
+        'list_notfeatured' => 'Not featured',
+        'translated_title' => 'Show only translated posts',
+        'translated_description' => 'Hide the post, if the language of current post is not equal the website language.'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
