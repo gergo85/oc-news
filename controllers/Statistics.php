@@ -166,32 +166,32 @@ class Statistics extends Controller
     protected function prepareLog()
     {
         $log['queued'] = Db::table('indikator_news_newsletter_logs')
-            ->select(Db::raw("count(id) as c, YEAR(queued_at) as y, MONTH(queued_at) as m"))
-            ->groupBy(Db::raw("YEAR(queued_at), MONTH(queued_at)"))
+            ->select(Db::raw("count(id) as c, strftime('%Y', 'YEAR(queued_at)') as y, strftime('%m', 'MONTH(queued_at)') as m"))
+            ->groupBy(Db::raw("strftime('%Y', 'YEAR(queued_at)'), strftime('%m', 'MONTH(queued_at)')"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
 
         $log['send'] = Db::table('indikator_news_newsletter_logs')
-            ->select(Db::raw("count(id) as c, YEAR(send_at) as y, MONTH(send_at) as m"))
+            ->select(Db::raw("count(id) as c, strftime('%Y', 'YEAR(send_at)') as y, strftime('%m', 'MONTH(send_at)') as m"))
             ->whereNotNull('send_at')
-            ->groupBy(Db::raw("YEAR(send_at), MONTH(send_at)"))
+            ->groupBy(Db::raw("strftime('%Y', 'YEAR(send_at)'), strftime('%m', 'MONTH(send_at)')"))
             ->orderBy('y')
             ->orderBy('m')
             ->get();
 
         $log['viewed'] = Db::table('indikator_news_newsletter_logs')
-            ->select(Db::raw("count(id) as c, YEAR(viewed_at) as y, MONTH(viewed_at) as m"))
+            ->select(Db::raw("count(id) as c, strftime('%Y', 'YEAR(viewed_at)') as y, strftime('%m', 'MONTH(viewed_at)') as m"))
             ->whereNotNull('viewed_at')
-            ->groupBy(Db::raw("YEAR(viewed_at), MONTH(viewed_at)"))
+            ->groupBy(Db::raw("strftime('%Y', 'YEAR(viewed_at)'), strftime('%m', 'MONTH(viewed_at)')"))            
             ->orderBy('y')
             ->orderBy('m')
             ->get();
 
-        $log['clicked'] = Db::table('indikator_news_newsletter_logs')
-            ->select(Db::raw("count(id) as c, YEAR(clicked_at) as y, MONTH(clicked_at) as m"))
+        $log['clicked'] = Db::table('indikator_news_newsletter_logs')        
+            ->select(Db::raw("count(id) as c, strftime('%Y', 'YEAR(clicked_at)') as y, strftime('%m', 'MONTH(clicked_at)') as m"))
             ->whereNotNull('clicked_at')
-            ->groupBy(Db::raw("YEAR(clicked_at), MONTH(clicked_at)"))
+            ->groupBy(Db::raw("strftime('%Y', 'YEAR(clicked_at)'), strftime('%m', 'MONTH(clicked_at)')"))       
             ->orderBy('y')
             ->orderBy('m')
             ->get();
