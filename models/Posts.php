@@ -4,6 +4,7 @@ use Model;
 use BackendAuth;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
+use Indikator\News\Models\Categories as NewsCategories;
 use Url;
 use App;
 use Db;
@@ -130,7 +131,8 @@ class Posts extends Model
             'search'   => '',
             'status'   => 1,
             'featured' => 0,
-            'isTrans'  => false
+            'isTrans'  => false,
+            'category' => null,
         ], $options));
 
         $searchableFields = [
@@ -164,6 +166,16 @@ class Posts extends Model
 
                 $query->orderBy($sortField, $sortDirection);
             }
+        }
+
+        /*
+         * Category filter
+         */
+        if ($category !== null) {
+            $category = NewsCategories::find($category);
+            $query->whereHas('category', function($q) use ($category) {
+                $q->where('id', $category->id);
+            });
         }
 
         $search = trim($search);
@@ -294,5 +306,28 @@ class Posts extends Model
         $paramName = substr(trim($matches[1]), 1);
 
         return CmsPage::url($page->getBaseFileName(), [$paramName => $item->slug]);
+    }
+
+    /**
+     * Sets the "url" attribute with a URL to this object
+     * @param string $pageName
+     * @param Cms\Classes\Controller $controller
+     */
+    public function setUrl($pageName, $controller)
+    {
+        $params = [
+            'id'   => $this->id,
+            'slug' => $this->slug,
+        ];
+        if (array_key_exists('category', $this->getRelations())) {
+            $params['category'] = $this->category->count() ? $this->category->first()->slug : null;
+        }
+        //expose published year, month and day as URL parameters
+        if ($this->published) {
+            $params['year'] = $this->published_at->format('Y');
+            $params['month'] = $this->published_at->format('m');
+            $params['day'] = $this->published_at->format('d');
+        }
+        return $this->url = $controller->pageUrl($pageName, $params);
     }
 }

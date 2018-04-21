@@ -160,7 +160,8 @@ return [
         'posts' => 'Display posts',
         'post' => 'Post content',
         'subscribe' => 'Subscriber form',
-        'unsubscribe' => 'Unsubscribe form'
+        'unsubscribe' => 'Unsubscribe form',
+        'categories' => 'Categories'
     ],
     'permission' => [
         'posts' => 'Manage posts',
@@ -191,7 +192,11 @@ return [
         'list_featured' => 'Only Featured',
         'list_notfeatured' => 'Not featured',
         'translated_title' => 'Show only translated posts',
-        'translated_description' => 'Hide the post, if the language of current post is not equal the website language.'
+        'translated_description' => 'Hide the post, if the language of current post is not equal the website language.',
+        'category_page_title' => 'Category page',
+        'category_page_description' => 'Name of the category page file for the category links. This property is used by the default component partial.',
+        'category_filter_title' => 'Category filter',
+        'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.',
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',
