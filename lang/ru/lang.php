@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'Новости',
         'posts' => 'Посты',
+        'categories' => 'категории',
         'subscribers' => 'Подписчики',
         'statistics' => 'Статистика',
         'import' => 'Импортировать',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'пост',
+        'categories' => 'категория',
         'subscribers' => 'подписчик'
     ],
     'new' => [
         'posts' => 'Новый пост',
+        'categories' => 'Новый категория',
         'subscribers' => 'Новый подписчик'
     ],
     'stat' => [
@@ -38,6 +41,7 @@ return [
         'viewed' => 'Рассматриваемый',
         'click' => 'щелчки',
         'clicked' => 'Нажал',
+        'failed' => 'не смогли',
         'log' => [
             'events' => 'Мероприятия',
             'summary' => 'Резюме'
@@ -54,13 +58,16 @@ return [
         'introductory' => 'Введение',
         'content' => 'Содержимое',
         'image' => 'Изображение',
+        'category' => 'категория',
         'status' => 'Статус',
         'status_published' => 'Опубликовано',
         'status_hide' => 'Скрыто',
         'status_draft' => 'Черновик',
         'status_active' => 'Aктивный',
+        'status_inactive' => 'Неактивный',
         'status_unsubscribed' => 'Oтписались',
         'featured' => 'Рекомендуемые',
+        'hidden' => 'Cкрытый',
         'yes' => 'да',
         'no' => 'Нет',
         'view' => 'просмотр',
@@ -70,7 +77,7 @@ return [
         // Подписчики
         'name' => 'Имя',
         'email' => 'Почта',
-        'common' => 'Общее',
+        'comment' => 'Kомментарий',
         'locale' => 'язык',
         'lang' => 'ru',
         'mail' => 'почта',

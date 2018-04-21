@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'Subskrypcja',
         'posts' => 'Posty',
+        'categories' => 'Kategorie',
         'subscribers' => 'Subskrybenci',
         'statistics' => 'Statystyka',
         'import' => 'Import',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'post',
-        'subscribers' => 'Subskrybent'
+        'categories' => 'kategoria',
+        'subscribers' => 'subskrybent'
     ],
     'new' => [
         'posts' => 'Nowy post',
+        'categories' => 'Nowa kategoria',
         'subscribers' => 'Nowy subskrybent'
     ],
     'stat' => [
@@ -38,6 +41,7 @@ return [
         'viewed' => 'Oglądane',
         'click' => 'Kliknięcia',
         'clicked' => 'Kliknij',
+        'failed' => 'Nie udało się',
         'log' => [
             'events' => 'Wydarzenia',
             'summary' => 'Podsumowanie'
@@ -54,13 +58,16 @@ return [
         'introductory' => 'Skrót/wstęp',
         'content' => 'Treść',
         'image' => 'Obrazek',
+        'category' => 'Kategoria',
         'status' => 'Status',
         'status_published' => 'Opublikowany',
         'status_hide' => 'Ukryty',
         'status_draft' => 'Szkic',
         'status_active' => 'Aktywny',
+        'status_inactive' => 'Nieaktywny',
         'status_unsubscribed' => 'Wypisać',
         'featured' => 'Opisany',
+        'hidden' => 'Ukryty',
         'yes' => 'Tak',
         'no' => 'Nie',
         'view' => 'widok',
@@ -70,7 +77,7 @@ return [
         // Inscritos
         'name' => 'Imię',
         'email' => 'E-mail',
-        'common' => 'Nazwa',
+        'comment' => 'Komentarz',
         'locale' => 'Idioma',
         'lang' => 'pl',
         'mail' => 'mail',

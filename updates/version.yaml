@@ -77,5 +77,12 @@
 1.8.4: Added the preview feature for posts.
 1.8.5: Added more options for Settings page.
 1.8.6:
-    - Reworke sending newsletter
-    - update_send_feature2.php
+    - !!! Reworked again the sending newsletter feature.
+    - update_send_feature_2.php
+1.9.0:
+    - Added categories feature.
+    - create_categories_table.php
+    - add_category_field_to_table.php
+1.9.1: Minor improvements and bugfix.
+1.9.2: Added HTML variables to docs.
+1.9.3: Added show only translated posts option.

@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'News',
         'posts' => 'Posts',
+        'categories' => 'Categories',
         'subscribers' => 'Subscribers',
         'statistics' => 'Statistics',
         'import' => 'Import',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'post',
+        'categories' => 'category',
         'subscribers' => 'subscriber'
     ],
     'new' => [
         'posts' => 'New post',
+        'categories' => 'New category',
         'subscribers' => 'New subscriber'
     ],
     'stat' => [
@@ -38,6 +41,7 @@ return [
         'viewed' => 'Viewed',
         'click' => 'Clicks',
         'clicked' => 'Clicked',
+        'failed' => 'Failed',
         'log' => [
             'events' => 'Events',
             'summary' => 'Summary'
@@ -54,26 +58,28 @@ return [
         'introductory' => 'Introductory',
         'content' => 'Content',
         'image' => 'Image',
+        'category' => 'Category',
         'status' => 'Status',
         'status_published' => 'Published',
         'status_hide' => 'Hidden',
         'status_draft' => 'Draft',
         'status_active' => 'Active',
+        'status_inactive' => 'Inactive',
         'status_unsubscribed' => 'Unsubscribed',
         'featured' => 'Featured',
+        'hidden' => 'Is hidden?',
         'yes' => 'Yes',
         'no' => 'No',
         'view' => 'view',
         'published' => 'Published at',
-        'send' => 'Send the e-mail to subscribers.',
-        'sent' => 'Post was sent to subscribers.',
         'last_send_at' => 'Last send at',
         'last_send' => 'Last send',
         'length' => 'Length',
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
-        'common' => 'Common',
+        'categories_comment' => 'If no category is selected then the subscriber will receive the all newsletters.',
+        'comment' => 'Comment',
         'locale' => 'Locale',
         'lang' => 'en',
         'mail' => 'mail',
@@ -92,15 +98,16 @@ return [
         'deactivate' => 'Hide',
         'active' => 'Active',
         'inactive' => 'Inactive',
+        'reorder' => 'Reorder',
         'import' => 'Import',
         'export' => 'Export',
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
         'test' => 'Send test mail',
         'send' => 'Send newsletter',
-        'send_confirmation' => 'Are you sure that you want to send the newsletter?',
+        'send_confirmation' => 'Do you want to send the newsletter?',
         'resend' => 'Resend newsletter',
-        'resend_confirmation' => 'Are you sure that you want to resend the newsletter?',
+        'resend_confirmation' => 'Do you want to resend the newsletter?',
         'return' => 'Return'
     ],
     'flash' => [
@@ -110,10 +117,11 @@ return [
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
         'remove' => 'Successfully removed those items.',
-        'newsletter_resend_success' => 'Newsletter was successfully resend.',
-        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'newsletter_test_error' => 'An error occurred during sending the test newsletter.',
         'newsletter_send_success' => 'Newsletter was successfully send.',
-        'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!'
+        'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!',
+        'newsletter_resend_success' => 'Newsletter was successfully resend.',
+        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.'
     ],
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',
@@ -156,6 +164,7 @@ return [
     ],
     'permission' => [
         'posts' => 'Manage posts',
+        'categories' => 'Manage categories',
         'subscribers' => 'Manage subscribers',
         'statistics' => 'View statistics',
         'import_export' => 'Import and Export',
@@ -180,7 +189,9 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'All',
         'list_featured' => 'Only Featured',
-        'list_notfeatured' => 'Not featured'
+        'list_notfeatured' => 'Not featured',
+        'translated_title' => 'Show only translated posts',
+        'translated_description' => 'Hide the post, if the language of current post is not equal the website language.'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',

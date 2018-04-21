@@ -6,7 +6,7 @@ use BackendMenu;
 class Logs extends Controller
 {
     public $implement = [
-        'Backend.Behaviors.ListController'
+        \Backend\Behaviors\ListController::class
     ];
 
     public $requiredPermissions = ['indikator.news.logs'];

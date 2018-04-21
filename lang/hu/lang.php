@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'Hírek',
         'posts' => 'Bejegyzések',
+        'categories' => 'Kategóriák',
         'subscribers' => 'Feliratkozók',
         'statistics' => 'Statisztika',
         'import' => 'Importálás',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'bejegyzés',
+        'categories' => 'kategória',
         'subscribers' => 'feliratkozó'
     ],
     'new' => [
         'posts' => 'Új bejegyzés',
+        'categories' => 'Új kategória',
         'subscribers' => 'Új feliratkozó'
     ],
     'stat' => [
@@ -38,6 +41,7 @@ return [
         'viewed' => 'Megtekintve',
         'click' => 'Kattintás',
         'clicked' => 'Kattintva',
+        'failed' => 'Sikertelen',
         'log' => [
             'events' => 'Események',
             'summary' => 'Összegzés'
@@ -54,26 +58,28 @@ return [
         'introductory' => 'Bevezető',
         'content' => 'Tartalom',
         'image' => 'Kép',
+        'category' => 'Kategória',
         'status' => 'Státusz',
         'status_published' => 'Közzétéve',
         'status_hide' => 'Rejtett',
         'status_draft' => 'Piszkozat',
         'status_active' => 'Aktív',
+        'status_inactive' => 'Inaktív',
         'status_unsubscribed' => 'Leiratkozott',
         'featured' => 'Kiemelt',
+        'hidden' => 'Rejtett',
         'yes' => 'Igen',
         'no' => 'Nem',
         'view' => 'megtekintés',
         'published' => 'Közzétéve',
-        'send' => 'Hírlevél küldése a feliratkozott emberek számára.',
-        'sent' => 'A feliratkozók már kaptak hírlevelet.',
         'last_send_at' => 'Utoljára elküldve',
         'last_send' => 'Levélküldés',
         'length' => 'Hossz',
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
-        'common' => 'Megjegyzés',
+        'categories_comment' => 'Ha nincs kijelölve egyik kategória sem, akkor a feliratkozó minden hirlevelet meg fog kapni.',
+        'comment' => 'Megjegyzés',
         'locale' => 'Nyelv',
         'lang' => 'hu',
         'mail' => 'levél',
@@ -92,12 +98,14 @@ return [
         'deactivate' => 'Rejtés',
         'active' => 'Aktív',
         'inactive' => 'Inaktív',
+        'reorder' => 'Sorrend',
         'import' => 'Importálás',
         'export' => 'Exportálás',
         'unsubscribe' => 'Leiratkozás',
         'subscribe' => 'Feliratkozás',
         'test' => 'Tesztlevél küldése',
-        'send' => 'Hírlevél küldése a feliratkozott emberek számára.',
+        'send' => 'Hírlevél küldése',
+        'send_confirmation' => 'Valóban el akarja küldeni a hírlevelet?',
         'resend' => 'Hírlevél újraküldése',
         'resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?',
         'return' => 'Vissza'
@@ -109,6 +117,9 @@ return [
         'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
         'remove' => 'Az eltávolítás sikeresen megtörtént.',
+        'newsletter_test_error' => 'A teszt levél elküldése során hiba történt.',
+        'newsletter_send_success' => 'A hírlevél sikeresen el lett küldve.',
+        'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
         'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
         'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
     ],
@@ -153,6 +164,7 @@ return [
     ],
     'permission' => [
         'posts' => 'Bejegyzések kezelése',
+        'categories' => 'Kategóriák kezelése',
         'subscribers' => 'Feliratkozók kezelése',
         'statistics' => 'Statisztika megtekintése',
         'import_export' => 'Importálás és exportálás',
@@ -177,7 +189,9 @@ return [
         'featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
         'list_all' => 'Összes',
         'list_featured' => 'Csak a kiemeltek',
-        'list_notfeatured' => 'Csak a nem kiemeltek'
+        'list_notfeatured' => 'Csak a nem kiemeltek',
+        'translated_title' => 'Lefordított bejegyzések mutatása',
+        'translated_description' => 'Bejegyzés elrejtése, ha annak a nyelve nem egyezik meg a honlapéval.'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',

@@ -1,0 +1,25 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: indikator.news::lang.menu.categories
+list: ~/plugins/indikator/news/models/categories/columns.yaml
+
+modelClass: Indikator\News\Models\Categories
+recordUrl: indikator/news/categories/update/:id
+noRecordsMessage: backend::lang.list.no_records
+
+recordsPerPage: 15
+showCheckboxes: true
+showSetup: true
+
+defaultSort:
+    column: name
+    direction: asc
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt
+
+filter: config_filter.yaml

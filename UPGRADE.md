@@ -1,3 +1,5 @@
+__1.8.5 > 1.8.6__ - Do not use the "PHP mail" method on the Mail configuration page.
+
 __1.7.8 > 1.8.0__ - Added the "indikator_" prefix to the tables.
 
 __1.7.2 > 1.7.3__ - Removed the Stat front-end component.

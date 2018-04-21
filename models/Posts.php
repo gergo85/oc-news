@@ -5,6 +5,8 @@ use BackendAuth;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use Url;
+use App;
+use Db;
 
 class Posts extends Model
 {
@@ -49,6 +51,13 @@ class Posts extends Model
         'published_at desc'
     ];
 
+    public $belongsTo = [
+        'category' => [
+            'Indikator\News\Models\Categories',
+            'order' => 'name'
+        ]
+    ];
+
     public $hasMany = [
         'logs' => [
             'Indikator\News\Models\Logs',
@@ -77,6 +86,12 @@ class Posts extends Model
             'key'   => 'news_id',
             'scope' => 'isClicked',
             'count' => true
+        ],
+        'logs_failed_count' => [
+            'Indikator\News\Models\Logs',
+            'key'   => 'news_id',
+            'scope' => 'isFailed',
+            'count' => true
         ]
     ];
 
@@ -84,6 +99,16 @@ class Posts extends Model
 
     public function getSendAttribute() {
         return $this->last_send_at != null;
+    }
+
+    /**
+     * Check the ID of category
+     */
+    public function beforeSave()
+    {
+        if (!isset($this->category_id) || empty($this->category_id)) {
+            $this->category_id = 0;
+        }
     }
 
     /**
@@ -98,14 +123,14 @@ class Posts extends Model
 
     public function scopeListFrontEnd($query, $options)
     {
-
         extract(array_merge([
             'page'     => 1,
             'perPage'  => 10,
             'sort'     => 'created_at',
             'search'   => '',
             'status'   => 1,
-            'featured' => 0
+            'featured' => 0,
+            'isTrans'  => false
         ], $options));
 
         $searchableFields = [
@@ -147,22 +172,30 @@ class Posts extends Model
             $query->searchWhere($search, $searchableFields);
         }
 
-        return $query->paginate($perPage, $page);
+        if ($isTrans) {
+            $current_locale = App::getLocale();
+            $default_locale = Db::table('rainlab_translate_locales')->where('is_default', 1)->value('code');
 
+            if ($current_locale != $default_locale) {
+                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->pluck('model_id')->toArray();
+                $query->whereIn('id', $ids);
+            }
+        }
+
+        return $query->paginate($perPage, $page);
     }
 
     public function scopeIsPublished($query)
     {
+        if (BackendAuth::check()) {
+            return $query;
+        }
 
-      if (BackendAuth::check()) {
-          return $query;
-      }
-
-      return $query
-          ->where('status', 1)
-          ->whereNotNull('published_at')
-          ->where('published_at', '<', Carbon::now())
-      ;
+        return $query
+            ->where('status', 1)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<', Carbon::now())
+        ;
     }
 
     public function scopeIsFeatured($query, $value = 1)
@@ -172,10 +205,9 @@ class Posts extends Model
 
     public static function getMenuTypeInfo($type)
     {
-        
         if ($type == 'post-page') {
             $references = [];
-            $items = self::orderBy('title')->get();
+            $items = self::orderBy('title')->get()->all();
 
             foreach ($items as $item) {
                 $references[$item->id] = $item->title;
@@ -204,7 +236,6 @@ class Posts extends Model
 
     public static function resolveMenuItem($item, $url, $theme)
     {
-
         if ($item->type == 'post-page') {
             if (!$item->reference || !$item->cmsPage) {
                 return;
@@ -232,7 +263,7 @@ class Posts extends Model
                 'items' => []
             ];
 
-            $elements = self::where('status', 1)->where('published_at', '<', date('Y-m-d H:i:s'))->orderBy('title')->get();
+            $elements = self::where('status', 1)->where('published_at', '<', date('Y-m-d H:i:s'))->orderBy('title')->get()->all();
             foreach ($elements as $element) {
                 $listItem = [
                     'title' => $element->title,
@@ -246,7 +277,6 @@ class Posts extends Model
         }
 
         return $result;
-
     }
 
     protected static function getItemUrl($pageCode, $item, $theme)
@@ -262,7 +292,7 @@ class Posts extends Model
         }
 
         $paramName = substr(trim($matches[1]), 1);
+
         return CmsPage::url($page->getBaseFileName(), [$paramName => $item->slug]);
     }
-
 }

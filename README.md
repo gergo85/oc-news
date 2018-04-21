@@ -1,5 +1,5 @@
 # News & Newsletter plugin
-Plugin can be used for publishing news simply on the website. In contrary of blog, categorizing notes or writing comments is not possible, but visitors can subscribe on a newsletter system. During publishing news posts are available not just on the website but you can send them via email to subscribed users.
+Plugin can be used for publishing news simply on the website. In contrary of blog, writing comments is not possible, but visitors can subscribe on a newsletter system. During publishing news posts are available not just on the website but you can send them via email to subscribed users.
 
 Plugin is same like put together a blog and a newsletter plugin. The main difference is that it is simpler and contains only the most necessary functions. So this makes easier uploading new contents and inform visitors.
 
@@ -9,6 +9,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 - [Preview feature](#preview)
 - [Available widgets](#available_widgets)
 - [Available components](#available_components)
+- [HTML template variables](#html_template)
 - [Mail template variables](#mail_template)
 - [Supported plugins](#supported_plugins)
 - [Available languages](#available_languages)
@@ -19,6 +20,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 <a name="main_features"></a>
 ## Main features
 * Managing posts
+* Managing categories
 * Managing subscribers
 * Export & Import data
 * Statistics and graphs
@@ -43,7 +45,7 @@ You just add the "Post content" frontend component to the page, where the post a
 
 <a name="preview"></a>
 ## Preview feature
-You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too. 
+You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
 
 <a name="available_widgets"></a>
 ## Available widgets
@@ -60,6 +62,19 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * Post content
 * Subscriber form
 * Unsubscribe form
+
+<a name="html_template"></a>
+## HTML template variables
+* {{ posts }} - List of posts in array
+* {{ post.title }} - Title of post
+* {{ post.slug }} - Slug of post
+* {{ post.image|media }} - Full url of post image
+* {{ post.introductory|raw }} - Summary of post
+* {{ post.content|raw }} - Content of post
+* {{ post.published_at }} - Published date of post
+* {{ post.category }} - ID of category (0: no category selected)
+* {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
+* {{ post.featured }} - Is post featured? (1: yes, 2: no)
 
 <a name="mail_template"></a>
 ## Mail template variables

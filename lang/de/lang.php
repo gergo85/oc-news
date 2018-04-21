@@ -9,6 +9,7 @@ return [
     'menu' => [
         'news' => 'News',
         'posts' => 'Nachrichten',
+        'categories' => 'Kategorien',
         'subscribers' => 'Abonnenten',
         'statistics' => 'Statistik',
         'import' => 'Import',
@@ -18,10 +19,12 @@ return [
     ],
     'title' => [
         'posts' => 'Nachrichten',
+        'categories' => 'Kategorie',
         'subscribers' => 'Abonnenten'
     ],
     'new' => [
         'posts' => 'Neue Nachricht',
+        'categories' => 'Neue Kategorie',
         'subscribers' => 'Neuen Abonnenten'
     ],
     'stat' => [
@@ -38,6 +41,7 @@ return [
         'viewed' => 'Betrachtet',
         'click' => 'Klicks',
         'clicked' => 'Geklickt',
+        'failed' => 'Gescheitert',
         'log' => [
             'events' => 'Ereignisse',
             'summary' => 'Gesamt'
@@ -54,26 +58,27 @@ return [
         'introductory' => 'Einleitung',
         'content' => 'Inhalt',
         'image' => 'Bild',
+        'category' => 'Kategorie',
         'status' => 'Status',
         'status_published' => 'Veröffentlicht',
         'status_hide' => 'Versteckt',
         'status_draft' => 'Entwurf',
         'status_active' => 'Aktiv',
+        'status_inactive' => 'Inaktiv',
         'status_unsubscribed' => 'Deabonniert',
         'featured' => 'Hervorgehoben',
+        'hidden' => 'Versteckt',
         'yes' => 'Ja',
         'no' => 'Nein',
         'view' => 'Gesehen',
         'published' => 'Veröffentlicht am',
-        'send' => 'Sende die Nachricht an Abonneten.',
-        'sent' => 'Nachricht an Abonneten versendet',
         'last_send_at' => 'Zuletzt versendet am',
         'last_send' => 'Zuletzt versendet',
         'length' => 'Länge',
         // Subscribers
         'name' => 'Name',
         'email' => 'Email',
-        'common' => 'Common',
+        'comment' => 'Kommentar',
         'locale' => 'Sprache',
         'lang' => 'de',
         'mail' => 'Mail',
@@ -110,10 +115,11 @@ return [
         'unsubscribe' => 'Diese Benutzer wurden erfolgreich abgemeldet.',
         'delete' => 'Möchten Sie wirklich diese Einträge löschen?',
         'remove' => 'Einträge erfolgreich gelöscht.',
-        'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
-        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'newsletter_test_error' => 'Ein Fehler trat beim versenden auf.',
         'newsletter_send_success' => 'Newsletter wurde erfolgreich versendet.',
-        'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+        'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',

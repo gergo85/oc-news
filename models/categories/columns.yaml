@@ -1,0 +1,60 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: indikator.news::lang.form.id
+        invisible: true
+
+    name:
+        label: indikator.news::lang.form.name
+        searchable: true
+
+    slug:
+        label: indikator.news::lang.form.slug
+        searchable: true
+        invisible: true
+
+    sort_order:
+        label: indikator.news::lang.button.reorder
+        searchable: true
+        invisible: true
+
+    posts:
+        label: indikator.news::lang.menu.posts
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/categories/_posts.htm
+
+    subscribers:
+        label: indikator.news::lang.menu.subscribers
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/categories/_subscribers.htm
+
+    featured:
+        label: indikator.news::lang.form.featured
+        searchable: true
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_featured.htm
+
+    status:
+        label: indikator.news::lang.form.status
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_status.htm
+
+    created_at:
+        label: indikator.news::lang.form.created
+        searchable: true
+        invisible: true
+        type: datetime
+
+    updated_at:
+        label: indikator.news::lang.form.updated
+        searchable: true
+        invisible: true
+        type: datetime

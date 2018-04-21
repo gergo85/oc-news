@@ -1,0 +1,90 @@
+<?php
+
+$uri = explode('/', Request::path());
+
+$previous = \Indikator\News\Models\Categories::where('id', '<', $uri[5])->max('id');
+$next     = \Indikator\News\Models\Categories::where('id', '>', $uri[5])->min('id');
+
+?>
+
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('indikator/news/categories') ?>"><?= e(trans('indikator.news::lang.menu.categories')) ?></a></li>
+        <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <?php Block::put('form-contents') ?>
+
+        <div class="layout-row min-size">
+            <?= $this->formRenderOutsideFields() ?>
+        </div>
+        <div class="layout-row">
+            <?= $this->formRenderPrimaryTabs() ?>
+        </div>
+
+        <div class="form-buttons">
+            <div class="loading-indicator-container">
+                <button
+                    type="submit"
+                    data-request="onSave"
+                    data-request-data="redirect:0"
+                    data-hotkey="ctrl+s, cmd+s"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                    class="btn btn-primary">
+                    <?= e(trans('backend::lang.form.save')) ?>
+                </button>
+                <button
+                    type="button"
+                    data-request="onSave"
+                    data-request-data="close:1"
+                    data-hotkey="ctrl+enter, cmd+enter"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
+                    class="btn btn-default">
+                    <?= e(trans('backend::lang.form.save_and_close')) ?>
+                </button>
+                <span class="btn-text">
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/categories') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                </span>
+                <?php if ($next): ?>
+                <a
+                    href="<?= $next; ?>"
+                    class="oc-icon-angle-right btn-icon pull-right"
+                    style="font-size: 24px; text-decoration:none"
+                    title="<?= e(trans('indikator.content::lang.button.next')) ?>">
+                </a>
+                <?php endif ?>
+                <?php if ($previous): ?>
+                <a
+                    href="<?= $previous; ?>"
+                    class="oc-icon-angle-left btn-icon pull-right"
+                    style="font-size: 24px; text-decoration:none"
+                    title="<?= e(trans('indikator.content::lang.button.previous')) ?>">
+                </a>
+                <?php endif ?>
+            </div>
+        </div>
+
+    <?php Block::endPut() ?>
+
+    <?php Block::put('form-sidebar') ?>
+        <div class="hide-tabs"><?= $this->formRenderSecondaryTabs() ?></div>
+    <?php Block::endPut() ?>
+
+    <?php Block::put('body') ?>
+        <?= Form::open(['class'=>'layout stretch']) ?>
+            <?= $this->makeLayout('form-with-sidebar') ?>
+        <?= Form::close() ?>
+    <?php Block::endPut() ?>
+
+<?php else: ?>
+    <div class="control-breadcrumb">
+        <?= Block::placeholder('breadcrumb') ?>
+    </div>
+    <div class="padded-container">
+        <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+        <p><a href="<?= Backend::url('indikator/news/categories') ?>" class="btn btn-default"><?= e(trans('indikator.news::lang.button.return')) ?></a></p>
+    </div>
+<?php endif ?>

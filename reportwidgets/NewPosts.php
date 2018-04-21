@@ -44,6 +44,6 @@ class NewPosts extends ReportWidgetBase
 
     protected function loadData()
     {
-        $this->vars['posts'] = Post::where('status', 1)->orderBy('published_at', 'desc')->take($this->property('piece'))->get();
+        $this->vars['posts'] = Post::where('status', 1)->orderBy('published_at', 'desc')->take($this->property('piece'))->get()->all();
     }
 }

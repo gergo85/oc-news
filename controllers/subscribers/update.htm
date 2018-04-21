@@ -3,13 +3,15 @@
         <li><a href="<?= Backend::url('indikator/news/subscribers') ?>"><?= e(trans('indikator.news::lang.menu.subscribers')) ?></a></li>
         <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
         <li>
-            <span class="text-danger"><strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></span>
+            <strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?>
             &nbsp; | &nbsp;
             <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
             &nbsp; | &nbsp;
             <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
             &nbsp; | &nbsp;
             <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= $formModel->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?></span>
         </li>
     </ul>
 <?php Block::endPut() ?>
@@ -45,12 +47,6 @@
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/subscribers') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
-                <button
-                    class="oc-icon-trash-o btn-icon danger pull-right"
-                    data-request="onDelete"
-                    data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
-                    data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>">
-                </button>
             </div>
         </div>
 
@@ -62,6 +58,6 @@
     </div>
     <div class="padded-container">
         <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-        <p><a href="<?= Backend::url('indikator/news/subscribers') ?>" class="btn btn-default"><?= e(trans('indikator.news::lang.buttons.return')) ?></a></p>
+        <p><a href="<?= Backend::url('indikator/news/subscribers') ?>" class="btn btn-default"><?= e(trans('indikator.news::lang.button.return')) ?></a></p>
     </div>
 <?php endif ?>

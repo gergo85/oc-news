@@ -129,6 +129,7 @@ class SendNews
         // Check for failures
         if (Mail::failures()) {
             Log::error('Newsletter sending failed for address '.Mail::failures()[0]);
+
             return false;
         }
 

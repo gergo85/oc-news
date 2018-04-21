@@ -4,7 +4,8 @@ $class = [
     'Queued'  => 'text-warning',
     'Sent'    => 'text-info',
     'Viewed'  => 'text-success',
-    'Clicked' => 'text-success'
+    'Clicked' => 'text-success',
+    'Failed'  => 'text-danger'
 ];
 
 echo '<span class="oc-icon-circle '.$class[$record->status].'">'.Lang::get('indikator.news::lang.stat.'.strToLower($record->status)).'</span>';

@@ -6,11 +6,13 @@ use Mail;
 use Queue;
 use Log;
 use BackendAuth;
+use Db;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Collection;
 use System\Classes\PluginManager;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
+use Indikator\News\Models\Categories;
 use Indikator\News\Models\Subscribers;
 
 class NewsSender
@@ -54,6 +56,7 @@ class NewsSender
         if ($pluginManager && !$pluginManager->disabled) {
             $this->locale = true;
         }
+
         $this->queued = $queued;
     }
 
@@ -68,12 +71,34 @@ class NewsSender
         $langs = [$locale, App::getLocale(), 'en'];
 
         foreach ($langs as $lang) {
-            if (File::exists(base_path() . '/plugins/indikator/news/views/mail/email_' . $lang . '.htm')) {
-                return $this->templateNamespace . $lang;
+            if (File::exists(base_path().'/plugins/indikator/news/views/mail/email_'.$lang.'.htm')) {
+                return $this->templateNamespace.$lang;
             }
         }
 
         return false;
+    }
+
+    /**
+     * Sends a test newsletter to the current logged in backend user
+     */
+    public function sendTestNewsletter()
+    {
+        $receiver = BackendAuth::getUser();
+
+        return $this->sendTest($receiver);
+    }
+
+    /**
+     * Sends the newsletter to all active subscribers
+     */
+    public function sendNewsletter()
+    {
+        $result = $this->sendToActiveSubscribers();
+        $this->news->last_send_at = new Date();
+        $this->news->save();
+
+        return $result;
     }
 
     /**
@@ -91,30 +116,31 @@ class NewsSender
     /**
      * Sends the newsletter to all active subscribers
      */
-    public function sendNewsletter()
-    {
-        $result = $this->sendToActiveSubscribers();
-        $this->news->last_send_at = new Date();
-        $this->news->save();
-
-        return $result;
-    }
-
-    /**
-     * Sends a test newsletter to the current logged in backend user.
-     */
-    public function sendTestNewsletter()
-    {
-        $receiver = BackendAuth::getUser();
-        return $this->sendTest($receiver);
-    }
-
-    /**
-     * Sends the newsletter to all active subscribers
-     */
     protected function sendToActiveSubscribers()
     {
-        $activeSubscribers = Subscribers::where('status', 1)->get();
+        $activeSubscribers = Subscribers::where('status', 1);
+        $category = $this->news->category_id;
+
+        if (Categories::count() > 0) {
+            $ids[] = 0;
+            $relations = Db::table('indikator_news_relations');
+
+            $items = $relations->where('categories_id', $category)->get()->all();
+            foreach ($items as $item) {
+                $ids[] = $item->subscriber_id;
+            }
+
+            $items = $activeSubscribers->get()->all();
+            foreach ($items as $item) {
+                if ($relations->where('subscriber_id', $item->id)->count() == 0) {
+                    $ids[] = $item->id;
+                }
+            }
+
+            $activeSubscribers = $activeSubscribers->whereIn('id', $ids);
+        }
+
+        $activeSubscribers = $activeSubscribers->get();
         $results = true;
 
         foreach ($activeSubscribers as $receiver) {
@@ -178,14 +204,14 @@ class NewsSender
     }
 
     /**
-     * Sends a test message to the receiver that didn't get logged.
+     * Sends a test message to the receiver that didn't get logged
      *
      * @param $receiver
      * @return bool
      */
     protected function sendTest($receiver)
     {
-        $params = $this->prepareNewsletterParametersForReceiver($receiver);
+        $params   = $this->prepareNewsletterParametersForReceiver($receiver);
         $template = $this->getTemplateForReceiver($receiver);
 
         return SendNews::send($template, $params, $receiver, $this->news->title);
@@ -199,7 +225,7 @@ class NewsSender
      */
     protected function send($receiver)
     {
-        $params = $this->prepareNewsletterParametersForReceiver($receiver);
+        $params   = $this->prepareNewsletterParametersForReceiver($receiver);
         $template = $this->getTemplateForReceiver($receiver);
 
         $logEntry = Logger::queued($this->news->id, $receiver->id);

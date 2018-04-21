@@ -3,15 +3,16 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 use Indikator\News\Models\Subscribers as Item;
+use Db;
 use Flash;
 use Lang;
 
 class Subscribers extends Controller
 {
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        'Backend.Behaviors.ImportExportController'
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\ImportExportController::class
     ];
 
     public $formConfig = 'config_form.yaml';
@@ -61,7 +62,7 @@ class Subscribers extends Controller
         return $this->listRefresh();
     }
 
-    public function onRemoveSubscribers()
+    public function onRemove()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $itemId) {
@@ -70,6 +71,8 @@ class Subscribers extends Controller
                 }
 
                 $item->delete();
+
+                Db::table('indikator_news_relations')->where('subscriber_id', $itemId)->delete();
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.remove'));
