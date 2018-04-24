@@ -191,12 +191,13 @@ return [
         'list_all' => 'Összes',
         'list_featured' => 'Csak a kiemeltek',
         'list_notfeatured' => 'Csak a nem kiemeltek',
-        'translated_title' => 'Lefordított bejegyzések mutatása',
+        'translated_title' => 'Lefordított bejegyzések',
         'translated_description' => 'Bejegyzés elrejtése, ha annak a nyelve nem egyezik meg a honlapéval.',
-        'category_page_title' => 'Aloldal',
+        'category_page_title' => 'Kategória aloldal',
         'category_page_description' => 'Adja meg a kategória fájl nevét. Ennek alapján lesznek generálva a kategória linkek webcíme.',
-        'category_filter_title' => 'Szűrés',
-        'category_filter_description' => 'Adja meg a kategória webcímét, ami alapján szűrve lesznek a bejegyzések. Üresen hagyva minden bejegyzés meg fog jelenni.'
+        'category_filter_title' => 'Kategória szűrés',
+        'category_filter_description' => 'Adja meg a kategória webcímét, ami alapján szűrve lesznek a bejegyzések. Üresen hagyva minden bejegyzés meg fog jelenni.',
+        'links' => 'Linkek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',

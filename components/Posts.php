@@ -96,14 +96,14 @@ class Posts extends ComponentBase
                 'description' => 'indikator.news::lang.settings.post_description',
                 'type'        => 'dropdown',
                 'default'     => 'news/post',
-                'group'       => 'Links'
+                'group'       => 'indikator.news::lang.settings.links'
             ],
             'categoryPage' => [
                 'title'       => 'indikator.news::lang.settings.category_page_title',
                 'description' => 'indikator.news::lang.settings.category_page_description',
                 'type'        => 'dropdown',
                 'default'     => '',
-                'group'       => 'Links'
+                'group'       => 'indikator.news::lang.settings.links'
             ]
         ];
     }

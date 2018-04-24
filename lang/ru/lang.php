@@ -180,7 +180,8 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'Все',
         'list_featured' => 'Только Избранные',
-        'list_notfeatured' => 'Не указано'
+        'list_notfeatured' => 'Не указано',
+        'links' => 'связи'
     ],
     'sorting' => [
         'title_asc' => 'Заголовок (по возрастанию)',
