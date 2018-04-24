@@ -61,6 +61,5 @@ class Categories extends ComponentBase
         });
 
         return $categories;
-
     }
 }

@@ -151,6 +151,7 @@ return [
     'component' => [
         'posts' => 'Pokaż posty',
         'post' => 'Pokaż zawartość postów',
+        'categories' => 'Kategorie',
         'subscribe' => 'Formularz subskrybentów',
         'unsubscribe' => 'Formularz wyrejestrowuj'
     ],

@@ -60,6 +60,7 @@ You can use the following widgets on the back-end Dashboard:
 Use the __Components > News__ panel in CMS menu. At this moment there are the following components:
 * Display posts
 * Post content
+* List categories
 * Subscriber form
 * Unsubscribe form
 

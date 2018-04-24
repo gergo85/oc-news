@@ -159,9 +159,9 @@ return [
     'component' => [
         'posts' => 'Display posts',
         'post' => 'Post content',
+        'categories' => 'Categories',
         'subscribe' => 'Subscriber form',
-        'unsubscribe' => 'Unsubscribe form',
-        'categories' => 'Categories'
+        'unsubscribe' => 'Unsubscribe form'
     ],
     'permission' => [
         'posts' => 'Manage posts',
@@ -196,7 +196,7 @@ return [
         'category_page_title' => 'Category page',
         'category_page_description' => 'Name of the category page file for the category links. This property is used by the default component partial.',
         'category_filter_title' => 'Category filter',
-        'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.',
+        'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.'
     ],
     'sorting' => [
         'title_asc' => 'Title (ascending)',

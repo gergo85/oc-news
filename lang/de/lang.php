@@ -157,10 +157,9 @@ return [
     'component' => [
         'posts' => 'Nachrichten',
         'post' => 'Nachricht',
+        'categories' => 'Kategorien',
         'subscribe' => 'Abonnentenform',
-        'unsubscribe' => 'Deabonnieren',
-        'categories' => 'Kategorien'
-
+        'unsubscribe' => 'Deabonnieren'
     ],
     'permission' => [
         'posts' => 'Nachrichten verwalten',
@@ -194,7 +193,7 @@ return [
         'category_page_title' => 'Kategorien Seite',
         'category_page_description' => 'Name der Kategorien-Seiten-Datei für die Kategorien Links. Wird von der Standard-Komponente benötigt.',
         'category_filter_title' => 'Nachrichten-Kategorien Filter',
-        'category_filter_description' => 'Bitte gebe ein Kategorien-Slug oder URL-Parameter an, mittels den die Artikel gefiltert werden. Wenn der Wert leer ist, werden alle Artikel angezeigt.',
+        'category_filter_description' => 'Bitte gebe ein Kategorien-Slug oder URL-Parameter an, mittels den die Artikel gefiltert werden. Wenn der Wert leer ist, werden alle Artikel angezeigt.'
     ],
     'sorting' => [
         'title_asc' => 'Titel (aufsteigend)',
