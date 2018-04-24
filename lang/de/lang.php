@@ -158,7 +158,9 @@ return [
         'posts' => 'Nachrichten',
         'post' => 'Nachricht',
         'subscribe' => 'Abonnentenform',
-        'unsubscribe' => 'Deabonnieren'
+        'unsubscribe' => 'Deabonnieren',
+        'categories' => 'Kategorien'
+
     ],
     'permission' => [
         'posts' => 'Nachrichten verwalten',
@@ -186,7 +188,13 @@ return [
         'featured_description' => 'Wählen Sie welche Nachrichten angezeigt werden sollen',
         'list_all' => 'Alle',
         'list_featured' => 'Nur hervorgehobene',
-        'list_notfeatured' => 'Keine hervorgehobene'
+        'list_notfeatured' => 'Keine hervorgehobene',
+        'translated_title' => 'Zeige nur übersetzte Nachrichten',
+        'translated_description' => 'Versteckt alle Nachrichten wenn es die Nachricht nicht in der aktuellen Sprache gibt.',
+        'category_page_title' => 'Kategorien Seite',
+        'category_page_description' => 'Name der Kategorien-Seiten-Datei für die Kategorien Links. Wird von der Standard-Komponente benötigt.',
+        'category_filter_title' => 'Nachrichten-Kategorien Filter',
+        'category_filter_description' => 'Bitte gebe ein Kategorien-Slug oder URL-Parameter an, mittels den die Artikel gefiltert werden. Wenn der Wert leer ist, werden alle Artikel angezeigt.',
     ],
     'sorting' => [
         'title_asc' => 'Titel (aufsteigend)',
