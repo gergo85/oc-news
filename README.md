@@ -104,6 +104,10 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * pl - Polski
 * hu - Magyar
 
+<a name="requirements"></a>
+## Requirements
+[AJAX Framework](https://octobercms.com/docs/ajax/) is needed for the subscription form to work.
+
 <a name="installation"></a>
 ## Installation
 1. Go to the __Settings > Updates & Plugins__ page in the Backend.
