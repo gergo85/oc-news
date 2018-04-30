@@ -17,7 +17,7 @@ columns:
         searchable: true
 
     common:
-        label: indikator.news::lang.form.common
+        label: indikator.news::lang.form.comment
         searchable: true
         invisible: true
 
