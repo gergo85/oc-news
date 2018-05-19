@@ -17,7 +17,7 @@ class UpdateSendFeature2 extends Migration
     {
         Schema::table('indikator_news_posts', function($table)
         {
-            $table->boolean('send')->default(false)->change();
+            $table->boolean('send')->default(false);
         });
     }
 }
