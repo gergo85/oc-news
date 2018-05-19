@@ -151,6 +151,7 @@ return [
     'component' => [
         'posts' => 'Pokaż posty',
         'post' => 'Pokaż zawartość postów',
+        'categories' => 'Kategorie',
         'subscribe' => 'Formularz subskrybentów',
         'unsubscribe' => 'Formularz wyrejestrowuj'
     ],
@@ -179,7 +180,8 @@ return [
         'featured_description' => 'Choose which Posts to show',
         'list_all' => 'Wszystko',
         'list_featured' => 'Tylko wyróżnione',
-        'list_notfeatured' => 'Nie jest opisywany'
+        'list_notfeatured' => 'Nie jest opisywany',
+        'links' => 'Spinki do mankietów'
     ],
     'sorting' => [
         'title_asc' => 'Tytuł (rosnąco)',

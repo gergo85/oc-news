@@ -61,7 +61,7 @@ class Posts extends ComponentBase
                     'title asc'         => Lang::get('indikator.news::lang.sorting.title_asc'),
                     'title desc'        => Lang::get('indikator.news::lang.sorting.title_desc'),
                     'created_at asc'    => Lang::get('indikator.news::lang.sorting.created_at_asc'),
-                    'created_at desc  ' => Lang::get('indikator.news::lang.sorting.created_at_desc'),
+                    'created_at desc'   => Lang::get('indikator.news::lang.sorting.created_at_desc'),
                     'updated_at asc'    => Lang::get('indikator.news::lang.sorting.updated_at_asc'),
                     'updated_at desc'   => Lang::get('indikator.news::lang.sorting.updated_at_desc'),
                     'published_at asc'  => Lang::get('indikator.news::lang.sorting.published_at_asc'),
@@ -96,14 +96,14 @@ class Posts extends ComponentBase
                 'description' => 'indikator.news::lang.settings.post_description',
                 'type'        => 'dropdown',
                 'default'     => 'news/post',
-                'group'       => 'Links',
+                'group'       => 'indikator.news::lang.settings.links'
             ],
             'categoryPage' => [
                 'title'       => 'indikator.news::lang.settings.category_page_title',
                 'description' => 'indikator.news::lang.settings.category_page_description',
                 'type'        => 'dropdown',
                 'default'     => '',
-                'group'       => 'Links',
+                'group'       => 'indikator.news::lang.settings.links'
             ]
         ];
     }
@@ -158,7 +158,7 @@ class Posts extends ComponentBase
             'featured' => $this->property('postFeatured'),
             'search'   => $this->searchFilter,
             'isTrans'  => $this->property('postTranslated'),
-            'category'   => $category
+            'category' => $category
         ]);
 
         $posts->each(function($post) {
@@ -169,7 +169,6 @@ class Posts extends ComponentBase
         });
 
         return $posts;
-
     }
 
     protected function loadCategory()
@@ -177,11 +176,13 @@ class Posts extends ComponentBase
         if (!$slug = $this->property('categoryFilter')) {
             return null;
         }
+
         $category = new NewsCategory;
         $category = $category->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
             ? $category->transWhere('slug', $slug)
             : $category->where('slug', $slug);
         $category = $category->first();
+
         return $category ?: null;
     }
 }

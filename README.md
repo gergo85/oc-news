@@ -13,6 +13,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 - [Mail template variables](#mail_template)
 - [Supported plugins](#supported_plugins)
 - [Available languages](#available_languages)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Add back-end widgets](#backend_widgets)
 - [Credits](#credits)
@@ -60,6 +61,7 @@ You can use the following widgets on the back-end Dashboard:
 Use the __Components > News__ panel in CMS menu. At this moment there are the following components:
 * Display posts
 * Post content
+* List categories
 * Subscriber form
 * Unsubscribe form
 
@@ -102,6 +104,11 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * ru - Pу́сский
 * pl - Polski
 * hu - Magyar
+
+<a name="requirements"></a>
+## Requirements
+* OctoberCMS build 420 or newer version.
+* [AJAX Framework](https://octobercms.com/docs/ajax) is needed for the subscription form to work.
 
 <a name="installation"></a>
 ## Installation

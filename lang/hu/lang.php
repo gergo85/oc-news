@@ -159,6 +159,7 @@ return [
     'component' => [
         'posts' => 'Hírek listázása',
         'post' => 'Bejegyzés mutatása',
+        'categories' => 'Hír kategóriák',
         'subscribe' => 'Űrlap feliratkozáshoz',
         'unsubscribe' => 'Űrlap leiratkozáshoz'
     ],
@@ -178,20 +179,25 @@ return [
         'pagination_description' => 'A lapozósáv lapjai által használt, várt paraméter neve.',
         'per_page_title' => 'Bejegyzések oldalanként',
         'per_page_validation' => 'A laponkénti bejegyzések értéke érvénytelen formátumú',
-        'no_posts_title' => 'Nincsenek bejegyzések',
-        'no_posts_description' => 'A bejegyzés listában megjelenő üzenet abban az esetben, ha nincsenek bejegyzések. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'no_posts_title' => 'Nincs találat',
+        'no_posts_description' => 'A bejegyzés listában megjelenő üzenet abban az esetben, ha nincsenek bejegyzések.',
         'no_posts_found' => 'Nincsenek bejegyzések',
         'posts_order_title' => 'Bejegyzések sorrendje',
         'posts_order_description' => 'Ez alapján rendeződnek a bejegyzések.',
         'post_title' => 'Bejegyzés lapja',
-        'post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve. Az alapértelmezett komponensrész használja ezt a tulajdonságot.',
+        'post_description' => 'A "Tovább olvasom" hivatkozások bejegyzés lap fájljának neve.',
         'featured_title' => 'Bejegyzések megjelenítése',
         'featured_description' => 'A kiválasztott típusú bejegyzések listázása.',
         'list_all' => 'Összes',
         'list_featured' => 'Csak a kiemeltek',
         'list_notfeatured' => 'Csak a nem kiemeltek',
-        'translated_title' => 'Lefordított bejegyzések mutatása',
-        'translated_description' => 'Bejegyzés elrejtése, ha annak a nyelve nem egyezik meg a honlapéval.'
+        'translated_title' => 'Lefordított bejegyzések',
+        'translated_description' => 'Bejegyzés elrejtése, ha annak a nyelve nem egyezik meg a honlapéval.',
+        'category_page_title' => 'Kategória aloldal',
+        'category_page_description' => 'Adja meg a kategória fájl nevét. Ennek alapján lesznek generálva a kategória linkek webcíme.',
+        'category_filter_title' => 'Kategória szűrés',
+        'category_filter_description' => 'Adja meg a kategória webcímét, ami alapján szűrve lesznek a bejegyzések. Üresen hagyva minden bejegyzés meg fog jelenni.',
+        'links' => 'Linkek'
     ],
     'sorting' => [
         'title_asc' => 'Név (növekvő)',

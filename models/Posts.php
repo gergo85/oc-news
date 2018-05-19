@@ -132,7 +132,7 @@ class Posts extends Model
             'status'   => 1,
             'featured' => 0,
             'isTrans'  => false,
-            'category' => null,
+            'category' => null
         ], $options));
 
         $searchableFields = [
@@ -319,15 +319,18 @@ class Posts extends Model
             'id'   => $this->id,
             'slug' => $this->slug,
         ];
+
         if (array_key_exists('category', $this->getRelations())) {
             $params['category'] = $this->category->count() ? $this->category->first()->slug : null;
         }
-        //expose published year, month and day as URL parameters
+
+        // Expose published year, month and day as URL parameters
         if ($this->published) {
-            $params['year'] = $this->published_at->format('Y');
+            $params['year']  = $this->published_at->format('Y');
             $params['month'] = $this->published_at->format('m');
-            $params['day'] = $this->published_at->format('d');
+            $params['day']   = $this->published_at->format('d');
         }
+
         return $this->url = $controller->pageUrl($pageName, $params);
     }
 }
