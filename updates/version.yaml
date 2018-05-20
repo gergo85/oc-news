@@ -89,5 +89,6 @@
 1.9.4: Added Categories component and minor improvements.
 1.9.5:
     - Added Português translation.
+    - Minor improvements and bugfix.
     - Change columns type and add index.
     - change_columns_type_2.php
