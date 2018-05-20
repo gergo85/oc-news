@@ -102,8 +102,9 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * en - English
 * de - Deutsch
 * ru - Pу́сский
-* pl - Polski
 * hu - Magyar
+* pl - Polski
+* pt - Português
 
 <a name="requirements"></a>
 ## Requirements

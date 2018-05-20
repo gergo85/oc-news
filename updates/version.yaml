@@ -88,5 +88,6 @@
 1.9.3: Added show only translated posts option.
 1.9.4: Added Categories component and minor improvements.
 1.9.5:
+    - Added Português translation.
     - Change columns type and add index.
-    - change_columns_type2.php
+    - change_columns_type_2.php
