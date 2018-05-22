@@ -163,9 +163,11 @@ class Posts extends ComponentBase
 
         $posts->each(function($post) {
             $post->setUrl($this->postPage, $this->controller);
-            $post->category->each(function($category) {
-                $category->setUrl($this->categoryPage, $this->controller);
-            });
+            if (isset($category)) {
+                $post->category->each(function($category) {
+                    $category->setUrl($this->categoryPage, $this->controller);
+                });
+            }
         });
 
         return $posts;
