@@ -75,6 +75,8 @@ return [
         'last_send_at' => 'Zuletzt versendet am',
         'last_send' => 'Zuletzt versendet',
         'length' => 'Länge',
+        'clone_of' => 'Kopie von',
+        'news_cloning' => 'Kopiere Nachricht :name',
         // Subscribers
         'name' => 'Name',
         'email' => 'Email',
@@ -119,7 +121,8 @@ return [
         'newsletter_send_success' => 'Newsletter wurde erfolgreich versendet.',
         'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
-        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',

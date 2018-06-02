@@ -215,6 +215,25 @@ class Posts extends Model
         return $query->where('featured', $value);
     }
 
+    public function duplicate($post) {
+
+        $clone = new Posts();
+        $clone->title = \Lang::get('indikator.news::lang.form.clone_of') . " " . $post->title;
+        $clone->slug = $post->slug . "-" . now()->format("Y-m-d-h-i-s");
+        $clone->status = 3;
+        $clone->introductory = $post->introductory;
+        $clone->content = $post->content;
+        $clone->image = $post->image;
+        $clone->category_id = $post->category_id;
+        $clone->featured = $post->featured;
+        $clone->save();
+
+        \Event::fire('indikator.news.posts.duplicate', [&$clone, $post]);
+
+        return $clone;
+
+    }
+
     public static function getMenuTypeInfo($type)
     {
         if ($type == 'post-page') {
@@ -245,6 +264,7 @@ class Posts extends Model
 
         return $result;
     }
+
 
     public static function resolveMenuItem($item, $url, $theme)
     {

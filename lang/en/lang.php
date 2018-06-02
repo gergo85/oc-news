@@ -75,6 +75,8 @@ return [
         'last_send_at' => 'Last send at',
         'last_send' => 'Last send',
         'length' => 'Length',
+        'clone_of' => 'Clone of',
+        'news_cloning' => 'Cloning news :name',
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
@@ -121,7 +123,8 @@ return [
         'newsletter_send_success' => 'Newsletter was successfully send.',
         'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!',
         'newsletter_resend_success' => 'Newsletter was successfully resend.',
-        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.'
+        'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'news_clone_confirm' => 'Do you want this clone this post?'
     ],
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',
