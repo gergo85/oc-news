@@ -1,12 +1,16 @@
 subject = "Hírlevél"
 ==
-<p>Kedves {{ name }}!</p>
-<p>Új bejegyzés az oldalunkon:</p>
-<br>
-<p><img src="https://sajathonlapod.hu/storage/app/media{{image}}" alt=""></p>
-<p><em>{{ title }}</em><br>
-{{ summary|raw }}</p>
-<p>www.weboldalad.hu/hirek/{{ slug }}</p>
-<br>
-<p>Üdvözlettel:<br>
-A Szerkesztők</p>
+<p>
+    Kedves {{name}}!<br>
+    <br>
+    Új bejegyzés az oldalunkon:<br>
+    <br>
+    <img src="https://weboldalad.hu/storage/app/media{{image}}" alt="{{title}}"><br>
+    <br>
+    <em>{{title}}</em><br>
+    {{summary|raw}}<br>
+    <a href="https://weboldalad.hu/hirek/{{slug}}" target="_blank">Tovább...</a><br>
+    <br>
+    Üdvözlettel:<br>
+    A Szerkesztők
+</p>

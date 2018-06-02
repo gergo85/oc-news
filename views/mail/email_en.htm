@@ -1,12 +1,16 @@
 subject = "Newsletter"
 ==
-<p>Dear {{ name }},</p>
-<p>New post of the website:</p>
-<br>
-<p><img src="https://yourwebsite.com/storage/app/media{{image}}" alt=""></p>
-<p><em>{{ title }}</em><br>
-{{ summary|raw }}</p>
-<p>www.yourwebsite.com/news/{{ slug }}</p>
-<br>
-<p>Best regards,<br>
-The Team</p>
+<p>
+    Dear {{name}},<br>
+    <br>
+    New post of the website:<br>
+    <br>
+    <img src="https://yourwebsite.com/storage/app/media{{image}}" alt="{{title}}"><br>
+    <br>
+    <em>{{title}}</em><br>
+    {{summary|raw}}<br>
+    <a href="https://yourwebsite.com/news/{{slug}}" target="_blank">More...</a><br>
+    <br>
+    Best regards,<br>
+    The Team
+</p>
