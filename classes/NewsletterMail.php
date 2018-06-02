@@ -1,6 +1,6 @@
 <?php namespace Indikator\News\Classes;
 
-use Illuminate\Mail\Mailable;
+use October\Rain\Mail\Mailable;
 
 class NewsletterMail extends Mailable
 {

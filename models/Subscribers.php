@@ -13,6 +13,14 @@ class Subscribers extends Model
         'status' => 'required|between:1,2|numeric'
     ];
 
+    protected $dates = [
+        'registered_at',
+        'confirmed_at',
+        'unsubscribed_at',
+        'created_at',
+        'updated_at'
+    ];
+
     public $belongsToMany = [
         'categories' => [
             'Indikator\News\Models\Categories',

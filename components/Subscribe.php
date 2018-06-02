@@ -8,6 +8,7 @@ use Db;
 use App;
 use Validator;
 use ValidationException;
+use Request;
 
 class Subscribe extends ComponentBase
 {
@@ -86,7 +87,9 @@ class Subscribe extends ComponentBase
             'created'    => 2,
             'statistics' => 0,
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s'),
+            'registered_at' => now(),
+            'registered_ip' => Request::ip()
         ]);
 
         // Check category
