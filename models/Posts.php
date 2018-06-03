@@ -333,4 +333,35 @@ class Posts extends Model
 
         return $this->url = $controller->pageUrl($pageName, $params);
     }
+
+    private $_category = null;
+
+    public function getCategory()
+    {
+        if ($this->_category === null) {
+            $category = Categories::whereId($this->category_id)->first();
+
+            if ($category->status == 1) {
+                $this->_category = [
+                    'id'      => $category->id,
+                    'name'    => $category->name,
+                    'slug'    => $category->slug,
+                    'content' => $category->content,
+                    'image'   => $category->image
+                ];
+            }
+
+            else {
+                $this->_category = [
+                    'id'      => 0,
+                    'name'    => '',
+                    'slug'    => '',
+                    'content' => '',
+                    'image'   => ''
+                ];
+            }
+        }
+
+        return $this->_category;
+    }
 }
