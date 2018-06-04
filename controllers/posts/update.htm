@@ -86,6 +86,7 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->value('slug');
                     <?= e(trans('indikator.news::lang.button.resend')) ?>
                 </button>
                 <?php endif ?>
+
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
@@ -96,11 +97,22 @@ $slug = \Indikator\News\Models\Posts::whereId($uri[5])->value('slug');
                     data-request-confirm="<?= e(trans('indikator.news::lang.flash.delete')) ?>"
                     class="oc-icon-trash-o btn-icon danger pull-right">
                 </button>
+
+                <button
+                        data-request="onClonePosts"
+                        data-request-data="id:<?= $formModel->id?>"
+                        data-load-indicator="<?= e(trans('indikator.news::lang.form.news_cloning', ['name'=>$formModel->title])) ?>"
+                        data-request-confirm="<?= e(trans('indikator.news::lang.flash.news_clone_confirm')) ?>"
+                        class="oc-icon-clone btn-icon pull-right">
+                </button>
+
                 <?php if (isset($url)): ?>
                 <span class="btn-text pull-right">
                     <a href="<?= $url.$slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
                 </span>
                 <?php endif ?>
+
+
             </div>
         </div>
 
