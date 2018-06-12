@@ -92,3 +92,4 @@
     - Minor improvements and bugfix.
     - Change columns type and add index.
     - change_columns_type_2.php
+1.9.6: Added cloning feature.
