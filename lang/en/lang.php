@@ -136,6 +136,9 @@ return [
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
         ],
+        'newsletter_section' => 'Newsletter settings',
+        'newsletter_double_opt_in' => 'Newsletter registration confirmation (Double Opt-in)',
+        'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
         'statistic_section' => 'Statistics settings',
         'statistic_show_posts' => 'Show posts',
         'statistic_show_mails' => 'Show mail logs',

@@ -134,6 +134,9 @@ return [
             'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
             'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
         ],
+        'newsletter_section' => 'Newsletter Einstellungen',
+        'newsletter_double_opt_in' => 'Newsletter Registrierung Bestätigen (Double Opt-in)',
+        'newsletter_double_opt_in_comment' => 'Sendet eine Email an den neuen Abonneten, welche seine Email-Adresse betätigen muss.',
         'statistic_section' => 'Statistik Einstellungen',
         'statistic_show_posts' => 'Zeige Einträge',
         'statistic_show_mails' => 'Zeige Mail-Logs',

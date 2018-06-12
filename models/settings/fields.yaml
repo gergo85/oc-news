@@ -28,6 +28,17 @@ fields:
         path: $/indikator/news/models/settings/_email_view_tracking_warning.htm
         span: right
 
+    newsletter_section:
+        label: indikator.news::lang.backend_settings.newsletter_section
+        type: section
+
+    newsletter_double_opt_in:
+        label: indikator.news::lang.backend_settings.newsletter_double_opt_in
+        comment: indikator.news::lang.backend_settings.newsletter_double_opt_in_comment
+        type: switch
+        default: true
+        span: auto
+
     statistic_section:
         label: indikator.news::lang.backend_settings.statistic_section
         type: section
