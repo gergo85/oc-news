@@ -75,6 +75,8 @@ return [
         'last_send_at' => 'Utoljára elküldve',
         'last_send' => 'Levélküldés',
         'length' => 'Hossz',
+        'clone_of' => 'Másolat',
+        'news_cloning' => 'Hír másolása :name',
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
@@ -121,7 +123,8 @@ return [
         'newsletter_send_success' => 'A hírlevél sikeresen el lett küldve.',
         'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
         'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
-        'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.'
+        'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
+        'news_clone_confirm' => 'Valóban másolni akarja ezt a hírt?'
     ],
     'backend_settings' => [
         'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
