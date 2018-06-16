@@ -23,6 +23,16 @@ class Categories extends Model
         'slug' => 'name'
     ];
 
+    public $belongsToMany = [
+        'subscribers' => [
+            'Indikator\News\Models\Subscribers',
+            'table' => 'indikator_news_relations',
+            'key'   => 'categories_id',
+            'otherKey' => 'subscriber_id',
+            'order' => 'name'
+        ]
+    ];
+
     public $translatable = [
         'name',
         ['slug', 'index' => true],
