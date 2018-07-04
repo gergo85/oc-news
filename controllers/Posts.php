@@ -174,4 +174,12 @@ class Posts extends Controller
 
         return $this->listRefresh();
     }
+
+    public function onClonePosts($id) {
+
+        $post = Item::find($id);
+        $newPost = $post->duplicate($post);
+
+        return Redirect::to(substr(\Request::path(),0,  strrpos(\Request::path(), '/', -1) + 1) . $newPost->id);
+    }
 }

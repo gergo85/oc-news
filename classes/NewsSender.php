@@ -119,25 +119,9 @@ class NewsSender
     protected function sendToActiveSubscribers()
     {
         $activeSubscribers = Subscribers::where('status', 1);
-        $category = $this->news->category_id;
 
         if (Categories::count() > 0) {
-            $ids[] = 0;
-            $relations = Db::table('indikator_news_relations');
-
-            $items = $relations->where('categories_id', $category)->get()->all();
-            foreach ($items as $item) {
-                $ids[] = $item->subscriber_id;
-            }
-
-            $items = $activeSubscribers->get()->all();
-            foreach ($items as $item) {
-                if ($relations->where('subscriber_id', $item->id)->count() == 0) {
-                    $ids[] = $item->id;
-                }
-            }
-
-            $activeSubscribers = $activeSubscribers->whereIn('id', $ids);
+            $activeSubscribers = $this->news->category->subscribers()->isSubscribed();
         }
 
         $activeSubscribers = $activeSubscribers->get();
