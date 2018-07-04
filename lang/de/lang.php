@@ -125,7 +125,7 @@ return [
         'subscriber_confirmation_token_invalid' => 'Der Bestätigungslink oder Token ist nicht gültig.',
         'subscriber_confirmation_token_expired' => 'Der Bestätigungslink ist nicht mehr gültig. Bitte abonnieren Sie erneut den Newsletter.',
         'subscriber_confirmation' => 'Sie haben Ihre Emailadresse erfolgreich bestätigt. Sie erhalten in Zukunft unsere Newsletter.',
-        'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.'
+        'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.',
         'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?'
     ],
     'backend_settings' => [
