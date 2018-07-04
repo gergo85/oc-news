@@ -9,8 +9,8 @@ class Subscribers extends Model
     protected $table = 'indikator_news_subscribers';
 
     public $rules = [
-        'email'  => 'required|email',
-        'status' => 'required|between:1,2|numeric'
+        'email' => 'required|email',
+        'status' => 'required|between:1,3|numeric'
     ];
 
     protected $dates = [
@@ -21,11 +21,19 @@ class Subscribers extends Model
         'updated_at'
     ];
 
+    protected $guarded = [
+        'confirmed_at',
+        'confirmed_ip',
+        'unsubscribed_at',
+        'unsubscribed_ip',
+        'confirmation_hash'
+    ];
+
     public $belongsToMany = [
         'categories' => [
             'Indikator\News\Models\Categories',
             'table' => 'indikator_news_relations',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'order' => 'name'
         ]
     ];
@@ -37,31 +45,31 @@ class Subscribers extends Model
         ],
         'logs_queued_count' => [
             'Indikator\News\Models\Logs',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'scope' => 'isQueued',
             'count' => true
         ],
         'logs_send_count' => [
             'Indikator\News\Models\Logs',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'scope' => 'isSend',
             'count' => true
         ],
         'logs_viewed_count' => [
             'Indikator\News\Models\Logs',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'scope' => 'isViewed',
             'count' => true
         ],
         'logs_clicked_count' => [
             'Indikator\News\Models\Logs',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'scope' => 'isClicked',
             'count' => true
         ],
         'logs_failed_count' => [
             'Indikator\News\Models\Logs',
-            'key'   => 'subscriber_id',
+            'key' => 'subscriber_id',
             'scope' => 'isFailed',
             'count' => true
         ]
@@ -88,9 +96,15 @@ class Subscribers extends Model
         return $this->status == 2;
     }
 
+    public function isRegistered()
+    {
+        return $this->status == 3;
+    }
+
     public function activate()
     {
         $this->status = 1;
+        $this->confirmation_hash = null;
         $this->save();
     }
 
@@ -99,6 +113,13 @@ class Subscribers extends Model
         $this->status = 2;
         $this->save();
     }
+
+    public function register(){
+        $this->status = 3;
+        $this->save();
+    }
+
+
 
     public function scopeFilterCategories($query, $categories)
     {
@@ -121,4 +142,8 @@ class Subscribers extends Model
     {
         return $query->where('status', 2);
     }
+
+
+
+
 }

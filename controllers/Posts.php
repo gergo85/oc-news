@@ -46,6 +46,8 @@ class Posts extends Controller
 
     public function onTest()
     {
+        Flash::success(\App::getFallbackLocale());
+        return ;
         $news   = $this->getNewsByPathOrFail();
         $sender = new NewsSender($news);
 

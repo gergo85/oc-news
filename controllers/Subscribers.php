@@ -5,10 +5,18 @@ use BackendMenu;
 use Indikator\News\Models\Subscribers as Item;
 use Db;
 use Flash;
+use Jenssegers\Date\Date;
 use Lang;
+use Request;
+use Redirect;
 
 class Subscribers extends Controller
 {
+    /**
+     * @var array Defines a collection of actions available without authentication.
+     */
+    protected $publicActions = ['confirm'];
+
     public $implement = [
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
@@ -28,9 +36,11 @@ class Subscribers extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'subscribers');
     }
 
+
     public function onSubscribe()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+
             foreach ($checkedIds as $itemId) {
                 if (!$item = Item::where('status', 2)->whereId($itemId)) {
                     continue;
@@ -79,5 +89,38 @@ class Subscribers extends Controller
         }
 
         return $this->listRefresh();
+    }
+
+    public function confirm($id = null, $hash = null)
+    {
+        $subscriber = Item::find($id);
+
+        if($subscriber == null)
+        {
+            Flash::failed(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_invalid'));
+            return Redirect::to('/');
+        }
+
+        if($subscriber->status == 3 && $subscriber->confirmation_hash == $hash)
+        {
+            if($subscriber->registered_at < Date::now()->subDay())
+            {
+                Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_expired'));
+                return Redirect::to('/');
+            }
+
+            $subscriber->confirmed_ip = Request::ip();
+            $subscriber->confirmed_at = Date::now();
+            $subscriber->activate();
+
+            Flash::success(Lang::get('indikator.news::lang.flash.subscriber_confirmation'));
+        } elseif ($subscriber->status == 1) {
+            Flash::success(Lang::get('indikator.news::lang.flash.subscriber_already_confirmed'));
+        } else {
+            Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_invalid'));
+        }
+
+        return Redirect::to('/');
+
     }
 }

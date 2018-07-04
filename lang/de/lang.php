@@ -119,7 +119,11 @@ return [
         'newsletter_send_success' => 'Newsletter wurde erfolgreich versendet.',
         'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
-        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!'
+        'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'subscriber_confirmation_token_invalid' => 'Der Bestätigungslink oder Token ist nicht gültig.',
+        'subscriber_confirmation_token_expired' => 'Der Bestätigungslink ist nicht mehr gültig. Bitte abonnieren Sie erneut den Newsletter.',
+        'subscriber_confirmation' => 'Sie haben Ihre Emailadresse erfolgreich bestätigt. Sie erhalten in Zukunft unsere Newsletter.',
+        'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',
