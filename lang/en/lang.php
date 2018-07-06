@@ -127,7 +127,7 @@ return [
         'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
         'subscriber_confirmation_token_invalid' => 'The confirmation link or token is invalid.',
         'subscriber_confirmation_token_expired' => 'Your confirmation link expired, please signup again.',
-        'subscriber_confirmation' => 'You successfully confirmed your email address. You\'ll receive upcoming newsletters.',
+        'subscriber_confirmation' => 'You successfully confirmed your email address. You will receive upcoming newsletters.',
         'subscriber_already_confirmed' => 'Your account is already confirmed.',
         'news_clone_confirm' => 'Do you want this clone this post?'
     ],

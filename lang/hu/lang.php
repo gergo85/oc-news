@@ -66,6 +66,7 @@ return [
         'status_active' => 'Aktív',
         'status_inactive' => 'Inaktív',
         'status_unsubscribed' => 'Leiratkozott',
+        'status_registered' => 'Regisztrált',
         'featured' => 'Kiemelt',
         'hidden' => 'Rejtett',
         'yes' => 'Igen',
@@ -124,6 +125,10 @@ return [
         'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
         'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
         'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
+        'subscriber_confirmation_token_invalid' => 'Az elfogadó link vagy az azonosító kód helytelen.',
+        'subscriber_confirmation_token_expired' => 'Az elfogadás határideje lejárt, kérjük regisztráljon újból.',
+        'subscriber_confirmation' => 'Sikeresen elfogadta a feliratkozást. Hamarosan meg fogja kapni hírlevelünket.',
+        'subscriber_already_confirmed' => 'A feliratkozása már el lett fogadva.',
         'news_clone_confirm' => 'Valóban másolni akarja ezt a hírt?'
     ],
     'backend_settings' => [
@@ -141,7 +146,7 @@ return [
         ],
         'statistic_section' => 'A statisztikára vonatkozó beállítások',
         'statistic_show_posts' => 'Bejegyzések mutatása',
-        'statistic_show_mails' => 'Levél logolás mutatása',
+        'statistic_show_mails' => 'Levél naplózás mutatása',
         'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
         'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
     ],
