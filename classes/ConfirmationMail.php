@@ -1,4 +1,4 @@
-<?php namespace indikator\news\classes;
+<?php namespace Indikator\News\Classes;
 
 use October\Rain\Mail\Mailable;
 use App;
@@ -6,12 +6,11 @@ use File;
 
 class ConfirmationMail extends Mailable
 {
-
     public $subscriber;
 
     public $confirmationLink;
 
-    const templateNamespace = "indikator.news::mail.confirmation_";
+    const templateNamespace = 'indikator.news::mail.confirmation_';
 
     public function __construct($subscriber, $confirmationLink)
     {
@@ -19,16 +18,16 @@ class ConfirmationMail extends Mailable
         $this->confirmationLink = $confirmationLink;
     }
 
-    public function build() {
+    public function build()
+    {
         return $this->view(
             $this->getTemplate($this->subscriber->locale),
             [
-                'subscriber' => $this->subscriber,
+                'subscriber'        => $this->subscriber,
                 'confirmation_link' => $this->confirmationLink
             ]
         )->to($this->subscriber['email'], $this->subscriber['name']);
     }
-
 
     /**
      * Get the current template name
@@ -48,5 +47,4 @@ class ConfirmationMail extends Mailable
 
         return false;
     }
-
 }

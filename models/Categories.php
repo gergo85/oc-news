@@ -26,10 +26,10 @@ class Categories extends Model
     public $belongsToMany = [
         'subscribers' => [
             'Indikator\News\Models\Subscribers',
-            'table' => 'indikator_news_relations',
-            'key'   => 'categories_id',
+            'table'    => 'indikator_news_relations',
+            'key'      => 'categories_id',
             'otherKey' => 'subscriber_id',
-            'order' => 'name'
+            'order'    => 'name'
         ]
     ];
 
@@ -49,7 +49,7 @@ class Categories extends Model
     {
         $params = [
             'id'   => $this->id,
-            'slug' => $this->slug,
+            'slug' => $this->slug
         ];
 
         return $this->url = $controller->pageUrl($pageName, $params);

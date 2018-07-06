@@ -1,22 +1,19 @@
-<?php namespace indikator\news\classes;
+<?php namespace Indikator\News\Classes;
 
 use Hash;
 use Backend;
 use Mail;
 
-
 class ConfirmationHandler
 {
-
     public static function generateNewTokenForSubscriber($subscriber)
     {
-        $subscriber->confirmation_hash = str_random("255");
+        $subscriber->confirmation_hash = str_random('255');
         $subscriber->save();
     }
 
     public static function sendConfirmationEmailToSubscriber($subscriber)
     {
-
         self::generateNewTokenForSubscriber($subscriber);
 
         $confirmationLink = Backend::url('indikator/news/subscribers/confirm', [
@@ -26,5 +23,4 @@ class ConfirmationHandler
 
         Mail::send(new ConfirmationMail($subscriber, $confirmationLink));
     }
-
 }
