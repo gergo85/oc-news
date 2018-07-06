@@ -93,3 +93,6 @@
     - Change columns type and add index.
     - change_columns_type_2.php
 1.9.6: Added cloning feature.
+1.9.7:
+    - Plugin is now GDPR conform
+    - adding_gdpr_fields_for_subscribers.php

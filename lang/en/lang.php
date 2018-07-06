@@ -66,6 +66,7 @@ return [
         'status_active' => 'Active',
         'status_inactive' => 'Inactive',
         'status_unsubscribed' => 'Unsubscribed',
+        'status_registered' => 'Registered',
         'featured' => 'Featured',
         'hidden' => 'Is hidden?',
         'yes' => 'Yes',
@@ -124,6 +125,10 @@ return [
         'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!',
         'newsletter_resend_success' => 'Newsletter was successfully resend.',
         'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'subscriber_confirmation_token_invalid' => 'The confirmation link or token is invalid.',
+        'subscriber_confirmation_token_expired' => 'Your confirmation link expired, please signup again.',
+        'subscriber_confirmation' => 'You successfully confirmed your email address. You\'ll receive upcoming newsletters.',
+        'subscriber_already_confirmed' => 'Your account is already confirmed.',
         'news_clone_confirm' => 'Do you want this clone this post?'
     ],
     'backend_settings' => [
@@ -139,6 +144,9 @@ return [
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
         ],
+        'newsletter_section' => 'Newsletter settings',
+        'newsletter_double_opt_in' => 'Newsletter registration confirmation (Double Opt-in)',
+        'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
         'statistic_section' => 'Statistics settings',
         'statistic_show_posts' => 'Show posts',
         'statistic_show_mails' => 'Show mail logs',

@@ -11,7 +11,7 @@ class Newsletter extends Controller
     /**
      * @var array Defines a collection of actions available without authentication.
      */
-    protected $publicActions = ['image', 'open'];
+    protected $publicActions = ['image', 'open', 'confirm'];
 
     /**
      * Log the mail open and output a 1x1 image
@@ -45,4 +45,6 @@ class Newsletter extends Controller
 
         return Redirect::to($url);
     }
+
+
 }

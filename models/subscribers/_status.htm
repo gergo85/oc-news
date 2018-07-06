@@ -2,12 +2,14 @@
 
 $text = [
     1 => 'active',
-    2 => 'unsubscribed'
+    2 => 'unsubscribed',
+    3 => 'registered'
 ];
 
 $class = [
     1 => 'text-info',
-    2 => 'text-danger'
+    2 => 'text-danger',
+    3 => 'text-warning'
 ];
 
 echo '<span class="oc-icon-circle '.$class[$record->status].'">'.Lang::get('indikator.news::lang.form.status_'.$text[$record->status]).'</span>';

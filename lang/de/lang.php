@@ -66,6 +66,7 @@ return [
         'status_active' => 'Aktiv',
         'status_inactive' => 'Inaktiv',
         'status_unsubscribed' => 'Deabonniert',
+        'status_registered' => 'Registriert',
         'featured' => 'Hervorgehoben',
         'hidden' => 'Versteckt',
         'yes' => 'Ja',
@@ -122,6 +123,10 @@ return [
         'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
         'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'subscriber_confirmation_token_invalid' => 'Der Bestätigungslink oder Token ist nicht gültig.',
+        'subscriber_confirmation_token_expired' => 'Der Bestätigungslink ist nicht mehr gültig. Bitte abonnieren Sie erneut den Newsletter.',
+        'subscriber_confirmation' => 'Sie haben Ihre Emailadresse erfolgreich bestätigt. Sie erhalten in Zukunft unseren Newsletter.',
+        'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.',
         'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?'
     ],
     'backend_settings' => [
@@ -137,6 +142,9 @@ return [
             'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
             'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
         ],
+        'newsletter_section' => 'Newsletter Einstellungen',
+        'newsletter_double_opt_in' => 'Newsletter Registrierung Bestätigen (Double Opt-in)',
+        'newsletter_double_opt_in_comment' => 'Sendet eine Email an den neuen Abonneten, welche seine Email-Adresse betätigen muss.',
         'statistic_section' => 'Statistik Einstellungen',
         'statistic_show_posts' => 'Zeige Einträge',
         'statistic_show_mails' => 'Zeige Mail-Logs',
