@@ -4,11 +4,6 @@
 
 scopes:
 
-    hidden:
-        label: indikator.news::lang.form.hidden
-        type: checkbox
-        conditions: hidden = 1
-
     status_active:
         label: indikator.news::lang.button.active
         type: checkbox
@@ -18,6 +13,11 @@ scopes:
         label: indikator.news::lang.button.inactive
         type: checkbox
         conditions: status = 2
+
+    hidden:
+        label: indikator.news::lang.form.hidden
+        type: checkbox
+        conditions: hidden = 1
 
     created_date:
         label: indikator.news::lang.form.created
