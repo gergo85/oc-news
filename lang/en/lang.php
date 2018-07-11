@@ -134,7 +134,6 @@ return [
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',
         'main_section' => 'Settings about sending and handling newsletters',
-        'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
         'click_tracking' => 'Track clicks',
         'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
         'email_view_tracking' => 'Track newsletter views',
@@ -144,14 +143,15 @@ return [
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
         ],
-        'newsletter_section' => 'Newsletter settings',
-        'newsletter_double_opt_in' => 'Newsletter registration confirmation (Double Opt-in)',
+        'newsletter_double_opt_in' => 'Newsletter registration confirmation',
         'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
-        'statistic_section' => 'Statistics settings',
+        'admin_section' => 'Settings of site administrators',
+        'show_posts' => 'Show the following post on front-end:',
         'statistic_show_posts' => 'Show posts',
         'statistic_show_mails' => 'Show mail logs',
         'statistic_show_longest_posts' => 'Show longest posts',
-        'statistic_show_shortest_posts' => 'Show shortest posts'
+        'statistic_show_shortest_posts' => 'Show shortest posts',
+        'statistic_comment' => 'In the Statistics page.'
     ],
     'widget' => [
         'posts' => 'News - Posts',

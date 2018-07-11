@@ -72,7 +72,7 @@ class SendNews
                         'hash' => $logEntry->hash.'.png'
                     ]);
 
-                    $body .= '<img src="'.$url.'" style="display:none;width:0;height:0;" />';
+                    $body .= '<img src="'.$url.'" style="display:none;width:0;height:0;">';
                 }
 
                 $swift->setBody($body);

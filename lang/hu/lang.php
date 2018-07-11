@@ -133,8 +133,7 @@ return [
     ],
     'backend_settings' => [
         'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
-        'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
-        'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
+        'main_section' => 'Hírlevelek küldésére vonatkozó beállítások',
         'click_tracking' => 'Kattintás követése',
         'click_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó egy levélben lévő hivatkozásra kattint.',
         'email_view_tracking' => 'Megtekintés követése',
@@ -144,11 +143,15 @@ return [
             'subheading' => 'Nem elfogadott minden országban!',
             'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
         ],
-        'statistic_section' => 'A statisztikára vonatkozó beállítások',
+        'newsletter_double_opt_in' => 'Hírlevél feliratkozás megerősítése',
+        'newsletter_double_opt_in_comment' => 'Egy megerősítő levelet fog kapni a feliratkozó, amivel igazolhaja az email címét.',
+        'admin_section' => 'Beállítások adminisztrátorok számára',
+        'show_posts' => 'Következő bejegyzések mutatása a látogatói oldalon:',
         'statistic_show_posts' => 'Bejegyzések mutatása',
         'statistic_show_mails' => 'Levél naplózás mutatása',
         'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
-        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
+        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása',
+        'statistic_comment' => 'A Statisztika oldalon.'
     ],
     'widget' => [
         'posts' => 'Hírek - Gyors statisztika',

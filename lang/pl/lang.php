@@ -118,7 +118,6 @@ return [
     'backend_settings' => [
         'description' => 'Ustawienia sterowania',
         'main_section' => 'Ustawienia dotyczące wysyłania i obsługi biuletynów',
-        'main_section_comment' => 'Ustawienia śledzenia można zmieniać w biuletynie newsletterów.',
         'click_tracking' => 'Śledzenie kliknięć',
         'click_tracking_comment' => 'Śledź, gdy osoba kliknie link biuletynu.',
         'email_view_tracking' => 'Śledzenie wyświetleń biuletynów',
@@ -128,7 +127,6 @@ return [
             'subheading' => 'Nie jest dozwolone w każdym kraju!',
             'text' => 'Podczas korzystania z tej funkcji należy mieć pewność, co robisz! Upewnij się, że nie złamasz żadnych praw.'
         ],
-        'statistic_section' => 'Ustawienia statystyk',
         'statistic_show_posts' => 'Pokaż posty',
         'statistic_show_mails' => 'Pokaż dzienniki poczty',
         'statistic_show_longest_posts' => 'Pokaż najdłuższe posty',

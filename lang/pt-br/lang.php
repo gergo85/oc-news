@@ -126,7 +126,6 @@ return [
     'backend_settings' => [
         'description' => 'Configurações de envio de newsletters e estatísticas de visualizações.',
         'main_section' => 'Configurações de envio e tratamento de newsletters',
-        'main_section_comment' => 'As alterações de rastreio podem ser alteradas pela newsletter mails.',
         'click_tracking' => 'Rastrear clicks',
         'click_tracking_comment' => 'Rastrear quando a pessoa clica em um link da newsletter.',
         'email_view_tracking' => 'Rastrear visualizações da newsletter ',
@@ -136,7 +135,6 @@ return [
             'subheading' => 'Isto é ilegal em alguns países!',
             'text' => 'Quando você usa esta funcionalidade você precisa se certificar que isto é permitido em seu país! Tenha certeza que você não está infringindo nenhuma lei.'
         ],
-        'statistic_section' => 'Configurações de estatística',
         'statistic_show_posts' => 'Exibir postagens',
         'statistic_show_mails' => 'Exibir logs de emails',
         'statistic_show_longest_posts' => 'Exibir postagens por tamanho (maiores)',

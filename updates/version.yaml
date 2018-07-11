@@ -95,5 +95,6 @@
 1.9.6: Added cloning feature.
 1.9.7:
     - Plugin is now GDPR conform.
+    - Added new option for Settings.
     - Minor UI improvements.
     - adding_gdpr_fields_for_subscribers.php
