@@ -10,6 +10,7 @@ use Request;
 use Indikator\News\Models\Posts as Item;
 use Indikator\News\Classes\NewsSender;
 use Jenssegers\Date\Date;
+use Carbon\Carbon;
 use Flash;
 use Lang;
 use Redirect;
@@ -113,7 +114,13 @@ class Posts extends Controller
                     continue;
                 }
 
-                $item->update(['status' => 1]);
+                $update['status'] = 1;
+
+                if (Item::whereId($itemId)->value('published_at') == null) {
+                    $update['published_at'] = Carbon::now();
+                }
+
+                $item->update($update);
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.activate'));

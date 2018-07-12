@@ -110,6 +110,10 @@ class Posts extends Model
         if (!isset($this->category_id) || empty($this->category_id)) {
             $this->category_id = 0;
         }
+
+        if ($this->status == 1 && empty($this->published_at)) {
+            $this->published_at = Carbon::now();
+        }
     }
 
     /**

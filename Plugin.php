@@ -43,7 +43,7 @@ class Plugin extends PluginBase
                         'permissions' => ['indikator.news.categories']
                     ],
                     'subscribers' => [
-                        'label'        => 'indikator.news::lang.menu.subscribers',
+                        'label'       => 'indikator.news::lang.menu.subscribers',
                         'url'         => Backend::url('indikator/news/subscribers'),
                         'icon'        => 'icon-user',
                         'permissions' => ['indikator.news.subscribers']
