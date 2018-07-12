@@ -11,9 +11,10 @@ columns:
     image:
         label: indikator.news::lang.form.image
         sortable: false
+        clickable: false
         invisible: true
         type: partial
-        path: ~/plugins/indikator/news/models/posts/_image.htm
+        path: ~/plugins/indikator/news/models/categories/_image.htm
 
     name:
         label: indikator.news::lang.form.name

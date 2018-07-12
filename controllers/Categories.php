@@ -67,4 +67,20 @@ class Categories extends Controller
 
         return $this->listRefresh();
     }
+
+    public function onShowImage()
+    {
+        return '
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="popup">×</button>
+                <h4 class="modal-title">'.Item::where('image', post('image'))->value('name').'</h4>
+            </div>
+            <div class="modal-body">
+                <img src="/storage/app/media'.post('image').'" alt="" class="img-responsive"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="popup">'.Lang::get('backend::lang.form.close').'</button>
+            </div>
+        ';
+    }
 }
