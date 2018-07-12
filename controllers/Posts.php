@@ -45,6 +45,9 @@ class Posts extends Controller
         return Item::findOrFail($uri[count($uri) - 1]);
     }
 
+    /**
+     * Sends a test newsletter to the logged user.
+     */
     public function onTest()
     {
         $news   = $this->getNewsByPathOrFail();
@@ -157,7 +160,7 @@ class Posts extends Controller
                 $item->update(['status' => 3]);
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.activate'));
+            Flash::success(Lang::get('indikator.news::lang.flash.draft'));
         }
 
         return $this->listRefresh();

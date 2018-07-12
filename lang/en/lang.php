@@ -116,6 +116,7 @@ return [
     'flash' => [
         'activate' => 'Successfully activated those posts.',
         'deactivate' => 'Successfully deactivated those posts.',
+        'draft' => 'Successfully modified those posts as draft.',
         'subscribe' => 'Successfully subscribed those users.',
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',

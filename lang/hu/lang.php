@@ -116,6 +116,7 @@ return [
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
+        'draft' => 'A bejegyzések sikeresen piszkozatok lettek.',
         'subscribe' => 'A felhasználók feliratkozása megtörtént.',
         'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
