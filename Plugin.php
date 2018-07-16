@@ -120,6 +120,16 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerFormWidgets()
+    {
+        return [
+            'Indikator\News\FormWidgets\PostInfo' => [
+                'label' => 'PostInfo',
+                'code'  => 'postinfo'
+            ]
+        ];
+    }
+
     public function registerMailTemplates()
     {
         return [

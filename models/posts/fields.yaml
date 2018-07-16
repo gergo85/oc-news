@@ -31,6 +31,9 @@ tabs:
 secondaryTabs:
     fields:
 
+        postinfo:
+            type: postinfo
+
         image:
             label: indikator.news::lang.form.image
             type: mediafinder

@@ -93,7 +93,7 @@
     - Change columns type and add index.
     - change_columns_type_2.php
 1.9.6: Added cloning feature.
-1.9.7:
+1.10.0:
     - Plugin is now GDPR conform.
     - Added new option for Settings.
     - Minor UI improvements.
