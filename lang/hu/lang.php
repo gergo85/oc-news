@@ -66,7 +66,7 @@ return [
         'status_active' => 'Aktív',
         'status_inactive' => 'Inaktív',
         'status_unsubscribed' => 'Leiratkozott',
-        'status_registered' => 'Regisztrált',
+        'status_pending' => 'Függőben',
         'featured' => 'Kiemelt',
         'hidden' => 'Rejtett',
         'yes' => 'Igen',

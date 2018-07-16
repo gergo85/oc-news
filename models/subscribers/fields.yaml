@@ -37,5 +37,6 @@ fields:
         options:
             1: indikator.news::lang.form.status_active
             2: indikator.news::lang.form.status_unsubscribed
+            3: indikator.news::lang.form.status_pending
         default: 1
         span: right

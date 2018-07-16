@@ -66,7 +66,7 @@ return [
         'status_active' => 'Active',
         'status_inactive' => 'Inactive',
         'status_unsubscribed' => 'Unsubscribed',
-        'status_registered' => 'Registered',
+        'status_pending' => 'Pending',
         'featured' => 'Featured',
         'hidden' => 'Is hidden?',
         'yes' => 'Yes',

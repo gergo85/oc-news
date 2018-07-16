@@ -1,0 +1,12 @@
+subject = "Feliratkozás megerősítése a(z) {{ appName }} weboldalhoz"
+layout = "newsletter"
+description = "Hírlevél feliratkozás megerősítése"
+==
+Kedves {{ subscriber.name }}!
+
+A hírlevél feliratkozás megerősítéséhez igazolnia kell az email címét.  
+Ezt 24 órán belül meg kell tennie, különben újra fel kell iratkoznia a hírlevélre.
+
+{% partial 'button' url=confirmation_link body %}
+Email cím igazolása
+{% endpartial %}

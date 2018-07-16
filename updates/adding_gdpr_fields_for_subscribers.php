@@ -25,7 +25,6 @@ class AddingGdprFieldsForSubscribers extends Migration
     {
         Schema::table('indikator_news_subscribers', function($table)
         {
-
             $table->dropColumn('registered_at');
             $table->dropColumn('registered_ip');
 
@@ -38,5 +37,3 @@ class AddingGdprFieldsForSubscribers extends Migration
         });
     }
 }
-
-
