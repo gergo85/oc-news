@@ -33,6 +33,7 @@ secondaryTabs:
 
         postinfo:
             type: postinfo
+            context: update
 
         image:
             label: indikator.news::lang.form.image
