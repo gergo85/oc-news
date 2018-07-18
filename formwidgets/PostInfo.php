@@ -24,4 +24,9 @@ class PostInfo extends FormWidgetBase
         $this->vars['statistics'] = $news->statistics;
         $this->vars['updated_at'] = substr($news->updated_at, 0, -3);
     }
+
+    public function getSaveValue($value)
+    {
+        return \Backend\Classes\FormField::NO_SAVE_DATA;
+    }
 }
