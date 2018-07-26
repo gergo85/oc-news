@@ -40,3 +40,10 @@ fields:
             3: indikator.news::lang.form.status_pending
         default: 1
         span: right
+
+secondaryTabs:
+    fields:
+
+        subscriberinfo:
+            type: subscriberinfo
+            context: update

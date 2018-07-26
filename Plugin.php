@@ -126,6 +126,14 @@ class Plugin extends PluginBase
             'Indikator\News\FormWidgets\PostInfo' => [
                 'label' => 'PostInfo',
                 'code'  => 'postinfo'
+            ],
+            'Indikator\News\FormWidgets\CategoryInfo' => [
+                'label' => 'CategoryInfo',
+                'code'  => 'categoryinfo'
+            ],
+            'Indikator\News\FormWidgets\SubscriberInfo' => [
+                'label' => 'SubscriberInfo',
+                'code'  => 'subscriberinfo'
             ]
         ];
     }
