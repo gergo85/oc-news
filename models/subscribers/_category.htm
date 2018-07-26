@@ -1,0 +1,7 @@
+<?php
+
+$items = Db::table('indikator_news_relations')->where('subscriber_id', $record->id)->get()->all();
+
+foreach ($items as $item) {
+	echo Indikator\News\Models\Categories::whereId($item->categories_id)->value('name').'<br>';
+}
