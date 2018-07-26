@@ -14,6 +14,11 @@ scopes:
         type: checkbox
         conditions: status = 2
 
+    status_pending:
+        label: indikator.news::lang.form.status_pending
+        type: checkbox
+        conditions: status = 3
+
     categories:
         label: indikator.news::lang.form.category
         modelClass: Indikator\News\Models\Categories
