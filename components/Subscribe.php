@@ -1,11 +1,10 @@
 <?php namespace Indikator\News\Components;
 
 use Cms\Classes\ComponentBase;
-use indikator\news\classes\SubscriberService;
+use Indikator\News\Classes\SubscriberService;
 use Indikator\News\Models\Categories;
 use Indikator\News\Models\Subscribers;
 use Lang;
-use Db;
 use App;
 use Validator;
 use ValidationException;
@@ -13,7 +12,6 @@ use Request;
 
 class Subscribe extends ComponentBase
 {
-
     use SubscriberService;
 
     public function componentDetails()
@@ -44,8 +42,8 @@ class Subscribe extends ComponentBase
 
         // Validate input data
         $rules = [
-            'name'  => 'required|between:2,64',
-            'email' => 'required|email|between:8,64',
+            'name'     => 'required|between:2,64',
+            'email'    => 'required|email|between:8,64',
             'category' => 'array'
         ];
 
@@ -55,38 +53,34 @@ class Subscribe extends ComponentBase
         }
 
         $email = post('email');
-        $name = post('name');
+        $name  = post('name');
         $categories = post('category',[]);
 
         // looking for existing subscriber
         $subscriberResult = Subscribers::email($email);
 
         if ($subscriberResult->count() > 0) {
-
             $subscriber = $subscriberResult->first();
-            // update name
+            // Update the name
             $subscriber->name = $name;
-
-        } else {
+        }
+        else {
             // Register new one
             $subscriber = Subscribers::create([
-                'name'       => $name,
-                'email'      => $email,
-                'common'     => '',
-                'locale'     => App::getLocale(),
-                'created'    => 2,
-                'statistics' => 0,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'name'          => $name,
+                'email'         => $email,
+                'common'        => '',
+                'locale'        => App::getLocale(),
+                'created'       => 2,
+                'statistics'    => 0,
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
                 'registered_at' => now(),
                 'registered_ip' => Request::ip(),
-                'status' => 3
+                'status'        => 3
             ]);
         }
 
-
         $this->onSubscriberRegister($subscriber, $categories);
-
-
     }
 }

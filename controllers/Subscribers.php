@@ -29,6 +29,8 @@ class Subscribers extends Controller
 
     public $requiredPermissions = ['indikator.news.subscribers'];
 
+    public $bodyClass = 'compact-container';
+
     public function __construct()
     {
         parent::__construct();
@@ -36,11 +38,9 @@ class Subscribers extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'subscribers');
     }
 
-
     public function onSubscribe()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-
             foreach ($checkedIds as $itemId) {
                 if (!$item = Item::where('status', 2)->whereId($itemId)) {
                     continue;
@@ -95,16 +95,13 @@ class Subscribers extends Controller
     {
         $subscriber = Item::find($id);
 
-        if($subscriber == null)
-        {
+        if ($subscriber == null) {
             Flash::failed(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_invalid'));
             return Redirect::to('/');
         }
 
-        if($subscriber->status == 3 && $subscriber->confirmation_hash == $hash)
-        {
-            if($subscriber->registered_at < Date::now()->subDay())
-            {
+        if ($subscriber->status == 3 && $subscriber->confirmation_hash == $hash) {
+            if ($subscriber->registered_at < Date::now()->subDay()) {
                 Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_expired'));
                 return Redirect::to('/');
             }
@@ -114,13 +111,14 @@ class Subscribers extends Controller
             $subscriber->activate();
 
             Flash::success(Lang::get('indikator.news::lang.flash.subscriber_confirmation'));
-        } elseif ($subscriber->status == 1) {
+        }
+        else if ($subscriber->status == 1) {
             Flash::success(Lang::get('indikator.news::lang.flash.subscriber_already_confirmed'));
-        } else {
+        }
+        else {
             Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_invalid'));
         }
 
         return Redirect::to('/');
-
     }
 }

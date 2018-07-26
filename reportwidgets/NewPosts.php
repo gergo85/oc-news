@@ -29,15 +29,20 @@ class NewPosts extends ReportWidgetBase
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
             ],
             'piece' => [
-                'title'             => 'indikator.news::lang.widget.show_piece',
-                'default'           => 5,
-                'type'              => 'dropdown',
-                'options'           => [3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12]
+                'title'   => 'indikator.news::lang.widget.show_piece',
+                'default' => 5,
+                'type'    => 'dropdown',
+                'options' => [3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12]
             ],
             'date' => [
-                'title'             => 'indikator.news::lang.widget.show_date',
-                'default'           => true,
-                'type'              => 'checkbox'
+                'title'   => 'indikator.news::lang.widget.show_date',
+                'default' => true,
+                'type'    => 'checkbox'
+            ],
+            'rank' => [
+                'title'   => 'indikator.news::lang.widget.show_rank',
+                'default' => false,
+                'type'    => 'checkbox'
             ]
         ];
     }
