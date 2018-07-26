@@ -30,6 +30,8 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Detailed mail logs
 * Front-end forms
 * Back-end widgets
+* Innovative solutions
+* Regular updates
 
 <a name="statistics"></a>
 ## Statistics and graphs
@@ -43,11 +45,11 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 <a name="autostat"></a>
 ## Automatic statistics
-You just add the "Post content" frontend component to the page, where the post appears. If you are logged in as administrator, the counter will not grow. It works any cases, when the visitors open the post details.
+You just add the "Post content" front-end component to the page, where the post appears. If you are logged in as administrator, the counter will not grow. It works any cases, when the visitors open the post details.
 
 <a name="preview"></a>
 ## Preview feature
-You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
+You just add the "Post content" front-end component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
 
 <a name="available_widgets"></a>
 ## Available widgets
