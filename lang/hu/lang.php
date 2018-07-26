@@ -86,6 +86,11 @@ return [
         'locale' => 'Nyelv',
         'lang' => 'hu',
         'mail' => 'levél',
+        'registered_at' => 'Regisztráció ideje',
+        'confirmed_at' => 'Elfogadás ideje',
+        'unsubscribed_at' => 'Leiratkozás ideje',
+        'ip_address' => 'IP cím',
+        'no_data' => 'Nincs adat',
         // Naplózás
         'news' => 'Bejegyzés',
         'subscriber_name' => 'Feliratkozó neve',
@@ -163,9 +168,12 @@ return [
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'show_draft' => 'Piszkozatok mutatása',
+        'show_category' => 'Kategória mutatása',
         'show_piece' => 'Bejegyzések száma',
+        'show_rank' => 'Helyezés mutatása',
         'show_date' => 'Dátum mutatása',
         'show_unsub' => 'Leiratkozottak mutatása',
+        'show_pending' => 'Függőben lévők mutatása',
         'total' => 'Összes'
     ],
     'component' => [

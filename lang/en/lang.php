@@ -86,6 +86,11 @@ return [
         'locale' => 'Locale',
         'lang' => 'en',
         'mail' => 'mail',
+        'registered_at' => 'Registered date',
+        'confirmed_at' => 'Confirmed date',
+        'unsubscribed_at' => 'Unsubscribed date',
+        'ip_address' => 'IP Address',
+        'no_data' => 'No data',
         // Logs
         'news' => 'Post',
         'subscriber_name' => 'Subscriber name',
@@ -163,9 +168,12 @@ return [
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'show_draft' => 'Show draft',
+        'show_category' => 'Show category',
         'show_piece' => 'Number of posts',
         'show_date' => 'Show date',
+        'show_rank' => 'Show rank',
         'show_unsub' => 'Show unsubscribed',
+        'show_pending' => 'Show pending',
         'total' => 'Total'
     ],
     'component' => [
