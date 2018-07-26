@@ -28,6 +28,12 @@
                 <span class="status-label primary"><?= $draft ?></span>
             </li>
             <?php endif ?>
+            <?php if ($this->property('category')): ?>
+            <li>
+                <span class="status-text"><?= e(trans('indikator.news::lang.form.category')) ?></span>
+                <span class="status-label primary"><?= $category ?></span>
+            </li>
+            <?php endif ?>
         </ul>
     </div>
 

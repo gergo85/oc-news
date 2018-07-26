@@ -4,9 +4,12 @@
     <?php if (!isset($error)): ?>
     <div class="control-status-list">
         <ul>
-            <?php foreach ($posts as $post): ?>
+            <?php $id = 1; foreach ($posts as $post): ?>
             <li>
                 <span class="status-text">
+                    <?php if ($this->property('rank')): ?>
+                    # <?= $id ?> &nbsp;
+                    <?php endif ?>
                     <?= $post->title ?>
                     <?php if ($this->property('date')): ?>
                     &nbsp; <em style="color:#b9b9b9"><?= substr($post->published_at, 0, -3) ?></em>
@@ -14,7 +17,7 @@
                 </span>
                 <span class="status-label primary"><?= $post->statistics ?></span>
             </li>
-          <?php endforeach; ?>
+            <?php $id++; endforeach; ?>
         </ul>
     </div>
 

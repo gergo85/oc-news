@@ -3,6 +3,7 @@
 use Backend\Classes\ReportWidgetBase;
 use Exception;
 use Indikator\News\Models\Posts as Post;
+use Indikator\News\Models\Categories;
 
 class Posts extends ReportWidgetBase
 {
@@ -29,24 +30,29 @@ class Posts extends ReportWidgetBase
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
             ],
             'total' => [
-                'title'             => 'indikator.news::lang.widget.show_total',
-                'default'           => true,
-                'type'              => 'checkbox'
+                'title'   => 'indikator.news::lang.widget.show_total',
+                'default' => true,
+                'type'    => 'checkbox'
             ],
             'active' => [
-                'title'             => 'indikator.news::lang.widget.show_active',
-                'default'           => true,
-                'type'              => 'checkbox'
+                'title'   => 'indikator.news::lang.widget.show_active',
+                'default' => true,
+                'type'    => 'checkbox'
             ],
             'inactive' => [
-                'title'             => 'indikator.news::lang.widget.show_inactive',
-                'default'           => true,
-                'type'              => 'checkbox'
+                'title'   => 'indikator.news::lang.widget.show_inactive',
+                'default' => true,
+                'type'    => 'checkbox'
             ],
             'draft' => [
-                'title'             => 'indikator.news::lang.widget.show_draft',
-                'default'           => true,
-                'type'              => 'checkbox'
+                'title'   => 'indikator.news::lang.widget.show_draft',
+                'default' => true,
+                'type'    => 'checkbox'
+            ],
+            'category' => [
+                'title'   => 'indikator.news::lang.widget.show_category',
+                'default' => true,
+                'type'    => 'checkbox'
             ]
         ];
     }
@@ -57,5 +63,6 @@ class Posts extends ReportWidgetBase
         $this->vars['inactive'] = Post::where('status', 2)->count();
         $this->vars['draft']    = Post::where('status', 3)->count();
         $this->vars['total']    = $this->vars['active'] + $this->vars['inactive'] + $this->vars['draft'];
+        $this->vars['category'] = Categories::count();
     }
 }
