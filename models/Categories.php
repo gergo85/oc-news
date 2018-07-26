@@ -33,6 +33,13 @@ class Categories extends Model
         ]
     ];
 
+    public $hasMany = [
+        'posts' => [
+            'Indikator\News\Models\Posts',
+            'key' => 'category_id'
+        ]
+    ];
+
     public $translatable = [
         'name',
         ['slug', 'index' => true],
