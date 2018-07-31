@@ -18,6 +18,7 @@ columns:
 
     category:
         label: indikator.news::lang.form.category
+        sortable: false
         invisible: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_category.htm
@@ -32,16 +33,17 @@ columns:
         invisible: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_locale.htm
+        align: center
 
     statistics:
         label: indikator.news::lang.stat.mail
-        searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
+        align: right
 
     status:
         label: indikator.news::lang.form.status
-        searchable: true
+        sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
