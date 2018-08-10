@@ -9,7 +9,7 @@ class Subscribers extends Model
     protected $table = 'indikator_news_subscribers';
 
     public $rules = [
-        'email' => 'required|email',
+        'email'  => 'required|email',
         'status' => 'required|between:1,3|numeric'
     ];
 
@@ -33,7 +33,7 @@ class Subscribers extends Model
         'categories' => [
             'Indikator\News\Models\Categories',
             'table' => 'indikator_news_relations',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'order' => 'name'
         ]
     ];
@@ -45,31 +45,31 @@ class Subscribers extends Model
         ],
         'logs_queued_count' => [
             'Indikator\News\Models\Logs',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'scope' => 'isQueued',
             'count' => true
         ],
         'logs_send_count' => [
             'Indikator\News\Models\Logs',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'scope' => 'isSend',
             'count' => true
         ],
         'logs_viewed_count' => [
             'Indikator\News\Models\Logs',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'scope' => 'isViewed',
             'count' => true
         ],
         'logs_clicked_count' => [
             'Indikator\News\Models\Logs',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'scope' => 'isClicked',
             'count' => true
         ],
         'logs_failed_count' => [
             'Indikator\News\Models\Logs',
-            'key' => 'subscriber_id',
+            'key'   => 'subscriber_id',
             'scope' => 'isFailed',
             'count' => true
         ]
@@ -114,12 +114,11 @@ class Subscribers extends Model
         $this->save();
     }
 
-    public function register(){
+    public function register()
+    {
         $this->status = 3;
         $this->save();
     }
-
-
 
     public function scopeFilterCategories($query, $categories)
     {
@@ -142,8 +141,4 @@ class Subscribers extends Model
     {
         return $query->where('status', 2);
     }
-
-
-
-
 }
