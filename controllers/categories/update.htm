@@ -1,10 +1,6 @@
 <?php
-
-$uri = explode('/', Request::path());
-
-$previous = \Indikator\News\Models\Categories::where('id', '<', $uri[5])->max('id');
-$next     = \Indikator\News\Models\Categories::where('id', '>', $uri[5])->min('id');
-
+$prev = \Indikator\News\Models\Categories::where('id', '<', $formModel->id)->max('id');
+$next = \Indikator\News\Models\Categories::where('id', '>', $formModel->id)->min('id');
 ?>
 
 <?php Block::put('breadcrumb') ?>
@@ -52,15 +48,15 @@ $next     = \Indikator\News\Models\Categories::where('id', '>', $uri[5])->min('i
                 <a
                     href="<?= $next; ?>"
                     class="oc-icon-angle-right btn-icon pull-right"
-                    style="font-size: 24px; text-decoration:none"
+                    style="font-size: 25px; text-decoration:none"
                     title="<?= e(trans('indikator.content::lang.button.next')) ?>">
                 </a>
                 <?php endif ?>
-                <?php if ($previous): ?>
+                <?php if ($prev): ?>
                 <a
-                    href="<?= $previous; ?>"
+                    href="<?= $prev; ?>"
                     class="oc-icon-angle-left btn-icon pull-right"
-                    style="font-size: 24px; text-decoration:none"
+                    style="font-size: 25px; text-decoration:none"
                     title="<?= e(trans('indikator.content::lang.button.previous')) ?>">
                 </a>
                 <?php endif ?>

@@ -21,7 +21,7 @@ class CategoryInfo extends FormWidgetBase
     protected function prepareVars()
     {
         $uri = explode('/', Request::path());
-        $category = Categories::whereId($uri[5])->first();
+        $category = Categories::whereId(end($uri))->first();
 
         $this->vars['posts']       = Posts::where('category_id', $uri[5])->count();
         $this->vars['subscribers'] = Db::table('indikator_news_relations')->where('categories_id', $category->id)->count();

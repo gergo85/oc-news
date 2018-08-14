@@ -19,7 +19,7 @@ class PostInfo extends FormWidgetBase
     protected function prepareVars()
     {
         $uri = explode('/', Request::path());
-        $news = Posts::whereId($uri[5])->first();
+        $news = Posts::whereId(end($uri))->first();
 
         $this->vars['statistics'] = $news->statistics;
         $this->vars['updated_at'] = substr($news->updated_at, 0, -3);

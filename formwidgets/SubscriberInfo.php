@@ -19,10 +19,11 @@ class SubscriberInfo extends FormWidgetBase
     protected function prepareVars()
     {
         $uri = explode('/', Request::path());
-        $subscriber = Subscribers::whereId($uri[5])->first();
+        $subscriber = Subscribers::whereId(end($uri))->first();
 
         if ($subscriber->registered_at == null) {
-            $this->vars['registered_at'] = $this->vars['registered_ip'] = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+            $this->vars['registered_at'] = $subscriber->created_at;
+            $this->vars['registered_ip'] = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
         }
         else {
             $this->vars['registered_at'] = '<strong>'.substr($subscriber->registered_at, 0, -3).'</strong>';
@@ -30,7 +31,7 @@ class SubscriberInfo extends FormWidgetBase
         }
 
         if ($subscriber->confirmed_at == null) {
-            $this->vars['confirmed_at'] = $this->vars['confirmed_ip'] = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';;
+            $this->vars['confirmed_at'] = $this->vars['confirmed_ip'] = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
         }
         else {
             $this->vars['confirmed_at'] = '<strong>'.substr($subscriber->confirmed_at, 0, -3).'</strong>';
