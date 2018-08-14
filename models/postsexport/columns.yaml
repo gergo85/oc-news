@@ -10,9 +10,11 @@ columns:
     introductory: indikator.news::lang.form.introductory
     content: indikator.news::lang.form.content
     image: indikator.news::lang.form.image
+    category_id: indikator.news::lang.form.category
     statistics: indikator.news::lang.stat.view
     status: indikator.news::lang.form.status
     featured: indikator.news::lang.form.featured
-    published_at: indikator.news::lang.form.published
-    created_at: indikator.news::lang.form.created
-    updated_at: indikator.news::lang.form.updated
+    published_at: indikator.news::lang.form.published_at
+    last_send_at: indikator.news::lang.form.last_send_at
+    created_at: indikator.news::lang.form.created_at
+    updated_at: indikator.news::lang.form.updated_at
