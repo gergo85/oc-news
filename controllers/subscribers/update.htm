@@ -1,3 +1,8 @@
+<?php
+$prev = \Indikator\News\Models\Subscribers::where('id', '<', $formModel->id)->max('id');
+$next = \Indikator\News\Models\Subscribers::where('id', '>', $formModel->id)->min('id');
+?>
+
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><a href="<?= Backend::url('indikator/news/subscribers') ?>"><?= e(trans('indikator.news::lang.menu.subscribers')) ?></a></li>
@@ -48,6 +53,22 @@
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/subscribers') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
+                <?php if ($next): ?>
+                <a
+                    href="<?= $next; ?>"
+                    class="oc-icon-angle-right btn-icon pull-right"
+                    style="font-size: 25px; text-decoration:none"
+                    title="<?= e(trans('indikator.content::lang.button.next')) ?>">
+                </a>
+                <?php endif ?>
+                <?php if ($prev): ?>
+                <a
+                    href="<?= $prev; ?>"
+                    class="oc-icon-angle-left btn-icon pull-right"
+                    style="font-size: 25px; text-decoration:none"
+                    title="<?= e(trans('indikator.content::lang.button.previous')) ?>">
+                </a>
+                <?php endif ?>
             </div>
         </div>
 
