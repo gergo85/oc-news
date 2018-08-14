@@ -7,21 +7,25 @@
 
 <?= Form::open(['class' => 'layout']) ?>
 
-    <div class="layout-row">
-        <?= $this->exportRender() ?>
-    </div>
+    <div style="padding:0 20px">
 
-    <div class="form-buttons">
-        <div class="loading-indicator-container">
-            <button
-                type="submit"
-                data-control="popup"
-                data-handler="onExportLoadForm"
-                data-keyboard="false"
-                class="btn btn-primary">
-                <?= e(trans('indikator.news::lang.button.export')) ?>
-            </button>
+        <div class="layout-row">
+            <?= $this->exportRender() ?>
         </div>
+
+        <div class="form-buttons">
+            <div class="loading-indicator-container">
+                <button
+                    type="submit"
+                    data-control="popup"
+                    data-handler="onExportLoadForm"
+                    data-keyboard="false"
+                    class="btn btn-primary">
+                    <?= e(trans('indikator.news::lang.button.export')) ?>
+                </button>
+            </div>
+        </div>
+
     </div>
 
 <?= Form::close() ?>
