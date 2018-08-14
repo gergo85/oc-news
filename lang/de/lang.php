@@ -50,8 +50,8 @@ return [
     'form' => [
         // General
         'id' => 'ID',
-        'created' => 'Erstellt am',
-        'updated' => 'Aktualisiert am',
+        'created_at' => 'Erstellt am',
+        'updated_at' => 'Aktualisiert am',
         // Posts
         'title' => 'Titel',
         'slug' => 'Slug',
@@ -72,7 +72,7 @@ return [
         'yes' => 'Ja',
         'no' => 'Nein',
         'view' => 'Gesehen',
-        'published' => 'Veröffentlicht am',
+        'published_at' => 'Veröffentlicht am',
         'last_send_at' => 'Zuletzt versendet am',
         'last_send' => 'Zuletzt versendet',
         'length' => 'Länge',

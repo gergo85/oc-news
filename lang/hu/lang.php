@@ -50,8 +50,8 @@ return [
     'form' => [
         // Általános
         'id' => 'ID',
-        'created' => 'Létrehozva',
-        'updated' => 'Módosítva',
+        'created_at' => 'Létrehozva',
+        'updated_at' => 'Módosítva',
         // Bejegyzések
         'title' => 'Cím',
         'slug' => 'Webcím',
@@ -72,7 +72,7 @@ return [
         'yes' => 'Igen',
         'no' => 'Nem',
         'view' => 'megtekintés',
-        'published' => 'Közzétéve',
+        'published_at' => 'Közzétéve',
         'last_send_at' => 'Utoljára elküldve',
         'last_send' => 'Levélküldés',
         'length' => 'Hossz',

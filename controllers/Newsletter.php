@@ -14,7 +14,7 @@ class Newsletter extends Controller
     protected $publicActions = ['image', 'open', 'confirm'];
 
     /**
-     * Log the mail open and output a 1x1 image
+     * Log the mail open and output a 1x1 image.
      * @param  integer $id
      * @param  string $hash
      * @return void
@@ -22,7 +22,7 @@ class Newsletter extends Controller
     public function image($id = null, $hash = null)
     {
         $hash = str_replace('.png', '', $hash);
-        $log = Logs::where('hash', $hash)->find($id);
+        $log  = Logs::where('hash', $hash)->find($id);
 
         if ($log) {
             Logger::viewed($log->id);
@@ -30,6 +30,7 @@ class Newsletter extends Controller
 
         header('Content-Type: image/png');
         header('Cache-Control: no-cache, max-age=0');
+
         echo base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=');
         die;
     }
@@ -45,6 +46,4 @@ class Newsletter extends Controller
 
         return Redirect::to($url);
     }
-
-
 }

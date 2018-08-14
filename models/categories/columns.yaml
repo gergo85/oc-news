@@ -58,13 +58,13 @@ columns:
         path: ~/plugins/indikator/news/models/posts/_status.htm
 
     created_at:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         searchable: true
         invisible: true
         type: datetime
 
     updated_at:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         searchable: true
         invisible: true
         type: datetime

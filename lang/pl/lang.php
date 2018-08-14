@@ -50,8 +50,8 @@ return [
     'form' => [
         // Geral
         'id' => 'ID',
-        'created' => 'Stworzony',
-        'updated' => 'Zaktualizowany',
+        'created_at' => 'Stworzony',
+        'updated_at' => 'Zaktualizowany',
         // Postagens
         'title' => 'Tytuł',
         'slug' => 'Slug',
@@ -71,7 +71,7 @@ return [
         'yes' => 'Tak',
         'no' => 'Nie',
         'view' => 'widok',
-        'published' => 'Opublikowany',
+        'published_at' => 'Opublikowany',
         'send' => 'Wyślij e-mail do subskrybentów.',
         'length' => 'Długość',
         // Inscritos
