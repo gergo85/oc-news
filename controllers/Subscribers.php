@@ -121,4 +121,14 @@ class Subscribers extends Controller
 
         return Redirect::to('/');
     }
+
+    public function onShowStat()
+    {
+        $this->vars['user'] = $user = Item::whereId(post('id'))->first();
+        $this->vars['registered_at']   = ($user->registered_at) ? $user->registered_at : $user->created_at;
+        $this->vars['confirmed_at']    = ($user->confirmed_at) ? $user->confirmed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['unsubscribed_at'] = ($user->unsubscribed_at) ? $user->unsubscribed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+
+        return $this->makePartial('show_stat');
+    }
 }

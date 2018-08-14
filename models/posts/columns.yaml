@@ -44,30 +44,37 @@ columns:
         type: partial
         path: ~/plugins/indikator/news/models/posts/_featured.htm
 
+    last_send_at:
+        label: indikator.news::lang.form.last_send
+        searchable: true
+        type: timesince
+
+    stat:
+        label: indikator.news::lang.menu.statistics
+        sortable: false
+        clickable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_stat.htm
+
     status:
         label: indikator.news::lang.form.status
         sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/posts/_status.htm
 
-    last_send_at:
-        label: indikator.news::lang.form.last_send
-        searchable: true
-        type: timesince
-
     published_at:
-        label: indikator.news::lang.form.published
+        label: indikator.news::lang.form.published_at
         searchable: true
         type: datetime
 
     created_at:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         searchable: true
         invisible: true
         type: datetime
 
     updated_at:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         searchable: true
         invisible: true
         type: datetime

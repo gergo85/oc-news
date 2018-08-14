@@ -42,7 +42,7 @@ class Posts extends Controller
     {
         $uri = explode('/', Request::path());
 
-        return Item::findOrFail($uri[count($uri) - 1]);
+        return Item::findOrFail(end($uri));
     }
 
     /**
@@ -193,17 +193,18 @@ class Posts extends Controller
 
     public function onShowImage()
     {
-        return '
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="popup">×</button>
-                <h4 class="modal-title">'.Item::where('image', post('image'))->value('title').'</h4>
-            </div>
-            <div class="modal-body">
-                <img src="/storage/app/media'.post('image').'" alt="" class="img-responsive"><br>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="popup">'.Lang::get('backend::lang.form.close').'</button>
-            </div>
-        ';
+        $this->vars['title'] = Item::where('image', post('image'))->value('title');
+        $this->vars['image'] = '/storage/app/media'.post('image');
+
+        return $this->makePartial('show_image');
+    }
+
+    public function onShowStat()
+    {
+        $this->vars['post'] = $post = Item::whereId(post('id'))->first();
+        $this->vars['last_send_at'] = ($post->last_send_at) ? $post->last_send_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['published_at'] = ($post->published_at) ? $post->published_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+
+        return $this->makePartial('show_stat');
     }
 }

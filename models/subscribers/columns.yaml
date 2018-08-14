@@ -41,6 +41,13 @@ columns:
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
         align: right
 
+    stat:
+        label: indikator.news::lang.menu.statistics
+        sortable: false
+        clickable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_stat.htm
+
     status:
         label: indikator.news::lang.form.status
         sortable: false
@@ -48,12 +55,12 @@ columns:
         path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
     created_at:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         searchable: true
         type: datetime
 
     updated_at:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         searchable: true
         invisible: true
         type: datetime
