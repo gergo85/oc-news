@@ -31,11 +31,11 @@ scopes:
         conditions: statistics >= ':min' and statistics <= ':max'
 
     created_date:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
 
     updated_date:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         type: daterange
         conditions: updated_at >= ':after' AND updated_at <= ':before'
