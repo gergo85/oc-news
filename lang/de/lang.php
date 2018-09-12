@@ -83,6 +83,7 @@ return [
         'email' => 'Email',
         'comment' => 'Kommentar',
         'locale' => 'Sprache',
+        'locale_comment' => 'de.wikipedia.org/wiki/ISO-3166-1-Kodierliste',
         'lang' => 'de',
         'mail' => 'Mail',
         // Logs

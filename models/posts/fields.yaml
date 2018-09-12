@@ -2,18 +2,44 @@
 #  Field Definitions
 # ===================================
 
+cssClass: row
+
 fields:
 
     title:
         label: indikator.news::lang.form.title
         required: true
-        span: auto
+        span: storm
+        cssClass: col-sm-12 col-lg-6
 
     slug:
         label: indikator.news::lang.form.slug
         required: true
         preset: title
-        span: auto
+        span: storm
+        cssClass: col-sm-12 col-lg-6
+
+    category:
+        label: indikator.news::lang.form.category
+        type: relation
+        span: storm
+        cssClass: col-sm-12 col-lg-6
+
+    published_at:
+        label: indikator.news::lang.form.published_at
+        type: datepicker
+        mode: datetime
+        span: storm
+        cssClass: col-sm-6 col-lg-3
+
+    last_send_at:
+        label: indikator.news::lang.form.last_send_at
+        type: datepicker
+        readOnly: true
+        mode: datetime
+        disabled: disabeld
+        span: storm
+        cssClass: col-sm-6 col-lg-3
 
 tabs:
     fields:
@@ -40,15 +66,6 @@ secondaryTabs:
             type: mediafinder
             mode: image
 
-        published_at:
-            label: indikator.news::lang.form.published
-            type: datepicker
-            mode: datetime
-
-        category:
-            label: indikator.news::lang.form.category
-            type: relation
-
         status:
             label: indikator.news::lang.form.status
             required: true
@@ -69,10 +86,3 @@ secondaryTabs:
                 2: indikator.news::lang.form.no
             default: 2
             span: auto
-
-        last_send_at:
-            label: indikator.news::lang.form.last_send_at
-            type: datepicker
-            readOnly: true
-            mode: datetime
-            disabled: disabeld

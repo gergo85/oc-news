@@ -4,42 +4,26 @@
 
 fields:
 
-    locale:
-        label: indikator.news::lang.form.locale
-        placeholder: indikator.news::lang.form.lang
-        span: right
-
     name:
         label: indikator.news::lang.form.name
-        span: left
+        span: auto
 
     email:
         label: indikator.news::lang.form.email
         required: true
-        span: left
+        span: auto
 
     categories:
         label: indikator.news::lang.menu.categories
         type: relation
         comment: indikator.news::lang.form.categories_comment
-        span: right
+        span: auto
 
     common:
         label: indikator.news::lang.form.comment
         type: textarea
         size: small
-        span: left
-
-    status:
-        label: indikator.news::lang.form.status
-        required: true
-        type: balloon-selector
-        options:
-            1: indikator.news::lang.form.status_active
-            2: indikator.news::lang.form.status_unsubscribed
-            3: indikator.news::lang.form.status_pending
-        default: 1
-        span: right
+        span: auto
 
 secondaryTabs:
     fields:
@@ -47,3 +31,18 @@ secondaryTabs:
         subscriberinfo:
             type: subscriberinfo
             context: update
+
+        locale:
+            label: indikator.news::lang.form.locale
+            placeholder: indikator.news::lang.form.lang
+            comment: indikator.news::lang.form.locale_comment
+
+        status:
+            label: indikator.news::lang.form.status
+            required: true
+            type: balloon-selector
+            options:
+                1: indikator.news::lang.form.status_active
+                2: indikator.news::lang.form.status_unsubscribed
+                3: indikator.news::lang.form.status_pending
+            default: 1
