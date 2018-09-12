@@ -8,7 +8,7 @@ class ConfirmationHandler
 {
     public static function generateNewTokenForSubscriber($subscriber)
     {
-        $subscriber->confirmation_hash = str_random('255');
+        $subscriber->confirmation_hash = str_random('191');
         $subscriber->save();
     }
 

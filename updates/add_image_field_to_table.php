@@ -9,7 +9,7 @@ class AddImageFieldToTable extends Migration
     {
         Schema::table('news_posts', function($table)
         {
-            $table->string('image', 200)->nullable();
+            $table->string('image', 191)->nullable();
         });
     }
 
