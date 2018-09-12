@@ -9,7 +9,9 @@ trait SubscriberService
     /**
      * Handles subscriber registration
      * either by registration in the frontend or by creating in the backend
+     * @param $subscriber
      * @param $listOfCategoryIds array of subscribing Ids
+     * @return void
      */
     public function onSubscriberRegister($subscriber, $listOfCategoryIds = [])
     {
