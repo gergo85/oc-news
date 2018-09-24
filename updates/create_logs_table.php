@@ -18,7 +18,7 @@ class CreateLogsTable extends Migration
             $table->dateTime('viewed_at')->nullable();
             $table->dateTime('clicked_at')->nullable();
             $table->string('status', 191);
-            $table->integer('job_id')->nullable()->unsigned();
+            $table->string('job_id', 32)->nullable();
             $table->string('hash', 191)->nullable();
         });
     }
