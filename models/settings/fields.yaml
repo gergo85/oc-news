@@ -6,7 +6,6 @@ fields:
 
     main_section:
         label: indikator.news::lang.backend_settings.main_section
-        comment: indikator.news::lang.backend_settings.main_section_comment
         type: section
 
     click_tracking:
@@ -14,44 +13,65 @@ fields:
         comment: indikator.news::lang.backend_settings.click_tracking_comment
         type: switch
         default: true
-        span: left
+        span: auto
 
     email_view_tracking:
         label: indikator.news::lang.backend_settings.email_view_tracking
         comment: indikator.news::lang.backend_settings.email_view_tracking_comment
         type: switch
         default: false
-        span: right
+        span: auto
 
     email_view_tracking_warning:
         type: partial
         path: $/indikator/news/models/settings/_email_view_tracking_warning.htm
         span: right
 
-    statistic_section:
-        label: indikator.news::lang.backend_settings.statistic_section
+    newsletter_double_opt_in:
+        label: indikator.news::lang.backend_settings.newsletter_double_opt_in
+        comment: indikator.news::lang.backend_settings.newsletter_double_opt_in_comment
+        type: switch
+        default: true
+        span: left
+
+    admin_section:
+        label: indikator.news::lang.backend_settings.admin_section
         type: section
+
+    show_posts:
+        label: indikator.news::lang.backend_settings.show_posts
+        type: checkboxlist
+        options:
+            1: indikator.news::lang.form.status_published
+            2: indikator.news::lang.form.status_hide
+            3: indikator.news::lang.form.status_draft
+        default: [1, 3]
+        span: right
 
     statistic_show_posts:
         label: indikator.news::lang.backend_settings.statistic_show_posts
+        comment: indikator.news::lang.backend_settings.statistic_comment
         type: switch
         default: true
-        span: auto
+        span: left
 
     statistic_show_mails:
         label: indikator.news::lang.backend_settings.statistic_show_mails
+        comment: indikator.news::lang.backend_settings.statistic_comment
         type: switch
         default: true
-        span: auto
+        span: left
 
     statistic_show_longest_posts:
         label: indikator.news::lang.backend_settings.statistic_show_longest_posts
+        comment: indikator.news::lang.backend_settings.statistic_comment
         type: switch
         default: true
-        span: auto
+        span: left
 
     statistic_show_shortest_posts:
         label: indikator.news::lang.backend_settings.statistic_show_shortest_posts
+        comment: indikator.news::lang.backend_settings.statistic_comment
         type: switch
         default: true
-        span: auto
+        span: left

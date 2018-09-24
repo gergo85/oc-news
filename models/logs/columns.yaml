@@ -50,6 +50,6 @@ columns:
 
     status:
         label: indikator.news::lang.form.status
-        searchable: true
+        sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/logs/_status.htm

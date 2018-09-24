@@ -16,6 +16,13 @@ columns:
         label: indikator.news::lang.form.email
         searchable: true
 
+    category:
+        label: indikator.news::lang.form.category
+        sortable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_category.htm
+
     common:
         label: indikator.news::lang.form.comment
         searchable: true
@@ -23,30 +30,37 @@ columns:
 
     locale:
         label: indikator.news::lang.form.locale
-        searchable: true
         invisible: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_locale.htm
+        align: center
 
     statistics:
         label: indikator.news::lang.stat.mail
-        searchable: true
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
+        align: right
+
+    stat:
+        label: indikator.news::lang.menu.statistics
+        sortable: false
+        clickable: false
+        type: partial
+        path: ~/plugins/indikator/news/models/subscribers/_stat.htm
 
     status:
         label: indikator.news::lang.form.status
-        searchable: true
+        sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_status.htm
 
     created_at:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         searchable: true
         type: datetime
 
     updated_at:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         searchable: true
         invisible: true
         type: datetime

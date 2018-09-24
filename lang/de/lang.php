@@ -50,8 +50,8 @@ return [
     'form' => [
         // General
         'id' => 'ID',
-        'created' => 'Erstellt am',
-        'updated' => 'Aktualisiert am',
+        'created_at' => 'Erstellt am',
+        'updated_at' => 'Aktualisiert am',
         // Posts
         'title' => 'Titel',
         'slug' => 'Slug',
@@ -66,12 +66,13 @@ return [
         'status_active' => 'Aktiv',
         'status_inactive' => 'Inaktiv',
         'status_unsubscribed' => 'Deabonniert',
+        'status_registered' => 'Registriert',
         'featured' => 'Hervorgehoben',
         'hidden' => 'Versteckt',
         'yes' => 'Ja',
         'no' => 'Nein',
         'view' => 'Gesehen',
-        'published' => 'Veröffentlicht am',
+        'published_at' => 'Veröffentlicht am',
         'last_send_at' => 'Zuletzt versendet am',
         'last_send' => 'Zuletzt versendet',
         'length' => 'Länge',
@@ -82,6 +83,7 @@ return [
         'email' => 'Email',
         'comment' => 'Kommentar',
         'locale' => 'Sprache',
+        'locale_comment' => 'de.wikipedia.org/wiki/ISO-3166-1-Kodierliste',
         'lang' => 'de',
         'mail' => 'Mail',
         // Logs
@@ -122,12 +124,15 @@ return [
         'newsletter_send_error' => 'Ein Fehler trat beim versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
         'newsletter_resend_success' => 'Newsletter wurde erfolgreich erneut versendet.',
         'newsletter_resend_error' => 'Ein Fehler trat beim erneuten versenden auf, es könnten trotzdem einige die Nachricht empfangen!',
+        'subscriber_confirmation_token_invalid' => 'Der Bestätigungslink oder Token ist nicht gültig.',
+        'subscriber_confirmation_token_expired' => 'Der Bestätigungslink ist nicht mehr gültig. Bitte abonnieren Sie erneut den Newsletter.',
+        'subscriber_confirmation' => 'Sie haben Ihre Emailadresse erfolgreich bestätigt. Sie erhalten in Zukunft unseren Newsletter.',
+        'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.',
         'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',
         'main_section' => 'Einstellung über das versenden von Newslettern',
-        'main_section_comment' => 'Es können Einstellungen über das Tracking der Abonnenten eingestellt werden',
         'click_tracking' => 'Klicken verfolgen',
         'click_tracking_comment' =>  'Trackt wenn eine Person auf einen Link in der Email klickt.',
         'email_view_tracking' => 'Emailbetrachtung verfolgen',
@@ -137,7 +142,8 @@ return [
             'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
             'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
         ],
-        'statistic_section' => 'Statistik Einstellungen',
+        'newsletter_double_opt_in' => 'Newsletter Registrierung Bestätigen (Double Opt-in)',
+        'newsletter_double_opt_in_comment' => 'Sendet eine Email an den neuen Abonneten, welche seine Email-Adresse betätigen muss.',
         'statistic_show_posts' => 'Zeige Einträge',
         'statistic_show_mails' => 'Zeige Mail-Logs',
         'statistic_show_longest_posts' => 'Zeige längste Einträge',

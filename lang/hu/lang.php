@@ -50,8 +50,8 @@ return [
     'form' => [
         // Általános
         'id' => 'ID',
-        'created' => 'Létrehozva',
-        'updated' => 'Módosítva',
+        'created_at' => 'Létrehozva',
+        'updated_at' => 'Módosítva',
         // Bejegyzések
         'title' => 'Cím',
         'slug' => 'Webcím',
@@ -66,12 +66,13 @@ return [
         'status_active' => 'Aktív',
         'status_inactive' => 'Inaktív',
         'status_unsubscribed' => 'Leiratkozott',
+        'status_pending' => 'Függőben',
         'featured' => 'Kiemelt',
         'hidden' => 'Rejtett',
         'yes' => 'Igen',
         'no' => 'Nem',
         'view' => 'megtekintés',
-        'published' => 'Közzétéve',
+        'published_at' => 'Közzétéve',
         'last_send_at' => 'Utoljára elküldve',
         'last_send' => 'Levélküldés',
         'length' => 'Hossz',
@@ -83,8 +84,14 @@ return [
         'categories_comment' => 'Ha nincs kijelölve egyik kategória sem, akkor a feliratkozó minden hirlevelet meg fog kapni.',
         'comment' => 'Megjegyzés',
         'locale' => 'Nyelv',
+        'locale_comment' => 'Lista: hu.wikipedia.org/wiki/ISO_3166-1',
         'lang' => 'hu',
         'mail' => 'levél',
+        'registered_at' => 'Regisztráció ideje',
+        'confirmed_at' => 'Elfogadás ideje',
+        'unsubscribed_at' => 'Leiratkozás ideje',
+        'ip_address' => 'IP cím',
+        'no_data' => 'Nincs adat',
         // Naplózás
         'news' => 'Bejegyzés',
         'subscriber_name' => 'Feliratkozó neve',
@@ -115,6 +122,7 @@ return [
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
         'deactivate' => 'A bejegyzések sikeresen deaktiválva lettek.',
+        'draft' => 'A bejegyzések sikeresen piszkozatok lettek.',
         'subscribe' => 'A felhasználók feliratkozása megtörtént.',
         'unsubscribe' => 'A felhasználók leiratkozása megtörtént.',
         'delete' => 'Valóban törölni akarja?',
@@ -124,12 +132,15 @@ return [
         'newsletter_send_error' => 'A hírlevél elküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
         'newsletter_resend_success' => 'A hírlevél sikeresen újra lett küldve.',
         'newsletter_resend_error' => 'A hírlevél újraküldése során hiba történt. Mielőtt ismét elküldené, nézze meg a naplót, hogy több információt kapjon az aktuális állapotról.',
+        'subscriber_confirmation_token_invalid' => 'Az elfogadó link vagy az azonosító kód helytelen.',
+        'subscriber_confirmation_token_expired' => 'Az elfogadás határideje lejárt, kérjük regisztráljon újból.',
+        'subscriber_confirmation' => 'Sikeresen elfogadta a feliratkozást. Hamarosan meg fogja kapni hírlevelünket.',
+        'subscriber_already_confirmed' => 'A feliratkozása már el lett fogadva.',
         'news_clone_confirm' => 'Valóban másolni akarja ezt a hírt?'
     ],
     'backend_settings' => [
         'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',
-        'main_section' => 'A hírlevelek küldésére vonatkozó beállítások',
-        'main_section_comment' => 'Nyomonkövetési lehetőségek a kimenő e-mailekhez.',
+        'main_section' => 'Hírlevelek küldésére vonatkozó beállítások',
         'click_tracking' => 'Kattintás követése',
         'click_tracking_comment' => 'Követés engedélyezése, amikor a feliratkozó egy levélben lévő hivatkozásra kattint.',
         'email_view_tracking' => 'Megtekintés követése',
@@ -139,11 +150,15 @@ return [
             'subheading' => 'Nem elfogadott minden országban!',
             'text' => 'Ha ezt a funkciót használja, akkor győződjön meg róla, hogy nem sérti meg a helyi törvényeket.'
         ],
-        'statistic_section' => 'A statisztikára vonatkozó beállítások',
+        'newsletter_double_opt_in' => 'Hírlevél feliratkozás megerősítése',
+        'newsletter_double_opt_in_comment' => 'Egy megerősítő levelet fog kapni a feliratkozó, amivel igazolhaja az email címét.',
+        'admin_section' => 'Beállítások adminisztrátorok számára',
+        'show_posts' => 'Következő bejegyzések mutatása a látogatói oldalon:',
         'statistic_show_posts' => 'Bejegyzések mutatása',
-        'statistic_show_mails' => 'Levél logolás mutatása',
+        'statistic_show_mails' => 'Levél naplózás mutatása',
         'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
-        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása'
+        'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása',
+        'statistic_comment' => 'A Statisztika oldalon.'
     ],
     'widget' => [
         'posts' => 'Hírek - Gyors statisztika',
@@ -154,9 +169,12 @@ return [
         'show_active' => 'Aktívak mutatása',
         'show_inactive' => 'Inaktívak mutatása',
         'show_draft' => 'Piszkozatok mutatása',
+        'show_category' => 'Kategória mutatása',
         'show_piece' => 'Bejegyzések száma',
+        'show_rank' => 'Helyezés mutatása',
         'show_date' => 'Dátum mutatása',
         'show_unsub' => 'Leiratkozottak mutatása',
+        'show_pending' => 'Függőben lévők mutatása',
         'total' => 'Összes'
     ],
     'component' => [

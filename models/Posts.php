@@ -110,6 +110,10 @@ class Posts extends Model
         if (!isset($this->category_id) || empty($this->category_id)) {
             $this->category_id = 0;
         }
+
+        if ($this->status == 1 && empty($this->published_at)) {
+            $this->published_at = Carbon::now();
+        }
     }
 
     /**
@@ -174,7 +178,7 @@ class Posts extends Model
         if ($category !== null) {
             $category = NewsCategories::find($category);
             $query->whereHas('category', function($q) use ($category) {
-                $q->where('id', $category->id);
+                $q->whereId($category->id);
             });
         }
 
@@ -189,7 +193,7 @@ class Posts extends Model
             $default_locale = Db::table('rainlab_translate_locales')->where('is_default', 1)->value('code');
 
             if ($current_locale != $default_locale) {
-                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->pluck('model_id')->toArray();
+                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->value('model_id')->toArray();
                 $query->whereIn('id', $ids);
             }
         }
@@ -200,7 +204,13 @@ class Posts extends Model
     public function scopeIsPublished($query)
     {
         if (BackendAuth::check()) {
-            return $query;
+            $status = Settings::get('show_posts', false);
+
+            if (!$status) {
+                $status = [1, 3];
+            }
+
+            return $query->whereIn('status', $status);
         }
 
         return $query
@@ -215,11 +225,11 @@ class Posts extends Model
         return $query->where('featured', $value);
     }
 
-    public function duplicate($post) {
-
+    public function duplicate($post)
+    {
         $clone = new Posts();
-        $clone->title = \Lang::get('indikator.news::lang.form.clone_of') . " " . $post->title;
-        $clone->slug = $post->slug . "-" . now()->format("Y-m-d-h-i-s");
+        $clone->title = \Lang::get('indikator.news::lang.form.clone_of').' '.$post->title;
+        $clone->slug = $post->slug.'-'.now()->format('Y-m-d-h-i-s');
         $clone->status = 3;
         $clone->introductory = $post->introductory;
         $clone->content = $post->content;
@@ -231,7 +241,6 @@ class Posts extends Model
         \Event::fire('indikator.news.posts.duplicate', [&$clone, $post]);
 
         return $clone;
-
     }
 
     public static function getMenuTypeInfo($type)
@@ -337,7 +346,7 @@ class Posts extends Model
     {
         $params = [
             'id'   => $this->id,
-            'slug' => $this->slug,
+            'slug' => $this->slug
         ];
 
         if (array_key_exists('category', $this->getRelations())) {

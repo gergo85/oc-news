@@ -1,0 +1,14 @@
+subject = "Your subscription to {{ appName }}"
+layout = "newsletter"
+description = "Confirmation after subscribing to newsletter"
+==
+Hello {{ subscriber.name }},
+
+you subscribed to our newsletter.
+
+To complete your subscription, you need to confirm you got this email.
+You have 24 hours to complete your subscription.
+
+{% partial 'button' url=confirmation_link body %}
+Confirm my email address now
+{% endpartial %}

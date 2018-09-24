@@ -1,16 +1,19 @@
 <?php namespace Indikator\News\Components;
 
 use Cms\Classes\ComponentBase;
+use Indikator\News\Classes\SubscriberService;
 use Indikator\News\Models\Categories;
 use Indikator\News\Models\Subscribers;
 use Lang;
-use Db;
 use App;
 use Validator;
 use ValidationException;
+use Request;
 
 class Subscribe extends ComponentBase
 {
+    use SubscriberService;
+
     public function componentDetails()
     {
         return [
@@ -39,8 +42,9 @@ class Subscribe extends ComponentBase
 
         // Validate input data
         $rules = [
-            'name'  => 'required|between:2,64',
-            'email' => 'required|email|between:8,64'
+            'name'     => 'required|between:2,64',
+            'email'    => 'required|email|between:8,64',
+            'category' => 'array'
         ];
 
         $validation = Validator::make($data, $rules);
@@ -48,60 +52,35 @@ class Subscribe extends ComponentBase
             throw new ValidationException($validation);
         }
 
-        // look for unsubscribed subscribers
-        $subscriberResult = Subscribers::email($data['email']);
+        $email = post('email');
+        $name  = post('name');
+        $categories = post('category',[]);
+
+        // looking for existing subscriber
+        $subscriberResult = Subscribers::email($email);
 
         if ($subscriberResult->count() > 0) {
             $subscriber = $subscriberResult->first();
-
-            if (!$subscriber->isActive()) {
-                $subscriber->name = $data['name'];
-                $subscriber->activate();
-            }
-
-            // Check category
-            if (!isset($data['category']) || !is_array($data['category'])) {
-                return;
-            }
-
-            // Register category
-            foreach ($data['category'] as $category) {
-                if (is_numeric($category) && Categories::where(['id' => $category, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $data['category']])->count() == 0) {
-                    Db::table('indikator_news_relations')->insertGetId([
-                        'subscriber_id' => $subscriber->id,
-                        'categories_id' => $category
-                    ]);
-                }
-            }
-
-            return;
+            // Update the name
+            $subscriber->name = $name;
+        }
+        else {
+            // Register new one
+            $subscriber = Subscribers::create([
+                'name'          => $name,
+                'email'         => $email,
+                'common'        => '',
+                'locale'        => App::getLocale(),
+                'created'       => 2,
+                'statistics'    => 0,
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
+                'registered_at' => now(),
+                'registered_ip' => Request::ip(),
+                'status'        => 3
+            ]);
         }
 
-        // Register new one
-        $id = Subscribers::insertGetId([
-            'name'       => $data['name'],
-            'email'      => $data['email'],
-            'common'     => '',
-            'locale'     => App::getLocale(),
-            'created'    => 2,
-            'statistics' => 0,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        // Check category
-        if (!isset($data['category']) || !is_array($data['category'])) {
-            return;
-        }
-
-        // Register category
-        foreach ($data['category'] as $category) {
-            if (is_numeric($category) && Categories::where(['id' => $category, 'hidden' => 2])->count() == 1) {
-                Db::table('indikator_news_relations')->insertGetId([
-                    'subscriber_id' => $id,
-                    'categories_id' => $category
-                ]);
-            }
-        }
+        $this->onSubscriberRegister($subscriber, $categories);
     }
 }

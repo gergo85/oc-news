@@ -23,12 +23,15 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Managing posts
 * Managing categories
 * Managing subscribers
+* Support the GDPR
 * Export & Import data
 * Statistics and graphs
 * Send newsletter
 * Detailed mail logs
 * Front-end forms
 * Back-end widgets
+* Innovative solutions
+* Regular updates
 
 <a name="statistics"></a>
 ## Statistics and graphs
@@ -42,11 +45,11 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 <a name="autostat"></a>
 ## Automatic statistics
-You just add the "Post content" frontend component to the page, where the post appears. If you are logged in as administrator, the counter will not grow. It works any cases, when the visitors open the post details.
+You just add the "Post content" front-end component to the page, where the post appears. If you are logged in as administrator, the counter will not grow. It works any cases, when the visitors open the post details.
 
 <a name="preview"></a>
 ## Preview feature
-You just add the "Post content" frontend component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
+You just add the "Post content" front-end component to the current page. If you modify a news, the "Preview" link appears along the left of the delete icon. If you are logged in as administrator, you can read the hidden and draft news too.
 
 <a name="available_widgets"></a>
 ## Available widgets
@@ -67,6 +70,7 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 
 <a name="html_template"></a>
 ## HTML template variables
+__For post__
 * {{ posts }} - List of posts in array
 * {{ post.title }} - Title of post
 * {{ post.slug }} - Slug of post
@@ -78,6 +82,15 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
 * {{ post.featured }} - Is post featured? (1: yes, 2: no)
 
+__For category__
+* {{ categories }} - List of categories in array
+* {{ category.name }} - Name of category
+* {{ category.slug }} - Slug of category
+* {{ category.image|media }} - Full url of category image
+* {{ category.content|raw }} - Content of category
+* {{ category.status }} - Status of post (1: published, 2: hide)
+* {{ category.hidden }} - Is category hidden? (1: yes, 2: no)
+
 <a name="mail_template"></a>
 ## Mail template variables
 * {{ name }} - Name of subscriber
@@ -85,9 +98,9 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 * {{ title }} - Title of post
 * {{ slug }} - Slug of post
 * {{ introductory }} - Introductory of post
-* {{ summary }} - alias of Introductory
+* {{ summary }} - Alias of introductory
 * {{ content }} - Content of post
-* {{ image }} - Relative path of image
+* {{ image }} - Relative path of post image
 
 <a name="supported_plugins"></a>
 ## Supported plugins
@@ -125,5 +138,6 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 
 <a name="credits"></a>
 ## Credits
-* [Morris.js](http://morrisjs.github.io/morris.js)
-* [Raphaël JS](http://dmitrybaranovskiy.github.io/raphael)
+* Special thanks to [TimFoerster](https://github.com/TimFoerster)
+* Good-looking chart: [Morris.js](http://morrisjs.github.io/morris.js)
+* Graphics library: [Raphaël JS](http://dmitrybaranovskiy.github.io/raphael)

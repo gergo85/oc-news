@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="popup">×</button>
+    <h4 class="modal-title"><?= $post->title ?></h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-6">
+            <p>
+                <strong><?= e(trans('indikator.news::lang.form.last_send_at')) ?></strong><br>
+                <?= $last_send_at ?>
+            </p>
+            <p><strong><?= $post->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?></p>
+            <p><span class="text-warning"><strong><?= $post->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span></p>
+            <p><span class="text-info"><strong><?= $post->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span></p>
+            <p><span class="text-success"><strong><?= $post->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span></p>
+            <p><span class="text-danger"><strong><?= $post->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?></span></p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                <strong><?= e(trans('indikator.news::lang.form.published_at')) ?></strong><br>
+                <?= $published_at ?>
+            </p>
+            <p>
+                <strong><?= e(trans('indikator.news::lang.stat.view')) ?></strong><br>
+                <?= $post->statistics ?>
+            </p>
+            <p>
+                <strong><?= e(trans('indikator.news::lang.form.created_at')) ?></strong><br>
+                <?= $post->created_at ?>
+            </p>
+            <p>
+                <strong><?= e(trans('indikator.news::lang.form.updated_at')) ?></strong><br>
+                <?= $post->updated_at ?>
+            </p>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="popup"><?= e(trans('backend::lang.form.close')) ?></button>
+</div>

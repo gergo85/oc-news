@@ -7,8 +7,15 @@ columns:
     id: indikator.news::lang.form.id
     name: indikator.news::lang.form.name
     email: indikator.news::lang.form.email
-    common: indikator.news::lang.form.common
+    comment: indikator.news::lang.form.comment
     statistics: indikator.news::lang.stat.mail
+    locale: indikator.news::lang.form.locale
     status: indikator.news::lang.form.status
-    created_at: indikator.news::lang.form.created
-    updated_at: indikator.news::lang.form.updated
+    registered_at: indikator.news::lang.form.registered_at
+    registered_ip: indikator.news::lang.form.ip_address
+    confirmed_at: indikator.news::lang.form.confirmed_at
+    confirmed_ip: indikator.news::lang.form.ip_address
+    unsubscribed_at: indikator.news::lang.form.unsubscribed_at
+    unsubscribed_ip: indikator.news::lang.form.ip_address
+    created_at: indikator.news::lang.form.created_at
+    updated_at: indikator.news::lang.form.updated_at

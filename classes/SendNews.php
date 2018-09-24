@@ -12,6 +12,9 @@ class SendNews
 {
     /**
      * Sending news to a receiver
+     * @param $job
+     * @param $data
+     * @return void
      */
     public function fire($job, $data)
     {
@@ -42,6 +45,7 @@ class SendNews
      * Adds logger for click and view tracking when they are
      * enabled in the settings to the given $logEntry
      * @param $logEntry
+     * @return void
      */
     protected static function addNewsletterLogger($logEntry)
     {
@@ -72,7 +76,7 @@ class SendNews
                         'hash' => $logEntry->hash.'.png'
                     ]);
 
-                    $body .= '<img src="'.$url.'" style="display:none;width:0;height:0;" />';
+                    $body .= '<img src="'.$url.'" style="display:none;width:0;height:0;">';
                 }
 
                 $swift->setBody($body);

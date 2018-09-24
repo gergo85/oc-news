@@ -23,6 +23,10 @@ fields:
 secondaryTabs:
     fields:
 
+        categoryinfo:
+            type: categoryinfo
+            context: update
+
         image:
             label: indikator.news::lang.form.image
             type: mediafinder

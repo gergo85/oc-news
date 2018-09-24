@@ -50,8 +50,8 @@ return [
     'form' => [
         // General
         'id' => 'ID',
-        'created' => 'Created at',
-        'updated' => 'Updated at',
+        'created_at' => 'Created at',
+        'updated_at' => 'Updated at',
         // Posts
         'title' => 'Title',
         'slug' => 'Slug',
@@ -66,12 +66,13 @@ return [
         'status_active' => 'Active',
         'status_inactive' => 'Inactive',
         'status_unsubscribed' => 'Unsubscribed',
+        'status_pending' => 'Pending',
         'featured' => 'Featured',
         'hidden' => 'Is hidden?',
         'yes' => 'Yes',
         'no' => 'No',
         'view' => 'view',
-        'published' => 'Published at',
+        'published_at' => 'Published at',
         'last_send_at' => 'Last send at',
         'last_send' => 'Last send',
         'length' => 'Length',
@@ -83,8 +84,14 @@ return [
         'categories_comment' => 'If no category is selected then the subscriber will receive the all newsletters.',
         'comment' => 'Comment',
         'locale' => 'Locale',
+        'locale_comment' => 'List: en.wikipedia.org/wiki/ISO_3166-1',
         'lang' => 'en',
         'mail' => 'mail',
+        'registered_at' => 'Registered date',
+        'confirmed_at' => 'Confirmed date',
+        'unsubscribed_at' => 'Unsubscribed date',
+        'ip_address' => 'IP Address',
+        'no_data' => 'No data',
         // Logs
         'news' => 'Post',
         'subscriber_name' => 'Subscriber name',
@@ -115,6 +122,7 @@ return [
     'flash' => [
         'activate' => 'Successfully activated those posts.',
         'deactivate' => 'Successfully deactivated those posts.',
+        'draft' => 'Successfully modified those posts as draft.',
         'subscribe' => 'Successfully subscribed those users.',
         'unsubscribe' => 'Successfully unsubscribed those users.',
         'delete' => 'Do you want to delete this items?',
@@ -124,12 +132,15 @@ return [
         'newsletter_send_error' => 'An error occurred during sending the newsletter. Before resending again, take a look in the log to get more information about the current status!',
         'newsletter_resend_success' => 'Newsletter was successfully resend.',
         'newsletter_resend_error' => 'An error occurred during resending the newsletter. Before resending again, take a look in the log to get more information about the current status.',
+        'subscriber_confirmation_token_invalid' => 'The confirmation link or token is invalid.',
+        'subscriber_confirmation_token_expired' => 'Your confirmation link expired, please signup again.',
+        'subscriber_confirmation' => 'You successfully confirmed your email address. You will receive upcoming newsletters.',
+        'subscriber_already_confirmed' => 'Your account is already confirmed.',
         'news_clone_confirm' => 'Do you want this clone this post?'
     ],
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',
         'main_section' => 'Settings about sending and handling newsletters',
-        'main_section_comment' => 'Tracking settings can be changed of newsletter mails.',
         'click_tracking' => 'Track clicks',
         'click_tracking_comment' => 'Tracks when a person clicks on a link the newsletter.',
         'email_view_tracking' => 'Track newsletter views',
@@ -139,11 +150,15 @@ return [
             'subheading' => 'It is not allowed in every country!',
             'text' => 'When you use this function, you should be sure what you are doing! Make sure that you do not break any laws.'
         ],
-        'statistic_section' => 'Statistics settings',
+        'newsletter_double_opt_in' => 'Newsletter registration confirmation',
+        'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
+        'admin_section' => 'Settings of site administrators',
+        'show_posts' => 'Show the following post on front-end:',
         'statistic_show_posts' => 'Show posts',
         'statistic_show_mails' => 'Show mail logs',
         'statistic_show_longest_posts' => 'Show longest posts',
-        'statistic_show_shortest_posts' => 'Show shortest posts'
+        'statistic_show_shortest_posts' => 'Show shortest posts',
+        'statistic_comment' => 'In the Statistics page.'
     ],
     'widget' => [
         'posts' => 'News - Posts',
@@ -154,9 +169,12 @@ return [
         'show_active' => 'Show active',
         'show_inactive' => 'Show inactive',
         'show_draft' => 'Show draft',
+        'show_category' => 'Show category',
         'show_piece' => 'Number of posts',
         'show_date' => 'Show date',
+        'show_rank' => 'Show rank',
         'show_unsub' => 'Show unsubscribed',
+        'show_pending' => 'Show pending',
         'total' => 'Total'
     ],
     'component' => [

@@ -1,6 +1,6 @@
 <?php namespace Indikator\News\Classes;
 
-use Illuminate\Mail\Mailable;
+use October\Rain\Mail\Mailable;
 
 class NewsletterMail extends Mailable
 {
@@ -16,6 +16,7 @@ class NewsletterMail extends Mailable
 
     public function build()
     {
-        return $this->view($this->template, $this->params)->to($this->receiver['email'], $this->receiver['name']);
+        return $this->view($this->template, $this->params)
+            ->to($this->receiver['email'], $this->receiver['name']);
     }
 }

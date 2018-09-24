@@ -10,6 +10,7 @@ use Request;
 use Indikator\News\Models\Posts as Item;
 use Indikator\News\Classes\NewsSender;
 use Jenssegers\Date\Date;
+use Carbon\Carbon;
 use Flash;
 use Lang;
 use Redirect;
@@ -41,9 +42,12 @@ class Posts extends Controller
     {
         $uri = explode('/', Request::path());
 
-        return Item::findOrFail($uri[count($uri) - 1]);
+        return Item::findOrFail(end($uri));
     }
 
+    /**
+     * Sends a test newsletter to the logged user.
+     */
     public function onTest()
     {
         $news   = $this->getNewsByPathOrFail();
@@ -113,7 +117,13 @@ class Posts extends Controller
                     continue;
                 }
 
-                $item->update(['status' => 1]);
+                $update['status'] = 1;
+
+                if (Item::whereId($itemId)->value('published_at') == null) {
+                    $update['published_at'] = Carbon::now();
+                }
+
+                $item->update($update);
             }
 
             Flash::success(Lang::get('indikator.news::lang.flash.activate'));
@@ -150,7 +160,7 @@ class Posts extends Controller
                 $item->update(['status' => 3]);
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.activate'));
+            Flash::success(Lang::get('indikator.news::lang.flash.draft'));
         }
 
         return $this->listRefresh();
@@ -179,5 +189,22 @@ class Posts extends Controller
         $newPost = $post->duplicate($post);
 
         return Redirect::to(substr(\Request::path(),0,  strrpos(\Request::path(), '/', -1) + 1) . $newPost->id);
+    }
+
+    public function onShowImage()
+    {
+        $this->vars['title'] = Item::where('image', post('image'))->value('title');
+        $this->vars['image'] = '/storage/app/media'.post('image');
+
+        return $this->makePartial('show_image');
+    }
+
+    public function onShowStat()
+    {
+        $this->vars['post'] = $post = Item::whereId(post('id'))->first();
+        $this->vars['last_send_at'] = ($post->last_send_at) ? $post->last_send_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['published_at'] = ($post->published_at) ? $post->published_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+
+        return $this->makePartial('show_stat');
     }
 }

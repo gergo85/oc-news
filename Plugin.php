@@ -43,7 +43,7 @@ class Plugin extends PluginBase
                         'permissions' => ['indikator.news.categories']
                     ],
                     'subscribers' => [
-                        'label'        => 'indikator.news::lang.menu.subscribers',
+                        'label'       => 'indikator.news::lang.menu.subscribers',
                         'url'         => Backend::url('indikator/news/subscribers'),
                         'icon'        => 'icon-user',
                         'permissions' => ['indikator.news.subscribers']
@@ -117,6 +117,24 @@ class Plugin extends PluginBase
             'Indikator\News\Components\Categories'  => 'newsCategories',
             'Indikator\News\Components\Subscribe'   => 'newsSubscribe',
             'Indikator\News\Components\Unsubscribe' => 'newsUnsubscribe'
+        ];
+    }
+
+    public function registerFormWidgets()
+    {
+        return [
+            'Indikator\News\FormWidgets\PostInfo' => [
+                'label' => 'PostInfo',
+                'code'  => 'postinfo'
+            ],
+            'Indikator\News\FormWidgets\CategoryInfo' => [
+                'label' => 'CategoryInfo',
+                'code'  => 'categoryinfo'
+            ],
+            'Indikator\News\FormWidgets\SubscriberInfo' => [
+                'label' => 'SubscriberInfo',
+                'code'  => 'subscriberinfo'
+            ]
         ];
     }
 

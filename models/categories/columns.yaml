@@ -8,6 +8,14 @@ columns:
         label: indikator.news::lang.form.id
         invisible: true
 
+    image:
+        label: indikator.news::lang.form.image
+        sortable: false
+        clickable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/categories/_image.htm
+
     name:
         label: indikator.news::lang.form.name
         searchable: true
@@ -19,27 +27,29 @@ columns:
 
     sort_order:
         label: indikator.news::lang.button.reorder
-        searchable: true
         invisible: true
+        align: center
 
     posts:
         label: indikator.news::lang.menu.posts
         sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/categories/_posts.htm
+        align: center
 
     subscribers:
         label: indikator.news::lang.menu.subscribers
         sortable: false
         type: partial
         path: ~/plugins/indikator/news/models/categories/_subscribers.htm
+        align: center
 
-    featured:
-        label: indikator.news::lang.form.featured
-        searchable: true
+    hidden:
+        label: indikator.news::lang.form.hidden
+        sortable: false
         invisible: true
         type: partial
-        path: ~/plugins/indikator/news/models/posts/_featured.htm
+        path: ~/plugins/indikator/news/models/categories/_hidden.htm
 
     status:
         label: indikator.news::lang.form.status
@@ -48,13 +58,13 @@ columns:
         path: ~/plugins/indikator/news/models/posts/_status.htm
 
     created_at:
-        label: indikator.news::lang.form.created
+        label: indikator.news::lang.form.created_at
         searchable: true
         invisible: true
         type: datetime
 
     updated_at:
-        label: indikator.news::lang.form.updated
+        label: indikator.news::lang.form.updated_at
         searchable: true
         invisible: true
         type: datetime

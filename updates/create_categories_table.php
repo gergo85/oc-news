@@ -14,7 +14,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 100);
             $table->string('slug', 100);
             $table->longText('content')->nullable();
-            $table->string('image', 200)->nullable();
+            $table->string('image', 191)->nullable();
             $table->string('hidden', 1)->default(2);
             $table->string('status', 1)->default(1);
             $table->string('sort_order', 3)->default(1);

@@ -46,11 +46,9 @@ class Post extends ComponentBase
 
         $post = $post->isPublished();
 
-        if ($post->count() == 0) {
+        if ($post->count() == 0 || !$post = $post->first()) {
             return Redirect::to('404');
         }
-
-        $post = $post->first();
 
         if (!BackendAuth::check()) {
             NewsPost::where('slug', $slug)->increment('statistics');

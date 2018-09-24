@@ -10,7 +10,23 @@ class Subscribers extends Model
 
     public $rules = [
         'email'  => 'required|email',
-        'status' => 'required|between:1,2|numeric'
+        'status' => 'required|between:1,3|numeric'
+    ];
+
+    protected $dates = [
+        'registered_at',
+        'confirmed_at',
+        'unsubscribed_at',
+        'created_at',
+        'updated_at'
+    ];
+
+    protected $guarded = [
+        'confirmed_at',
+        'confirmed_ip',
+        'unsubscribed_at',
+        'unsubscribed_ip',
+        'confirmation_hash'
     ];
 
     public $belongsToMany = [
@@ -80,15 +96,27 @@ class Subscribers extends Model
         return $this->status == 2;
     }
 
+    public function isRegistered()
+    {
+        return $this->status == 3;
+    }
+
     public function activate()
     {
         $this->status = 1;
+        $this->confirmation_hash = null;
         $this->save();
     }
 
     public function unsubscribe()
     {
         $this->status = 2;
+        $this->save();
+    }
+
+    public function register()
+    {
+        $this->status = 3;
         $this->save();
     }
 

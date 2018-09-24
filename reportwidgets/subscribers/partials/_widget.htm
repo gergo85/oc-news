@@ -22,6 +22,12 @@
                 <span class="status-label primary"><?= $unsub ?></span>
             </li>
             <?php endif ?>
+            <?php if ($this->property('pending')): ?>
+            <li>
+                <span class="status-text"><?= e(trans('indikator.news::lang.form.status_pending')) ?></span>
+                <span class="status-label primary"><?= $pending ?></span>
+            </li>
+            <?php endif ?>
         </ul>
     </div>
 
