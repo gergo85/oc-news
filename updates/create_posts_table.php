@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->timestamp('published_at')->nullable();
             $table->string('send', 1)->default(1);
             $table->string('status', 1)->default(1);
-            $table->string('statistics', 8)->default(0);
+            $table->integer('statistics')->default(0);
             $table->timestamps();
         });
     }
