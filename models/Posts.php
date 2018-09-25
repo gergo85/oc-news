@@ -33,7 +33,8 @@ class Posts extends Model
         'title',
         ['slug', 'index' => true],
         'introductory',
-        'content'
+        'content',
+        'newsletter_content'
     ];
 
     protected $dates = [

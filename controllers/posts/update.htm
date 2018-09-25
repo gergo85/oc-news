@@ -58,6 +58,12 @@ foreach ($pages as $page) {
                     <?= e(trans('backend::lang.form.save_and_close')) ?>
                 </button>
                 <button
+                        type="button"
+                        class="btn btn-default"
+                        onclick="$('#RichEditor-formNewsletterContent-textarea-newsletter_content').froalaEditor('html.set', $('#MLRichEditor-formContent-textarea-content').froalaEditor('html.get'));">
+                    <?= e(trans('indikator.news::lang.button.copy_content_to_newsletter')) ?>
+                </button>
+                <button
                     type="button"
                     data-request="onTest"
                     data-request-confirm="<?= e(trans('system::lang.mail_templates.test_confirm', [ 'email' => e(BackendAuth::getUser()->email)])) ?>"

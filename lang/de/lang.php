@@ -78,6 +78,10 @@ return [
         'length' => 'Länge',
         'clone_of' => 'Kopie von',
         'news_cloning' => 'Kopiere Nachricht :name',
+        'newsletter_content_tab' => 'Newsletter Inhalt',
+        'newsletter_content' => 'Newsletter Email Inhalt',
+        'enable_newsletter_content' => 'Newsletter Email Inhalt aktiv',
+        'enable_newsletter_content_description' => 'Wenn dies aktiv ist, dann wird der Inhalt von diesen Textfeld genommen für den Newsletter. Ansonsten wird der normale Inhalt dafür genommen.',
         // Subscribers
         'name' => 'Name',
         'email' => 'Email',
@@ -110,7 +114,8 @@ return [
         'send_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter versenden möchten?',
         'resend' => 'Newsletter erneut versenden',
         'resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
-        'return' => 'Zurück'
+        'return' => 'Zurück',
+        'copy_content_to_newsletter' => 'Inhalt nach Newsletter Inhalt kopieren'
     ],
     'flash' => [
         'activate' => 'Nachrichten erfolgreich aktiviert.',

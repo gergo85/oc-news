@@ -48,11 +48,28 @@ tabs:
             tab: indikator.news::lang.form.introductory
             type: richeditor
             size: large
+            toolbarButtons: 'fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|||color|emoticons|inlineStyle|paragraphStyle|||paragraphFormat|align|formatOL|formatUL|outdent|indent|quote|insertHR|-|insertLink|insertImage|insertTable|undo|redo|clearFormatting|selectAll|html'
 
         content:
             tab: indikator.news::lang.form.content
             type: richeditor
             size: giant
+            toolbarButtons: 'fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|||color|emoticons|inlineStyle|paragraphStyle|||paragraphFormat|align|formatOL|formatUL|outdent|indent|quote|insertHR|-|insertLink|insertImage|insertTable|undo|redo|clearFormatting|selectAll|html'
+
+
+        enable_newsletter_content:
+            label: indikator.news::lang.form.enable_newsletter_content
+            comment: indikator.news::lang.form.enable_newsletter_content_description
+            tab: indikator.news::lang.form.newsletter_content_tab
+            type: switch
+            default: false
+
+        newsletter_content:
+            label: indikator.news::lang.form.newsletter_content
+            tab: indikator.news::lang.form.newsletter_content_tab
+            type: richeditor
+            size: giant
+            toolbarButtons: 'fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|||color|emoticons|inlineStyle|paragraphStyle|||paragraphFormat|align|formatOL|formatUL|outdent|indent|quote|insertHR|-|insertLink|insertImage|insertTable|undo|redo|clearFormatting|selectAll|html'
 
 secondaryTabs:
     fields:

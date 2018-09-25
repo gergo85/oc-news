@@ -78,6 +78,10 @@ return [
         'length' => 'Length',
         'clone_of' => 'Clone of',
         'news_cloning' => 'Cloning news :name',
+        'newsletter_content_tab' => 'Newsletter content',
+        'newsletter_content' => 'Newsletter email content',
+        'enable_newsletter_content' => 'Enable newsletter email content',
+        'enable_newsletter_content_description' => 'When this is enabled, the content for the email will be replaced with this textarea. Otherwise the content of the news will be taken.',
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',
@@ -117,7 +121,8 @@ return [
         'send_confirmation' => 'Do you want to send the newsletter?',
         'resend' => 'Resend newsletter',
         'resend_confirmation' => 'Do you want to resend the newsletter?',
-        'return' => 'Return'
+        'return' => 'Return',
+        'copy_content_to_newsletter' => 'Copy coontent to newsletter content'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
