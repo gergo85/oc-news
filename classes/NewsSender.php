@@ -145,18 +145,19 @@ class NewsSender
     {
         // Locale
         if ($receiver->locale != '' && $this->locale) {
-
-            if($this->news->enable_newsletter_content) {
+            if ($this->news->enable_newsletter_content) {
                 $content = $this->news->lang($receiver->locale)->newsletter_content;
-            } else {
+            }
+            else {
                 $content = $this->news->lang($receiver->locale)->content;
             }
 
         }
         else {
-            if($this->news->enable_newsletter_content) {
+            if ($this->news->enable_newsletter_content) {
                 $content = $this->news->newsletter_content;
-            } else {
+            }
+            else {
                 $content = $this->news->content;
             }
         }

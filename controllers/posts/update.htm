@@ -58,9 +58,9 @@ foreach ($pages as $page) {
                     <?= e(trans('backend::lang.form.save_and_close')) ?>
                 </button>
                 <button
-                        type="button"
-                        class="btn btn-default"
-                        onclick="$('#RichEditor-formNewsletterContent-textarea-newsletter_content').froalaEditor('html.set', $('#MLRichEditor-formContent-textarea-content').froalaEditor('html.get'));">
+                    type="button"
+                    class="btn btn-default"
+                    onclick="$('#RichEditor-formNewsletterContent-textarea-newsletter_content').froalaEditor('html.set', $('#MLRichEditor-formContent-textarea-content').froalaEditor('html.get'));">
                     <?= e(trans('indikator.news::lang.button.copy_content_to_newsletter')) ?>
                 </button>
                 <button
@@ -117,11 +117,11 @@ foreach ($pages as $page) {
                     class="oc-icon-trash-o btn-icon danger pull-right">
                 </button>
                 <button
-                        data-request="onClonePosts"
-                        data-request-data="id:<?= $formModel->id?>"
-                        data-load-indicator="<?= e(trans('indikator.news::lang.form.news_cloning', ['name'=>$formModel->title])) ?>"
-                        data-request-confirm="<?= e(trans('indikator.news::lang.flash.news_clone_confirm')) ?>"
-                        class="oc-icon-clone btn-icon pull-right">
+                    data-request="onClonePosts"
+                    data-request-data="id:<?= $formModel->id?>"
+                    data-load-indicator="<?= e(trans('indikator.news::lang.form.news_cloning', ['name'=>$formModel->title])) ?>"
+                    data-request-confirm="<?= e(trans('indikator.news::lang.flash.news_clone_confirm')) ?>"
+                    class="oc-icon-clone btn-icon pull-right">
                 </button>
                 <?php if (isset($url)): ?>
                 <span class="btn-text pull-right">

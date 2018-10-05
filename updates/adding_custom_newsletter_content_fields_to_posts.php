@@ -9,7 +9,6 @@ class AddingCustomNewsletterContentFieldsToPosts extends Migration
     {
         Schema::table('indikator_news_posts', function($table)
         {
-
             $table->boolean('enable_newsletter_content')->default(false);
             $table->text('newsletter_content')->nullable();
         });
@@ -21,7 +20,6 @@ class AddingCustomNewsletterContentFieldsToPosts extends Migration
         {
             $table->dropColumn('newsletter_content');
             $table->dropColumn('enable_newsletter_content');
-
         });
     }
 }
