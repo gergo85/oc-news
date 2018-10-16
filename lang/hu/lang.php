@@ -78,6 +78,10 @@ return [
         'length' => 'Hossz',
         'clone_of' => 'Másolat',
         'news_cloning' => 'Hír másolása :name',
+        'newsletter_content_tab' => 'Hírlevél',
+        'newsletter_content' => 'Hírlevél tartalma',
+        'enable_newsletter_content' => 'Funkció bekapcsolása',
+        'enable_newsletter_content_description' => 'Engedélyezés esetén a hírlevél tartalma le fog cserélődni erre a szöveges részre.',
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
@@ -113,6 +117,7 @@ return [
         'unsubscribe' => 'Leiratkozás',
         'subscribe' => 'Feliratkozás',
         'test' => 'Tesztlevél küldése',
+        'copy_content_to_newsletter' => 'Tartalom másolása a hírlevélhez',
         'send' => 'Hírlevél küldése',
         'send_confirmation' => 'Valóban el akarja küldeni a hírlevelet?',
         'resend' => 'Hírlevél újraküldése',

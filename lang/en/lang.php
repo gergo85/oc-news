@@ -116,13 +116,13 @@ return [
         'export' => 'Export',
         'unsubscribe' => 'Unsubscribe',
         'subscribe' => 'Subscription',
+        'copy_content_to_newsletter' => 'Copy content to newsletter content',
         'test' => 'Send test mail',
         'send' => 'Send newsletter',
         'send_confirmation' => 'Do you want to send the newsletter?',
         'resend' => 'Resend newsletter',
         'resend_confirmation' => 'Do you want to resend the newsletter?',
-        'return' => 'Return',
-        'copy_content_to_newsletter' => 'Copy coontent to newsletter content'
+        'return' => 'Return'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
