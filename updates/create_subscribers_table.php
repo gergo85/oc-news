@@ -15,7 +15,7 @@ class CreateSubscribersTable extends Migration
             $table->string('email', 100);
             $table->text('common')->nullable();
             $table->string('created', 1)->default(1);
-            $table->string('statistics', 4)->default(0);
+            $table->integer('statistics')->default(0);
             $table->timestamps();
         });
     }

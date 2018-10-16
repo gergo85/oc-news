@@ -207,4 +207,12 @@ class Posts extends Controller
 
         return $this->makePartial('show_stat');
     }
+
+    public function formExtendFields($form)
+    {
+        if ($form->context == 'create') {
+            $form->removeField('newsletter_content');
+            $form->removeField('enable_newsletter_content');
+        }
+    }
 }

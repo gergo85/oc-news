@@ -54,6 +54,19 @@ tabs:
             type: richeditor
             size: giant
 
+        enable_newsletter_content:
+            tab: indikator.news::lang.form.newsletter_content_tab
+            label: indikator.news::lang.form.enable_newsletter_content
+            comment: indikator.news::lang.form.enable_newsletter_content_description
+            type: switch
+            default: false
+
+        newsletter_content:
+            tab: indikator.news::lang.form.newsletter_content_tab
+            label: indikator.news::lang.form.newsletter_content
+            type: richeditor
+            size: giant
+
 secondaryTabs:
     fields:
 

@@ -104,3 +104,6 @@
     - Updated the export / import.
     - Modernized the source code.
 1.10.3: Minor UI improvements.
+1.10.4:
+    - Adding custom newsletter content
+    - adding_custom_newsletter_content_fields_to_posts.php
