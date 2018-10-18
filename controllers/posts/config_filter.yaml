@@ -19,6 +19,11 @@ scopes:
         type: checkbox
         conditions: status = 3
 
+    statistics:
+        label: indikator.news::lang.stat.viewed
+        type: numberrange
+        conditions: statistics >= ':min' and statistics <= ':max'
+
     last_send_at:
         label: indikator.news::lang.form.last_send
         type: daterange

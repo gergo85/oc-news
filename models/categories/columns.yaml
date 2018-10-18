@@ -47,7 +47,6 @@ columns:
     hidden:
         label: indikator.news::lang.form.hidden
         sortable: false
-        invisible: true
         type: partial
         path: ~/plugins/indikator/news/models/categories/_hidden.htm
 

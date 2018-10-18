@@ -108,6 +108,7 @@ __For category__
 * [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
 * [Offline SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
 * [Indikator Popup](http://octobercms.com/plugin/indikator-popup)
+* [FennCS Page Views](https://octobercms.com/plugin/fenncs-newspageviews)
 * [TimFoerster NewsPdf](http://octobercms.com/plugin/timfoerster-newspdf)
 
 <a name="available_languages"></a>
