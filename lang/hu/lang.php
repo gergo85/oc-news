@@ -88,7 +88,7 @@ return [
         'categories_comment' => 'Ha nincs kijelölve egyik kategória sem, akkor a feliratkozó minden hirlevelet meg fog kapni.',
         'comment' => 'Megjegyzés',
         'locale' => 'Nyelv',
-        'locale_comment' => 'Lista: hu.wikipedia.org/wiki/ISO_3166-1',
+        'locale_comment' => '<a href="https://hu.wikipedia.org/wiki/ISO_3166-1" target="_blank">Országkódok megtekintése</a>',
         'lang' => 'hu',
         'mail' => 'levél',
         'registered_at' => 'Regisztráció ideje',

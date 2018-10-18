@@ -87,7 +87,7 @@ return [
         'email' => 'Email',
         'comment' => 'Kommentar',
         'locale' => 'Sprache',
-        'locale_comment' => 'de.wikipedia.org/wiki/ISO-3166-1-Kodierliste',
+        'locale_comment' => '<a href="https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste" target="_blank">Liste der Ländercodes</a>',
         'lang' => 'de',
         'mail' => 'Mail',
         // Logs

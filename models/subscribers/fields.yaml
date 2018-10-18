@@ -36,6 +36,7 @@ secondaryTabs:
             label: indikator.news::lang.form.locale
             placeholder: indikator.news::lang.form.lang
             comment: indikator.news::lang.form.locale_comment
+            commentHtml: true
 
         status:
             label: indikator.news::lang.form.status

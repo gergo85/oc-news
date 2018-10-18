@@ -88,7 +88,7 @@ return [
         'categories_comment' => 'If no category is selected then the subscriber will receive the all newsletters.',
         'comment' => 'Comment',
         'locale' => 'Locale',
-        'locale_comment' => 'List: en.wikipedia.org/wiki/ISO_3166-1',
+        'locale_comment' => '<a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">View the country codes</a>',
         'lang' => 'en',
         'mail' => 'mail',
         'registered_at' => 'Registered date',
