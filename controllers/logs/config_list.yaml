@@ -16,9 +16,4 @@ defaultSort:
     column: id
     direction: desc
 
-toolbar:
-    buttons: list_toolbar
-    search:
-        prompt: backend::lang.list.search_prompt
-
 filter: config_filter.yaml
