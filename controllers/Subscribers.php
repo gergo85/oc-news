@@ -40,16 +40,9 @@ class Subscribers extends Controller
 
     public function onSubscribe()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', 2)->whereId($itemId)) {
-                    continue;
-                }
-
-                $item->update(['status' => 1]);
-            }
-
-            Flash::success(Lang::get('indikator.content::lang.flash.subscribe'));
+        if ($this->isSelected()) {
+            $this->changeStatus(post('checked'), 2, 1);
+            $this->setMessage('subscribe');
         }
 
         return $this->listRefresh();
@@ -57,16 +50,9 @@ class Subscribers extends Controller
 
     public function onUnsubscribe()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', 1)->whereId($itemId)) {
-                    continue;
-                }
-
-                $item->update(['status' => 2]);
-            }
-
-            Flash::success(Lang::get('indikator.content::lang.flash.unsubscribe'));
+        if ($this->isSelected()) {
+            $this->changeStatus(post('checked'), 1, 2);
+            $this->setMessage('unsubscribe');
         }
 
         return $this->listRefresh();
@@ -74,8 +60,8 @@ class Subscribers extends Controller
 
     public function onRemove()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
+        if ($this->isSelected()) {
+            foreach (post('checked') as $itemId) {
                 if (!$item = Item::whereId($itemId)) {
                     continue;
                 }
@@ -85,12 +71,48 @@ class Subscribers extends Controller
                 Db::table('indikator_news_relations')->where('subscriber_id', $itemId)->delete();
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.remove'));
+            $this->setMessage('remove');
         }
 
         return $this->listRefresh();
     }
 
+    /**
+     * @return bool
+     */
+    private function isSelected()
+    {
+        return ($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds);
+    }
+
+    /**
+     * @param $action
+     */
+    private function setMessage($action)
+    {
+        Flash::success(Lang::get('indikator.news::lang.flash.'.$action));
+    }
+
+    /**
+     * @param $post
+     * @param $from
+     * @param $to
+     */
+    private function changeStatus($post, $from, $to)
+    {
+        foreach ($post as $itemId) {
+            if (!$item = Item::where('status', $from)->whereId($itemId)) {
+                continue;
+            }
+
+            $item->update(['status' => $to]);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $hash
+     */
     public function confirm($id = null, $hash = null)
     {
         $subscriber = Item::find($id);

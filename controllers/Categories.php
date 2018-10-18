@@ -31,10 +31,10 @@ class Categories extends Controller
         BackendMenu::setContext('Indikator.News', 'news', 'categories');
     }
 
-    public function onDeactivate()
+    public function onHidden()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
+        if ($this->isSelected()) {
+            foreach (post('checked') as $itemId) {
                 if (!$item = Item::where('hidden', 1)->whereId($itemId)) {
                     continue;
                 }
@@ -42,7 +42,7 @@ class Categories extends Controller
                 $item->update(['hidden' => 2]);
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.deactivate'));
+            $this->setMessage('deactivate');
         }
 
         return $this->listRefresh();
@@ -50,8 +50,8 @@ class Categories extends Controller
 
     public function onRemove()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
+        if ($this->isSelected()) {
+            foreach (post('checked') as $itemId) {
                 if (!$item = Item::whereId($itemId)) {
                     continue;
                 }
@@ -62,10 +62,26 @@ class Categories extends Controller
                 Db::table('indikator_news_relations')->where('categories_id', $itemId)->delete();
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.remove'));
+            $this->setMessage('remove');
         }
 
         return $this->listRefresh();
+    }
+
+    /**
+     * @return bool
+     */
+    private function isSelected()
+    {
+        return ($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds);
+    }
+
+    /**
+     * @param $action
+     */
+    private function setMessage($action)
+    {
+        Flash::success(Lang::get('indikator.news::lang.flash.'.$action));
     }
 
     public function onShowImage()

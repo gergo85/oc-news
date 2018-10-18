@@ -111,22 +111,9 @@ class Posts extends Controller
 
     public function onActivatePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 1)->whereId($itemId)) {
-                    continue;
-                }
-
-                $update['status'] = 1;
-
-                if (Item::whereId($itemId)->value('published_at') == null) {
-                    $update['published_at'] = Carbon::now();
-                }
-
-                $item->update($update);
-            }
-
-            Flash::success(Lang::get('indikator.news::lang.flash.activate'));
+        if ($this->isSelected()) {
+            $this->changeStatus(post('checked'), 1);
+            $this->setMessage('activate');
         }
 
         return $this->listRefresh();
@@ -134,16 +121,9 @@ class Posts extends Controller
 
     public function onDeactivatePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 2)->whereId($itemId)) {
-                    continue;
-                }
-
-                $item->update(['status' => 2]);
-            }
-
-            Flash::success(Lang::get('indikator.news::lang.flash.deactivate'));
+        if ($this->isSelected()) {
+            $this->changeStatus(post('checked'), 2);
+            $this->setMessage('deactivate');
         }
 
         return $this->listRefresh();
@@ -151,16 +131,9 @@ class Posts extends Controller
 
     public function onDraftPosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
-                if (!$item = Item::where('status', '!=', 3)->whereId($itemId)) {
-                    continue;
-                }
-
-                $item->update(['status' => 3]);
-            }
-
-            Flash::success(Lang::get('indikator.news::lang.flash.draft'));
+        if ($this->isSelected()) {
+            $this->changeStatus(post('checked'), 3);
+            $this->setMessage('draft');
         }
 
         return $this->listRefresh();
@@ -168,8 +141,8 @@ class Posts extends Controller
 
     public function onRemovePosts()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-            foreach ($checkedIds as $itemId) {
+        if ($this->isSelected()) {
+            foreach (post('checked') as $itemId) {
                 if (!$item = Item::whereId($itemId)) {
                     continue;
                 }
@@ -177,10 +150,53 @@ class Posts extends Controller
                 $item->delete();
             }
 
-            Flash::success(Lang::get('indikator.news::lang.flash.remove'));
+            $this->setMessage('remove');
         }
 
         return $this->listRefresh();
+    }
+
+    /**
+     * @return bool
+     */
+    private function isSelected()
+    {
+        return ($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds);
+    }
+
+    /**
+     * @param $action
+     */
+    private function setMessage($action)
+    {
+        Flash::success(Lang::get('indikator.news::lang.flash.'.$action));
+    }
+
+    /**
+     * @param $post
+     * @param $from
+     * @param $to
+     */
+    private function changeStatus($post, $id)
+    {
+        foreach ($post as $itemId) {
+            if (!$item = Item::where('status', '!=', $id)->whereId($itemId)) {
+                continue;
+            }
+
+            if ($id == 1) {
+                $update['status'] = 1;
+
+                if (Item::whereId($itemId)->value('published_at') == null) {
+                    $update['published_at'] = Carbon::now();
+                }
+            }
+            else {
+                $update = ['status' => $id];
+            }
+
+            $item->update($update);
+        }
     }
 
     public function onClonePosts($id) {
@@ -206,13 +222,5 @@ class Posts extends Controller
         $this->vars['published_at'] = ($post->published_at) ? $post->published_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
 
         return $this->makePartial('show_stat');
-    }
-
-    public function formExtendFields($form)
-    {
-        if ($form->context == 'create') {
-            $form->removeField('newsletter_content');
-            $form->removeField('enable_newsletter_content');
-        }
     }
 }
