@@ -11,6 +11,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 - [Available components](#available_components)
 - [HTML template variables](#html_template)
 - [Mail template variables](#mail_template)
+- [Useful extensions](#eseful_extensions)
 - [Supported plugins](#supported_plugins)
 - [Available languages](#available_languages)
 - [Requirements](#requirements)
@@ -30,6 +31,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Detailed mail logs
 * Front-end forms
 * Back-end widgets
+* Available extensions
 * Innovative solutions
 * Regular updates
 
@@ -102,14 +104,19 @@ __For category__
 * {{ content }} - Content of post
 * {{ image }} - Relative path of post image
 
+You can customize the layout of emails in the __Settings > Mail > Mail templates__ page.
+
+<a name="eseful_extensions"></a>
+## Useful extensions
+* [FennCS Page Views](https://octobercms.com/plugin/fenncs-newspageviews)
+* [TimFoerster NewsPdf](http://octobercms.com/plugin/timfoerster-newspdf)
+
 <a name="supported_plugins"></a>
 ## Supported plugins
 * [RainLab Translate](http://octobercms.com/plugin/rainlab-translate)
 * [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
 * [Offline SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
 * [Indikator Popup](http://octobercms.com/plugin/indikator-popup)
-* [FennCS Page Views](https://octobercms.com/plugin/fenncs-newspageviews)
-* [TimFoerster NewsPdf](http://octobercms.com/plugin/timfoerster-newspdf)
 
 <a name="available_languages"></a>
 ## Available languages
