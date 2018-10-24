@@ -39,7 +39,6 @@ columns:
         label: indikator.news::lang.stat.mail
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_statistics.htm
-        align: right
 
     stat:
         label: indikator.news::lang.menu.statistics

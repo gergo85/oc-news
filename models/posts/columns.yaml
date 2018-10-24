@@ -35,7 +35,6 @@ columns:
         type: partial
         path: ~/plugins/indikator/news/models/posts/_length.htm
         align: center
-        width: 85px
 
     featured:
         label: indikator.news::lang.form.featured
