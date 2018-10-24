@@ -3,6 +3,7 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 use Indikator\News\Models\Subscribers as Item;
+use Indikator\News\Models\Logs;
 use Db;
 use Flash;
 use Jenssegers\Date\Date;
@@ -69,6 +70,7 @@ class Subscribers extends Controller
                 $item->delete();
 
                 Db::table('indikator_news_relations')->where('subscriber_id', $itemId)->delete();
+                Logs::where('subscriber_id', $itemId)->delete();
             }
 
             $this->setMessage('remove');
@@ -152,5 +154,20 @@ class Subscribers extends Controller
         $this->vars['unsubscribed_at'] = ($user->unsubscribed_at) ? $user->unsubscribed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
 
         return $this->makePartial('show_stat');
+    }
+
+    public function onShowEmails()
+    {
+        $this->vars['user']   = $user = Item::whereId(post('id'))->first();
+        $this->vars['emails'] = Logs::where('subscriber_id', post('id'))->orderBy('send_at', 'desc')->get()->all();
+        $this->vars['class']  = [
+            'Queued'  => 'text-warning',
+            'Sent'    => 'text-info',
+            'Viewed'  => 'text-success',
+            'Clicked' => 'text-success',
+            'Failed'  => 'text-danger'
+        ];
+
+        return $this->makePartial('show_emails');
     }
 }

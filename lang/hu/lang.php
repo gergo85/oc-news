@@ -32,6 +32,8 @@ return [
         'view' => ' Megtekintés',
         'mail' => 'Elküldve',
         'loss' => 'Veszteség',
+        'basic' => 'Alap',
+        'emails' => 'Levelek',
         'top' => 'TOP',
         'longest' => 'Leghosszabb',
         'shortest' => 'Legrövidebb',

@@ -32,6 +32,8 @@ return [
         'view' => 'View',
         'mail' => 'Sent',
         'loss' => 'Loss',
+        'basic' => 'Basic',
+        'emails' => 'Emails',
         'top' => 'TOP',
         'longest' => 'Longest',
         'shortest' => 'Shortest',

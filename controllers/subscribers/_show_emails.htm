@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="popup">×</button>
+    <h4 class="modal-title"><?= $user->name ?></h4>
+</div>
+<div class="modal-body">
+
+    <div class="control-list">
+        <table class="table data">
+            <thead>
+                <tr>
+                    <th><span><?= e(trans('indikator.news::lang.form.send_at')) ?></span></th>
+                    <th><span><?= e(trans('indikator.news::lang.form.news')) ?></span></th>
+                    <th><span><?= e(trans('indikator.news::lang.form.viewed_at')) ?></span></th>
+                    <th><span><?= e(trans('indikator.news::lang.form.clicked_at')) ?></span></th>
+                    <th><span><?= e(trans('indikator.news::lang.form.status')) ?></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($emails as $email): ?>
+                <tr>
+                    <td><?= $email['send_at'] ?></td>
+                    <td><?= \Indikator\News\Models\Posts::whereId($email['news_id'])->value('title') ?></td>
+                    <td><?= ($email['viewed_at'] != '') ? $email['viewed_at'] : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>' ?></td>
+                    <td><?= ($email['clicked_at'] != '') ? $email['clicked_at'] : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>' ?></td>
+                    <td><span class="<?= $class[$email['status']] ?>"><?= e(trans('indikator.news::lang.stat.'.strToLower($email['status']))) ?></span></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <br>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="popup"><?= e(trans('backend::lang.form.close')) ?></button>
+</div>
