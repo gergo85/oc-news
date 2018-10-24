@@ -127,6 +127,65 @@ class Posts extends Model
         }
     }
 
+    // Next / Previous
+
+    /**
+     * Apply a constraint to the query to find the nearest sibling
+     *
+     *     // Get the next post
+     *     Post::applySibling()->first();
+     *
+     *     // Get the previous post
+     *     Post::applySibling(-1)->first();
+     *
+     *     // Get the previous post, ordered by the ID attribute instead
+     *     Post::applySibling(['direction' => -1, 'attribute' => 'id'])->first();
+     *
+     * @param       $query
+     * @param array $options
+     *
+     * @return
+     */
+    public function scopeApplySibling($query, $options = [])
+    {
+        if (!is_array($options)) {
+            $options = ['direction' => $options];
+        }
+
+        extract(array_merge([
+            'direction' => 'next',
+            'attribute' => 'published_at',
+        ], $options));
+
+        $isPrevious = in_array($direction, ['previous', -1]);
+        $directionOrder = $isPrevious ? 'asc' : 'desc';
+        $directionOperator = $isPrevious ? '>' : '<';
+
+        return $query
+        ->where('id', '<>', $this->id)
+        ->whereDate($attribute, $directionOperator, $this->$attribute)
+        ->orderBy($attribute, $directionOrder)
+        ;
+    }
+
+    /**
+     * Returns the next post, if available.
+     * @return self
+     */
+    public function next()
+    {
+        return self::isPublished()->applySibling()->first();
+    }
+
+    /**
+     * Returns the previous post, if available.
+     * @return self
+     */
+    public function prev()
+    {
+        return self::isPublished()->applySibling(-1)->first();
+    }
+
     public function scopeListFrontEnd($query, $options)
     {
         extract(array_merge([
