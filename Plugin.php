@@ -4,6 +4,7 @@ use System\Classes\PluginBase;
 use Backend;
 use Event;
 use Indikator\News\Models\Posts;
+use Backend\Models\User;
 
 class Plugin extends PluginBase
 {
@@ -223,6 +224,13 @@ class Plugin extends PluginBase
             if ($type == 'post-list' || $type == 'post-page') {
                 return Posts::resolveMenuItem($item, $url, $theme);
             }
+        });
+
+        /**
+        * Attach posts relationship to backend user model as extension
+        */
+        User::extend(function($model) {
+            $model->hasMany['posts'] = ['Indikator\News\Models\Posts', 'key' => 'user_id'];
         });
     }
 }
