@@ -83,6 +83,9 @@ __For post__
 * {{ post.category }} - ID of category (0: no category selected)
 * {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
 * {{ post.featured }} - Is post featured? (1: yes, 2: no)
+* {{ post.next }} -  First post created after current post
+* {{ post.prev }} - Last post before current post
+
 
 __For category__
 * {{ categories }} - List of categories in array
@@ -92,6 +95,17 @@ __For category__
 * {{ category.content|raw }} - Content of category
 * {{ category.status }} - Status of post (1: published, 2: hide)
 * {{ category.hidden }} - Is category hidden? (1: yes, 2: no)
+
+__For user (Backend User)__
+
+All attributes and methods available in `Backend\Models\User` are accesible via {{ post.user }}. Examples
+
+* {{ post.user.first_name }} - Post author first name (attribute)
+* {{ post.user.email }} - Post author email (attribute)
+* {{ post.user.getFullNameAttribute }} - Post author full name (method)
+* {{ post.user.getAvatarThumb }} - Public path to author avatar (method)
+
+Checkout the `Backend\Models\User` interface and attributes for all possibilities
 
 <a name="mail_template"></a>
 ## Mail template variables
