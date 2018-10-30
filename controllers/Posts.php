@@ -223,4 +223,12 @@ class Posts extends Controller
 
         return $this->makePartial('show_stat');
     }
+
+    /**
+    * Add user_id for user relationship before save
+    */
+    public function formBeforeCreate($model)
+    {
+        $model->user_id = $this->user->id;
+    }
 }
