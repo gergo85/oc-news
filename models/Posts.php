@@ -57,7 +57,8 @@ class Posts extends Model
         'category' => [
             'Indikator\News\Models\Categories',
             'order' => 'name'
-        ]
+        ],
+        'user' => ['Backend\Models\User']
     ];
 
     public $hasMany = [
