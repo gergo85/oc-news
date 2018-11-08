@@ -9,6 +9,8 @@ fields:
     title:
         label: indikator.news::lang.form.title
         required: true
+        attributes:
+           autofocus: ''
         span: storm
         cssClass: col-sm-12 col-lg-6
 

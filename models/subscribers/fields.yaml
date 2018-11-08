@@ -6,6 +6,8 @@ fields:
 
     name:
         label: indikator.news::lang.form.name
+        attributes:
+           autofocus: ''
         span: auto
 
     email:
