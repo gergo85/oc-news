@@ -86,7 +86,6 @@ __For post__
 * {{ post.next }} -  First post created after current post
 * {{ post.prev }} - Last post before current post
 
-
 __For category__
 * {{ categories }} - List of categories in array
 * {{ category.name }} - Name of category
@@ -97,15 +96,14 @@ __For category__
 * {{ category.hidden }} - Is category hidden? (1: yes, 2: no)
 
 __For user (Backend User)__
-
-All attributes and methods available in `Backend\Models\User` are accesible via {{ post.user }}. Examples
+All attributes and methods available in `Backend\Models\User` are accesible via {{ post.user }}. Examples:
 
 * {{ post.user.first_name }} - Post author first name (attribute)
 * {{ post.user.email }} - Post author email (attribute)
 * {{ post.user.getFullNameAttribute }} - Post author full name (method)
 * {{ post.user.getAvatarThumb }} - Public path to author avatar (method)
 
-Checkout the `Backend\Models\User` interface and attributes for all possibilities
+Checkout the `Backend\Models\User` interface and attributes for all possibilities.
 
 <a name="mail_template"></a>
 ## Mail template variables
@@ -115,6 +113,7 @@ Checkout the `Backend\Models\User` interface and attributes for all possibilitie
 * {{ slug }} - Slug of post
 * {{ introductory }} - Introductory of post
 * {{ summary }} - Alias of introductory
+* {{ plaintext }} - Introductory without HTML elements
 * {{ content }} - Content of post
 * {{ image }} - Relative path of post image
 

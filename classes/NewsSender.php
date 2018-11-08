@@ -180,9 +180,10 @@ class NewsSender
             'title' => $this->news->title,
             'slug'  => $this->news->slug,
             'introductory' => $this->news->introductory,
-            'summary' => $this->news->introductory,
-            'content' => $this->replacedContent,
-            'image'   => $this->news->image
+            'summary'   => $this->news->introductory,
+            'plaintext' => strip_tags($this->news->introductory),
+            'content'   => $this->replacedContent,
+            'image'     => $this->news->image
         ];
     }
 
@@ -240,8 +241,7 @@ class NewsSender
 
             return true;
         }
-        else {
-            return SendNews::sendWithLogger($template, $params, $receiver, $this->news->title, $logEntry);
-        }
+
+        return SendNews::sendWithLogger($template, $params, $receiver, $this->news->title, $logEntry);
     }
 }
