@@ -61,11 +61,11 @@ class SendNews
                 if (Settings::get('click_tracking', true)) {
                     $body = preg_replace_callback('/href="(.*?)"/i', function ($r) use ($logEntry) {
                         return 'href="'
-                            . Backend::url('indikator/news/newsletter/open', [
+                            .Backend::url('indikator/news/newsletter/open', [
                                 'id'   => $logEntry->id,
                                 'hash' => $logEntry->hash
                             ])
-                            . '?url='.urlencode($r[1]).'"';
+                            .'?url='.urlencode($r[1]).'"';
                     }, $body);
                 }
 

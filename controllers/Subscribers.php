@@ -148,19 +148,19 @@ class Subscribers extends Controller
 
     public function onShowStat()
     {
-        $this->vars['user'] = $user = Item::whereId(post('id'))->first();
-        $this->vars['registered_at']   = ($user->registered_at) ? $user->registered_at : $user->created_at;
-        $this->vars['confirmed_at']    = ($user->confirmed_at) ? $user->confirmed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
-        $this->vars['unsubscribed_at'] = ($user->unsubscribed_at) ? $user->unsubscribed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['subscriber']      = $subscriber = Item::whereId(post('id'))->first();
+        $this->vars['registered_at']   = ($subscriber->registered_at) ? $subscriber->registered_at : $subscriber->created_at;
+        $this->vars['confirmed_at']    = ($subscriber->confirmed_at) ? $subscriber->confirmed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['unsubscribed_at'] = ($subscriber->unsubscribed_at) ? $subscriber->unsubscribed_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
 
         return $this->makePartial('show_stat');
     }
 
     public function onShowEmails()
     {
-        $this->vars['user']   = $user = Item::whereId(post('id'))->first();
-        $this->vars['emails'] = Logs::where('subscriber_id', post('id'))->orderBy('send_at', 'desc')->get()->all();
-        $this->vars['class']  = [
+        $this->vars['subscriber'] = Item::whereId(post('id'))->first();
+        $this->vars['emails']     = Logs::where('subscriber_id', post('id'))->orderBy('send_at', 'desc')->get()->all();
+        $this->vars['class'] = [
             'Queued'  => 'text-warning',
             'Sent'    => 'text-info',
             'Viewed'  => 'text-success',

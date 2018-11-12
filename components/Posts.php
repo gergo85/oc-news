@@ -2,9 +2,9 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
-use Lang;
 use Indikator\News\Models\Posts as NewsPost;
 use Indikator\News\Models\Categories as NewsCategory;
+use Lang;
 use Redirect;
 
 class Posts extends ComponentBase
@@ -151,7 +151,7 @@ class Posts extends ComponentBase
     {
         $category = $this->category ? $this->category->id : null;
 
-        $posts =  NewsPost::listFrontEnd([
+        $posts = NewsPost::listFrontEnd([
             'page'     => $this->property('pageNumber'),
             'sort'     => $this->property('sortOrder'),
             'perPage'  => $this->property('postsPerPage'),

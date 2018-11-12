@@ -2,8 +2,8 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
-use Lang;
 use Indikator\News\Models\Categories as NewsCategories;
+use Lang;
 
 class Categories extends ComponentBase
 {

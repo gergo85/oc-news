@@ -54,7 +54,7 @@ class Subscribe extends ComponentBase
 
         $email = post('email');
         $name  = post('name');
-        $categories = post('category',[]);
+        $categories = post('category', []);
 
         // looking for existing subscriber
         $subscriberResult = Subscribers::email($email);

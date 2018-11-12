@@ -1,8 +1,8 @@
 <?php namespace Indikator\News\Classes;
 
-use Db;
 use Indikator\News\Models\Categories;
 use Indikator\News\Models\Settings;
+use Db;
 
 trait SubscriberService
 {
