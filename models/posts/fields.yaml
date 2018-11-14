@@ -83,6 +83,10 @@ secondaryTabs:
             type: mediafinder
             mode: image
 
+        user:
+            label: indikator.news::lang.form.author
+            type: dropdown
+
         status:
             label: indikator.news::lang.form.status
             required: true

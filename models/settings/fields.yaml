@@ -75,3 +75,25 @@ fields:
         type: switch
         default: true
         span: left
+
+    fields_section:
+        label: indikator.news::lang.backend_settings.extra_fields
+        type: section
+
+    fields_slug:
+        label: indikator.news::lang.form.slug
+        type: switch
+        default: true
+        span: auto
+
+    fields_category:
+        label: indikator.news::lang.form.category
+        type: switch
+        default: true
+        span: auto
+
+    fields_author:
+        label: indikator.news::lang.form.author
+        type: switch
+        default: false
+        span: auto

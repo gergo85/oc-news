@@ -1,0 +1,5 @@
+<?php
+
+if ($record->category_id > 0) {
+    echo \Indikator\News\Models\Categories::whereId($record->category_id)->value('name');
+}

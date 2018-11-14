@@ -61,6 +61,8 @@ return [
         'content' => 'Content',
         'image' => 'Image',
         'category' => 'Category',
+        'author' => 'Author',
+        'select_user' => '-- select user --',
         'status' => 'Status',
         'status_published' => 'Published',
         'status_hide' => 'Hidden',
@@ -165,7 +167,8 @@ return [
         'statistic_show_mails' => 'Show mail logs',
         'statistic_show_longest_posts' => 'Show longest posts',
         'statistic_show_shortest_posts' => 'Show shortest posts',
-        'statistic_comment' => 'In the Statistics page.'
+        'statistic_comment' => 'In the Statistics page.',
+        'extra_fields' => 'Extra fields for News form'
     ],
     'widget' => [
         'posts' => 'News - Posts',

@@ -110,5 +110,5 @@
 1.10.5: Minor UI and code improvements.
 1.10.6: Improved the mail statistics of user.
 1.10.7:
-    - Added user relation.
+    - Added new options for Settings.
     - add_user_field_to_table.php

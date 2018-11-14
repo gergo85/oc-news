@@ -5,9 +5,10 @@ use BackendAuth;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use Indikator\News\Models\Categories as NewsCategories;
-use Url;
-use App;
 use Db;
+use App;
+use Str;
+use Url;
 
 class Posts extends Model
 {
@@ -20,7 +21,7 @@ class Posts extends Model
 
     public $rules = [
         'title'    => 'required',
-        'slug'     => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts'],
+        'slug'     => ['regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts'],
         'status'   => 'required|between:1,3|numeric',
         'featured' => 'required|between:1,2|numeric'
     ];
@@ -105,12 +106,33 @@ class Posts extends Model
     }
 
     /**
-     * Check the ID of category
+     * List of administrators
+     */
+    public function getUserOptions()
+    {
+        $result = [0 => 'indikator.news::lang.form.select_user'];
+        $users = Db::table('backend_users')->orderBy('login', 'asc')->get()->all();
+
+        foreach ($users as $user) {
+            $name = trim($user->first_name.' '.$user->last_name);
+            $name = ($name != '') ? ' ('.$name.')' : '';
+            $result[$user->id] = $user->login.$name;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Check value of some fields
      */
     public function beforeSave()
     {
         if (!isset($this->category_id) || empty($this->category_id)) {
-            $this->category_id = 0;
+            $this->slug = Str::slug($this->title);
+        }
+
+        if (!isset($this->user_id) || empty($this->user_id)) {
+            $this->user_id = 0;
         }
 
         if ($this->status == 1 && empty($this->published_at)) {
@@ -155,7 +177,7 @@ class Posts extends Model
 
         extract(array_merge([
             'direction' => 'next',
-            'attribute' => 'published_at',
+            'attribute' => 'published_at'
         ], $options));
 
         $isPrevious = in_array($direction, ['previous', -1]);

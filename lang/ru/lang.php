@@ -59,6 +59,7 @@ return [
         'content' => 'Содержимое',
         'image' => 'Изображение',
         'category' => 'Категория',
+        'author' => 'Aвтор',
         'status' => 'Статус',
         'status_published' => 'Опубликовано',
         'status_hide' => 'Скрыто',

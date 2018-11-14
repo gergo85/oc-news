@@ -61,6 +61,8 @@ return [
         'content' => 'Tartalom',
         'image' => 'Kép',
         'category' => 'Kategória',
+        'author' => 'Szerző',
+        'select_user' => '-- válasszon felhasználót --'
         'status' => 'Státusz',
         'status_published' => 'Közzétéve',
         'status_hide' => 'Rejtett',
@@ -165,7 +167,8 @@ return [
         'statistic_show_mails' => 'Levél naplózás mutatása',
         'statistic_show_longest_posts' => 'Leghosszabb bejegyzések mutatása',
         'statistic_show_shortest_posts' => 'Legrövidebb bejegyzések mutatása',
-        'statistic_comment' => 'A Statisztika oldalon.'
+        'statistic_comment' => 'A Statisztika oldalon.',
+        'extra_fields' => 'Plussz mezők a hír adatlapon'
     ],
     'widget' => [
         'posts' => 'Hírek - Gyors statisztika',

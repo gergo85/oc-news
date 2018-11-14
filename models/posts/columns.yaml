@@ -25,6 +25,20 @@ columns:
         searchable: true
         invisible: true
 
+    category:
+        label: indikator.news::lang.form.category
+        sortable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_category.htm
+
+    author:
+        label: indikator.news::lang.form.author
+        sortable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_author.htm
+
     statistics:
         label: indikator.news::lang.stat.viewed
         align: center
