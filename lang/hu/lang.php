@@ -63,7 +63,7 @@ return [
         'category' => 'Kategória',
         'tags' => 'Címkék',
         'author' => 'Szerző',
-        'select_user' => '-- válasszon felhasználót --'
+        'select_user' => '-- válasszon felhasználót --',
         'status' => 'Státusz',
         'status_published' => 'Közzétéve',
         'status_hide' => 'Rejtett',
