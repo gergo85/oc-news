@@ -65,7 +65,9 @@ class Posts extends ComponentBase
                     'updated_at asc'    => Lang::get('indikator.news::lang.sorting.updated_at_asc'),
                     'updated_at desc'   => Lang::get('indikator.news::lang.sorting.updated_at_desc'),
                     'published_at asc'  => Lang::get('indikator.news::lang.sorting.published_at_asc'),
-                    'published_at desc' => Lang::get('indikator.news::lang.sorting.published_at_desc')
+                    'published_at desc' => Lang::get('indikator.news::lang.sorting.published_at_desc'),
+                    'statistics asc'    => Lang::get('indikator.news::lang.sorting.statistics_asc'),
+                    'statistics desc'   => Lang::get('indikator.news::lang.sorting.statistics_desc')
                 ]
             ],
             'postFeatured' => [
@@ -140,9 +142,8 @@ class Posts extends ComponentBase
         $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
         $this->noPostsMessage = $this->page['noPostsMessage'] = $this->property('noPostsMessage');
         $this->searchFilter = $this->page['searchFilter'] = trim(input('search'));
-        /*
-         * Page links
-         */
+
+        // Page links
         $this->postPage = $this->page['postPage'] = $this->property('postPage');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
     }
