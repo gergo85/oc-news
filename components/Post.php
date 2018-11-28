@@ -54,6 +54,8 @@ class Post extends ComponentBase
             NewsPost::where('slug', $slug)->increment('statistics');
         }
 
+        $post->tags = explode(',', $post->tags);
+
         $meta_description = strip_tags($post->introductory);
         if (strlen($meta_description) > 252) {
             $meta_description = substr($meta_description, 0, 252).'...';

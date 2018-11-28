@@ -74,6 +74,7 @@ Use the __Components > News__ panel in CMS menu. At this moment there are the fo
 ## HTML template variables
 __For post__
 * {{ posts }} - List of posts in array
+* {{ posts.render|raw }} - Build-in pagination
 * {{ post.title }} - Title of post
 * {{ post.slug }} - Slug of post
 * {{ post.image|media }} - Full url of post image
@@ -81,10 +82,11 @@ __For post__
 * {{ post.content|raw }} - Content of post
 * {{ post.published_at }} - Published date of post
 * {{ post.category }} - ID of category (0: no category selected)
+* {{ post.tags }} - List of tags in array
 * {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
 * {{ post.featured }} - Is post featured? (1: yes, 2: no)
-* {{ post.next }} -  First post created after current post
-* {{ post.prev }} - Last post before current post
+* {{ post.next() }} -  First post after current post
+* {{ post.prev() }} - Last post before current post
 
 __For category__
 * {{ categories }} - List of categories in array

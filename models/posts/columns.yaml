@@ -32,6 +32,13 @@ columns:
         type: partial
         path: ~/plugins/indikator/news/models/posts/_category.htm
 
+    tags:
+        label: indikator.news::lang.form.tags
+        sortable: false
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/news/models/posts/_tags.htm
+
     author:
         label: indikator.news::lang.form.author
         sortable: false

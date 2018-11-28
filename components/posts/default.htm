@@ -7,6 +7,13 @@
 
         <h2 class="post-title"><a href="/{{ postPage }}/{{ post.slug }}">{{ post.title }}</a></h2>
         <p class="post-date">{{ post.published_at|date('Y-m-d') }}</p>
+        {% if post.tags %}
+        <p class="post-tags">Tags:
+            {% for tag in post.tags %}
+            <a href="{{ 'blog'|page }}/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
 
         {% if post.introductory %}
         <div class="post-introductory">{{ post.introductory|raw }}</div>

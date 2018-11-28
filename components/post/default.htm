@@ -3,11 +3,24 @@
 <div class="post">
     <div class="post-content">
         <h2 class="post-title">{{ post.title }}</h2>
+
+        <p class="post-date">Posted on {{ post.published_at|date('Y-m-d') }}</p>
+        {% if post.tags %}
+        <p class="post-tags">Tags:
+            {% for tag in post.tags %}
+            <a href="{{ 'blog'|page }}/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+
         {% if post.image %}<div class="post-image"><img src="{{ post.image|media }}" alt="{{ post.title }}"></div>{% endif %}
 
         {% if post.introductory %}<div class="post-introductory">{{ post.introductory|raw }}</div>{% endif %}
         {% if post.content %}<div class="post-content">{{ post.content|raw }}</div>{% endif %}
-
-        <p class="post-date">Posted on {{ post.published_at|date('Y-m-d') }}</p>
+    </div>
+    <div class="post-nav">
+        {% if post.prev().title %}Prev: <a href="{{ 'blog'|page }}/{{ post.prev().slug }}" class="prev">{{ post.prev().title }}</a>{% endif %}
+        <br>
+        {% if post.next().title %}Next: <a href="{{ 'blog'|page }}/{{ post.next().slug }}" class="next">{{ post.next().title }}</a>{% endif %}
     </div>
 </div>

@@ -169,6 +169,8 @@ class Posts extends ComponentBase
                     $category->setUrl($this->categoryPage, $this->controller);
                 });
             }
+
+            $post->tags = explode(',', $post->tags);
         });
 
         return $posts;

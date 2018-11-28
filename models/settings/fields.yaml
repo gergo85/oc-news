@@ -92,6 +92,12 @@ fields:
         default: true
         span: auto
 
+    fields_tags:
+        label: indikator.news::lang.form.tags
+        type: switch
+        default: true
+        span: auto
+
     fields_author:
         label: indikator.news::lang.form.author
         type: switch

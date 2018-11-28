@@ -27,21 +27,11 @@ fields:
         span: storm
         cssClass: col-sm-12 col-lg-6
 
-    published_at:
-        label: indikator.news::lang.form.published_at
-        type: datepicker
-        mode: datetime
+    tags:
+        label: indikator.news::lang.form.tags
+        type: taglist
         span: storm
-        cssClass: col-sm-6 col-lg-3
-
-    last_send_at:
-        label: indikator.news::lang.form.last_send_at
-        type: datepicker
-        readOnly: true
-        mode: datetime
-        disabled: disabeld
-        span: storm
-        cssClass: col-sm-6 col-lg-3
+        cssClass: col-sm-12 col-lg-6
 
 tabs:
     fields:
@@ -82,6 +72,18 @@ secondaryTabs:
             label: indikator.news::lang.form.image
             type: mediafinder
             mode: image
+
+        published_at:
+            label: indikator.news::lang.form.published_at
+            type: datepicker
+            mode: datetime
+
+        last_send_at:
+            label: indikator.news::lang.form.last_send_at
+            type: datepicker
+            readOnly: true
+            mode: datetime
+            disabled: disabeld
 
         user:
             label: indikator.news::lang.form.author

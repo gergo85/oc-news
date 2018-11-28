@@ -149,7 +149,7 @@ class Plugin extends PluginBase
             'indikator.news::mail.email_en' => 'E-mail',
             'indikator.news::mail.email_hu' => 'E-mail',
             'indikator.news::mail.confirmation_hu' => 'E-mail',
-            'indikator.news::mail.confirmation_en' => 'E-mail',
+            'indikator.news::mail.confirmation_en' => 'E-mail'
         ];
     }
 
@@ -226,6 +226,9 @@ class Plugin extends PluginBase
             if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
                 $form->removeField('category');
             }
+            if (isset($settings->fields_tags) && !$settings->fields_tags) {
+                $form->removeField('tags');
+            }
             if (!isset($settings->fields_author) || (isset($settings->fields_author) && !$settings->fields_author)) {
                 $form->removeField('user');
             }
@@ -245,6 +248,9 @@ class Plugin extends PluginBase
             }
             if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
                 $list->removeColumn('category');
+            }
+            if (isset($settings->fields_tags) && !$settings->fields_tags) {
+                $list->removeColumn('tags');
             }
             if (!isset($settings->fields_author) || (isset($settings->fields_author) && !$settings->fields_author)) {
                 $list->removeColumn('user');

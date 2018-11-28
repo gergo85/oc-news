@@ -61,6 +61,7 @@ return [
         'content' => 'Tartalom',
         'image' => 'Kép',
         'category' => 'Kategória',
+        'tags' => 'Címkék',
         'author' => 'Szerző',
         'select_user' => '-- válasszon felhasználót --'
         'status' => 'Státusz',
@@ -89,7 +90,6 @@ return [
         // Feliratkozók
         'name' => 'Név',
         'email' => 'E-mail',
-        'categories_comment' => 'Ha nincs kijelölve egyik kategória sem, akkor a feliratkozó minden hirlevelet meg fog kapni.',
         'comment' => 'Megjegyzés',
         'locale' => 'Nyelv',
         'locale_comment' => '<a href="https://hu.wikipedia.org/wiki/ISO_3166-1" target="_blank">Országkódok megtekintése</a>',
@@ -238,7 +238,9 @@ return [
         'updated_at_asc' => 'Frissítve (növekvő)',
         'updated_at_desc' => 'Frissítve (csökkenő)',
         'published_at_asc' => 'Publikálva (növekvő)',
-        'published_at_desc' => 'Publikálva (csökkenő)'
+        'published_at_desc' => 'Publikálva (csökkenő)',
+        'statistics_asc' => 'Népszerűség (növekvő)',
+        'statistics_desc' => 'Népszerűség (csökkenő)'
     ],
     'sitemap' => [
         'post_list' => 'Bejegyzés lista',
