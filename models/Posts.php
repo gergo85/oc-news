@@ -155,19 +155,8 @@ class Posts extends Model
     /**
      * Apply a constraint to the query to find the nearest sibling
      *
-     *     // Get the next post
-     *     Post::applySibling()->first();
-     *
-     *     // Get the previous post
-     *     Post::applySibling(-1)->first();
-     *
-     *     // Get the previous post, ordered by the ID attribute instead
-     *     Post::applySibling(['direction' => -1, 'attribute' => 'id'])->first();
-     *
      * @param       $query
      * @param array $options
-     *
-     * @return
      */
     public function scopeApplySibling($query, $options = [])
     {
@@ -193,20 +182,22 @@ class Posts extends Model
 
     /**
      * Returns the next post, if available.
+     *
      * @return self
      */
     public function next()
     {
-        return self::isPublished()->applySibling()->first();
+        return self::isPublished()->applySibling(-1)->first();
     }
 
     /**
      * Returns the previous post, if available.
+     *
      * @return self
      */
     public function prev()
     {
-        return self::isPublished()->applySibling(-1)->first();
+        return self::isPublished()->applySibling()->first();
     }
 
     public function scopeListFrontEnd($query, $options)
