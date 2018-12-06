@@ -2,11 +2,11 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Backend;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
 use Indikator\News\Models\Settings;
 use Db;
-use Backend;
 
 class Statistics extends Controller
 {
@@ -25,6 +25,8 @@ class Statistics extends Controller
         $this->prepareGraphs();
 
         $this->pageTitle = 'indikator.news::lang.menu.statistics';
+
+        $this->addCss('/plugins/indikator/news/assets/css/statistics.css');
     }
 
     protected function prepareGraphs()
@@ -36,18 +38,20 @@ class Statistics extends Controller
 
         // Graphs
 
-        $this->vars['thisYear'] = $this->vars['lastYear'] = [0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0, 8 => 0, 9 => 0, 10 => 0, 11 => 0, 12 => 0];
-        $this->vars['now'] = $now = date('Y');
-
-        $news = Posts::get();
+        $this->vars['thisYear'] = $this->vars['lastYear'] = array_fill(0, 13, 0);
+        $this->vars['now']  = date('Y');
         $this->vars['view'] = Posts::sum('statistics');
+        $this->vars['top']  = '';
 
-        foreach ($news as $item) {
+        $allNews = Posts::get();
+        $amount  = Posts::count();
+
+        foreach ($allNews as $item) {
             $year = substr($item->published_at, 0, 4);
-            if ($year == $now) {
+            if ($year == $this->vars['now']) {
                 $this->vars['thisYear'][(int)substr($item->published_at, 5, 2)]++;
             }
-            else if ($year == $now - 1) {
+            else if ($year == $this->vars['now'] - 1) {
                 $this->vars['lastYear'][(int)substr($item->published_at, 5, 2)]++;
                 $this->vars['lastYear'][0]++;
             }
@@ -55,17 +59,15 @@ class Statistics extends Controller
 
         // TOP 20
 
-        $amount = Posts::count();
         if ($amount > 20) {
             $amount = 20;
         }
 
         $news = Posts::orderBy('statistics', 'desc')->take($amount)->get();
-        $top = '';
         $index = 1;
 
         foreach ($news as $item) {
-            $top .= '
+            $this->vars['top'] .= '
                 <div class="col-md-1 col-sm-1">
                     '.$index.'.
                 </div>
@@ -85,28 +87,25 @@ class Statistics extends Controller
             $index++;
         }
 
-        $this->vars['top'] = $top;
-
         // Posts length
 
-        $news = Posts::get();
         $posts = [];
-
-        foreach ($news as $item) {
-            $posts[$item->id] = strlen(strip_tags($item->introductory.$item->content));
+        foreach ($allNews as $item) {
+            $posts[$item->id] = strlen(trim(preg_replace('/\s+/', ' ', strip_tags($item->introductory.$item->content))));
         }
 
         // Longest posts
 
         if (Settings::get('statistic_show_longest_posts', true)) {
             arsort($posts);
-            $longest = '';
+
+            $this->vars['longest'] = '';
             $index = 1;
 
             foreach ($posts as $id => $length) {
                 $item = Posts::whereId($id)->first();
 
-                $longest .= '
+                $this->vars['longest'] .= '
                     <div class="col-md-1 col-sm-1">
                         '.$index.'.
                     </div>
@@ -125,21 +124,20 @@ class Statistics extends Controller
 
                 $index++;
             }
-
-            $this->vars['longest'] = $longest;
         }
 
         // Shortest posts
 
         if (Settings::get('statistic_show_shortest_posts', true)) {
             asort($posts);
-            $shortest = '';
+
+            $this->vars['shortest'] = '';
             $index = 1;
 
             foreach ($posts as $id => $length) {
                 $item = Posts::whereId($id)->first();
 
-                $shortest .= '
+                $this->vars['shortest'] .= '
                     <div class="col-md-1 col-sm-1">
                         '.$index.'.
                     </div>
@@ -158,8 +156,6 @@ class Statistics extends Controller
 
                 $index++;
             }
-
-            $this->vars['shortest'] = $shortest;
         }
     }
 

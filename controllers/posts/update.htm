@@ -125,7 +125,7 @@ foreach ($pages as $page) {
                 </button>
                 <?php if (isset($url)): ?>
                 <span class="btn-text pull-right">
-                    <a href="<?= $url.$formModel->slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
+                    <a href="<?= Url::to('/').$url.$formModel->slug ?>" target="_blank"><?= e(trans('cms::lang.editor.preview')) ?></a>
                 </span>
                 <?php endif ?>
             </div>

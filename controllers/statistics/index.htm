@@ -12,14 +12,11 @@
     </ul>
 </div>
 
-<div class="scoreboard">
+<div class="scoreboard statboard">
     <?php if ($posts): ?>
-    <div class="row">
+    <div class="row statbox">
         <div class="col-md-12">
-            <div class="field-section">
-                <h4><?= e(trans('indikator.news::lang.menu.posts')) ?></h4>
-            </div>
-            <br>
+            <h4><?= e(trans('indikator.news::lang.menu.posts')) ?></h4>
         </div>
         <div class="col-md-6">
             <strong><?= $now ?></strong>
@@ -74,13 +71,9 @@
     </div>
     <?php endif ?>
     <?php if ($mails): ?>
-    <div class="row">
+    <div class="row statbox">
         <div class="col-md-12">
-            <br>
-            <div class="field-section">
-                <h4><?= e(trans('indikator.news::lang.menu.logs')) ?></h4>
-            </div>
-            <br>
+            <h4><?= e(trans('indikator.news::lang.menu.logs')) ?></h4>
         </div>
         <div class="col-md-6">
             <strong><?= e(trans('indikator.news::lang.stat.log.events')) ?></strong>
@@ -94,18 +87,16 @@
     <?php endif ?>
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function() {
-
+    // Variables
     var date = new Date();
     var year = date.getFullYear();
     var lang = $('html').attr('lang');
 
+    // Translates
     if (lang == 'hu') {
         var trans = {
             all: 'Összesen',
@@ -123,7 +114,6 @@ $(document).ready(function() {
             dec: 'december'
         };
     }
-
     else if (lang == 'de') {
         var trans = {
             all: 'Alle',
@@ -141,10 +131,9 @@ $(document).ready(function() {
             dec: 'Dezember'
         };
     }
-
     else if (lang == 'ru') {
         var trans = {
-            all: 'Összesen',
+            all: 'Всего',
             jan: 'Январь',
             feb: 'Февраль',
             mar: 'Март',
@@ -159,10 +148,9 @@ $(document).ready(function() {
             dec: 'Декабрь'
         };
     }
-
     else if (lang == 'pl') {
         var trans = {
-            all: 'Összesen',
+            all: 'Wszystko',
             jan: 'styczeń',
             feb: 'luty',
             mar: 'marzec',
@@ -177,7 +165,6 @@ $(document).ready(function() {
             dec: 'grudzień'
         };
     }
-
     else if (lang == 'pt-br') {
         var trans = {
             all: 'Todos',
@@ -195,7 +182,6 @@ $(document).ready(function() {
             dec: 'Dezembro'
         };
     }
-
     else {
         var trans = {
             all: 'All',
@@ -214,6 +200,7 @@ $(document).ready(function() {
         };
     }
 
+    // This year
     if ($('#thisYear').length == 1) {
         new Morris.Line({
             element: 'thisYear',
@@ -252,6 +239,7 @@ $(document).ready(function() {
         $('#thisYear').fadeTo(1200, 1);
     }
 
+    // Last year
     if ($('#lastYear').length == 1) {
         new Morris.Line({
             element: 'lastYear',
@@ -292,6 +280,7 @@ $(document).ready(function() {
         }, 300);
     }
 
+    // This year logs
     if ($('#log-this-year').length == 1) {
         new Morris.Line({
             element: 'log-this-year',
@@ -329,6 +318,7 @@ $(document).ready(function() {
         $('#log-this-year').fadeTo(1200, 1);
     }
 
+    // Overall logs
     if ($('#log-overall').length == 1) {
         new Morris.Line({
             element: 'log-overall',
@@ -374,6 +364,7 @@ $(document).ready(function() {
     }
 });
 
+// Graph
 (function() {
     var $, MyMorris;
     MyMorris = window.MyMorris = {};
