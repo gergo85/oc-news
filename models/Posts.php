@@ -267,7 +267,7 @@ class Posts extends Model
             $default_locale = Db::table('rainlab_translate_locales')->where('is_default', 1)->value('code');
 
             if ($current_locale != $default_locale) {
-                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->value('model_id')->toArray();
+                $ids = Db::table('rainlab_translate_attributes')->where('model_type', 'Indikator\News\Models\Posts')->where('locale', $current_locale)->where('attribute_data', 'not like', '%"title":""%')->pluck('model_id');
                 $query->whereIn('id', $ids);
             }
         }
