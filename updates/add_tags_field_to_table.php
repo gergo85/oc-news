@@ -3,7 +3,7 @@
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class AddUserFieldToTable extends Migration
+class AddTagsFieldToTable extends Migration
 {
     public function up()
     {
