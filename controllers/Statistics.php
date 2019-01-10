@@ -81,7 +81,7 @@ class Statistics extends Controller
             ';
 
             if ($index % 5 == 0) {
-                $top .= '<br>';
+                $this->vars['top'] .= '<br>';
             }
 
             $index++;
