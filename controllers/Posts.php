@@ -64,6 +64,7 @@ class Posts extends Controller
     /**
      * Sends a newsletter the first time if last_send_at is null.
      * Flash message will be attached.
+     *
      * @return mixed
      */
     public function onNewsSend()
@@ -90,11 +91,12 @@ class Posts extends Controller
     /**
      * Sends a newsletter again to the subscribers.
      * Returns a refresh with attached Flash message.
+     *
      * @return mixed
      */
     public function onNewsResend()
     {
-        $news = $this->getNewsByPathOrFail();
+        $news   = $this->getNewsByPathOrFail();
         $sender = new NewsSender($news);
 
         if ($sender->resendNewsletter()) {
@@ -174,8 +176,7 @@ class Posts extends Controller
 
     /**
      * @param $post
-     * @param $from
-     * @param $to
+     * @param $id
      */
     private function changeStatus($post, $id)
     {
@@ -199,12 +200,16 @@ class Posts extends Controller
         }
     }
 
-    public function onClonePosts($id) {
-
-        $post = Item::find($id);
+    /**
+     * @param $id
+     */
+    public function onClonePosts($id)
+    {
+        $post    = Item::find($id);
         $newPost = $post->duplicate($post);
+        $path    = Request::path();
 
-        return Redirect::to(substr(\Request::path(),0,  strrpos(\Request::path(), '/', -1) + 1) . $newPost->id);
+        return Redirect::to(substr($path, 0, strrpos($path, '/', -1) + 1).$newPost->id);
     }
 
     public function onShowImage()
@@ -225,8 +230,10 @@ class Posts extends Controller
     }
 
     /**
-    * Add user_id for user relationship before save
-    */
+     * Add user_id for user relationship before save
+     *
+     * @param $model
+     */
     public function formBeforeCreate($model)
     {
         $model->user_id = $this->user->id;
