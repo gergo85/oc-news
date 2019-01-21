@@ -45,7 +45,7 @@ fields:
             1: indikator.news::lang.form.status_published
             2: indikator.news::lang.form.status_hide
             3: indikator.news::lang.form.status_draft
-        default: [1, 3]
+        default: 1
         span: right
 
     statistic_show_posts:
