@@ -162,7 +162,7 @@ return [
         'newsletter_double_opt_in' => 'Newsletter registration confirmation',
         'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
         'admin_section' => 'Settings of site administrators',
-        'show_posts' => 'Show the following post on front-end:',
+        'show_posts' => 'Show the following post on front-end as backend user:',
         'statistic_show_posts' => 'Show posts',
         'statistic_show_mails' => 'Show mail logs',
         'statistic_show_longest_posts' => 'Show longest posts',
