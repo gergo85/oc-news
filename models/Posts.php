@@ -127,8 +127,12 @@ class Posts extends Model
      */
     public function beforeSave()
     {
-        if (!isset($this->category_id) || empty($this->category_id)) {
+        if (!isset($this->slug) || empty($this->slug)) {
             $this->slug = Str::slug($this->title);
+        }
+
+        if (!isset($this->category_id) || empty($this->category_id)) {
+            $this->category_id = 0;
         }
 
         if (!isset($this->user_id) || empty($this->user_id)) {
@@ -150,7 +154,7 @@ class Posts extends Model
         }
     }
 
-    // Next / Previous
+    // Next and previous post
 
     /**
      * Apply a constraint to the query to find the nearest sibling
