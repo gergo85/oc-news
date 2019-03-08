@@ -61,6 +61,30 @@ tabs:
             size: giant
             context: update
 
+        seo_desc:
+            tab: indikator.news::lang.form.seo_tab
+            label: indikator.news::lang.form.seo_desc
+            type: textarea
+            size: large
+            span: right
+
+        seo_title:
+            tab: indikator.news::lang.form.seo_tab
+            label: indikator.news::lang.form.seo_title
+            span: left
+
+        seo_keywords:
+            tab: indikator.news::lang.form.seo_tab
+            label: indikator.news::lang.form.seo_keywords
+            span: left
+
+        seo_image:
+            tab: indikator.news::lang.form.seo_tab
+            label: indikator.news::lang.form.seo_image
+            type: mediafinder
+            mode: file
+            span: left
+
 secondaryTabs:
     fields:
 

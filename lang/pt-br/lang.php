@@ -4,7 +4,7 @@ return [
     'plugin' => [
         'name' => 'Notícias e Newsletter',
         'description' => 'Plugin simples para notícias e newsletter.',
-        'author' => 'Gergő Szabó',
+        'author' => 'Gergő Szabó'
     ],
     'menu' => [
         'news' => 'Notícias',
@@ -76,10 +76,14 @@ return [
         'last_send_at' => 'Enviado por último em',
         'last_send' => 'Enviado por último ',
         'length' => 'Tamanho',
+        'seo_tab' => 'SEO definições',
+        'seo_title' => 'Título',
+        'seo_keywords' => 'Palavras-chave',
+        'seo_desc' => 'Descrição',
+        'seo_image' => 'OG imagem',
         // Subscribers
         'name' => 'Nome',
         'email' => 'E-mail',
-        'categories_comment' => 'Se nenhuma categoria for selecionada então o inscrito vai receber todas as newsletters.',
         'comment' => 'Comentário',
         'locale' => 'Local',
         'lang' => 'pt',

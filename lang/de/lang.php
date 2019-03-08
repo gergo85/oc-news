@@ -4,7 +4,7 @@ return [
     'plugin' => [
         'name' => 'News und Newsletters',
         'description' => 'Einfaches News und Newsletter plugin.',
-        'author' => 'Gergő Szabó',
+        'author' => 'Gergő Szabó'
     ],
     'menu' => [
         'news' => 'News',
@@ -83,6 +83,11 @@ return [
         'newsletter_content' => 'Newsletter Email Inhalt',
         'enable_newsletter_content' => 'Newsletter Email Inhalt aktiv',
         'enable_newsletter_content_description' => 'Wenn dies aktiv ist, dann wird der Inhalt von diesen Textfeld genommen für den Newsletter. Ansonsten wird der normale Inhalt dafür genommen.',
+        'seo_tab' => 'SEO Einstellungen',
+        'seo_title' => 'Titel',
+        'seo_keywords' => 'Schlüsselwörter',
+        'seo_desc' => 'Beschreibung',
+        'seo_image' => 'OG Bild',
         // Subscribers
         'name' => 'Name',
         'email' => 'Email',

@@ -232,6 +232,12 @@ class Plugin extends PluginBase
             if (!isset($settings->fields_author) || (isset($settings->fields_author) && !$settings->fields_author)) {
                 $form->removeField('user');
             }
+            if (!isset($settings->fields_seo) || (isset($settings->fields_seo) && !$settings->fields_seo)) {
+                $form->removeField('seo_title');
+                $form->removeField('seo_keywords');
+                $form->removeField('seo_desc');
+                $form->removeField('seo_image');
+            }
         });
 
         PostsController::extendListColumns(function($list, $model)

@@ -75,6 +75,11 @@ return [
         'published_at' => 'Opublikowany',
         'send' => 'Wyślij e-mail do subskrybentów.',
         'length' => 'Długość',
+        'seo_tab' => 'SEO ustawienia',
+        'seo_title' => 'Tytuł',
+        'seo_keywords' => 'Słowa kluczowe',
+        'seo_desc' => 'Opis',
+        'seo_image' => 'OG obraz',
         // Inscritos
         'name' => 'Imię',
         'email' => 'E-mail',

@@ -2,9 +2,9 @@
 
 return [
     'plugin' => [
-        'name' => 'News and Newsletter',
+        'name' => 'News & Newsletter',
         'description' => 'Simple news and newsletter plugin.',
-        'author' => 'Gergő Szabó',
+        'author' => 'Gergő Szabó'
     ],
     'menu' => [
         'news' => 'News',
@@ -87,6 +87,11 @@ return [
         'newsletter_content' => 'Newsletter email content',
         'enable_newsletter_content' => 'Enable newsletter email content',
         'enable_newsletter_content_description' => 'When this is enabled, the content for the email will be replaced with this textarea. Otherwise the content of the news will be taken.',
+        'seo_tab' => 'SEO settings',
+        'seo_title' => 'Title',
+        'seo_keywords' => 'Keywords',
+        'seo_desc' => 'Description',
+        'seo_image' => 'OG image',
         // Subscribers
         'name' => 'Name',
         'email' => 'E-mail',

@@ -103,3 +103,9 @@ fields:
         type: switch
         default: false
         span: auto
+
+    fields_seo:
+        label: indikator.news::lang.form.seo_tab
+        type: switch
+        default: false
+        span: auto
