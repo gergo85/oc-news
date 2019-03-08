@@ -18,7 +18,6 @@ fields:
     categories:
         label: indikator.news::lang.menu.categories
         type: relation
-        comment: indikator.news::lang.form.categories_comment
         span: auto
 
     common:
