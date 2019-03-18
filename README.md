@@ -50,11 +50,10 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 <a name="seo_support"></a>
 ## Advanced SEO support
-You can enabled this feature on the __Settings > CMS > News & Newsletter__ page. If you use it, you should replace the title and description meta tags with the following lines:
+You can enabled this feature on the __Settings > CMS > News & Newsletter__ page. If you use it, you should replace the title and meta description tags with the following lines:
 ```
-<meta name="title" content="{% if post.seo_title %}{{ post.seo_title }}{% elseif this.page.meta_title %}{{ this.page.meta_title }}{% else %}{{ this.page.title }}{% endif %}">
+<title>{% if post.seo_title %}{{ post.seo_title }}{% elseif this.page.meta_title %}{{ this.page.meta_title }}{% else %}{{ this.page.title }}{% endif %}</title>
 <meta name="description" content="{% if post.seo_desc %}{{ post.seo_desc }}{% elseif this.page.meta_description %}{{ this.page.meta_description }}{% else %}{{ this.page.description }}{% endif %}">
-{% if post.seo_keywords %}<meta name="keywords" content="{{ post.seo_keywords }}">{% endif %}
 {% if post.seo_image %}<meta property="og:image" content="{{ post.seo_image|media }}">{% endif %}
 ```
 
@@ -106,7 +105,7 @@ __For post__
 * {{ post.seo_image|media }} - Full url of image
 * {{ post.status }} - Status of post (1: published, 2: hide, 3: draft)
 * {{ post.featured }} - Is post featured? (1: yes, 2: no)
-* {{ post.next() }} -  First post after current post
+* {{ post.next() }} - First post after current post
 * {{ post.prev() }} - Last post before current post
 
 __For category__
