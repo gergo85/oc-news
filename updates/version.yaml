@@ -118,3 +118,6 @@
     - add_tags_field_to_table.php
 1.10.9: Minor improvements and bugfix.
 1.11.0: Added SEO fields to news.
+1.11.1:
+    - Fixed the issue about new fields.
+    - add_seo_fields_to_table.php
