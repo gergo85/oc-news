@@ -87,7 +87,7 @@ return [
         'newsletter_content' => 'Hírlevél tartalma',
         'enable_newsletter_content' => 'Funkció bekapcsolása',
         'enable_newsletter_content_description' => 'Engedélyezés esetén a hírlevél tartalma le fog cserélődni erre a szöveges részre.',
-        'seo_tab' => 'Kereső-optimalizálás',
+        'seo_tab' => 'Keresőoptimalizálás',
         'seo_title' => 'Cím',
         'seo_keywords' => 'Kulcsszavak',
         'seo_desc' => 'Leírás',
