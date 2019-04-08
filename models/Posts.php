@@ -406,7 +406,7 @@ class Posts extends Model
         }
 
         $properties = $page->getComponentProperties('newsPost');
-        if (!preg_match('/^\{\{([^\}]+)\}\}$/', $properties['slug'], $matches)) {
+        if (!array_key_exists('slug', $properties) || !preg_match('/^\{\{([^\}]+)\}\}$/', $properties['slug'], $matches)) {
             return;
         }
 
