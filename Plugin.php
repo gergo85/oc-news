@@ -223,7 +223,7 @@ class Plugin extends PluginBase
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $form->removeField('slug');
             }
-            if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
+            if (isset($settings->fields_category) && !$settings->fields_category) {
                 $form->removeField('category');
             }
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
@@ -252,7 +252,7 @@ class Plugin extends PluginBase
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $list->removeColumn('slug');
             }
-            if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
+            if (isset($settings->fields_category) && !$settings->fields_category) {
                 $list->removeColumn('category');
             }
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
