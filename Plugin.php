@@ -96,20 +96,24 @@ class Plugin extends PluginBase
     {
         return [
             'Indikator\News\ReportWidgets\Posts' => [
-                'label'   => 'indikator.news::lang.widget.posts',
-                'context' => 'dashboard'
+                'label'       => 'indikator.news::lang.widget.posts',
+                'context'     => 'dashboard',
+                'permissions' => ['indikator.news.posts']
             ],
             'Indikator\News\ReportWidgets\NewPosts' => [
-                'label'   => 'indikator.news::lang.widget.newposts',
-                'context' => 'dashboard'
+                'label'       => 'indikator.news::lang.widget.newposts',
+                'context    ' => 'dashboard',
+                'permissions' => ['indikator.news.posts']
             ],
             'Indikator\News\ReportWidgets\TopPosts' => [
-                'label'   => 'indikator.news::lang.widget.topposts',
-                'context' => 'dashboard'
+                'label'       => 'indikator.news::lang.widget.topposts',
+                'context'     => 'dashboard',
+                'permissions' => ['indikator.news.posts']
             ],
             'Indikator\News\ReportWidgets\Subscribers' => [
-                'label'   => 'indikator.news::lang.widget.subscribers',
-                'context' => 'dashboard'
+                'label'       => 'indikator.news::lang.widget.subscribers',
+                'context'     => 'dashboard',
+                'permissions' => ['indikator.news.subscribers']
             ]
         ];
     }
@@ -223,7 +227,7 @@ class Plugin extends PluginBase
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $form->removeField('slug');
             }
-            if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
+            if (isset($settings->fields_category) && !$settings->fields_category) {
                 $form->removeField('category');
             }
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
@@ -252,7 +256,7 @@ class Plugin extends PluginBase
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $list->removeColumn('slug');
             }
-            if ((isset($settings->fields_category) && !$settings->fields_category) || (!$admin->is_superuser && !$admin->hasPermission('indikator.news.categories'))) {
+            if (isset($settings->fields_category) && !$settings->fields_category) {
                 $list->removeColumn('category');
             }
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
