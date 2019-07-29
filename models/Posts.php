@@ -314,6 +314,15 @@ class Posts extends Model
         $clone->image = $post->image;
         $clone->category_id = $post->category_id;
         $clone->featured = $post->featured;
+        $clone->enable_newsletter_content = $post->enable_newsletter_content;
+        $clone->newsletter_content = $post->newsletter_content;
+        
+        $clone->seo_desc = $post->seo_desc;     
+        $clone->seo_title = $post->seo_title;
+        $clone->seo_keywords = $post->seo_keywords;
+        $clone->seo_image = $post->seo_image;
+        $clone->seo_desc = $post->seo_desc;
+
         $clone->save();
 
         \Event::fire('indikator.news.posts.duplicate', [&$clone, $post]);
