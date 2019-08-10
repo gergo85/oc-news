@@ -28,7 +28,7 @@ return [
         'subscribers' => 'Nowy subskrybent'
     ],
     'stat' => [
-        'posts' => 'post|blogach',
+        'posts' => 'blogach',
         'view' => 'widok',
         'mail' => 'Zapisane',
         'loss' => 'Utrata',
