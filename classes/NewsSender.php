@@ -183,7 +183,8 @@ class NewsSender
             'summary'   => $this->news->introductory,
             'plaintext' => strip_tags($this->news->introductory),
             'content'   => $this->replacedContent,
-            'image'     => $this->news->image
+            'image'     => $this->news->image,
+            'category' => $this->news->category
         ];
     }
 
