@@ -7,7 +7,7 @@ return [
         'author' => 'Gergő Szabó'
     ],
     'menu' => [
-        'news' => 'News',
+        'news' => 'Aktuelles',
         'posts' => 'Nachrichten',
         'categories' => 'Kategorien',
         'subscribers' => 'Abonnenten',
