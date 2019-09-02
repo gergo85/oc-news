@@ -31,7 +31,17 @@ class Post extends ComponentBase
 
     public function onRun()
     {
-        $this->post = $this->page['post'] = $this->loadPost();
+        $post = $this->loadPost();
+
+        if (!$post) {
+            return Redirect::to('404');
+        }
+
+        if (!BackendAuth::check()) {
+            NewsPost::find($post->id)->increment('statistics');
+        }
+
+        $this->post = $this->page['post'] = $post;
     }
 
     protected function loadPost()
@@ -44,16 +54,11 @@ class Post extends ComponentBase
             ? $post->transWhere('slug', $slug)
             : $post->where('slug', $slug);
 
-        $post = $post->isPublished();
+        $post = $post->isPublished()->first();
 
-        if ($post->count() == 0 || !$post = $post->first()) {
-            return Redirect::to('404');
+        if(!$post) {
+            return $post;
         }
-
-        if (!BackendAuth::check()) {
-            NewsPost::where('slug', $slug)->increment('statistics');
-        }
-
         $post->tags = explode(',', $post->tags);
 
         $meta_description = strip_tags($post->introductory);
