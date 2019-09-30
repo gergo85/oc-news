@@ -171,6 +171,8 @@ class NewsSender
             // Bugfix while displaying images in Microsoft Outlook
             // height/width must be set as img attribute and not as style
             $this->replacedContent = preg_replace('/<img (.+)?style="width: (.+)px; height: (.+)px;"/i', '<img $1 width="$2" height="$3"', $this->replacedContent);
+            // With the new version of froala, only the width is set. 
+            $this->replacedContent = preg_replace('/<img (.+)?style="width: (.+)px;"/i', '<img $1 width="$2"', $this->replacedContent);
         }
 
         // Parameters
