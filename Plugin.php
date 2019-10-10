@@ -209,7 +209,7 @@ class Plugin extends PluginBase
     public function registerSchedule($schedule)
     {
         $memory = (int)Config::get('indikator.news::memory_limit');
-        $schedule->command('queue:work --daemon --queue=newsletter --memory-' . $memory)->everyMinute()->withoutOverlapping();
+        $schedule->command('queue:work --daemon --queue=newsletter --memory=' . $memory)->everyMinute()->withoutOverlapping();
     }
 
     public function boot()
