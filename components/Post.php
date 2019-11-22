@@ -74,8 +74,8 @@ class Post extends ComponentBase
         $this->page->meta_image_src = $post->image;
         // Create keyword list, from category name and tag list.
         $post_keywords = $post->category->name.', ';
-        foreach ($post as $key => $post->tags) {
-            $post_keywords .= 'tag';
+        foreach ($post->tags as $key => $tag) {
+            $post_keywords .= $tag;
             if($key != (count($post->tags) - 1)){
                 $post_keywords .= ', ';
             }
