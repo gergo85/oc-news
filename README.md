@@ -144,14 +144,15 @@ You can customize the layout of emails in the __Settings > Mail > Mail templates
 <a name="eseful_extensions"></a>
 ## Useful extensions
 * [FennCS Page Views](https://octobercms.com/plugin/fenncs-newspageviews)
-* [TimFoerster NewsPdf](http://octobercms.com/plugin/timfoerster-newspdf)
+* [TimFoerster NewsPdf](https://octobercms.com/plugin/timfoerster-newspdf)
+* [ReaZzon Gutenberg](https://octobercms.com/plugin/reazzon-gutenberg)
 
 <a name="supported_plugins"></a>
 ## Supported plugins
-* [RainLab Translate](http://octobercms.com/plugin/rainlab-translate)
-* [RainLab Sitemap](http://octobercms.com/plugin/rainlab-sitemap)
-* [Offline SiteSearch](http://octobercms.com/plugin/offline-sitesearch)
-* [Indikator Popup](http://octobercms.com/plugin/indikator-popup)
+* [RainLab Translate](https://octobercms.com/plugin/rainlab-translate)
+* [RainLab Sitemap](https://octobercms.com/plugin/rainlab-sitemap)
+* [Offline SiteSearch](https://octobercms.com/plugin/offline-sitesearch)
+* [Indikator Popup](https://octobercms.com/plugin/indikator-popup)
 
 <a name="available_languages"></a>
 ## Available languages

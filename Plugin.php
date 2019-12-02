@@ -9,6 +9,7 @@ use Indikator\News\Models\Posts;
 use Indikator\News\Models\Settings;
 use Indikator\News\Controllers\Posts as PostsController;
 use Backend\Models\User;
+use Config;
 
 class Plugin extends PluginBase
 {
@@ -207,7 +208,8 @@ class Plugin extends PluginBase
 
     public function registerSchedule($schedule)
     {
-        $schedule->command('queue:work --daemon --queue=newsletter')->everyMinute()->withoutOverlapping();
+        $memory = (int)Config::get('indikator.news::memory_limit');
+        $schedule->command('queue:work --daemon --queue=newsletter --memory=' . $memory)->everyMinute()->withoutOverlapping();
     }
 
     public function boot()
