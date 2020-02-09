@@ -50,12 +50,29 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 
 <a name="seo_support"></a>
 ## Advanced SEO support
-You can enabled this feature on the __Settings > CMS > News & Newsletter__ page. If you use it, you should replace the title and meta description tags with the following lines:
+You can enable this feature on the __Settings > CMS > News & Newsletter__ page. If you use it, you should replace the title and meta description tags with the following lines:
 ```
 <title>{% if post.seo_title %}{{ post.seo_title }}{% elseif this.page.meta_title %}{{ this.page.meta_title }}{% else %}{{ this.page.title }}{% endif %}</title>
 <meta name="description" content="{% if post.seo_desc %}{{ post.seo_desc }}{% elseif this.page.meta_description %}{{ this.page.meta_description }}{% else %}{{ this.page.description }}{% endif %}">
 {% if post.seo_image %}<meta property="og:image" content="{{ post.seo_image|media }}">{% endif %}
 ```
+
+### Additional SEO Configuration
+
+Additionally, the following has been introduced for better SEO
+- A canonical URL specification tag
+- The use of the default post image as the seo image
+- A list of meta keywords made up of from post category and tags, the user adds to their post.
+
+Along side the snippet above, you can add the following code the head of your theme files.
+
+```
+ <link rel="canonical" href="{{ this.page.meta_canonical }}">
+ <link rel="image_src" href="{{ this.page.meta_image_src|media }}">
+ <meta name="keywords" content="{{ this.page.meta_keywords }}"> 
+```
+
+You should include the `meta_image_src` only you don't use the post seo image to avoid confusion.
 
 <a name="autostat"></a>
 ## Automatic statistics
