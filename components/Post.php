@@ -66,6 +66,8 @@ class Post extends ComponentBase
             $meta_description = substr($meta_description, 0, 252).'...';
         }
 
+        $post->setUrl($this->postPage, $this->controller);
+
         // General SEO Tags
         $this->page->title = $post->title;
         $this->page->meta_title = $post->title;
