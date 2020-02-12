@@ -33,7 +33,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-newspaper-o',
                 'iconSvg'     => 'plugins/indikator/news/assets/images/news-icon.svg',
                 'permissions' => ['indikator.news.*'],
-                'order'       => 500,
+                'order'       => 320,
 
                 'sideMenu' => [
                     'posts' => [
