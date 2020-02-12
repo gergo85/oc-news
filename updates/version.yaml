@@ -124,3 +124,6 @@
 1.11.2: Added permission to Dashboard widgets.
 1.11.3: Added additional fields that are copied when cloning a post.
 1.11.4: Minor improvements and bugfixes.
+1.11.5:
+    - Minor UI and database improvements.
+    - change_varchar_length.php

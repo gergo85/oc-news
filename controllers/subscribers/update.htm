@@ -22,7 +22,9 @@ $next = \Indikator\News\Models\Subscribers::where('id', '>', $formModel->id)->mi
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
+
     <?php Block::put('form-contents') ?>
+
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
         </div>
@@ -30,7 +32,7 @@ $next = \Indikator\News\Models\Subscribers::where('id', '>', $formModel->id)->mi
             <?= $this->formRenderPrimaryTabs() ?>
         </div>
 
-        <div class="form-buttons">
+        <div class="form-buttons" style="padding: 20px 15px;">
             <div class="loading-indicator-container">
                 <button
                     type="submit"

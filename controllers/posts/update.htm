@@ -29,7 +29,42 @@ foreach ($pages as $page) {
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
+
     <?php Block::put('form-contents') ?>
+
+        <style type="text/css">
+            .field-datepicker .col-md-6 {
+                float: left;
+                width: 148px;
+            }
+            .field-datepicker .col-md-6:nth-child(2) {
+                width: 112px;
+            }
+            .field-datepicker .icon {
+                top: -2px;
+            }
+            .btn {
+                margin: 8px 0;
+            }
+            .form-buttons button,
+            .form-buttons .btn-text {
+                position: relative;
+                top: 5px;
+            }
+            .form-buttons .cancel {
+                position: relative;
+                top: 0;
+            }
+            .form-buttons .btn-icon {
+                position: relative;
+                top: 12px;
+            }
+            .form-buttons span a {
+                position: relative;
+                top: 8px;
+            }
+        </style>
+
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
         </div>
@@ -37,7 +72,7 @@ foreach ($pages as $page) {
             <?= $this->formRenderPrimaryTabs() ?>
         </div>
 
-        <div class="form-buttons">
+        <div class="form-buttons" style="padding: 20px 15px;">
             <div class="loading-indicator-container">
                 <button
                     type="submit"
@@ -92,7 +127,7 @@ foreach ($pages as $page) {
                 <?php endif ?>
                 <?= $this->fireViewEvent('indikator.news.extendPostUpdateViewButtons', [$formModel]) ?>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('indikator/news/posts') ?>" class="cancel"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
                 <?php if ($next): ?>
                 <a

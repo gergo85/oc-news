@@ -2,8 +2,6 @@
 #  Field Definitions
 # ===================================
 
-cssClass: row
-
 fields:
 
     title:
@@ -12,39 +10,51 @@ fields:
         attributes:
            autofocus: ''
         span: storm
-        cssClass: col-sm-12 col-lg-6
+        cssClass: col-lg-6
 
     slug:
         label: indikator.news::lang.form.slug
         required: true
         preset: title
         span: storm
-        cssClass: col-sm-12 col-lg-6
+        cssClass: col-lg-6
 
     category:
         label: indikator.news::lang.form.category
         type: relation
         span: storm
-        cssClass: col-sm-12 col-lg-6
+        cssClass: col-md-6
 
     tags:
         label: indikator.news::lang.form.tags
         type: taglist
         span: storm
-        cssClass: col-sm-12 col-lg-6
+        cssClass: col-md-6
 
 tabs:
+
+    icons:
+
+        indikator.news::lang.form.introductory: icon-commenting-o
+        indikator.news::lang.form.content: icon-file-text-o
+        indikator.news::lang.form.newsletter_content_tab: icon-envelope-o
+        indikator.news::lang.form.seo_tab: icon-search
+
     fields:
 
         introductory:
             tab: indikator.news::lang.form.introductory
             type: richeditor
             size: large
+            span: storm
+            cssClass: col-xs-12
 
         content:
             tab: indikator.news::lang.form.content
             type: richeditor
             size: giant
+            span: storm
+            cssClass: col-xs-12
 
         enable_newsletter_content:
             tab: indikator.news::lang.form.newsletter_content_tab
@@ -53,6 +63,8 @@ tabs:
             type: switch
             default: false
             context: update
+            span: storm
+            cssClass: col-xs-12
 
         newsletter_content:
             tab: indikator.news::lang.form.newsletter_content_tab
@@ -60,47 +72,60 @@ tabs:
             type: richeditor
             size: giant
             context: update
+            span: storm
+            cssClass: col-xs-12
 
         seo_desc:
             tab: indikator.news::lang.form.seo_tab
             label: indikator.news::lang.form.seo_desc
             type: textarea
             size: large
-            span: right
+            span: storm
+            cssClass: col-md-6
 
         seo_title:
             tab: indikator.news::lang.form.seo_tab
             label: indikator.news::lang.form.seo_title
-            span: left
+            span: storm
+            cssClass: col-md-6
 
         seo_keywords:
             tab: indikator.news::lang.form.seo_tab
             label: indikator.news::lang.form.seo_keywords
-            span: left
+            span: storm
+            cssClass: col-md-6
 
         seo_image:
             tab: indikator.news::lang.form.seo_tab
             label: indikator.news::lang.form.seo_image
             type: mediafinder
             mode: file
-            span: left
+            span: storm
+            cssClass: col-md-6
 
 secondaryTabs:
+
     fields:
 
         postinfo:
             type: postinfo
             context: update
+            span: storm
+            cssClass: col-xs-12
 
         image:
             label: indikator.news::lang.form.image
             type: mediafinder
             mode: image
+            span: storm
+            cssClass: col-xs-12
 
         published_at:
             label: indikator.news::lang.form.published_at
             type: datepicker
             mode: datetime
+            span: storm
+            cssClass: col-xs-12
 
         last_send_at:
             label: indikator.news::lang.form.last_send_at
@@ -108,10 +133,14 @@ secondaryTabs:
             readOnly: true
             mode: datetime
             disabled: disabeld
+            span: storm
+            cssClass: col-xs-12
 
         user:
             label: indikator.news::lang.form.author
             type: dropdown
+            span: storm
+            cssClass: col-xs-12
 
         status:
             label: indikator.news::lang.form.status
@@ -122,7 +151,8 @@ secondaryTabs:
                 2: indikator.news::lang.form.status_hide
                 3: indikator.news::lang.form.status_draft
             default: 3
-            span: auto
+            span: storm
+            cssClass: col-xs-6
 
         featured:
             label: indikator.news::lang.form.featured
@@ -132,4 +162,5 @@ secondaryTabs:
                 1: indikator.news::lang.form.yes
                 2: indikator.news::lang.form.no
             default: 2
-            span: auto
+            span: storm
+            cssClass: col-xs-6

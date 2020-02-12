@@ -224,7 +224,7 @@ class Plugin extends PluginBase
             }
 
             $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
-            $admin = BackendAuth::getUser();
+            $admin    = BackendAuth::getUser();
 
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $form->removeField('slug');
@@ -253,7 +253,7 @@ class Plugin extends PluginBase
             }
 
             $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
-            $admin = BackendAuth::getUser();
+            $admin    = BackendAuth::getUser();
 
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $list->removeColumn('slug');

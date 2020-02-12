@@ -9,6 +9,19 @@
 
     <?php Block::put('form-contents') ?>
 
+        <style type="text/css">
+            .field-datepicker .col-md-6 {
+                float: left;
+                width: 148px;
+            }
+            .field-datepicker .col-md-6:nth-child(2) {
+                width: 112px;
+            }
+            .field-datepicker .icon {
+                top: -2px;
+            }
+        </style>
+
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
         </div>
@@ -16,7 +29,7 @@
             <?= $this->formRenderPrimaryTabs() ?>
         </div>
 
-        <div class="form-buttons">
+        <div class="form-buttons" style="padding: 20px 15px;">
             <div class="loading-indicator-container">
                 <button
                     type="submit"
