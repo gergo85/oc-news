@@ -181,6 +181,7 @@ class NewsSender
             'email' => $receiver->email,
             'title' => $this->news->title,
             'slug'  => $this->news->slug,
+            'subtitle' => $this->news->subtitle,
             'introductory' => $this->news->introductory,
             'summary'   => $this->news->introductory,
             'plaintext' => strip_tags($this->news->introductory),
