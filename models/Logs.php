@@ -53,7 +53,7 @@ class Logs extends Model
 
     public function scopeIsViewed($query)
     {
-        return $query->whereNotNull('viewed_At');
+        return $query->whereNotNull('viewed_at');
     }
 
     public function scopeIsClicked($query)
