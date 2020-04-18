@@ -127,3 +127,6 @@
 1.11.5:
     - Minor UI and database improvements.
     - change_varchar_length.php
+1.11.6:
+    - Improved the list filters.
+    - common_rename_comment.php

@@ -4,6 +4,17 @@
 
 scopes:
 
+    categories:
+        label: indikator.news::lang.form.category
+        modelClass: Indikator\News\Models\Categories
+        nameFrom: name
+        scope: FilterCategories
+
+    statistics:
+        label: indikator.news::lang.stat.mail
+        type: numberrange
+        conditions: statistics >= ':min' and statistics <= ':max'
+
     status_active:
         label: indikator.news::lang.form.status_active
         type: checkbox
@@ -18,17 +29,6 @@ scopes:
         label: indikator.news::lang.form.status_pending
         type: checkbox
         conditions: status = 3
-
-    categories:
-        label: indikator.news::lang.form.category
-        modelClass: Indikator\News\Models\Categories
-        nameFrom: name
-        scope: FilterCategories
-
-    statistics:
-        label: indikator.news::lang.stat.mail
-        type: numberrange
-        conditions: statistics >= ':min' and statistics <= ':max'
 
     created_date:
         label: indikator.news::lang.form.created_at

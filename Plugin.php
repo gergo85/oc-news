@@ -6,8 +6,11 @@ use BackendAuth;
 use Event;
 use Db;
 use Indikator\News\Models\Posts;
+use Indikator\News\Models\Categories;
+use Indikator\News\Models\Subscribers;
 use Indikator\News\Models\Settings;
 use Indikator\News\Controllers\Posts as PostsController;
+use Indikator\News\Controllers\Subscribers as SubscribersController;
 use Backend\Models\User;
 use Config;
 
@@ -220,9 +223,9 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-        /**
-        * Hide unused form fields
-        */
+        /*
+         * Hide unused form fields
+         */
         PostsController::extendFormFields(function($form, $model, $context)
         {
             if (!$model instanceof Posts) {
@@ -230,20 +233,23 @@ class Plugin extends PluginBase
             }
 
             $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
-            $admin    = BackendAuth::getUser();
 
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $form->removeField('slug');
             }
-            if (isset($settings->fields_category) && !$settings->fields_category) {
+
+            if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
                 $form->removeField('category');
             }
+
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
                 $form->removeField('tags');
             }
+
             if (!isset($settings->fields_author) || (isset($settings->fields_author) && !$settings->fields_author)) {
                 $form->removeField('user');
             }
+
             if (!isset($settings->fields_seo) || (isset($settings->fields_seo) && !$settings->fields_seo)) {
                 $form->removeField('seo_title');
                 $form->removeField('seo_keywords');
@@ -252,6 +258,22 @@ class Plugin extends PluginBase
             }
         });
 
+        SubscribersController::extendFormFields(function($form, $model, $context)
+        {
+            if (!$model instanceof Subscribers) {
+                return;
+            }
+
+            $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
+
+            if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
+                $form->removeField('categories');
+            }
+        });
+
+        /*
+         * Hide unused list columns
+         */
         PostsController::extendListColumns(function($list, $model)
         {
             if (!$model instanceof Posts) {
@@ -259,25 +281,69 @@ class Plugin extends PluginBase
             }
 
             $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
-            $admin    = BackendAuth::getUser();
 
             if (isset($settings->fields_slug) && !$settings->fields_slug) {
                 $list->removeColumn('slug');
             }
-            if (isset($settings->fields_category) && !$settings->fields_category) {
+
+            if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
                 $list->removeColumn('category');
             }
+
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
                 $list->removeColumn('tags');
             }
+
             if (!isset($settings->fields_author) || (isset($settings->fields_author) && !$settings->fields_author)) {
                 $list->removeColumn('user');
             }
+
+            if (Posts::where('tags', '!=', '')->count() == 0) {
+                $list->removeColumn('tags');
+            }
         });
 
-        /**
-        * Extensions for Sitemap
-        */
+        SubscribersController::extendListColumns(function($list, $model)
+        {
+            if (!$model instanceof Subscribers) {
+                return;
+            }
+
+            $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
+
+            if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
+                $list->removeColumn('category');
+            }
+
+            if (Subscribers::where('name', '!=', '')->count() == 0) {
+                $list->removeColumn('tags');
+            }
+
+            if (Subscribers::where('comment', '!=', '')->count() == 0) {
+                $list->removeColumn('comment');
+            }
+        });
+
+        /*
+         * Hide unused list filters
+         */
+        PostsController::extendListFilterScopes(function($filter)
+        {
+            if (Categories::count() == 0) {
+                $filter->removeScope('category');
+            }
+        });
+
+        SubscribersController::extendListFilterScopes(function($filter)
+        {
+            if (Categories::count() == 0) {
+                $filter->removeScope('categories');
+            }
+        });
+
+        /*
+         * Extensions for Sitemap
+         */
         Event::listen('pages.menuitem.listTypes', function()
         {
             return [
@@ -300,9 +366,9 @@ class Plugin extends PluginBase
             }
         });
 
-        /**
-        * Attach posts relationship to backend user model as extension
-        */
+        /*
+         * Attach posts relationship to backend user model as extension
+         */
         User::extend(function($model)
         {
             $model->hasMany['posts'] = [

@@ -28,7 +28,6 @@ columns:
     category:
         label: indikator.news::lang.form.category
         sortable: false
-        invisible: true
         type: partial
         path: ~/plugins/indikator/news/models/posts/_category.htm
 

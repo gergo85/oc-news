@@ -122,6 +122,17 @@ class Posts extends Model
         return $result;
     }
 
+    public function filterCategory()
+    {
+        $result = [];
+
+        foreach (NewsCategories::where('status', 1)->orderBy('name', 'asc')->get()->all() as $item) {
+            $result[$item->id] = $item->name;
+        }
+
+        return $result;
+    }
+
     /**
      * Check value of some fields
      */

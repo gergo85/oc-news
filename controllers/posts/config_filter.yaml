@@ -4,20 +4,11 @@
 
 scopes:
 
-    status_published:
-        label: indikator.news::lang.form.status_published
-        type: checkbox
-        conditions: status = 1
-
-    status_hide:
-        label: indikator.news::lang.form.status_hide
-        type: checkbox
-        conditions: status = 2
-
-    status_draft:
-        label: indikator.news::lang.form.status_draft
-        type: checkbox
-        conditions: status = 3
+    category:
+        label: indikator.news::lang.form.category
+        conditions: category_id in (:filtered)
+        modelClass: Indikator\News\Models\Posts
+        options: filterCategory
 
     statistics:
         label: indikator.news::lang.stat.viewed
@@ -33,6 +24,21 @@ scopes:
         label: indikator.news::lang.form.published_at
         type: daterange
         conditions: published_at >= ':after' AND published_at <= ':before'
+
+    status_published:
+        label: indikator.news::lang.form.status_published
+        type: checkbox
+        conditions: status = 1
+
+    status_hide:
+        label: indikator.news::lang.form.status_hide
+        type: checkbox
+        conditions: status = 2
+
+    status_draft:
+        label: indikator.news::lang.form.status_draft
+        type: checkbox
+        conditions: status = 3
 
     created_date:
         label: indikator.news::lang.form.created_at
