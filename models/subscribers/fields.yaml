@@ -23,7 +23,7 @@ fields:
         span: storm
         cssClass: col-lg-6
 
-    common:
+    comment:
         label: indikator.news::lang.form.comment
         type: textarea
         size: small

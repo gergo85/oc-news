@@ -23,7 +23,7 @@ columns:
         type: partial
         path: ~/plugins/indikator/news/models/subscribers/_category.htm
 
-    common:
+    comment:
         label: indikator.news::lang.form.comment
         searchable: true
         invisible: true
