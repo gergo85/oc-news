@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="popup">×</button>
-    <h4 class="modal-title"><?= $subscriber->name ?></h4>
+    <h4 class="modal-title"><?= $subscriber->name ? $subscriber->name : $subscriber->email ?></h4>
 </div>
 <div class="modal-body">
     <div class="row">

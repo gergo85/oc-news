@@ -120,7 +120,7 @@ class NewsSender
     {
         $activeSubscribers = Subscribers::where('status', 1);
 
-        if (Categories::count() > 0) {
+        if ($this->news->category_id > 0) {
             $activeSubscribers = $this->news->category->subscribers()->isSubscribed();
         }
 
@@ -151,7 +151,6 @@ class NewsSender
             else {
                 $content = $this->news->lang($receiver->locale)->content;
             }
-
         }
         else {
             if ($this->news->enable_newsletter_content) {
@@ -177,17 +176,17 @@ class NewsSender
 
         // Parameters
         return [
-            'name'  => $receiver->name,
-            'email' => $receiver->email,
-            'title' => $this->news->title,
-            'slug'  => $this->news->slug,
-            'subtitle' => $this->news->subtitle,
+            'name'         => isset($receiver->name) ? $receiver->name : trim($receiver->first_name.' '.$receiver->last_name),
+            'email'        => $receiver->email,
+            'title'        => $this->news->title,
+            'slug'         => $this->news->slug,
+            'subtitle'     => $this->news->subtitle,
             'introductory' => $this->news->introductory,
-            'summary'   => $this->news->introductory,
-            'plaintext' => strip_tags($this->news->introductory),
-            'content'   => $this->replacedContent,
-            'image'     => $this->news->image,
-            'category' => $this->news->category
+            'summary'      => $this->news->introductory,
+            'plaintext'    => strip_tags($this->news->introductory),
+            'content'      => $this->replacedContent,
+            'image'        => $this->news->image,
+            'category'     => $this->news->category
         ];
     }
 
@@ -240,7 +239,7 @@ class NewsSender
             ], 'newsletter');
 
             if ($qId) {
-                Logs::where('id', $logEntry->id)->update(['job_id' => $qId]);
+                Logs::whereId($logEntry->id)->update(['job_id' => $qId]);
             }
 
             return true;

@@ -12,6 +12,7 @@ class SendNews
 {
     /**
      * Sending news to a receiver
+     * 
      * @param $job
      * @param $data
      * @return void
@@ -44,6 +45,7 @@ class SendNews
     /**
      * Adds logger for click and view tracking when they are
      * enabled in the settings to the given $logEntry
+     * 
      * @param $logEntry
      * @return void
      */
