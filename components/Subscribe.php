@@ -42,9 +42,8 @@ class Subscribe extends ComponentBase
 
         // Validate input data
         $rules = [
-            'name'     => 'required|between:2,64',
-            'email'    => 'required|email|between:8,64',
-            'category' => 'array'
+            'name'  => 'required|between:2,64',
+            'email' => 'required|email|between:8,64'
         ];
 
         $validation = Validator::make($data, $rules);
@@ -52,11 +51,12 @@ class Subscribe extends ComponentBase
             throw new ValidationException($validation);
         }
 
-        $email = post('email');
+        // Get input data
         $name  = post('name');
+        $email = post('email');
         $categories = post('category', []);
 
-        // looking for existing subscriber
+        // Looking for existing subscriber
         $subscriberResult = Subscribers::email($email);
 
         if ($subscriberResult->count() > 0) {
@@ -64,17 +64,17 @@ class Subscribe extends ComponentBase
             // Update the name
             $subscriber->name = $name;
         }
+        // Register new one
         else {
-            // Register new one
             $subscriber = Subscribers::create([
                 'name'          => $name,
                 'email'         => $email,
-                'common'        => '',
+                'comment'       => '',
                 'locale'        => App::getLocale(),
                 'created'       => 2,
                 'statistics'    => 0,
-                'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => date('Y-m-d H:i:s'),
+                'created_at'    => now(),
+                'updated_at'    => now(),
                 'registered_at' => now(),
                 'registered_ip' => Request::ip(),
                 'status'        => 3

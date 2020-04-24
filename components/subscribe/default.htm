@@ -1,4 +1,4 @@
-<form data-request="onSubscription" data-request-success="alert('{{ text_messages }}')">
+<form data-request="onSubscription" data-request-success="alert('{{ text_messages }}');$('#subscriptionForm').trigger('reset');" id="subscriptionForm">
     <div class="form-group">
         <label for="subscribersName">{{ text_name }}</label>
         <input name="name" type="text" class="form-control" id="subscribersName" required>

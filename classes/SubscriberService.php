@@ -9,19 +9,22 @@ trait SubscriberService
     /**
      * Handles subscriber registration
      * either by registration in the frontend or by creating in the backend
+     * 
      * @param $subscriber
-     * @param $listOfCategoryIds array of subscribing Ids
+     * @param $listOfCategoryIds array of subscribing ids
      * @return void
      */
-    public function onSubscriberRegister($subscriber, $listOfCategoryIds = [])
+    public function onSubscriberRegister($subscriber, $listOfCategoryIds)
     {
         // Register category
-        foreach ($listOfCategoryIds as $category) {
-            if (is_numeric($category) && Categories::where(['id' => $category, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $category])->count() == 0) {
-                Db::table('indikator_news_relations')->insertGetId([
-                    'subscriber_id' => $subscriber->id,
-                    'categories_id' => $category
-                ]);
+        if (is_array($listOfCategoryIds)) {
+            foreach ($listOfCategoryIds as $category) {
+                if (is_numeric($category) && Categories::where(['id' => $category, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $category])->count() == 0) {
+                    Db::table('indikator_news_relations')->insertGetId([
+                        'subscriber_id' => $subscriber->id,
+                        'categories_id' => $category
+                    ]);
+                }
             }
         }
 
