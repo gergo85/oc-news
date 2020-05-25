@@ -185,14 +185,13 @@ class Posts extends Model
         ], $options));
 
         $isPrevious = in_array($direction, ['previous', -1]);
-        $directionOrder = $isPrevious ? 'asc' : 'desc';
-        $directionOperator = $isPrevious ? '>' : '<';
+        $directionOrder = $isPrevious ? 'desc' : 'asc';
+        $directionOperator = $isPrevious ? '<' : '>';
 
         return $query
         ->where('id', '<>', $this->id)
-        ->whereDate($attribute, $directionOperator, $this->$attribute)
-        ->orderBy($attribute, $directionOrder)
-        ;
+        ->where($attribute, $directionOperator, $this->$attribute)
+        ->orderBy($attribute, $directionOrder);
     }
 
     /**
@@ -202,7 +201,7 @@ class Posts extends Model
      */
     public function next()
     {
-        return self::isPublished()->applySibling(-1)->first();
+        return self::isPublished()->applySibling()->first();
     }
 
     /**
@@ -212,7 +211,7 @@ class Posts extends Model
      */
     public function prev()
     {
-        return self::isPublished()->applySibling()->first();
+        return self::isPublished()->applySibling(-1)->first();
     }
 
     public function scopeListFrontEnd($query, $options)
