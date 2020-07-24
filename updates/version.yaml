@@ -131,3 +131,4 @@
     - Improved the list filters.
     - common_rename_comment.php
 1.11.7: Improved the frontend components.
+1.11.8: Fixed bug showing the previous and next post
