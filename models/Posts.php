@@ -35,7 +35,10 @@ class Posts extends Model
         ['slug', 'index' => true],
         'introductory',
         'content',
-        'newsletter_content'
+        'newsletter_content',
+        'seo_desc',
+        'seo_title',
+        'seo_keywords'
     ];
 
     protected $dates = [
@@ -332,7 +335,6 @@ class Posts extends Model
         $clone->seo_title = $post->seo_title;
         $clone->seo_keywords = $post->seo_keywords;
         $clone->seo_image = $post->seo_image;
-        $clone->seo_desc = $post->seo_desc;
 
         $clone->save();
 
