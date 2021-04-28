@@ -36,7 +36,6 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 * Back-end widgets
 * Available extensions
 * Innovative solutions
-* Regular updates
 
 <a name="statistics"></a>
 ## Statistics and graphs

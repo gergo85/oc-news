@@ -329,7 +329,7 @@ class Posts extends Model
         $clone->featured = $post->featured;
         $clone->enable_newsletter_content = $post->enable_newsletter_content;
         $clone->newsletter_content = $post->newsletter_content;
-        
+
         $clone->seo_desc = $post->seo_desc;     
         $clone->seo_title = $post->seo_title;
         $clone->seo_keywords = $post->seo_keywords;
