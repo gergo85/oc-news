@@ -1,15 +1,11 @@
 {
-    "name": "indikator/oc-news",
+    "name": "indikator/news-plugin",
     "type": "october-plugin",
-    "description": "Plugin News & Newsletter for October CMS",
-    "homepage": "https://github.com/gergo85/oc-news",
-    "keywords": ["october", "octobercms", "newsandnewsletter"],
+    "description": "Plugin can be used for publishing news simply on the website.",
+    "homepage": "https://octobercms.com/plugin/indikator-news",
+    "keywords": ["october", "octobercms", "news"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "INDIKATOR",
-            "role": "Co-founder"
-        }
-    ],
-    "minimum-stability": "dev"
+    "require": {
+        "composer/installers": "~1.0"
+    }
 }
