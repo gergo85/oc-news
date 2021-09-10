@@ -2,7 +2,6 @@
 
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Settings;
-use Jenssegers\Date\Date;
 
 class Logger
 {
@@ -11,7 +10,7 @@ class Logger
         return Logs::create([
             'news_id'       => $newsletterId,
             'subscriber_id' => $subscriberId,
-            'queued_at'     => Date::now(),
+            'queued_at'     => now(),
             'status'        => 'Queued'
         ]);
     }
@@ -20,7 +19,7 @@ class Logger
     {
         $log = Logs::findOrFail($id);
         $log->status = 'Sending';
-        $log->send_at = Date::now();
+        $log->send_at = now();
         $log->save();
     }
 
@@ -28,7 +27,7 @@ class Logger
     {
         $log = Logs::findOrFail($id);
         $log->status = 'Sent';
-        $log->send_at = Date::now();
+        $log->send_at = now();
         $log->save();
     }
 
@@ -48,7 +47,7 @@ class Logger
                 if (!$log->clicked_at) {
                     $log->status = 'Viewed';
                 }
-                $log->viewed_at = Date::now();
+                $log->viewed_at = now();
                 $log->save();
             }
         }
@@ -60,7 +59,7 @@ class Logger
             $log = Logs::find($id);
             if ($log && !$log->clicked_at) {
                 $log->status = 'Clicked';
-                $log->clicked_at = Date::now();
+                $log->clicked_at = now();
                 $log->save();
             }
         }

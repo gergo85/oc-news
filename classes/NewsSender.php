@@ -7,7 +7,6 @@ use Queue;
 use Log;
 use BackendAuth;
 use Db;
-use Jenssegers\Date\Date;
 use Illuminate\Support\Collection;
 use System\Classes\PluginManager;
 use Indikator\News\Models\Logs;
@@ -95,7 +94,7 @@ class NewsSender
     public function sendNewsletter()
     {
         $result = $this->sendToActiveSubscribers();
-        $this->news->last_send_at = new Date();
+        $this->news->last_send_at = now();
         $this->news->save();
 
         return $result;
@@ -107,7 +106,7 @@ class NewsSender
     public function resendNewsletter()
     {
         $result = $this->sendToActiveSubscribers();
-        $this->news->last_send_at = new Date();
+        $this->news->last_send_at = now();
         $this->news->save();
 
         return $result;
