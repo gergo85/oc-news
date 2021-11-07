@@ -6,7 +6,6 @@ use Indikator\News\Models\Subscribers as Item;
 use Indikator\News\Models\Logs;
 use Db;
 use Flash;
-use Jenssegers\Date\Date;
 use Lang;
 use Request;
 use Redirect;
@@ -125,13 +124,13 @@ class Subscribers extends Controller
         }
 
         if ($subscriber->status == 3 && $subscriber->confirmation_hash == $hash) {
-            if ($subscriber->registered_at < Date::now()->subDay()) {
+            if ($subscriber->registered_at < now()) {
                 Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_expired'));
                 return Redirect::to('/');
             }
 
             $subscriber->confirmed_ip = Request::ip();
-            $subscriber->confirmed_at = Date::now();
+            $subscriber->confirmed_at = now();
             $subscriber->activate();
 
             Flash::success(Lang::get('indikator.news::lang.flash.subscriber_confirmation'));
