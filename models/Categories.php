@@ -5,7 +5,7 @@ use Model;
 class Categories extends Model
 {
     use \October\Rain\Database\Traits\Sluggable;
-    use \October\Rain\Database\Traits\Sortable;
+    use \October\Rain\Database\Traits\NestedTree;
     use \October\Rain\Database\Traits\Validation;
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
@@ -23,6 +23,7 @@ class Categories extends Model
         'slug' => 'name'
     ];
 
+
     public $belongsToMany = [
         'subscribers' => [
             'Indikator\News\Models\Subscribers',
@@ -30,6 +31,22 @@ class Categories extends Model
             'key'      => 'categories_id',
             'otherKey' => 'subscriber_id',
             'order'    => 'name'
+        ],
+        'posts' => [
+            'Indikator\News\Models\Posts',
+            'table' => 'indikator_news_posts_categories',
+            'order' => 'published_at desc',
+            'scope' => 'isPublished',
+            'key'      => 'category_id',
+            'otherKey' => 'post_id'
+        ],
+        'posts_count' => [
+            'Indikator\News\Models\Posts',
+            'table' => 'indikator_news_posts_categories',
+            'scope' => 'isPublished',
+            'key'      => 'category_id',
+            'otherKey' => 'post_id',
+            'count' => true
         ]
     ];
 
@@ -60,5 +77,10 @@ class Categories extends Model
         ];
 
         return $this->url = $controller->pageUrl($pageName, $params);
+    }
+
+    public function scopeIsActive($query) {
+        $query->where('hidden', 2)
+            ->where('status', 1);
     }
 }

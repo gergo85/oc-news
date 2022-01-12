@@ -9,17 +9,12 @@ use Redirect;
 
 class Posts extends ComponentBase
 {
-    public $posts;
-
-    public $noPostsMessage;
-
-    public $postPage;
-
-    public $sortOrder;
-
-    public $category;
-
-    public $searchFilter;
+    public $posts,
+        $noPostsMessage,
+        $postPage,
+        $sortOrder,
+        $category,
+        $searchFilter;
 
     public function componentDetails()
     {
@@ -124,7 +119,7 @@ class Posts extends ComponentBase
     {
         $this->prepareVars();
 
-        $this->category = $this->page['category'] = $this->loadCategory();
+        $this->categories = $this->page['category'] = $this->loadCategory();
         $this->page['currentCategorySlug'] = $this->category ? $this->category->slug : null;
         $this->posts = $this->page['posts'] = $this->listPosts();
 

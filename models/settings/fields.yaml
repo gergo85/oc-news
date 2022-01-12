@@ -34,6 +34,17 @@ fields:
         default: true
         span: left
 
+    newsletter_subscriber_categories:
+        label: indikator.news::lang.backend_settings.newsletter_subscriber_categories
+        comment: indikator.news::lang.backend_settings.newsletter_subscriber_categories_comment
+        type: switch
+        default: true
+        span: left
+        trigger:
+            action: empty
+            field: fields_category
+            condition: unchecked
+
     admin_section:
         label: indikator.news::lang.backend_settings.admin_section
         type: section

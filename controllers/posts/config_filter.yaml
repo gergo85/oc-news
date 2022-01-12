@@ -6,9 +6,9 @@ scopes:
 
     category:
         label: indikator.news::lang.form.category
-        conditions: category_id in (:filtered)
-        modelClass: Indikator\News\Models\Posts
-        options: filterCategory
+        modelClass: Indikator\News\Models\Categories
+        nameFrom: name
+        scope: FilterCategories
 
     statistics:
         label: indikator.news::lang.stat.viewed

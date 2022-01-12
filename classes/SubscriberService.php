@@ -18,11 +18,11 @@ trait SubscriberService
     {
         // Register category
         if (is_array($listOfCategoryIds)) {
-            foreach ($listOfCategoryIds as $category) {
-                if (is_numeric($category) && Categories::where(['id' => $category, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $category])->count() == 0) {
+            foreach ($listOfCategoryIds as $categoryId) {
+                if (is_numeric($categoryId) && Categories::where(['id' => $categoryId, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $categoryId])->count() == 0) {
                     Db::table('indikator_news_relations')->insert([
                         'subscriber_id' => $subscriber->id,
-                        'categories_id' => $category
+                        'categories_id' => $categoryId
                     ]);
                 }
             }

@@ -24,8 +24,8 @@ class Subscribe extends ComponentBase
 
     public function onRun()
     {
-        $category = Categories::where(['status' => 1, 'hidden' => 2]);
-        $this->page['category_list']  = $category->get()->all();
+        $category = Categories::isActive();
+        $this->page['category_list']  = $category->get();
         $this->page['category_count'] = $category->count();
 
         $this->page['text_messages'] = Lang::get('indikator.news::lang.messages.subscribed');

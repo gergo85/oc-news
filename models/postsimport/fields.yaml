@@ -1,0 +1,33 @@
+fields:
+
+    update_existing:
+        label: indikator.news::lang.import.update_existing_label
+        comment: indikator.news::lang.import.update_existing_comment
+        type: checkbox
+        default: true
+        span: left
+
+    auto_create_categories:
+        label: indikator.news::lang.import.auto_create_categories_label
+        comment: indikator.news::lang.import.auto_create_categories_comment
+        type: checkbox
+        default: true
+        span: right
+
+    categories:
+        label: indikator.news::lang.import.categories_label
+        commentAbove: indikator.news::lang.import.categories_comment
+        type: checkboxlist
+        span: right
+        cssClass: field-indent
+        trigger:
+            action: hide
+            field: auto_create_categories
+            condition: checked
+
+    default_author:
+        label: indikator.news::lang.import.default_author_label
+        comment: indikator.news::lang.import.default_author_comment
+        type: dropdown
+        placeholder: indikator.news::lang.import.default_author_placeholder
+        span: left

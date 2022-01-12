@@ -61,6 +61,7 @@ return [
         'content' => 'Content',
         'image' => 'Image',
         'category' => 'Category',
+        'categories' => 'Categories',
         'tags' => 'Tags',
         'author' => 'Author',
         'select_user' => '-- select user --',

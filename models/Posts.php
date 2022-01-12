@@ -7,6 +7,7 @@ use Cms\Classes\Page as CmsPage;
 use Indikator\News\Models\Categories as NewsCategories;
 use Db;
 use App;
+use October\Rain\Database\NestedTreeScope;
 use Str;
 use Url;
 
@@ -58,10 +59,6 @@ class Posts extends Model
     ];
 
     public $belongsTo = [
-        'category' => [
-            'Indikator\News\Models\Categories',
-            'order' => 'name'
-        ],
         'user' => ['Backend\Models\User']
     ];
 
@@ -100,6 +97,17 @@ class Posts extends Model
             'scope' => 'isFailed',
             'count' => true
         ]
+    ];
+
+    public $belongsToMany = [
+        'categories' => [
+            'Indikator\News\Models\Categories',
+            'table' => 'indikator_news_posts_categories',
+            'scope' => 'IsActive',
+            'key'      => 'post_id',
+            'otherKey' => 'category_id',
+            'order' => 'name'
+        ],
     ];
 
     public $preview = null;
@@ -145,10 +153,6 @@ class Posts extends Model
             $this->slug = Str::slug($this->title);
         }
 
-        if (!isset($this->category_id) || empty($this->category_id)) {
-            $this->category_id = 0;
-        }
-
         if (!isset($this->user_id) || empty($this->user_id)) {
             $this->user_id = 0;
         }
@@ -168,6 +172,11 @@ class Posts extends Model
         }
     }
 
+    public function scopeInCategory($query, $categoryId) {
+        $query->whereHas('categories', function($query) use ($categoryId) {
+            $query->whereId($categoryId);
+        });
+    }
     // Next and previous post
 
     /**
@@ -178,6 +187,7 @@ class Posts extends Model
      */
     public function scopeApplySibling($query, $options = [])
     {
+        // Backwards compatibility
         if (!is_array($options)) {
             $options = ['direction' => $options];
         }
@@ -191,30 +201,38 @@ class Posts extends Model
         $directionOrder = $isPrevious ? 'desc' : 'asc';
         $directionOperator = $isPrevious ? '<' : '>';
 
-        return $query
-        ->where('id', '<>', $this->id)
-        ->where($attribute, $directionOperator, $this->$attribute)
-        ->orderBy($attribute, $directionOrder);
+        $query
+            ->where('id', '<>', $this->id)
+            ->where($attribute, $directionOperator, $this->$attribute)
+            ->orderBy($attribute, $directionOrder);
+
+        if ($categoryId !== null) {
+            $query->inCategory($categoryId);
+        }
+
+        return $query;
     }
 
     /**
      * Returns the next post, if available.
      *
+     * @param int $categoryId returns the next post in this category.
      * @return self
      */
-    public function next()
+    public function next($categoryId = null)
     {
-        return self::isPublished()->applySibling()->first();
+        return self::isPublished()->applySibling(['categoryId' => $categoryId])->first();
     }
 
     /**
      * Returns the previous post, if available.
      *
+     * @param int $categoryId returns the previous post in this category.
      * @return self
      */
-    public function prev()
+    public function prev($categoryId = null)
     {
-        return self::isPublished()->applySibling(-1)->first();
+        return self::isPublished()->applySibling(['categoryId' => $categoryId, 'direction' => 'previous'])->first();
     }
 
     public function scopeListFrontEnd($query, $options)
@@ -268,9 +286,7 @@ class Posts extends Model
          */
         if ($category !== null) {
             $category = NewsCategories::find($category);
-            $query->whereHas('category', function($q) use ($category) {
-                $q->whereId($category->id);
-            });
+            $query->inCategory($category->id);
         }
 
         $search = trim($search);
@@ -311,6 +327,19 @@ class Posts extends Model
         ;
     }
 
+    /**
+     * Allows filtering for specifc categories.
+     * @param  \Illuminate\Database\Query\Builder  $query      QueryBuilder
+     * @param  array                     $categories List of category ids
+     * @return \Illuminate\Database\Query\Builder              QueryBuilder
+     */
+    public function scopeFilterCategories($query, $categories)
+    {
+        return $query->whereHas('categories', function($q) use ($categories) {
+            $q->withoutGlobalScope(NestedTreeScope::class)->whereIn('id', $categories);
+        });
+    }
+
     public function scopeIsFeatured($query, $value = 1)
     {
         return $query->where('featured', $value);
@@ -325,7 +354,6 @@ class Posts extends Model
         $clone->introductory = $post->introductory;
         $clone->content = $post->content;
         $clone->image = $post->image;
-        $clone->category_id = $post->category_id;
         $clone->featured = $post->featured;
         $clone->enable_newsletter_content = $post->enable_newsletter_content;
         $clone->newsletter_content = $post->newsletter_content;
@@ -334,9 +362,9 @@ class Posts extends Model
         $clone->seo_title = $post->seo_title;
         $clone->seo_keywords = $post->seo_keywords;
         $clone->seo_image = $post->seo_image;
-
         $clone->save();
 
+        $clone->categories()->attach($post->categories()->pluck('id')->all());
         \Event::fire('indikator.news.posts.duplicate', [&$clone, $post]);
 
         return $clone;
@@ -462,34 +490,4 @@ class Posts extends Model
         return $this->url = $controller->pageUrl($pageName, $params);
     }
 
-    private $_category = null;
-
-    public function getCategory()
-    {
-        if ($this->_category === null) {
-            $category = Categories::whereId($this->category_id)->first();
-
-            if ($category->status == 1) {
-                $this->_category = [
-                    'id'      => $category->id,
-                    'name'    => $category->name,
-                    'slug'    => $category->slug,
-                    'content' => $category->content,
-                    'image'   => $category->image
-                ];
-            }
-
-            else {
-                $this->_category = [
-                    'id'      => 0,
-                    'name'    => '',
-                    'slug'    => '',
-                    'content' => '',
-                    'image'   => ''
-                ];
-            }
-        }
-
-        return $this->_category;
-    }
 }

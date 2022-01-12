@@ -24,7 +24,7 @@ Plugin is same like put together a blog and a newsletter plugin. The main differ
 <a name="main_features"></a>
 ## Main features
 * Managing posts
-* Managing categories
+* Managing nested categories
 * Managing subscribers
 * Support the SEO
 * Support the GDPR
@@ -113,7 +113,7 @@ __For post__
 * {{ post.introductory|raw }} - Summary of post
 * {{ post.content|raw }} - Content of post
 * {{ post.published_at }} - Published date of post
-* {{ post.category }} - ID of category (0: no category selected)
+* {{ post.categories }} - Categories of post
 * {{ post.tags }} - List of tags in array
 * {{ post.seo_title }} - SEO title
 * {{ post.seo_keywords }} - SEO keywords

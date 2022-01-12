@@ -12,6 +12,8 @@ class SubscribersImport extends ImportModel
         'email' => 'required|email'
     ];
 
+
+
     public function importData($results, $sessionKey = null)
     {
         foreach ($results as $row => $data) {

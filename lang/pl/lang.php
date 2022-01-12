@@ -59,6 +59,7 @@ return [
         'content' => 'Treść',
         'image' => 'Obrazek',
         'category' => 'Kategoria',
+        'categories' => 'Kategorie',
         'author' => 'Autor',
         'status' => 'Status',
         'status_published' => 'Opublikowany',

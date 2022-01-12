@@ -25,11 +25,6 @@ columns:
         searchable: true
         invisible: true
 
-    sort_order:
-        label: indikator.news::lang.button.reorder
-        invisible: true
-        align: center
-
     posts:
         label: indikator.news::lang.menu.posts
         sortable: false

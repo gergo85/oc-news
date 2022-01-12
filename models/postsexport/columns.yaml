@@ -10,7 +10,7 @@ columns:
     introductory: indikator.news::lang.form.introductory
     content: indikator.news::lang.form.content
     image: indikator.news::lang.form.image
-    category_id: indikator.news::lang.form.category
+    categories: indikator.news::lang.form.categories
     statistics: indikator.news::lang.stat.view
     status: indikator.news::lang.form.status
     featured: indikator.news::lang.form.featured

@@ -19,11 +19,6 @@ fields:
         span: storm
         cssClass: col-lg-6
 
-    category:
-        label: indikator.news::lang.form.category
-        type: relation
-        span: storm
-        cssClass: col-md-6
 
     tags:
         label: indikator.news::lang.form.tags
@@ -41,7 +36,6 @@ tabs:
         indikator.news::lang.form.seo_tab: icon-search
 
     fields:
-
         introductory:
             tab: indikator.news::lang.form.introductory
             type: richeditor
@@ -55,6 +49,8 @@ tabs:
             size: giant
             span: storm
             cssClass: col-xs-12
+
+
 
         enable_newsletter_content:
             tab: indikator.news::lang.form.newsletter_content_tab
@@ -164,3 +160,9 @@ secondaryTabs:
             default: 2
             span: storm
             cssClass: col-xs-6
+
+        categories:
+            label: indikator.news::lang.form.categories
+            type: relation
+            span: storm
+            cssClass: col-xs-12

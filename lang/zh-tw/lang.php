@@ -61,6 +61,7 @@ return [
         'content' => '內容',
         'image' => '顯示圖片',
         'category' => '分類',
+        'categories' => '分類',
         'tags' => '標籤',
         'author' => '作者',
         'select_user' => '-- 選取使用者 --',
