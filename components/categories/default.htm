@@ -5,7 +5,7 @@
         <ul>
     {% endif %}
 
-    <li><a href="{{ category.slug }}">{{ category.name }}</a></li>
+    <li style="padding-left: {{ category.depth }}em;"><a href="{{ category.slug }}">{{ category.name }}</a></li>
     {% if loop.last %}
         </ul>
     {% endif %}

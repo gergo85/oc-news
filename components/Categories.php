@@ -54,7 +54,7 @@ class Categories extends ComponentBase
 
     protected function listCategories()
     {
-        $categories = NewsCategories::all();
+        $categories = NewsCategories::isActive()->get();
 
         $categories->each(function($category) {
             $category->setUrl($this->categoryPage, $this->controller);
