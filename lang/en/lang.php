@@ -230,10 +230,14 @@ return [
         'list_notfeatured' => 'Not featured',
         'translated_title' => 'Show only translated posts',
         'translated_description' => 'Hide the post, if the language of current post is not equal the website language.',
+        'category_slug_title' => 'Category slug',
+        'category_slug_description' => 'Look up the category using the supplied slug value. This property is used by the default component partial for marking the currently active category.',
         'category_page_title' => 'Category page',
         'category_page_description' => 'Name of the category page file for the category links. This property is used by the default component partial.',
         'category_filter_title' => 'Category filter',
         'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.',
+        'nested_category_posts_title' => 'Nested Posts',
+        'nested_category_posts_description' => 'Display posts which are in a nested category.',
         'links' => 'Links'
     ],
     'sorting' => [

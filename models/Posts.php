@@ -174,7 +174,11 @@ class Posts extends Model
 
     public function scopeInCategory($query, $categoryId) {
         $query->whereHas('categories', function($query) use ($categoryId) {
-            $query->whereId($categoryId);
+            if (is_array($categoryId)) {
+                $query->whereIn('id', $categoryId);
+            } else {
+                $query->whereId($categoryId);
+            }
         });
     }
     // Next and previous post
@@ -285,8 +289,8 @@ class Posts extends Model
          * Category filter
          */
         if ($category !== null) {
-            $category = NewsCategories::find($category);
-            $query->inCategory($category->id);
+
+            $query->inCategory($category);
         }
 
         $search = trim($search);

@@ -4,8 +4,18 @@
     {% if loop.first %}
         <ul>
     {% endif %}
-
-    <li style="padding-left: {{ category.depth }}em;"><a href="{{ category.slug }}">{{ category.name }}</a></li>
+            <li>
+                <a href="{{ category.url }}">{{ category.name }}</a>
+                {% if category.children|length > 0 %}
+                    <ul style="margin-left: 0.5rem">
+                        {% for category in category.children %}
+                            <li>
+                                <a href="{{ category.url }}">{{ category.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
     {% if loop.last %}
         </ul>
     {% endif %}

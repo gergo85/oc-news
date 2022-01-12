@@ -2,16 +2,16 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
+use Illuminate\Database\Eloquent\Collection;
 use Indikator\News\Models\Categories as NewsCategories;
 use Lang;
 
 class Categories extends ComponentBase
 {
-    public $categories;
-
-    public $noPostsMessage;
-
-    public $categoryPage;
+    public $categories,
+        $noPostsMessage,
+        $categoryPage,
+        $currentCategorySlug;
 
     public function componentDetails()
     {
@@ -24,6 +24,12 @@ class Categories extends ComponentBase
     public function defineProperties()
     {
         return [
+            'slug' => [
+                'title'       => 'indikator.news::lang.settings.category_slug_title',
+                'description' => 'indikator.news::lang.settings.category_slug_description',
+                'default'     => '{{ :slug }}',
+                'type'        => 'string',
+            ],
             'noPostsMessage' => [
                 'title'             => 'indikator.news::lang.settings.no_posts_title',
                 'description'       => 'indikator.news::lang.settings.no_posts_description',
@@ -47,6 +53,7 @@ class Categories extends ComponentBase
 
     public function onRun()
     {
+        $this->currentCategorySlug = $this->page['currentCategorySlug'] = $this->property('slug');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
         $this->page['noPostsMessage'] = $this->property('noPostsMessage');
         $this->categories = $this->page['categories'] = $this->listCategories();
@@ -54,12 +61,23 @@ class Categories extends ComponentBase
 
     protected function listCategories()
     {
-        $categories = NewsCategories::isActive()->get();
+        $categories = NewsCategories::isActive()->getNested();
 
-        $categories->each(function($category) {
+        return $this->linkCategories($categories);
+    }
+
+    /**
+     * Sets the URL on each category according to the defined category page
+     * @return Collection
+     */
+    protected function linkCategories($categories)
+    {
+        return $categories->each(function ($category) {
             $category->setUrl($this->categoryPage, $this->controller);
-        });
 
-        return $categories;
+            if ($category->children) {
+                $this->linkCategories($category->children);
+            }
+        });
     }
 }
