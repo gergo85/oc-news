@@ -32,6 +32,13 @@ class Categories extends Model
             'otherKey' => 'subscriber_id',
             'order'    => 'name'
         ],
+        'subscribers_count' => [
+            'Indikator\News\Models\Subscribers',
+            'table'    => 'indikator_news_relations',
+            'key'      => 'categories_id',
+            'otherKey' => 'subscriber_id',
+            'count' => true
+        ],
         'posts' => [
             'Indikator\News\Models\Posts',
             'table' => 'indikator_news_posts_categories',
@@ -47,13 +54,6 @@ class Categories extends Model
             'key'      => 'category_id',
             'otherKey' => 'post_id',
             'count' => true
-        ]
-    ];
-
-    public $hasMany = [
-        'posts' => [
-            'Indikator\News\Models\Posts',
-            'key' => 'category_id'
         ]
     ];
 
@@ -82,5 +82,37 @@ class Categories extends Model
     public function scopeIsActive($query) {
         $query->where('hidden', 2)
             ->where('status', 1);
+    }
+
+    public function getPostCountAttribute()
+    {
+        return optional($this->posts_count->first())->count ?? 0;
+    }
+
+    /**
+     * Count posts in this and nested categories
+     * @return int
+     */
+    public function getNestedPostCount()
+    {
+        return $this->post_count + $this->children->sum(function ($category) {
+                return $category->getNestedPostCount();
+            });
+    }
+
+    public function getSubscriberCountAttribute()
+    {
+        return optional($this->subscribers_count->first())->count ?? 0;
+    }
+
+    /**
+     * Count subscribers in this and nested categories
+     * @return int
+     */
+    public function getNestedSubscriberCount()
+    {
+        return $this->subscriber_counts + $this->children->sum(function ($category) {
+                return $category->getNestedSubscriberCount();
+            });
     }
 }

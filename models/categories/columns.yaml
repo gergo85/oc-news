@@ -25,18 +25,14 @@ columns:
         searchable: true
         invisible: true
 
-    posts:
+    post_count:
         label: indikator.news::lang.menu.posts
         sortable: false
-        type: partial
-        path: ~/plugins/indikator/news/models/categories/_posts.htm
         align: center
 
-    subscribers:
+    subscriber_count:
         label: indikator.news::lang.menu.subscribers
         sortable: false
-        type: partial
-        path: ~/plugins/indikator/news/models/categories/_subscribers.htm
         align: center
 
     hidden:

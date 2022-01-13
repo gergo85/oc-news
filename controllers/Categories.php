@@ -57,8 +57,7 @@ class Categories extends Controller
                 }
 
                 $item->delete();
-
-                Posts::where('category_id', $itemId)->update(['category_id' => 0]);
+                $item->posts()->detach();
                 Db::table('indikator_news_relations')->where('categories_id', $itemId)->delete();
             }
 
