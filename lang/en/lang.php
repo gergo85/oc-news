@@ -167,6 +167,8 @@ return [
         ],
         'newsletter_double_opt_in' => 'Newsletter registration confirmation',
         'newsletter_double_opt_in_comment' => 'Sends an email to the new subscriber which has to confirm his email address',
+        'newsletter_subscriber_categories' => 'Send newsletter only to subscribers which subscribed post category',
+        'newsletter_subscriber_categories_comment' => 'If this is set, a subscriber receives a newsletter if she subscribed to one of the post categories. If this is disabled, every subscriber receives any newsletter.',
         'admin_section' => 'Settings of site administrators',
         'show_posts' => 'Show the following post on front-end as backend user:',
         'statistic_show_posts' => 'Show posts',
@@ -174,7 +176,7 @@ return [
         'statistic_show_longest_posts' => 'Show longest posts',
         'statistic_show_shortest_posts' => 'Show shortest posts',
         'statistic_comment' => 'In the Statistics page.',
-        'extra_fields' => 'Extra fields for News form'
+        'extra_fields' => 'Extra fields for News form',
     ],
     'widget' => [
         'posts' => 'News - Posts',
