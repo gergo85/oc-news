@@ -120,7 +120,7 @@ class NewsSender
     {
         $activeSubscribers = Subscribers::where('status', 1);
 
-        if(Settings::get('newsletter_subscriber_categories', true)) {
+        if(Settings::get('newsletter_subscriber_categories')) {
             $categoryIds = $this->news->categories()->lists('id');
             $activeSubscribers->filterCategories($categoryIds);
         }
