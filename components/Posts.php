@@ -157,8 +157,9 @@ class Posts extends ComponentBase
         $category = $this->category ? $this->category->id : null;
 
         if ($this->nestedCategoryPosts && $this->category) {
-            $category = $this->category->getNested()->pluck('id')->all();
+            $category = $this->category->getAllChildrenAndSelf()->pluck('id')->all();
         }
+
         $posts = NewsPost::with('categories')->listFrontEnd([
             'page'     => $this->property('pageNumber'),
             'sort'     => $this->property('sortOrder'),
@@ -169,8 +170,15 @@ class Posts extends ComponentBase
             'category' => $category
         ]);
 
-        $posts->each(function($post) {
-            $post->setUrl($this->postPage, $this->controller);
+        $posts->each(function($post) use ($category) {
+
+            if (is_array($category)) {
+                $activeCategory = $post->categories->whereIn('id', $category)->first();
+            } else {
+                $activeCategory = $this->category;
+            }
+
+            $post->setUrl($this->postPage, $this->controller, $activeCategory);
             $post->categories->each(function($category) {
                 $category->setUrl($this->categoryPage, $this->controller);
             });

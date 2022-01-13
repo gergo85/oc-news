@@ -473,15 +473,15 @@ class Posts extends Model
      * @param string $pageName
      * @param Cms\Classes\Controller $controller
      */
-    public function setUrl($pageName, $controller)
+    public function setUrl($pageName, $controller, $category = null)
     {
         $params = [
             'id'   => $this->id,
             'slug' => $this->slug
         ];
 
-        if (array_key_exists('category', $this->getRelations())) {
-            $params['category'] = $this->category->count() ? $this->category->first()->slug : null;
+        if ($category) {
+            $params['category'] =$category->slug;
         }
 
         // Expose published year, month and day as URL parameters

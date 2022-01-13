@@ -3,9 +3,9 @@
 <div class="post-list">
     {% for post in posts %}
     <div class="post-item">
-        {% if post.image %}<div class="post-image"><a href="/{{ postPage }}/{{ post.slug }}"><img src="{{ post.image|media }}" alt="{{ post.title }}"></a></div>{% endif %}
+        {% if post.image %}<div class="post-image"><a href="{{ post.url }}"><img src="{{ post.image|media }}" alt="{{ post.title }}"></a></div>{% endif %}
 
-        <h2 class="post-title"><a href="/{{ postPage }}/{{ post.slug }}">{{ post.title }}</a></h2>
+        <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <p class="post-date">{{ post.published_at|date('Y-m-d') }}</p>
         {% if post.tags %}
         <p class="post-tags">Tags:
