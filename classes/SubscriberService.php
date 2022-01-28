@@ -18,14 +18,7 @@ trait SubscriberService
     {
         // Register category
         if (is_array($listOfCategoryIds)) {
-            foreach ($listOfCategoryIds as $categoryId) {
-                if (is_numeric($categoryId) && Categories::where(['id' => $categoryId, 'hidden' => 2])->count() == 1 && Db::table('indikator_news_relations')->where(['subscriber_id' => $subscriber->id, 'categories_id' => $categoryId])->count() == 0) {
-                    Db::table('indikator_news_relations')->insert([
-                        'subscriber_id' => $subscriber->id,
-                        'categories_id' => $categoryId
-                    ]);
-                }
-            }
+            $subscriber->categories()->sync($listOfCategoryIds);
         }
 
         if (!$subscriber->isActive()) {
