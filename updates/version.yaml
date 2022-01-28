@@ -140,4 +140,3 @@
     - Added prev/next post in category
     - add_nested_categories_support.php
     - create_posts_categories_table.php
-    - set_settings_newsletter_subscriber_categories.php
