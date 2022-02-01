@@ -11,7 +11,8 @@ class Categories extends ComponentBase
     public $categories,
         $noPostsMessage,
         $categoryPage,
-        $currentCategorySlug;
+        $currentCategorySlug,
+        $root;
 
     public function componentDetails()
     {
@@ -37,6 +38,18 @@ class Categories extends ComponentBase
                 'default'           => Lang::get('indikator.news::lang.settings.no_posts_found'),
                 'showExternalParam' => false
             ],
+            'categoryFilter' => [
+                'title'       => 'indikator.news::lang.settings.category_filter_title',
+                'description' => 'indikator.news::lang.settings.category_filter_description',
+                'type'        => 'dropdown',
+                'default'     => ''
+            ],
+            'onlyNestedCategories' => [
+                'title'       => 'indikator.news::lang.settings.only_nested_categories_title',
+                'description' => 'indikator.news::lang.settings.only_nested_categories_description',
+                'type'        => 'checkbox',
+                'default'     => false
+            ],
             'categoryPage' => [
                 'title'       => 'indikator.news::lang.settings.category_page_title',
                 'description' => 'indikator.news::lang.settings.category_page_description',
@@ -51,8 +64,18 @@ class Categories extends ComponentBase
         return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
+    public function getCategoryFilterOptions()
+    {
+        return NewsCategories::listsNested('name', 'id');
+    }
+
     public function onRun()
     {
+        $categoryFilter = $this->property('categoryFilter');
+        if ($categoryFilter) {
+            $this->root = NewsCategories::find($categoryFilter);
+        }
+
         $this->currentCategorySlug = $this->page['currentCategorySlug'] = $this->property('slug');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
         $this->page['noPostsMessage'] = $this->property('noPostsMessage');
@@ -61,7 +84,17 @@ class Categories extends ComponentBase
 
     protected function listCategories()
     {
-        $categories = NewsCategories::with('posts_count')->isActive()->getNested();
+        if ($this->root) {
+            $categories = $this->root->allChildren(true)->with('posts_count')->isActive()->getNested();
+            if (count($categories) > 0 ) {
+                $categories = $categories->first()->children;
+            }
+        }
+        else
+        {
+            $categories = NewsCategories::with('posts_count')->isActive()->getNested();
+        }
+
         $categories = $categories->filter(function($cat) {
             return $cat->getNestedPostCount() > 0;
         });

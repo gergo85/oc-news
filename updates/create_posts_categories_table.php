@@ -10,7 +10,7 @@ class CreatePostsCategoriesTable extends Migration
     {
         Schema::create('indikator_news_posts_categories', function($table)
         {
-            $table->engine = 'InnoDB';
+            
             $table->integer('post_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->primary(['post_id', 'category_id']);
