@@ -61,8 +61,10 @@ class Categories extends ComponentBase
 
     protected function listCategories()
     {
-        $categories = NewsCategories::isActive()->getNested();
-
+        $categories = NewsCategories::with('posts_count')->isActive()->getNested();
+        $categories = $categories->filter(function($cat) {
+            return $cat->getNestedPostCount() > 0;
+        });
         return $this->linkCategories($categories);
     }
 
