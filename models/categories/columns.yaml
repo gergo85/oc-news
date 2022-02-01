@@ -25,10 +25,14 @@ columns:
         searchable: true
         invisible: true
 
-    post_count:
+    all_post_count:
         label: indikator.news::lang.menu.posts
+        relation: all_posts
+        relationCount: true
+        type: number
         sortable: false
         align: center
+        invisble: false
 
     subscriber_count:
         label: indikator.news::lang.menu.subscribers
