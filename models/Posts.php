@@ -103,7 +103,14 @@ class Posts extends Model
         'categories' => [
             'Indikator\News\Models\Categories',
             'table' => 'indikator_news_posts_categories',
-            'scope' => 'notHidden',
+            'scope' => 'IsActive',
+            'key'      => 'post_id',
+            'otherKey' => 'category_id',
+            'order' => 'name'
+        ],
+        'all_categories' => [
+            'Indikator\News\Models\Categories',
+            'table' => 'indikator_news_posts_categories',
             'key'      => 'post_id',
             'otherKey' => 'category_id',
             'order' => 'name'

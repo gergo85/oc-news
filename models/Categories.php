@@ -54,7 +54,14 @@ class Categories extends Model
             'key'      => 'category_id',
             'otherKey' => 'post_id',
             'count' => true
-        ]
+        ],
+        'all_posts' => [
+            'Indikator\News\Models\Posts',
+            'table' => 'indikator_news_posts_categories',
+            'order' => 'published_at desc',
+            'key'      => 'category_id',
+            'otherKey' => 'post_id'
+        ],
     ];
 
     public $translatable = [
