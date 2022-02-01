@@ -8,12 +8,14 @@ class AddNestedCategoriesSupport extends Migration
 {
     public function up()
     {
-        Schema::table('indikator_news_categories', function ($table) {
-            $table->integer('parent_id')->unsigned()->index()->nullable()->after('status');
-            $table->integer('nest_left')->unsigned()->index()->nullable()->after('parent_id');
-            $table->integer('nest_right')->unsigned()->index()->nullable()->after('nest_left');
-            $table->integer('nest_depth')->unsigned()->index()->nullable()->after('nest_right');
-        });
+        if (!Schema::hasColumn('indikator_news_categories', 'parent_id')) {
+            Schema::table('indikator_news_categories', function ($table) {
+                $table->integer('parent_id')->unsigned()->index()->nullable()->after('status');
+                $table->integer('nest_left')->unsigned()->index()->nullable()->after('parent_id');
+                $table->integer('nest_right')->unsigned()->index()->nullable()->after('nest_left');
+                $table->integer('nest_depth')->unsigned()->index()->nullable()->after('nest_right');
+            });
+        }
 
         // use orderby instead of sorting trait, since it is not available anymore
         $categories = (new Categories)->newQueryWithoutScopes()

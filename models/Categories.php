@@ -79,6 +79,10 @@ class Categories extends Model
         return $this->url = $controller->pageUrl($pageName, $params);
     }
 
+    public function scopeNotHidden($query) {
+        $query->where('hidden', 2);
+    }
+
     public function scopeIsActive($query) {
         $query->where('hidden', 2)
             ->where('status', 1);

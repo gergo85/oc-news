@@ -170,6 +170,7 @@ class Posts extends ComponentBase
             'category' => $category
         ]);
 
+
         $posts->each(function($post) use ($category) {
 
             if (is_array($category)) {

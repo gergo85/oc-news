@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
+use Cms\Classes\Theme;
 use Indikator\News\Models\Categories as NewsCategory;
 use Indikator\News\Models\Posts as NewsPost;
 use Redirect;
@@ -68,7 +69,7 @@ class Post extends ComponentBase
 
         $this->prepareVars();
 
-        $this->category = $this->page['category'] = $this->loadCategory();
+        $category = $this->category = $this->page['category'] = $this->loadCategory();
 
         $post = $this->loadPost();
 
@@ -82,9 +83,55 @@ class Post extends ComponentBase
 
         $this->post = $this->page['post'] = $post;
 
+        // Translated locale links
+        if (class_exists('RainLab\Translate\Behaviors\TranslatableModel')) {
+            $currentLocale = (\RainLab\Translate\Classes\Translator::instance())->getLocale();
+            $translations = [];
+
+            foreach (\RainLab\Translate\Models\Locale::listEnabled() as $code => $locale) {
+                if($currentLocale === $code) continue;
+
+                $post->noFallbackLocale()->lang($code);
+                if (empty($post->title) || empty($post->slug) ) continue;
+
+                $post->translateContext($code);
+                if (!$category) {
+                    $category = $post->categories->first();
+                }
+
+                $category->translateContext($code);
+
+
+                $translations[$code] =  [
+                    'code' => $code,
+                    'name' => $locale,
+                    'slug' => $post->slug,
+                    'url' => $this->rewriteTranslatablePageUrl([
+                        'category' => $category->slug,
+                        'slug' => $post->slug
+                    ], $code),
+                    'title' => $post->title
+                ];
+            }
+
+            $this->page['post_available_locales'] = $translations;
+            $post->translateContext($currentLocale);
+            $category->translateContext($currentLocale);
+        }
+
         $post->categories->each(function($category) {
             $category->setUrl($this->categoryPage, $this->controller);
         });
+    }
+
+    protected function rewriteTranslatablePageUrl($params,$locale) {
+
+        $this->page->page->rewriteTranslatablePageUrl($locale);
+
+        $router = new \October\Rain\Router\Router;
+        $localeUrl = $router->urlFromPattern($locale."/".$this->page->url, $params);
+
+        return url($localeUrl);
     }
 
     protected function prepareVars()
