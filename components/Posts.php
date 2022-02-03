@@ -170,13 +170,12 @@ class Posts extends ComponentBase
             'category' => $category
         ]);
 
-
         $posts->each(function($post) use ($category) {
 
             if (is_array($category)) {
                 $activeCategory = $post->categories->whereIn('id', $category)->first();
             } else {
-                $activeCategory = $this->category;
+                $activeCategory = $this->category ?? $post->categories->first();
             }
 
             $post->setUrl($this->postPage, $this->controller, $activeCategory);

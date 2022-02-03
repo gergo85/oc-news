@@ -51,7 +51,7 @@ class Post extends ComponentBase
                 'type'        => 'dropdown',
                 'default'     => '',
                 'group'       => 'indikator.news::lang.settings.links'
-            ]
+            ],
         ];
     }
 
@@ -100,8 +100,6 @@ class Post extends ComponentBase
                 }
 
                 $category->translateContext($code);
-
-
                 $translations[$code] =  [
                     'code' => $code,
                     'name' => $locale,
@@ -115,8 +113,10 @@ class Post extends ComponentBase
             }
 
             $this->page['post_available_locales'] = $translations;
-            $post->translateContext($currentLocale);
-            $category->translateContext($currentLocale);
+            $post->withFallbackLocale()->translateContext($currentLocale);
+
+            if ($category)
+                $category->translateContext($currentLocale);
         }
 
         $post->categories->each(function($category) {
