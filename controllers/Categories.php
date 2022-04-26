@@ -13,12 +13,14 @@ class Categories extends Controller
     public $implement = [
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
-        \Backend\Behaviors\ReorderController::class
+        \Backend\Behaviors\ReorderController::class,
+        \Backend\Behaviors\RelationController::class
     ];
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
     public $reorderConfig = 'config_reorder.yaml';
+    public $relationConfig = 'config_relation.yaml';
 
     public $requiredPermissions = ['indikator.news.categories'];
 
@@ -57,8 +59,7 @@ class Categories extends Controller
                 }
 
                 $item->delete();
-
-                Posts::where('category_id', $itemId)->update(['category_id' => 0]);
+                $item->posts()->detach();
                 Db::table('indikator_news_relations')->where('categories_id', $itemId)->delete();
             }
 

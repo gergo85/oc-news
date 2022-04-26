@@ -19,12 +19,14 @@ class Posts extends Controller
     public $implement = [
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
-        \Backend\Behaviors\ImportExportController::class
+        \Backend\Behaviors\ImportExportController::class,
+        \Backend\Behaviors\RelationController::class
     ];
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
     public $importExportConfig = 'config_import_export.yaml';
+    public $relationConfig = 'config_relation.yaml';
 
     public $requiredPermissions = ['indikator.news.posts'];
 

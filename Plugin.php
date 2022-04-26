@@ -239,7 +239,7 @@ class Plugin extends PluginBase
             }
 
             if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
-                $form->removeField('category');
+                $form->removeField('categories');
             }
 
             if (isset($settings->fields_tags) && !$settings->fields_tags) {
@@ -312,7 +312,7 @@ class Plugin extends PluginBase
             $settings = json_decode(Db::table('system_settings')->where('item', 'indikator_news_settings')->value('value'));
 
             if ((isset($settings->fields_category) && !$settings->fields_category) || Categories::count() == 0) {
-                $list->removeColumn('category');
+                $list->removeColumn('categories');
             }
 
             if (Subscribers::where('name', '!=', '')->count() == 0) {
@@ -330,7 +330,7 @@ class Plugin extends PluginBase
         PostsController::extendListFilterScopes(function($filter)
         {
             if (Categories::count() == 0) {
-                $filter->removeScope('category');
+                $filter->removeScope('categories');
             }
         });
 

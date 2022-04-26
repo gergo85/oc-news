@@ -1,7 +1,8 @@
 <?php namespace Indikator\News\Models;
 
+use ApplicationException;
 use Backend\Models\ImportModel;
-use Indikator\News\Models\Posts as Item;
+use Backend\Models\User as AuthorModel;
 use Exception;
 
 class PostsImport extends ImportModel
@@ -13,8 +14,27 @@ class PostsImport extends ImportModel
         'slug'  => ['required', 'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i', 'unique:indikator_news_posts']
     ];
 
+    protected $categoryNameCache = [];
+
+
+    public function getDefaultAuthorOptions()
+    {
+        return AuthorModel::all()->lists('full_name', 'email');
+    }
+
+    public function getCategoriesOptions()
+    {
+        return Categories::lists('slug', 'id');
+    }
+
     public function importData($results, $sessionKey = null)
     {
+        $firstRow = reset($results);
+
+        if ($this->auto_create_categories && !array_key_exists('categories', $firstRow)) {
+            throw new ApplicationException('Please specify a match for the Categories column.');
+        }
+
         foreach ($results as $row => $data) {
             try {
                 if (!array_get($data, 'title')) {
@@ -22,17 +42,39 @@ class PostsImport extends ImportModel
                     continue;
                 }
 
-                $item = $this->findDuplicateItem($data) ?: Item::make();
-                $itemExists = $item->exists;
+                /*
+                 * Find or create
+                 */
+                $post = Posts::make();
 
-                $except = ['id'];
-                foreach (array_except($data, $except) as $attribute => $value) {
-                    $item->{$attribute} = $value ?: null;
+                if ($this->update_existing) {
+                    $post = $this->findDuplicatePost($data) ?: $post;
                 }
 
-                $item->forceSave();
+                $postExists = $post->exists;
 
-                if ($itemExists) {
+                /*
+                 * Set attributes
+                 */
+                $except = ['id', 'categories'];
+
+                foreach (array_except($data, $except) as $attribute => $value) {
+                    if (in_array($attribute, $post->getDates()) && empty($value)) {
+                        continue;
+                    }
+                    $post->{$attribute} = isset($value) ? $value : null;
+                }
+
+                $post->forceSave();
+
+                if ($categoryIds = $this->getCategoryIdsForPost($data)) {
+                    $post->categories()->sync($categoryIds, false);
+                }
+
+                /*
+                * Log results
+                */
+                if ($postExists) {
                     $this->logUpdated();
                 }
                 else {
@@ -45,19 +87,43 @@ class PostsImport extends ImportModel
         }
     }
 
-    protected function findDuplicateItem($data)
+    protected function findDuplicatePost($data)
     {
         if ($id = array_get($data, 'id')) {
-            return Item::find($id);
+            return Posts::find($id);
         }
 
-        $title = array_get($data, 'title');
-        $item = Item::where('title', $title);
+        $slug = array_get($data, 'slug');
+        $post = Posts::where('slug', $slug);
 
-        if ($slug = array_get($data, 'slug')) {
-            $item->orWhere('slug', $slug);
+        return $post->first();
+    }
+
+    protected function getCategoryIdsForPost($data)
+    {
+        $ids = [];
+
+        if ($this->auto_create_categories) {
+            $categorySlugs = $this->decodeArrayValue(array_get($data, 'categories'));
+
+            foreach ($categorySlugs as $slug) {
+                if (!$slug = trim($slug)) {
+                    continue;
+                }
+
+                if (isset($this->categoryNameCache[$slug])) {
+                    $ids[] = $this->categoryNameCache[$slug];
+                }
+                else {
+                    $newCategory = Categories::firstOrCreate(['slug' => $slug]);
+                    $ids[] = $this->categoryNameCache[$slug] = $newCategory->id;
+                }
+            }
+        }
+        elseif ($this->categories) {
+            $ids = (array) $this->categories;
         }
 
-        return $item->first();
+        return $ids;
     }
 }

@@ -6,6 +6,7 @@ import:
     title: indikator.news::lang.menu.import
     modelClass: Indikator\News\Models\PostsImport
     list: $/indikator/news/models/postsimport/columns.yaml
+    form: $/indikator/news/models/postsimport/fields.yaml
     redirect: indikator/news/posts
     permissions: indikator.news.import_export
 

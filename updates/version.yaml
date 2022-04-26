@@ -133,3 +133,10 @@
 1.11.7: Improved the frontend components.
 1.11.8: Fixed bug showing the previous and next post.
 1.11.9: Fixed the email sending bug.
+1.12.0:
+    - !!! New configuration was added. If you had no categories enabled or non set, you need to disable newsletter_subscriber_categories
+    - Adding nested categories support and multiple category news.
+    - If no category is set, and newsletter_subscriber_categories is enabled, none of your subscriber will receive any newsletter anymore.
+    - Added prev/next post in category
+    - add_nested_categories_support.php
+    - create_posts_categories_table.php

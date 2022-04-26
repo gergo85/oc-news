@@ -2,6 +2,7 @@
 
 use App;
 use File;
+use Indikator\News\Models\Settings;
 use Mail;
 use Queue;
 use Log;
@@ -17,7 +18,7 @@ use Indikator\News\Models\Subscribers;
 class NewsSender
 {
     /**
-     * @var Post
+     * @var Posts
      */
     protected $news;
 
@@ -119,11 +120,13 @@ class NewsSender
     {
         $activeSubscribers = Subscribers::where('status', 1);
 
-        if ($this->news->category_id > 0) {
-            $activeSubscribers = $this->news->category->subscribers()->isSubscribed();
+        if(Settings::get('newsletter_subscriber_categories')) {
+            $categoryIds = $this->news->categories()->lists('id');
+            $activeSubscribers->filterCategories($categoryIds);
         }
 
         $activeSubscribers = $activeSubscribers->get();
+
         $results = true;
 
         foreach ($activeSubscribers as $receiver) {
@@ -137,7 +140,7 @@ class NewsSender
      * Prepare newsletter parameters for the template by the receiver.
      * It also replaces the content with absolute urls.
      *
-     * @param $receiver
+     * @param Subscribers $receiver
      * @return array
      */
     protected function prepareNewsletterParametersForReceiver($receiver)
@@ -173,6 +176,16 @@ class NewsSender
             $this->replacedContent = preg_replace('/<img (.+)?style="width: (.+)px;"/i', '<img $1 width="$2"', $this->replacedContent);
         }
 
+        // Categories
+        $newsCategoryIds = $this->news->categories()->lists('id');
+        $subscriberCatIds = $receiver->categories()->lists('id');
+        // intersection between news and subscriber
+        $categoryIds = $newsCategoryIds->intersect($subscriberCatIds);
+
+        $categories =
+            Categories::whereIn('id', $categoryIds)
+            ->get();
+
         // Parameters
         return [
             'name'         => isset($receiver->name) ? $receiver->name : trim($receiver->first_name.' '.$receiver->last_name),
@@ -185,7 +198,8 @@ class NewsSender
             'plaintext'    => strip_tags($this->news->introductory),
             'content'      => $this->replacedContent,
             'image'        => $this->news->image,
-            'category'     => $this->news->category
+            'category'     => $categories->first(), // keep backwards compatibility
+            'categories'   => $categories
         ];
     }
 

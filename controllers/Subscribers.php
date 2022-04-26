@@ -124,10 +124,6 @@ class Subscribers extends Controller
         }
 
         if ($subscriber->status == 3 && $subscriber->confirmation_hash == $hash) {
-            if ($subscriber->registered_at < now()) {
-                Flash::error(Lang::get('indikator.news::lang.flash.subscriber_confirmation_token_expired'));
-                return Redirect::to('/');
-            }
 
             $subscriber->confirmed_ip = Request::ip();
             $subscriber->confirmed_at = now();

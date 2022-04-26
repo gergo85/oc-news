@@ -22,11 +22,36 @@ class Subscribe extends ComponentBase
         ];
     }
 
+
+    public function defineProperties()
+    {
+        return [
+            'categoryFilter' => [
+                'title'       => 'indikator.news::lang.settings.category_filter_title',
+                'description' => 'indikator.news::lang.settings.category_filter_description',
+                'type'        => 'dropdown',
+                'default'     => ''
+            ],
+        ];
+    }
+
+    public function getCategoryFilterOptions()
+    {
+        return Categories::listsNested('name', 'id');
+    }
+
     public function onRun()
     {
-        $category = Categories::where(['status' => 1, 'hidden' => 2]);
-        $this->page['category_list']  = $category->get()->all();
-        $this->page['category_count'] = $category->count();
+        $categoryFilter = $this->property('categoryFilter');
+        if ($categoryFilter) {
+            $categories =  Categories::find($categoryFilter)->allChildren(false)->isActive()->get();
+            $this->page['category_list']  = $categories;
+            $this->page['category_count'] = $categories->count();
+        } else {
+            $category = Categories::isActive();
+            $this->page['category_list']  = $category->get();
+            $this->page['category_count'] = $category->count();
+        }
 
         $this->page['text_messages'] = Lang::get('indikator.news::lang.messages.subscribed');
         $this->page['text_name']     = Lang::get('indikator.news::lang.form.name');

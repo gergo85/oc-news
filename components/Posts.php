@@ -9,17 +9,13 @@ use Redirect;
 
 class Posts extends ComponentBase
 {
-    public $posts;
-
-    public $noPostsMessage;
-
-    public $postPage;
-
-    public $sortOrder;
-
-    public $category;
-
-    public $searchFilter;
+    public $posts,
+        $noPostsMessage,
+        $postPage,
+        $sortOrder,
+        $category,
+        $searchFilter,
+        $nestedCategoryPosts;
 
     public function componentDetails()
     {
@@ -93,6 +89,12 @@ class Posts extends ComponentBase
                 'type'        => 'string',
                 'default'     => ''
             ],
+            'nestedCategoryPosts' => [
+                'title'       => 'indikator.news::lang.settings.nested_category_posts_title',
+                'description' => 'indikator.news::lang.settings.nested_category_posts_description',
+                'type'        => 'checkbox',
+                'default'     => false
+            ],
             'postPage' => [
                 'title'       => 'indikator.news::lang.settings.post_title',
                 'description' => 'indikator.news::lang.settings.post_description',
@@ -146,13 +148,19 @@ class Posts extends ComponentBase
         // Page links
         $this->postPage = $this->page['postPage'] = $this->property('postPage');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
+
+        $this->nestedCategoryPosts = $this->property('nestedCategoryPosts');
     }
 
     protected function listPosts()
     {
         $category = $this->category ? $this->category->id : null;
 
-        $posts = NewsPost::listFrontEnd([
+        if ($this->nestedCategoryPosts && $this->category) {
+            $category = $this->category->getAllChildrenAndSelf()->pluck('id')->all();
+        }
+
+        $posts = NewsPost::with('categories')->listFrontEnd([
             'page'     => $this->property('pageNumber'),
             'sort'     => $this->property('sortOrder'),
             'perPage'  => $this->property('postsPerPage'),
@@ -162,13 +170,18 @@ class Posts extends ComponentBase
             'category' => $category
         ]);
 
-        $posts->each(function($post) {
-            $post->setUrl($this->postPage, $this->controller);
-            if (isset($category)) {
-                $post->category->each(function($category) {
-                    $category->setUrl($this->categoryPage, $this->controller);
-                });
+        $posts->each(function($post) use ($category) {
+
+            if (is_array($category)) {
+                $activeCategory = $post->categories->whereIn('id', $category)->first();
+            } else {
+                $activeCategory = $this->category ?? $post->categories->first();
             }
+
+            $post->setUrl($this->postPage, $this->controller, $activeCategory);
+            $post->categories->each(function($category) {
+                $category->setUrl($this->categoryPage, $this->controller);
+            });
 
             $post->tags = explode(',', $post->tags);
         });

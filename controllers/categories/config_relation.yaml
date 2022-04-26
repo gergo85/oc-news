@@ -1,0 +1,11 @@
+
+all_posts:
+  label: indikator.news::lang.title.posts
+  view:
+    recordUrl: 'indikator/news/posts/update/:id'
+    list: $/indikator/news/models/posts/columns.yaml
+    toolbarButtons: add|remove
+    showSearch: true
+  manage:
+    recordsPerPage: 10
+    showSearch: true

@@ -59,6 +59,7 @@ return [
         'content' => 'Inhalt',
         'image' => 'Bild',
         'category' => 'Kategorie',
+        'categories' => 'Kategorien',
         'author' => 'Autor',
         'status' => 'Status',
         'status_published' => 'Veröffentlicht',
@@ -150,9 +151,11 @@ return [
         'email_view_tracking_comment' => 'Trackt wenn eine Person eine Email öffnet.',
         'email_view_tracking_warning' => [
             'heading' => 'Vorsicht beim verwenden von Email-Tracking' ,
-            'subheading' => 'Dies ist nicht in allen Ländern erlaubt!',
-            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass es in Ihren Land erlaubt ist. Eventuell müssen Sie Ihre Abonneten darüber informieren.'
+            'subheading' => 'Dies benötigt die Zustimmung des Abonnenten!',
+            'text' => 'Wenn Sie diese Funktion verwenden stellen Sie bitte sicher, dass sie die Datenschutzrichtlinien in Ihren Land einhalten.'
         ],
+        'newsletter_subscriber_categories' => 'Sende Newsletter an Abonnenten mit entsprechender Kategorie',
+        'newsletter_subscriber_categories_comment' => 'Wenn dies gesetzt ist erhalten alle Abonnenten einen Newsletter, wenn sie eine Kategorie von den Newsletter abonniert haben. Wenn die Option ausgeschaltet ist, erhalten alle aktiven Abonnenten ein Newsletter.',
         'newsletter_double_opt_in' => 'Newsletter Registrierung Bestätigen (Double Opt-in)',
         'newsletter_double_opt_in_comment' => 'Sendet eine Email an den neuen Abonneten, welche seine Email-Adresse betätigen muss.',
         'statistic_show_posts' => 'Zeige Einträge',

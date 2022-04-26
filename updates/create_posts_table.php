@@ -9,7 +9,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('news_posts', function($table)
         {
-            $table->engine = 'InnoDB';
+            
             $table->increments('id');
             $table->string('title', 100);
             $table->string('slug', 100);

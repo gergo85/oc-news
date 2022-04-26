@@ -61,6 +61,7 @@ return [
         'content' => 'Tartalom',
         'image' => 'Kép',
         'category' => 'Kategória',
+        'categories' => 'Kategóriák',
         'tags' => 'Címkék',
         'author' => 'Szerző',
         'select_user' => '-- válasszon felhasználót --',

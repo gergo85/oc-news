@@ -1,0 +1,12 @@
+
+all_categories:
+  label: indikator.news::lang.title.categories
+  view:
+    recordUrl: 'indikator/news/categories/update/:id'
+    list: $/indikator/news/models/categories/columns.yaml
+    toolbarButtons: add|remove
+    showSearch: true
+  manage:
+    recordsPerPage: 10
+    showSearch: true
+    scope: notHidden

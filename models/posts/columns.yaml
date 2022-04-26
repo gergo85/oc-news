@@ -25,11 +25,11 @@ columns:
         searchable: true
         invisible: true
 
-    category:
-        label: indikator.news::lang.form.category
+    categories:
+        label: indikator.news::lang.form.categories
         sortable: false
         type: partial
-        path: ~/plugins/indikator/news/models/posts/_category.htm
+        path: ~/plugins/indikator/news/models/posts/_categories.htm
 
     tags:
         label: indikator.news::lang.form.tags

@@ -1,0 +1,4 @@
+<?php
+
+echo str_limit($record->categories->pluck('name')->join(', '), 30);
+

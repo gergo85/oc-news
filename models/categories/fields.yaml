@@ -26,6 +26,13 @@ fields:
         span: storm
         cssClass: col-xs-12
 
+    posts:
+        label: indikator.news::lang.title.posts
+        type: partial
+        path: '$/indikator/news/controllers/categories/_posts.htm'
+        span: storm
+        cssClass: col-xs-12
+
 secondaryTabs:
 
     fields:
