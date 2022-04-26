@@ -182,7 +182,7 @@ You can customize the layout of emails in the __Settings > Mail > Mail templates
 
 <a name="requirements"></a>
 ## Requirements
-* OctoberCMS build 420 or newer version.
+* October CMS v1.0.420 or newer version.
 * [AJAX Framework](https://octobercms.com/docs/ajax) is needed for the subscription form to work.
 
 <a name="installation"></a>
