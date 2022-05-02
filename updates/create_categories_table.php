@@ -9,7 +9,6 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('indikator_news_categories', function($table)
         {
-            
             $table->increments('id');
             $table->string('name', 100);
             $table->string('slug', 100);
@@ -23,7 +22,6 @@ class CreateCategoriesTable extends Migration
 
         Schema::create('indikator_news_relations', function($table)
         {
-            
             $table->integer('subscriber_id')->unsigned();
             $table->integer('categories_id')->unsigned();
             $table->primary(['subscriber_id', 'categories_id']);

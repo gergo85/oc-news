@@ -1,6 +1,5 @@
 <?php namespace Indikator\News\Classes;
 
-use Hash;
 use Backend;
 use Mail;
 

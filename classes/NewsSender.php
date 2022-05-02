@@ -8,7 +8,6 @@ use Queue;
 use Log;
 use BackendAuth;
 use Db;
-use Illuminate\Support\Collection;
 use System\Classes\PluginManager;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Posts;
@@ -120,7 +119,7 @@ class NewsSender
     {
         $activeSubscribers = Subscribers::where('status', 1);
 
-        if(Settings::get('newsletter_subscriber_categories')) {
+        if (Settings::get('newsletter_subscriber_categories')) {
             $categoryIds = $this->news->categories()->lists('id');
             $activeSubscribers->filterCategories($categoryIds);
         }

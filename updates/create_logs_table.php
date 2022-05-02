@@ -9,7 +9,6 @@ class CreateLogsTable extends Migration
     {
         Schema::create('indikator_news_newsletter_logs', function($table)
         {
-            
             $table->increments('id');
             $table->integer('news_id')->nullable()->unsigned();
             $table->integer('subscriber_id')->nullable()->unsigned();

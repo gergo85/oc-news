@@ -9,7 +9,6 @@ class CreateSubscribersTable extends Migration
     {
         Schema::create('news_subscribers', function($table)
         {
-            
             $table->increments('id');
             $table->string('name', 100);
             $table->string('email', 100);

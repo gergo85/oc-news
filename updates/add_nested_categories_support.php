@@ -22,7 +22,7 @@ class AddNestedCategoriesSupport extends Migration
             ->orderBy('sort_order')
             ->get();
 
-        for($i = 0; $i < count($categories); $i++) {
+        for ($i = 0; $i < count($categories); $i++) {
             $category = $categories[$i];
 
             $category->parent_id = null;
