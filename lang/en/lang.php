@@ -199,6 +199,7 @@ return [
         'posts' => 'Display posts',
         'post' => 'Post content',
         'categories' => 'Categories',
+        'tags' => 'Tags',
         'subscribe' => 'Subscriber form',
         'unsubscribe' => 'Unsubscribe form'
     ],
@@ -221,6 +222,12 @@ return [
         'no_posts_title' => 'No posts message',
         'no_posts_description' => 'Message to display in the post list in case if there are no posts. This property is used by the default component partial.',
         'no_posts_found' => 'No posts found',
+        'no_category_title' => 'No categories message',
+        'no_category_description' => 'Message to display in the category list in case if there are no categories.',
+        'no_category_found' => 'No categories found',
+        'no_tags_title' => 'No tags message',
+        'no_tags_description' => 'Message to display in the tag list in case if there are no tag.',
+        'no_tags_found' => 'No tags found',
         'posts_order_title' => 'Post order',
         'posts_order_description' => 'Attribute on which the posts should be ordered',
         'post_title' => 'Post page',
@@ -240,6 +247,10 @@ return [
         'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.',
         'nested_category_posts_title' => 'Nested Posts',
         'nested_category_posts_description' => 'Display posts which are in a nested category.',
+        'tag_slug_title' => 'Tag slug',
+        'tag_slug_description' => 'Look up the tag using the supplied slug value. This property is used by the default component partial for marking the currently active tag.',
+        'tag_page_title' => 'Tag page',
+        'tag_page_description' => 'Name of the tag page file for the tag links. This property is used by the default component partial.',
         'links' => 'Links'
     ],
     'sorting' => [

@@ -31,11 +31,11 @@ class Categories extends ComponentBase
                 'default'     => '{{ :slug }}',
                 'type'        => 'string',
             ],
-            'noPostsMessage' => [
-                'title'             => 'indikator.news::lang.settings.no_posts_title',
-                'description'       => 'indikator.news::lang.settings.no_posts_description',
+            'noCategoryMessage' => [
+                'title'             => 'indikator.news::lang.settings.no_category_title',
+                'description'       => 'indikator.news::lang.settings.no_category_description',
                 'type'              => 'string',
-                'default'           => Lang::get('indikator.news::lang.settings.no_posts_found'),
+                'default'           => Lang::get('indikator.news::lang.settings.no_category_found'),
                 'showExternalParam' => false
             ],
             'categoryFilter' => [
@@ -78,7 +78,7 @@ class Categories extends ComponentBase
 
         $this->currentCategorySlug = $this->page['currentCategorySlug'] = $this->property('slug');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
-        $this->page['noPostsMessage'] = $this->property('noPostsMessage');
+        $this->page['noCategoryMessage'] = $this->property('noCategoryMessage');
         $this->categories = $this->page['categories'] = $this->listCategories();
     }
 

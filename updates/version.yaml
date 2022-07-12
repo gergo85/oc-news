@@ -77,7 +77,7 @@
 1.8.4: Added the preview feature for posts.
 1.8.5: Added more options for Settings page.
 1.8.6:
-    - !!! Reworked again the sending newsletter feature.
+    - Reworked again the sending newsletter feature.
     - update_send_feature_2.php
 1.9.0:
     - Added categories feature.
@@ -134,9 +134,10 @@
 1.11.8: Fixed bug showing the previous and next post.
 1.11.9: Fixed the email sending bug.
 1.12.0:
-    - !!! New configuration was added. If you had no categories enabled or non set, you need to disable newsletter_subscriber_categories
+    - New configuration was added. If you had no categories enabled or non set, you need to disable newsletter_subscriber_categories
     - Adding nested categories support and multiple category news.
     - If no category is set, and newsletter_subscriber_categories is enabled, none of your subscriber will receive any newsletter anymore.
-    - Added prev/next post in category
+    - Added prev / next post in category.
     - add_nested_categories_support.php
     - create_posts_categories_table.php
+1.12.1: Added Tag list component.
