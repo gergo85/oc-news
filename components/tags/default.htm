@@ -1,10 +1,8 @@
-{% set tags = __SELF__.tags %}
-
 {% for tag in tags %}
     {% if loop.first %}
-        <ul>
+        <ul class="tags">
     {% endif %}
-            <li><a href="/{{ tagPage }}/{{ tag }}">{{ tag }}</a></li>
+            <li><a href="{{ tagPage }}/{{ tag }}">{{ tag }}</a></li>
     {% if loop.last %}
         </ul>
     {% endif %}

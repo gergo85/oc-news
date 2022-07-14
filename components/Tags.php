@@ -32,8 +32,8 @@ class Tags extends ComponentBase
                 'showExternalParam' => false
             ],
             'tagPage' => [
-                'title'       => 'indikator.news::lang.settings.tag_page_title',
-                'description' => 'indikator.news::lang.settings.tag_page_description',
+                'title'       => 'indikator.news::lang.settings.tags_page_title',
+                'description' => 'indikator.news::lang.settings.tags_page_description',
                 'type'        => 'dropdown',
                 'default'     => ''
             ]
@@ -51,11 +51,14 @@ class Tags extends ComponentBase
         $news = Posts::where('status', 1)->where('published_at', '<=', date('Y-m-d H:i:00'))->get()->all();
 
         foreach ($news as $post) {
-            foreach ($post['tags'] as $tag) {
-                if (! in_array($tag, $tags)) {
-                    $tags[] = $tag;
-                }
-            }
+	    if ($post['tags'] !== null) {
+            	$post['tags'] = explode(',', $post['tags']);
+            	foreach ($post['tags'] as $tag) {
+                    if (! in_array($tag, $tags)) {
+                        $tags[] = $tag;
+                    }
+            	}
+	    }
         }
 
         usort($tags, function($item1, $item2) {

@@ -245,10 +245,10 @@ return [
         'category_filter_description' => 'Adja meg a kategória webcímét, ami alapján szűrve lesznek a bejegyzések. Üresen hagyva minden bejegyzés meg fog jelenni.',
         'nested_category_posts_title' => 'Alkategória',
         'nested_category_posts_description' => 'Alkategóriához tartozó bejegyzések megjelenítése.',
-        'tag_slug_title' => 'Címke webcím',
-        'tag_slug_description' => '',
-        'tag_page_title' => 'Címke aloldal',
-        'tag_page_description' => 'Adja meg a címke fájl nevét. Ennek alapján lesznek generálva a címke linkek webcíme.',
+        'tags_slug_title' => 'Címke webcím',
+        'tags_slug_description' => '',
+        'tags_page_title' => 'Címke aloldal',
+        'tags_page_description' => 'Adja meg a címke fájl nevét. Ennek alapján lesznek generálva a címke linkek webcíme.',
         'links' => 'Linkek'
     ],
     'sorting' => [
