@@ -121,7 +121,7 @@ return [
         'deactivate' => 'Ẩn',
         'active' => 'Hoạt động',
         'inactive' => 'Không hoạt động',
-        'reorder' => 'Sắp xết',
+        'reorder' => 'Sắp xếp',
         'import' => 'Import',
         'export' => 'Export',
         'unsubscribe' => 'Hủy đăng ký',
