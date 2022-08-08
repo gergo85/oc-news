@@ -141,3 +141,4 @@
     - add_nested_categories_support.php
     - create_posts_categories_table.php
 1.12.1: Added Tag list component.
+1.12.2: Added Vietnamese translation.

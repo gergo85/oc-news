@@ -178,6 +178,7 @@ You can customize the layout of emails in the __Settings > Mail > Mail templates
 * hu - Magyar
 * pl - Polski
 * pt - Português
+* vn - Vietnamese
 * zh-TW - Taiwanese, Traditional Chinese
 
 <a name="requirements"></a>
