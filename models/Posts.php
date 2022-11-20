@@ -279,7 +279,7 @@ class Posts extends Model
         }
 
         foreach ($sort as $_sort) {
-            if (in_array($_sort, array_keys(self::$allowedSorting))) {
+            if (in_array($_sort, self::$allowedSorting)) {
                 $parts = explode(' ', $_sort);
 
                 if (count($parts) < 2) {
