@@ -179,7 +179,7 @@ class NewsSender
         $newsCategoryIds = $this->news->categories()->lists('id');
         $subscriberCatIds = $receiver->categories()->lists('id');
         // intersection between news and subscriber
-        $categoryIds = $newsCategoryIds->intersect($subscriberCatIds);
+        $categoryIds = array_intersect($newsCategoryIds, $subscriberCatIds);
 
         $categories =
             Categories::whereIn('id', $categoryIds)
