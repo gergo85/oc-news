@@ -217,7 +217,14 @@ class Post extends ComponentBase
         if (!$this->post)
             return null;
 
-        $post = $this->post->next($respectingGroup && $this->category ? $this->category->id : null);
+        $post = $this->post->next(
+            $respectingGroup && $this->category ? $this->category->id : null,
+            [
+                'isTrans' => true,
+                'sort' => 'published_at desc',
+                'category' => $respectingGroup && $this->category ? $this->category->id : null
+            ]
+        );
 
         if ($post) {
             $post->setUrl(
@@ -242,7 +249,14 @@ class Post extends ComponentBase
         if (!$this->post)
             return null;
 
-        $post = $this->post->prev($respectingGroup && $this->category ? $this->category->id : null);
+        $post = $this->post->prev(
+            $respectingGroup && $this->category ? $this->category->id : null,
+            [
+                'isTrans' => true,
+                'sort' => 'published_at desc',
+                'category' => $respectingGroup && $this->category ? $this->category->id : null
+            ]
+        );
 
         if ($post) {
             $post->setUrl(
