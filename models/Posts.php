@@ -228,22 +228,31 @@ class Posts extends Model
      * Returns the next post, if available.
      *
      * @param int $categoryId returns the next post in this category.
+     * @param array $options options 
      * @return self
      */
-    public function next($categoryId = null)
+    public function next($categoryId = null, $options = [])
     {
-        return self::isPublished()->applySibling(['categoryId' => $categoryId])->first();
+        return self::isPublished()
+            ->applySibling(['categoryId' => $categoryId])
+            ->listFrontEnd($options)
+            ->first();
     }
 
+    
     /**
      * Returns the previous post, if available.
      *
      * @param int $categoryId returns the previous post in this category.
+     * @param array $options options
      * @return self
      */
-    public function prev($categoryId = null)
+    public function prev($categoryId = null, $options = [])
     {
-        return self::isPublished()->applySibling(['categoryId' => $categoryId, 'direction' => 'previous'])->first();
+        return self::isPublished()
+            ->applySibling(['categoryId' => $categoryId, 'direction' => 'previous'])
+            ->listFrontEnd($options)
+            ->first();
     }
 
     public function scopeListFrontEnd($query, $options)
