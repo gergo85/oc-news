@@ -135,11 +135,11 @@ class NewsSender
         return $results;
     }
 
-    /**
+   /**
      * Prepare newsletter parameters for the template by the receiver.
      * It also replaces the content with absolute urls.
      *
-     * @param Subscribers $receiver
+     * @param Subscribers|User $receiver
      * @return array
      */
     protected function prepareNewsletterParametersForReceiver($receiver)
@@ -175,15 +175,19 @@ class NewsSender
             $this->replacedContent = preg_replace('/<img (.+)?style="width: (.+)px;"/i', '<img $1 width="$2"', $this->replacedContent);
         }
 
-        // Categories
-        $newsCategoryIds = $this->news->categories()->lists('id');
-        $subscriberCatIds = $receiver->categories()->lists('id');
-        // intersection between news and subscriber
-        $categoryIds = array_intersect($newsCategoryIds, $subscriberCatIds);
+        if($receiver instanceof Subscribers) {
+            // Categories
+            $newsCategoryIds = $this->news->categories()->lists('id');
+            $subscriberCatIds = $receiver->categories()->lists('id');
+            // intersection between news and subscriber
+            $categoryIds = array_intersect($newsCategoryIds, $subscriberCatIds);
+        } else {
+            $categoryIds = $this->news->categories()->lists('id');
+        }
 
         $categories =
             Categories::whereIn('id', $categoryIds)
-            ->get();
+                ->get();
 
         // Parameters
         return [
