@@ -130,13 +130,19 @@ class SendNews
      */
     static function send($template, $params, $receiver, $subject)
     {
-        Mail::send(new NewsletterMail($template, $params, $receiver, $subject));
+        $m = Mail::send(new NewsletterMail($template, $params, $receiver, $subject));
 
-        // Check for failures
-        if (Mail::failures()) {
-            Log::error('Newsletter sending failed for address '.Mail::failures()[0]);
-
-            return false;
+        try {
+            if (Mail::failures()) {
+                Log::error('Newsletter sending failed for address '.Mail::failures()[0]);
+                return false;
+            }
+        } catch (\Exception $exception) {
+            // Mail::failures method was removed in ocms v2
+            if ($m == null) {
+                Log::error('Newsletter sending failed for address '.Mail::failures()[0]);
+                return false;
+            }
         }
 
         return true;
