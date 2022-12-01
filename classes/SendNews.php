@@ -1,5 +1,6 @@
 <?php namespace Indikator\News\Classes;
 
+use Exception;
 use Indikator\News\Models\Logs;
 use Indikator\News\Models\Subscribers;
 use Indikator\News\Models\Settings;
@@ -56,8 +57,14 @@ class SendNews
             // Listen to the next send message
             Event::listen('mailer.prepareSend', function ($self, $view, $message) use ($logEntry)
             {
-                $swift = $message->getSwiftMessage();
-                $body  = $swift->getBody();
+                try {
+                    // OCMS 1.x|2.x swift interface
+                    $swift = $message->getSwiftMessage();
+                    $body  = $swift->getBody();
+                } catch (Exception $exception) {
+                    // OCMS 3.x interface
+                    $body = $message->getHtmlBody();
+                }
 
                 // Redirect links to our newsletter logging controller
                 if (Settings::get('click_tracking', true)) {
@@ -81,7 +88,10 @@ class SendNews
                     $body .= '<img src="'.$url.'" style="display:none;width:0;height:0;">';
                 }
 
-                $swift->setBody($body);
+                if (isset($swift))
+                    $swift->setBody($body);
+                else
+                    $message->html($body);
             });
         }
     }
@@ -105,7 +115,11 @@ class SendNews
         $sendResult = self::send($template, $params, $receiver, $subject);
 
         if ($sendResult === true) {
-            Subscribers::find($receiver['id'])->increment('statistics');
+            $sub = Subscribers::find($receiver['id']);
+            if ($sub != null) {
+                $sub->statistics++;
+                $sub->save();
+            }
 
             if ($logEntry !== null) {
                 Logger::sent($logEntry->id);
