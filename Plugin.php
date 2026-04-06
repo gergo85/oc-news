@@ -1,18 +1,18 @@
 <?php namespace Indikator\News;
 
 use System\Classes\PluginBase;
+use Backend\Models\User;
 use Backend;
 use BackendAuth;
 use Event;
 use Db;
+use Config;
 use Indikator\News\Models\Posts;
 use Indikator\News\Models\Categories;
 use Indikator\News\Models\Subscribers;
 use Indikator\News\Models\Settings;
 use Indikator\News\Controllers\Posts as PostsController;
 use Indikator\News\Controllers\Subscribers as SubscribersController;
-use Backend\Models\User;
-use Config;
 
 class Plugin extends PluginBase
 {
@@ -161,10 +161,17 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'indikator.news::mail.email_en' => 'E-mail',
-            'indikator.news::mail.email_hu' => 'E-mail',
-            'indikator.news::mail.confirmation_hu' => 'E-mail',
-            'indikator.news::mail.confirmation_en' => 'E-mail'
+            'indikator.news::mail.email_en' => 'indikator.news::mail.email_en',
+            'indikator.news::mail.email_hu' => 'indikator.news::mail.email_hu',
+            'indikator.news::mail.confirmation_en' => 'indikator.news::mail.confirmation_en',
+            'indikator.news::mail.confirmation_hu' => 'indikator.news::mail.confirmation_hu'
+        ];
+    }
+
+    public function registerMailLayouts()
+    {
+        return [
+            'newsletter' => 'indikator.news::mail.layout-newsletter'
         ];
     }
 

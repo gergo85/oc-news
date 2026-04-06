@@ -8,6 +8,13 @@ class Subscribers extends Model
 
     protected $table = 'indikator_news_subscribers';
 
+    public $attributes = [
+        'registered_ip'     => '127.0.0.1',
+        'confirmed_ip'      => '',
+        'confirmation_hash' => '',
+        'unsubscribed_ip'   => ''
+    ];
+
     public $rules = [
         'email'  => 'required|email',
         'status' => 'required|between:1,3|numeric'

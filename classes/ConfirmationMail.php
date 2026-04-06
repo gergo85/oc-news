@@ -33,7 +33,7 @@ class ConfirmationMail extends Mailable
      * Get the current template name
      *
      * @param $locale string
-     * @return string template name or bool
+     * @return string template name or exception
      */
     protected function getTemplate($locale)
     {
@@ -45,6 +45,6 @@ class ConfirmationMail extends Mailable
             }
         }
 
-        return false;
+        throw new \Exception('Email template not found for locale: '.$this->subscriber->locale);
     }
 }

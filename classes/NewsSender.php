@@ -52,6 +52,7 @@ class NewsSender
         $this->news = $news;
 
         $pluginManager = PluginManager::instance()->findByIdentifier('RainLab.Translate');
+
         if ($pluginManager && !$pluginManager->disabled) {
             $this->locale = true;
         }
@@ -63,9 +64,9 @@ class NewsSender
      * Get the current template name
      *
      * @param $locale string
-     * @return string template name or bool
+     * @return string template name or exception
      */
-    protected function template($locale)
+    protected function getTemplate($locale)
     {
         $langs = [$locale, App::getLocale(), 'en'];
 
@@ -75,7 +76,7 @@ class NewsSender
             }
         }
 
-        return false;
+        throw new \Exception('Email template not found for locale: '.$locale);
     }
 
     /**
@@ -201,21 +202,9 @@ class NewsSender
             'plaintext'    => strip_tags($this->news->introductory),
             'content'      => $this->replacedContent,
             'image'        => $this->news->image,
-            'category'     => $categories->first(), // keep backwards compatibility
+            'category'     => $categories->first(), // Keep backwards compatibility
             'categories'   => $categories
         ];
-    }
-
-    /**
-     * Returns the template for a receiver
-     *
-     * @param $receiver
-     * @return string
-     */
-    protected function getTemplateForReceiver($receiver)
-    {
-        // Template file
-        return $this->template($receiver->locale);
     }
 
     /**
@@ -227,7 +216,7 @@ class NewsSender
     protected function sendTest($receiver)
     {
         $params   = $this->prepareNewsletterParametersForReceiver($receiver);
-        $template = $this->getTemplateForReceiver($receiver);
+        $template = $this->getTemplate($receiver->locale);
 
         return SendNews::send($template, $params, $receiver, $this->news->title);
     }
@@ -241,7 +230,7 @@ class NewsSender
     protected function send($receiver)
     {
         $params   = $this->prepareNewsletterParametersForReceiver($receiver);
-        $template = $this->getTemplateForReceiver($receiver);
+        $template = $this->getTemplate($receiver->locale);
 
         $logEntry = Logger::queued($this->news->id, $receiver->id);
 

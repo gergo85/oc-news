@@ -4,10 +4,10 @@ use Model;
 use BackendAuth;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
+use October\Rain\Database\NestedTreeScope;
 use Indikator\News\Models\Categories as NewsCategories;
 use Db;
 use App;
-use October\Rain\Database\NestedTreeScope;
 use Str;
 use Url;
 
@@ -19,6 +19,10 @@ class Posts extends Model
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
     protected $table = 'indikator_news_posts';
+
+    public $attributes = [
+        'statistics' => 0
+    ];
 
     public $rules = [
         'title'    => 'required',

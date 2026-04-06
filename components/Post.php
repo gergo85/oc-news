@@ -84,11 +84,27 @@ class Post extends ComponentBase
         $this->post = $this->page['post'] = $post;
 
         // Translated locale links
-        if (class_exists('RainLab\Translate\Behaviors\TranslatableModel')) {
-            $currentLocale = (\RainLab\Translate\Classes\Translator::instance())->getLocale();
+        if (class_exists('RainLab\Translate\Behaviors\TranslatableModel') || class_exists('Winter\Translate\Behaviors\TranslatableModel')) {
+            // Determine the correct translator class based on CMS
+            if (class_exists('Winter\Translate\Classes\Translator')) {
+                $translatorClass = 'Winter\Translate\Classes\Translator';
+                $localeClass = 'Winter\Translate\Models\Locale';
+            }
+            elseif (class_exists('RainLab\Translate\Classes\Translator')) {
+                $translatorClass = 'RainLab\Translate\Classes\Translator';
+                // Check for October CMS v4+ vs older versions
+                if (class_exists('RainLab\Translate\Classes\Locale')) {
+                    $localeClass = 'RainLab\Translate\Classes\Locale';
+                }
+                else {
+                    $localeClass = 'RainLab\Translate\Models\Locale';
+                }
+            }
+
+            $currentLocale = ($translatorClass::instance())->getLocale();
             $translations = [];
 
-            foreach (\RainLab\Translate\Models\Locale::listEnabled() as $code => $locale) {
+            foreach ($localeClass::listEnabled() as $code => $locale) {
                 if($currentLocale === $code) continue;
 
                 $post->noFallbackLocale()->lang($code);
@@ -115,8 +131,9 @@ class Post extends ComponentBase
             $this->page['post_available_locales'] = $translations;
             $post->withFallbackLocale()->translateContext($currentLocale);
 
-            if ($category)
+            if ($category) {
                 $category->translateContext($currentLocale);
+            }
         }
 
         $post->categories->each(function($category) {
