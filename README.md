@@ -183,14 +183,19 @@ You can customize the layout of emails in the __Settings > Mail > Mail templates
 
 <a name="requirements"></a>
 ## Requirements
-* October CMS v1.0.420 or newer version.
+* October CMS v1.0.420+ or October CMS v4.x or Winter CMS 1.2.x.
 * [AJAX Framework](https://octobercms.com/docs/ajax) is needed for the subscription form to work.
 
 <a name="installation"></a>
-## Installation
-1. Go to the __Settings > Updates & Plugins__ page in the Backend.
-1. Click on the __Install plugins__ button.
-1. Type the __News & Newsletter__ text in the search field.
+1. Go to the **Settings > Updates & Plugins** page in the Backend.
+1. Click on the **Install plugins** button.
+1. Type the **News & Newsletter** text in the search field.
+or manual installation:
+```bash
+git clone https://github.com/gergo85/oc-news.git plugins/indikator/news
+cd plugins/indikator/news
+composer install
+```
 
 <a name="backend_widgets"></a>
 ## Add back-end widgets
