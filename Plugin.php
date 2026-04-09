@@ -163,8 +163,10 @@ class Plugin extends PluginBase
         return [
             'indikator.news::mail.email_en' => 'indikator.news::mail.email_en',
             'indikator.news::mail.email_hu' => 'indikator.news::mail.email_hu',
+            'indikator.news::mail.email_de' => 'indikator.news::mail.email_de',
             'indikator.news::mail.confirmation_en' => 'indikator.news::mail.confirmation_en',
-            'indikator.news::mail.confirmation_hu' => 'indikator.news::mail.confirmation_hu'
+            'indikator.news::mail.confirmation_hu' => 'indikator.news::mail.confirmation_hu',
+            'indikator.news::mail.confirmation_de' => 'indikator.news::mail.confirmation_de'
         ];
     }
 

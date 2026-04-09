@@ -1,0 +1,14 @@
+subject = "Ihr Abonnement für {{ appName }}"
+layout = "newsletter"
+description = "Bestätigung nach Newsletter-Anmeldung"
+==
+Hallo {{ subscriber.name }},
+
+Sie haben sich für unseren Newsletter angemeldet.
+
+Um Ihr Abonnement abzuschließen, müssen Sie bestätigen, dass Sie diese E-Mail erhalten haben.  
+Sie haben 24 Stunden Zeit, um Ihr Abonnement abzuschließen.
+
+{% partial 'button' url=confirmation_link body %}
+Meine E-Mail-Adresse jetzt bestätigen
+{% endpartial %}
