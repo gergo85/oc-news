@@ -1,11 +1,32 @@
 {
-    "name": "indikator/news-plugin",
-    "type": "october-plugin",
-    "description": "Plugin can be used for publishing news simply on the website.",
-    "homepage": "https://octobercms.com/plugin/indikator-news",
-    "keywords": ["october", "octobercms", "news"],
-    "license": "MIT",
-    "require": {
-        "composer/installers": "~1.0"
+  "name": "indikator/news-plugin",
+  "version": "1.14.0",
+  "type": "october-plugin",
+  "description": "Plugin can be used for publishing news simply on the website.",
+  "homepage": "https://octobercms.com/plugin/indikator-news",
+  "keywords": [
+    "octobercms",
+    "wintercms",
+    "news",
+    "newsletter",
+    "blog"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/gergo85/oc-news/issues",
+    "source": "https://github.com/gergo85/oc-news"
+  },
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "extra": {
+    "october": {
+      "plugin": {
+        "name": "News & Newsletter",
+        "class": "Indikator\\News\\Plugin"
+      }
     }
+  }
 }

@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Indikator\News\Models\Posts as NewsPost;
 use Indikator\News\Models\Categories as NewsCategory;
+use Indikator\News\Classes\CmsHelper;
 use Lang;
 use Redirect;
 
@@ -196,7 +197,7 @@ class Posts extends ComponentBase
         }
 
         $category = new NewsCategory;
-        $category = $category->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+        $category = $category->isClassExtendedWith(CmsHelper::getTranslateBehavior(''))
             ? $category->transWhere('slug', $slug)
             : $category->where('slug', $slug);
         $category = $category->first();

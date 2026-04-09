@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use October\Rain\Database\NestedTreeScope;
 use Indikator\News\Models\Categories as NewsCategories;
+use Indikator\News\Classes\CmsHelper;
 use Db;
 use App;
 use Str;
@@ -15,8 +16,6 @@ class Posts extends Model
 {
     use \October\Rain\Database\Traits\Sluggable;
     use \October\Rain\Database\Traits\Validation;
-
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
     protected $table = 'indikator_news_posts';
 
@@ -106,34 +105,46 @@ class Posts extends Model
     public $belongsToMany = [
         'categories' => [
             'Indikator\News\Models\Categories',
-            'table' => 'indikator_news_posts_categories',
-            'scope' => 'IsActive',
+            'table'    => 'indikator_news_posts_categories',
+            'scope'    => 'IsActive',
             'key'      => 'post_id',
             'otherKey' => 'category_id',
-            'order' => 'name'
+            'order'    => 'name'
         ],
         'all_categories' => [
             'Indikator\News\Models\Categories',
-            'table' => 'indikator_news_posts_categories',
+            'table'    => 'indikator_news_posts_categories',
             'key'      => 'post_id',
             'otherKey' => 'category_id',
-            'order' => 'name'
+            'order'    => 'name'
         ],
     ];
 
     public $preview = null;
 
-    public function getSendAttribute() {
+    public $implement;
+
+    public static function boot()
+    {
+        parent::boot();
+        
+        static::extend(function($model) {
+            $model->implement = [CmsHelper::getTranslateBehavior('@')];
+        });
+    }
+
+    public function getSendAttribute()
+    {
         return $this->last_send_at != null;
     }
 
     /**
      * List of administrators
      */
-    public function getUserOptions()
+    public function getUserIdOptions($value = null, $formData = null)
     {
         $result = [0 => 'indikator.news::lang.form.select_user'];
-        $users = Db::table('backend_users')->orderBy('login', 'asc')->get()->all();
+        $users = \Backend\Models\User::orderBy('login', 'asc')->get();
 
         foreach ($users as $user) {
             $name = trim($user->first_name.' '.$user->last_name);
@@ -146,13 +157,10 @@ class Posts extends Model
 
     public function filterCategory()
     {
-        $result = [];
-
-        foreach (NewsCategories::where('status', 1)->orderBy('name', 'asc')->get()->all() as $item) {
-            $result[$item->id] = $item->name;
-        }
-
-        return $result;
+        return NewsCategories::where('status', 1)
+            ->orderBy('name', 'asc')
+            ->pluck('name', 'id')
+            ->toArray();
     }
 
     /**
@@ -187,11 +195,13 @@ class Posts extends Model
         $query->whereHas('categories', function($query) use ($categoryId) {
             if (is_array($categoryId)) {
                 $query->whereIn('id', $categoryId);
-            } else {
+            }
+            else {
                 $query->whereId($categoryId);
             }
         });
     }
+
     // Next and previous post
 
     /**
@@ -242,7 +252,6 @@ class Posts extends Model
             ->listFrontEnd($options)
             ->first();
     }
-
     
     /**
      * Returns the previous post, if available.
@@ -309,7 +318,6 @@ class Posts extends Model
          * Category filter
          */
         if ($category !== null) {
-
             $query->inCategory($category);
         }
 
@@ -353,9 +361,9 @@ class Posts extends Model
 
     /**
      * Allows filtering for specifc categories.
-     * @param  \Illuminate\Database\Query\Builder  $query      QueryBuilder
-     * @param  array                     $categories List of category ids
-     * @return \Illuminate\Database\Query\Builder              QueryBuilder
+     * @param  \Illuminate\Database\Query\Builder  $query  QueryBuilder
+     * @param  array $categories List of category ids
+     * @return \Illuminate\Database\Query\Builder          ryBuilder
      */
     public function scopeFilterCategories($query, $categories)
     {
@@ -424,7 +432,6 @@ class Posts extends Model
 
         return $result;
     }
-
 
     public static function resolveMenuItem($item, $url, $theme)
     {
@@ -513,5 +520,4 @@ class Posts extends Model
 
         return $this->url = $controller->pageUrl($pageName, $params);
     }
-
 }

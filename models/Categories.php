@@ -1,6 +1,7 @@
 <?php namespace Indikator\News\Models;
 
 use Model;
+use Indikator\News\Classes\CmsHelper;
 
 class Categories extends Model
 {
@@ -8,7 +9,16 @@ class Categories extends Model
     use \October\Rain\Database\Traits\NestedTree;
     use \October\Rain\Database\Traits\Validation;
 
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement;
+
+    public static function boot()
+    {
+        parent::boot();
+        
+        static::extend(function($model) {
+            $model->implement = [CmsHelper::getTranslateBehavior('@')];
+        });
+    }
 
     protected $table = 'indikator_news_categories';
 
@@ -37,28 +47,28 @@ class Categories extends Model
             'table'    => 'indikator_news_relations',
             'key'      => 'categories_id',
             'otherKey' => 'subscriber_id',
-            'count' => true
+            'count'    => true
         ],
         'posts' => [
             'Indikator\News\Models\Posts',
-            'table' => 'indikator_news_posts_categories',
-            'order' => 'published_at desc',
-            'scope' => 'isPublished',
+            'table'    => 'indikator_news_posts_categories',
+            'order'    => 'published_at desc',
+            'scope'    => 'isPublished',
             'key'      => 'category_id',
             'otherKey' => 'post_id'
         ],
         'posts_count' => [
             'Indikator\News\Models\Posts',
-            'table' => 'indikator_news_posts_categories',
-            'scope' => 'isPublished',
+            'table'    => 'indikator_news_posts_categories',
+            'scope'    => 'isPublished',
             'key'      => 'category_id',
             'otherKey' => 'post_id',
-            'count' => true
+            'count'    => true
         ],
         'all_posts' => [
             'Indikator\News\Models\Posts',
-            'table' => 'indikator_news_posts_categories',
-            'order' => 'published_at desc',
+            'table'    => 'indikator_news_posts_categories',
+            'order'    => 'published_at desc',
             'key'      => 'category_id',
             'otherKey' => 'post_id'
         ],
@@ -86,11 +96,13 @@ class Categories extends Model
         return $this->url = $controller->pageUrl($pageName, $params);
     }
 
-    public function scopeNotHidden($query) {
+    public function scopeNotHidden($query)
+    {
         $query->where('hidden', 2);
     }
 
-    public function scopeIsActive($query) {
+    public function scopeIsActive($query)
+    {
         $query->where('hidden', 2)
             ->where('status', 1);
     }

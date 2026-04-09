@@ -51,8 +51,6 @@ tabs:
             span: storm
             cssClass: col-xs-12
 
-
-
         enable_newsletter_content:
             tab: indikator.news::lang.form.newsletter_content_tab
             label: indikator.news::lang.form.enable_newsletter_content
@@ -100,7 +98,6 @@ tabs:
             span: storm
             cssClass: col-md-6
 
-
         categories:
             type: partial
             path: '$/indikator/news/controllers/posts/_categories.htm'
@@ -141,7 +138,7 @@ secondaryTabs:
             span: storm
             cssClass: col-xs-12
 
-        user:
+        user_id:
             label: indikator.news::lang.form.author
             type: dropdown
             span: storm

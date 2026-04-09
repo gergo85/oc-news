@@ -5,15 +5,16 @@ use Cms\Classes\Page;
 use Cms\Classes\Theme;
 use Indikator\News\Models\Categories as NewsCategory;
 use Indikator\News\Models\Posts as NewsPost;
+use Indikator\News\Classes\CmsHelper;
 use Redirect;
 use BackendAuth;
 
 class Post extends ComponentBase
 {
-    public $post,
-        $postPage,
-        $categoryPage,
-        $category;
+    public $post;
+    public $postPage;
+    public $categoryPage;
+    public $category;
 
     public function componentDetails()
     {
@@ -51,7 +52,7 @@ class Post extends ComponentBase
                 'type'        => 'dropdown',
                 'default'     => '',
                 'group'       => 'indikator.news::lang.settings.links'
-            ],
+            ]
         ];
     }
 
@@ -66,7 +67,6 @@ class Post extends ComponentBase
 
     public function onRun()
     {
-
         $this->prepareVars();
 
         $category = $this->category = $this->page['category'] = $this->loadCategory();
@@ -84,31 +84,20 @@ class Post extends ComponentBase
         $this->post = $this->page['post'] = $post;
 
         // Translated locale links
-        if (class_exists('RainLab\Translate\Behaviors\TranslatableModel') || class_exists('Winter\Translate\Behaviors\TranslatableModel')) {
-            // Determine the correct translator class based on CMS
-            if (class_exists('Winter\Translate\Classes\Translator')) {
-                $translatorClass = 'Winter\Translate\Classes\Translator';
-                $localeClass = 'Winter\Translate\Models\Locale';
-            }
-            elseif (class_exists('RainLab\Translate\Classes\Translator')) {
-                $translatorClass = 'RainLab\Translate\Classes\Translator';
-                // Check for October CMS v4+ vs older versions
-                if (class_exists('RainLab\Translate\Classes\Locale')) {
-                    $localeClass = 'RainLab\Translate\Classes\Locale';
-                }
-                else {
-                    $localeClass = 'RainLab\Translate\Models\Locale';
-                }
-            }
-
-            $currentLocale = ($translatorClass::instance())->getLocale();
+        if (CmsHelper::hasTranslate()) {
+            $classes = CmsHelper::getTranslateClasses();
+            $currentLocale = ($classes['translator']::instance())->getLocale();
             $translations = [];
 
-            foreach ($localeClass::listEnabled() as $code => $locale) {
-                if($currentLocale === $code) continue;
+            foreach ($classes['locale']::listEnabled() as $code => $locale) {
+                if ($currentLocale === $code) {
+                    continue;
+                }
 
                 $post->noFallbackLocale()->lang($code);
-                if (empty($post->title) || empty($post->slug) ) continue;
+                if (empty($post->title) || empty($post->slug)) {
+                    continue;
+                }
 
                 $post->translateContext($code);
                 if (!$category) {
@@ -116,11 +105,11 @@ class Post extends ComponentBase
                 }
 
                 $category->translateContext($code);
-                $translations[$code] =  [
+                $translations[$code] = [
                     'code' => $code,
                     'name' => $locale,
                     'slug' => $post->slug,
-                    'url' => $this->rewriteTranslatablePageUrl([
+                    'url'  => $this->rewriteTranslatablePageUrl([
                         'category' => $category->slug,
                         'slug' => $post->slug
                     ], $code),
@@ -141,8 +130,8 @@ class Post extends ComponentBase
         });
     }
 
-    protected function rewriteTranslatablePageUrl($params,$locale) {
-
+    protected function rewriteTranslatablePageUrl($params, $locale)
+    {
         $this->page->page->rewriteTranslatablePageUrl($locale);
 
         $router = new \October\Rain\Router\Router;
@@ -166,7 +155,7 @@ class Post extends ComponentBase
         }
 
         $category = new NewsCategory;
-        $category = $category->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+        $category = $category->isClassExtendedWith(CmsHelper::getTranslateBehavior(''))
             ? $category->transWhere('slug', $slug)
             : $category->where('slug', $slug);
         $category = $category->first();
@@ -180,7 +169,7 @@ class Post extends ComponentBase
 
         $post = new NewsPost;
 
-        $post = $post->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
+        $post = $post->isClassExtendedWith(CmsHelper::getTranslateBehavior(''))
             ? $post->transWhere('slug', $slug)
             : $post->where('slug', $slug);
 
@@ -189,6 +178,7 @@ class Post extends ComponentBase
         if (!$post) {
             return $post;
         }
+
         $post->tags = explode(',', $post->tags);
 
         $meta_description = strip_tags($post->introductory);
@@ -206,18 +196,21 @@ class Post extends ComponentBase
         $this->page->meta_image_src = $post->image;
 
         // Create keyword list, from category name and tag list.
-        $post_keywords = "";
+        $post_keywords = '';
+
         foreach ($post->categories as $category) {
             if (isset($category->name)) {
                 $post_keywords .= $category->name .', ';
             }
         }
+
         foreach ($post->tags as $key => $tag) {
             $post_keywords .= $tag;
             if ($key != (count($post->tags) - 1)) {
                 $post_keywords .= ', ';
             }
         }
+
         $this->page->meta_keywords = $post_keywords;
 
         return $post;
@@ -225,14 +218,15 @@ class Post extends ComponentBase
 
     protected $nextPost;
 
-    public function next($respectingGroup = true) {
-
+    public function next($respectingGroup = true)
+    {
         if ($this->nextPost) {
             return $this->nextPost;
         }
 
-        if (!$this->post)
+        if (!$this->post) {
             return null;
+        }
 
         $post = $this->post->next(
             $respectingGroup && $this->category ? $this->category->id : null,
@@ -257,8 +251,8 @@ class Post extends ComponentBase
 
     protected $prevPost;
 
-    public function prev($respectingGroup = true) {
-
+    public function prev($respectingGroup = true)
+    {
         if ($this->prevPost) {
             return $this->prevPost;
         }
