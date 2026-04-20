@@ -9,27 +9,53 @@ foreach ($pages as $page) {
 ?>
 
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('indikator.news::lang.menu.posts')) ?></a></li>
-        <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
+    <?php if (class_exists('\System') && version_compare(\System::VERSION, '4.0.0', '>=')): ?>
         <?php if (!$this->fatalError): ?>
-        <li>
-            <strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?>
-            &nbsp; | &nbsp;
-            <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-danger"><strong><?= $formModel->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?></span>
-        </li>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="status-label status-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #e6f2ff; color: #0066cc; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-clock"></i>
+                <strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?>
+            </span>
+            <span class="status-label status-warning" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #fff3cd; color: #856404; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-envelope"></i>
+                <strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?>
+            </span>
+            <span class="status-label status-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #e6f2ff; color: #0066cc; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-eye"></i>
+                <strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?>
+            </span>
+            <span class="status-label status-success" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #d4edda; color: #155724; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-mouse-pointer"></i>
+                <strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?>
+            </span>
+            <span class="status-label status-danger" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #ffe6e6; color: #cc0000; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-times-circle"></i>
+                <strong><?= $formModel->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?>
+            </span>
+        </div>
         <?php endif ?>
-    </ul>
+    <?php else: ?>
+        <ul>
+            <li><a href="<?= Backend::url('indikator/news/posts') ?>"><?= e(trans('indikator.news::lang.menu.posts')) ?></a></li>
+            <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
+            <?php if (!$this->fatalError): ?>
+            <li>
+                <strong><?= $formModel->logs_queued_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.queued')) ?>
+                &nbsp; | &nbsp;
+                <span class="text-warning"><strong><?= $formModel->logs_send_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.send')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-info"><strong><?= $formModel->logs_viewed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.view')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-success"><strong><?= $formModel->logs_clicked_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.click')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-danger"><strong><?= $formModel->logs_failed_count()->count() ?></strong> <?= e(trans('indikator.news::lang.stat.failed')) ?></span>
+            </li>
+            <?php endif ?>
+        </ul>
+    <?php endif; ?>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
 
         <style type="text/css">

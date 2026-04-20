@@ -8,27 +8,23 @@ fields:
         label: indikator.news::lang.form.name
         attributes:
            autofocus: ''
-        span: storm
-        cssClass: col-lg-6
+        span: left
 
     email:
         label: indikator.news::lang.form.email
         required: true
-        span: storm
-        cssClass: col-lg-6
+        span: right
 
     categories:
         label: indikator.news::lang.menu.categories
         type: relation
-        span: storm
-        cssClass: col-lg-6
+        span: left
 
     comment:
         label: indikator.news::lang.form.comment
         type: textarea
         size: small
-        span: storm
-        cssClass: col-lg-6
+        span: right
 
 secondaryTabs:
 
@@ -37,25 +33,22 @@ secondaryTabs:
         subscriberinfo:
             type: subscriberinfo
             context: update
-            span: storm
-            cssClass: col-xs-12
+            span: full
 
         locale:
             label: indikator.news::lang.form.locale
             placeholder: indikator.news::lang.form.lang
             comment: indikator.news::lang.form.locale_comment
             commentHtml: true
-            span: storm
-            cssClass: col-xs-12
+            span: full
 
         status:
             label: indikator.news::lang.form.status
             required: true
-            type: balloon-selector
+            type: radio
             options:
                 1: indikator.news::lang.form.status_active
                 2: indikator.news::lang.form.status_unsubscribed
                 3: indikator.news::lang.form.status_pending
             default: 1
-            span: storm
-            cssClass: col-xs-12
+            span: full

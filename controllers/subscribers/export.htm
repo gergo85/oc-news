@@ -1,12 +1,13 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
+    <?php if (!class_exists('\System') || version_compare(\System::VERSION, '4.0.0', '<')): ?>
         <li><a href="<?= Backend::url('indikator/news/subscribers') ?>"><?= e(trans('indikator.news::lang.menu.subscribers')) ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
+    <?php endif; ?>
     </ul>
 <?php Block::endPut() ?>
 
 <?= Form::open(['class' => 'layout']) ?>
-
     <div style="padding:0 35px">
 
         <div class="layout-row">
@@ -27,5 +28,4 @@
         </div>
 
     </div>
-
 <?= Form::close() ?>

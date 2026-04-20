@@ -1,6 +1,6 @@
 {
   "name": "indikator/news-plugin",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "type": "october-plugin",
   "description": "Plugin can be used for publishing news simply on the website.",
   "homepage": "https://octobercms.com/plugin/indikator-news",

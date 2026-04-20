@@ -1,14 +1,31 @@
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><?= e(trans($this->pageTitle)) ?></li>
-        <li>
-            <span class="text-info"><strong><?= Indikator\News\Models\Categories::where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_active')) ?></span>
-            &nbsp; | &nbsp;
-            <span class="text-danger"><strong><?= Indikator\News\Models\Categories::where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_inactive')) ?></span>
-            &nbsp; | &nbsp;
-            <strong><?= Indikator\News\Models\Categories::where('hidden', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.hidden')) ?>
-        </li>
-    </ul>
+    <?php if (class_exists('\System') && version_compare(\System::VERSION, '4.0.0', '>=')): ?>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px;">
+            <span class="status-label status-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #e6f2ff; color: #0066cc; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-check"></i>
+                <strong><?= Indikator\News\Models\Categories::where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_active')) ?>
+            </span>
+            <span class="status-label status-danger" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #ffe6e6; color: #cc0000; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-times"></i>
+                <strong><?= Indikator\News\Models\Categories::where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_inactive')) ?>
+            </span>
+            <span class="status-label status-warning" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #fff3cd; color: #856404; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-eye-slash"></i>
+                <strong><?= Indikator\News\Models\Categories::where('hidden', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.hidden')) ?>
+            </span>
+        </div>
+    <?php else: ?>
+        <ul>
+            <li><?= e(trans($this->pageTitle)) ?></li>
+            <li>
+                <span class="text-info"><strong><?= Indikator\News\Models\Categories::where('status', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_active')) ?></span>
+                &nbsp; | &nbsp;
+                <span class="text-danger"><strong><?= Indikator\News\Models\Categories::where('status', 2)->count() ?></strong> <?= e(trans('indikator.news::lang.form.status_inactive')) ?></span>
+                &nbsp; | &nbsp;
+                <strong><?= Indikator\News\Models\Categories::where('hidden', 1)->count() ?></strong> <?= e(trans('indikator.news::lang.form.hidden')) ?>
+            </li>
+        </ul>
+    <?php endif; ?>
 <?php Block::endPut() ?>
 
 <?= $this->listRender() ?>

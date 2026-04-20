@@ -9,29 +9,25 @@ fields:
         required: true
         attributes:
            autofocus: ''
-        span: storm
-        cssClass: col-lg-6
+        span: left
 
     slug:
         label: indikator.news::lang.form.slug
         required: true
         preset: name
-        span: storm
-        cssClass: col-lg-6
+        span: right
 
     content:
         label: indikator.news::lang.form.content
         type: richeditor
         size: large
-        span: storm
-        cssClass: col-xs-12
+        span: full
 
     posts:
         label: indikator.news::lang.title.posts
         type: partial
         path: '$/indikator/news/controllers/categories/_posts.htm'
-        span: storm
-        cssClass: col-xs-12
+        span: full
 
 secondaryTabs:
 
@@ -40,15 +36,13 @@ secondaryTabs:
         categoryinfo:
             type: categoryinfo
             context: update
-            span: storm
-            cssClass: col-xs-12
+            span: full
 
         image:
             label: indikator.news::lang.form.image
             type: mediafinder
             mode: image
-            span: storm
-            cssClass: col-xs-12
+            span: full
 
         status:
             label: indikator.news::lang.form.status
@@ -58,8 +52,7 @@ secondaryTabs:
                 1: indikator.news::lang.button.active
                 2: indikator.news::lang.button.inactive
             default: 1
-            span: storm
-            cssClass: col-xs-6
+            span: left
 
         hidden:
             label: indikator.news::lang.form.hidden
@@ -69,5 +62,4 @@ secondaryTabs:
                 1: indikator.news::lang.form.yes
                 2: indikator.news::lang.form.no
             default: 2
-            span: storm
-            cssClass: col-xs-6
+            span: right

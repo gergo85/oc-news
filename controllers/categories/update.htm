@@ -4,14 +4,15 @@ $next = \Indikator\News\Models\Categories::where('id', '>', $formModel->id)->min
 ?>
 
 <?php Block::put('breadcrumb') ?>
+<?php if (!class_exists('\System') || version_compare(\System::VERSION, '4.0.0', '<')): ?>
     <ul>
         <li><a href="<?= Backend::url('indikator/news/categories') ?>"><?= e(trans('indikator.news::lang.menu.categories')) ?></a></li>
         <li><?= ucfirst(e(trans($this->pageTitle))) ?></li>
     </ul>
+<?php endif; ?>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
 
         <div class="layout-row min-size">

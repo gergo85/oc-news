@@ -1,12 +1,13 @@
+<?php if (!class_exists('\System') || version_compare(\System::VERSION, '4.0.0', '<')): ?>
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><a href="<?= Backend::url('indikator/news/categories') ?>"><?= e(trans('indikator.news::lang.menu.categories')) ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
+<?php endif ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
 
         <div class="layout-row min-size">

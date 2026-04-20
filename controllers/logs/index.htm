@@ -1,10 +1,19 @@
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><?= e(trans('indikator.news::lang.menu.logs')) ?></li>
-        <li>
-            <span class="text-info"><strong><?= Indikator\News\Models\Logs::count() ?></strong> <?= e(trans('indikator.news::lang.form.logs_count')) ?></span>
-        </li>
-    </ul>
+    <?php if (class_exists('\System') && version_compare(\System::VERSION, '4.0.0', '>=')): ?>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+            <span class="status-label status-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #e6f2ff; color: #0066cc; border-radius: 4px; font-size: 13px; font-weight: 500;">
+                <i class="icon-bar-chart"></i>
+                <strong><?= Indikator\News\Models\Logs::count() ?></strong> <?= e(trans('indikator.news::lang.form.logs_count')) ?>
+            </span>
+        </div>
+    <?php else: ?>
+        <ul>
+            <li><?= e(trans('indikator.news::lang.menu.logs')) ?></li>
+            <li>
+                <span class="text-info"><strong><?= Indikator\News\Models\Logs::count() ?></strong> <?= e(trans('indikator.news::lang.form.logs_count')) ?></span>
+            </li>
+        </ul>
+    <?php endif; ?>
 <?php Block::endPut() ?>
 
 <?= $this->listRender() ?>

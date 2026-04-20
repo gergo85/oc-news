@@ -16,7 +16,9 @@ class Posts extends ComponentBase
         $sortOrder,
         $category,
         $searchFilter,
-        $nestedCategoryPosts;
+        $nestedCategoryPosts,
+        $pageParam,
+        $categoryPage;
 
     public function componentDetails()
     {

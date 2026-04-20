@@ -11,10 +11,10 @@ use BackendAuth;
 
 class Post extends ComponentBase
 {
-    public $post;
-    public $postPage;
-    public $categoryPage;
-    public $category;
+    public $post,
+        $postPage,
+        $categoryPage,
+        $category;
 
     public function componentDetails()
     {
