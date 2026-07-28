@@ -340,7 +340,7 @@ class Plugin extends PluginBase
         PostsController::extendListFilterScopes(function($filter)
         {
             if (Categories::count() == 0) {
-                $filter->removeScope('categories');
+                $filter->removeScope('category');
             }
         });
 

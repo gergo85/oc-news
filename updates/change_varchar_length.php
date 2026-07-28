@@ -2,60 +2,68 @@
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
+use Db;
 
 class ChangeVarcharLength extends Migration
 {
     public function up()
     {
-        Schema::table('indikator_news_posts', function($table)
-        {
-            $table->string('image', 191)->change();
-        });
-
-        Schema::table('indikator_news_categories', function($table)
-        {
-            $table->string('image', 191)->change();
-        });
-
-        Schema::table('indikator_news_subscribers', function($table)
-        {
-            $table->string('registered_ip', 191)->change();
-            $table->string('confirmed_ip', 191)->change();
-            $table->string('confirmation_hash', 191)->change();
-            $table->string('unsubscribed_ip', 191)->change();
-        });
-
-        Schema::table('indikator_news_newsletter_logs', function($table)
-        {
-            $table->string('status', 191)->change();
-            $table->string('hash', 191)->change();
-        });
+        $this->resize(191, 191);
     }
 
     public function down()
     {
-        Schema::table('indikator_news_posts', function($table)
-        {
-            $table->string('image', 200)->change();
-        });
+        $this->resize(200, 255);
+    }
 
-        Schema::table('indikator_news_categories', function($table)
-        {
-            $table->string('image', 200)->change();
-        });
+    /**
+     * Resize the affected VARCHAR columns.
+     *
+     * These lengths only matter on MySQL/MariaDB (the 191 limit keeps utf8mb4
+     * indexes under the 767 byte prefix limit). Raw MODIFY statements are used
+     * on purpose: Doctrine DBAL's ->change() misreads a nullable column's NULL
+     * default as the string 'NULL' on MariaDB and emits invalid
+     * "DEFAULT ''NULL''" SQL, which aborts the whole plugin update.
+     *
+     * @param int $imageLength length for the image columns
+     * @param int $textLength   length for the subscriber/log string columns
+     */
+    protected function resize($imageLength, $textLength)
+    {
+        $driver = Db::connection()->getDriverName();
 
-        Schema::table('indikator_news_subscribers', function($table)
-        {
-            $table->string('registered_ip', 255)->change();
-            $table->string('confirmed_ip', 255)->change();
-            $table->string('confirmation_hash', 255)->change();
-            $table->string('unsubscribed_ip', 255)->change();
-        });
+        if (!in_array($driver, ['mysql', 'mariadb'])) {
+            return;
+        }
 
-        Schema::table('indikator_news_newsletter_logs', function($table)
-        {
-            $table->string('status', 255)->change();
-            $table->string('hash', 255)->change();
-        });
+        $this->modify('indikator_news_posts', 'image', $imageLength, true);
+        $this->modify('indikator_news_categories', 'image', $imageLength, true);
+
+        $this->modify('indikator_news_subscribers', 'registered_ip', $textLength, true);
+        $this->modify('indikator_news_subscribers', 'confirmed_ip', $textLength, true);
+        $this->modify('indikator_news_subscribers', 'confirmation_hash', $textLength, true);
+        $this->modify('indikator_news_subscribers', 'unsubscribed_ip', $textLength, true);
+
+        $this->modify('indikator_news_newsletter_logs', 'status', $textLength, false);
+        $this->modify('indikator_news_newsletter_logs', 'hash', $textLength, true);
+    }
+
+    /**
+     * Change a column to VARCHAR($length) while preserving its nullability.
+     *
+     * @param string $table
+     * @param string $column
+     * @param int    $length
+     * @param bool   $nullable
+     */
+    protected function modify($table, $column, $length, $nullable)
+    {
+        if (!Schema::hasColumn($table, $column)) {
+            return;
+        }
+
+        $null = $nullable ? 'NULL DEFAULT NULL' : 'NOT NULL';
+
+        Db::statement("ALTER TABLE `{$table}` MODIFY `{$column}` VARCHAR({$length}) {$null}");
     }
 }

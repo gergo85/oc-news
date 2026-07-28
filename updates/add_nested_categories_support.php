@@ -18,8 +18,11 @@ class AddNestedCategoriesSupport extends Migration
         }
 
         // use orderby instead of sorting trait, since it is not available anymore
+        // fall back to id when sort_order was already dropped by a previous run
+        $orderBy = Schema::hasColumn('indikator_news_categories', 'sort_order') ? 'sort_order' : 'id';
+
         $categories = (new Categories)->newQueryWithoutScopes()
-            ->orderBy('sort_order')
+            ->orderBy($orderBy)
             ->get();
 
         for ($i = 0; $i < count($categories); $i++) {
@@ -32,10 +35,11 @@ class AddNestedCategoriesSupport extends Migration
             $category->save();
         }
 
-        Schema::table('indikator_news_categories', function ($table) {
-            $table->dropColumn('sort_order');
-        });
-
+        if (Schema::hasColumn('indikator_news_categories', 'sort_order')) {
+            Schema::table('indikator_news_categories', function ($table) {
+                $table->dropColumn('sort_order');
+            });
+        }
     }
 
     public function down()

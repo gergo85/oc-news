@@ -145,3 +145,6 @@
 1.13.0: Compatibility with October CMS v4+
 1.14.0: Minor improvements and bugfixes.
 1.15.0: UI and component improvements.
+1.15.1:
+    - Fixed update failed and column issue.
+    - Fixed the category filter on the Posts list.
