@@ -154,3 +154,4 @@
     - Added bulk category assignment for subscribers from the list view.
     - Added categories column support for subscriber CSV import.
     - Added selectable category ordering to the Categories component.
+1.16.1: Fixed Composer packaging so the version is derived from the git tag.
