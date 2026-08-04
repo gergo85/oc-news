@@ -153,3 +153,4 @@
     - Fixed pagination when multiple post list components are on the same page.
     - Added bulk category assignment for subscribers from the list view.
     - Added categories column support for subscriber CSV import.
+    - Added selectable category ordering to the Categories component.

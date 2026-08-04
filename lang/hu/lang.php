@@ -253,6 +253,8 @@ return [
         'category_filter_description' => 'Adja meg a kategória webcímét, ami alapján szűrve lesznek a bejegyzések. Üresen hagyva minden bejegyzés meg fog jelenni.',
         'nested_category_posts_title' => 'Alkategória',
         'nested_category_posts_description' => 'Alkategóriához tartozó bejegyzések megjelenítése.',
+        'categories_order_title' => 'Kategóriák sorrendje',
+        'categories_order_description' => 'Válaszd ki, milyen sorrendben jelenjenek meg a kategóriák.',
         'tags_slug_title' => 'Címke webcím',
         'tags_slug_description' => '',
         'tags_page_title' => 'Címke aloldal',
@@ -269,7 +271,10 @@ return [
         'published_at_asc' => 'Publikálva (növekvő)',
         'published_at_desc' => 'Publikálva (csökkenő)',
         'statistics_asc' => 'Népszerűség (növekvő)',
-        'statistics_desc' => 'Népszerűség (csökkenő)'
+        'statistics_desc' => 'Népszerűség (csökkenő)',
+        'name_asc' => 'Név (növekvő)',
+        'name_desc' => 'Név (csökkenő)',
+        'custom' => 'Egyéni (backend sorrend)'
     ],
     'sitemap' => [
         'post_list' => 'Bejegyzés lista',

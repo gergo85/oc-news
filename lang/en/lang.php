@@ -255,6 +255,8 @@ return [
         'category_filter_description' => 'Enter a category slug or URL parameter to filter the posts by. Leave empty to show all posts.',
         'nested_category_posts_title' => 'Nested Posts',
         'nested_category_posts_description' => 'Display posts which are in a nested category.',
+        'categories_order_title' => 'Category order',
+        'categories_order_description' => 'Choose in which order the categories are displayed.',
         'tags_slug_title' => 'Tag slug',
         'tags_slug_description' => 'Look up the tag using the supplied slug value. This property is used by the default component partial for marking the currently active tag.',
         'tags_page_title' => 'Tag page',
@@ -271,7 +273,10 @@ return [
         'published_at_asc' => 'Published (ascending)',
         'published_at_desc' => 'Published (descending)',
         'statistics_asc' => 'Popularity (ascending)',
-        'statistics_desc' => 'Popularity (descending)'
+        'statistics_desc' => 'Popularity (descending)',
+        'name_asc' => 'Name (ascending)',
+        'name_desc' => 'Name (descending)',
+        'custom' => 'Custom (backend order)'
     ],
     'sitemap' => [
         'post_list' => 'Post list',

@@ -12,6 +12,7 @@ class Categories extends ComponentBase
         $noPostsMessage,
         $categoryPage,
         $currentCategorySlug,
+        $sortOrder,
         $root;
 
     public function componentDetails()
@@ -50,6 +51,17 @@ class Categories extends ComponentBase
                 'type'        => 'checkbox',
                 'default'     => false
             ],
+            'sortOrder' => [
+                'title'       => 'indikator.news::lang.settings.categories_order_title',
+                'description' => 'indikator.news::lang.settings.categories_order_description',
+                'type'        => 'dropdown',
+                'default'     => 'name asc',
+                'options'     => [
+                    'name asc'      => Lang::get('indikator.news::lang.sorting.name_asc'),
+                    'name desc'     => Lang::get('indikator.news::lang.sorting.name_desc'),
+                    'nest_left asc' => Lang::get('indikator.news::lang.sorting.custom')
+                ]
+            ],
             'categoryPage' => [
                 'title'       => 'indikator.news::lang.settings.category_page_title',
                 'description' => 'indikator.news::lang.settings.category_page_description',
@@ -78,6 +90,7 @@ class Categories extends ComponentBase
 
         $this->currentCategorySlug = $this->page['currentCategorySlug'] = $this->property('slug');
         $this->categoryPage = $this->page['categoryPage'] = $this->property('categoryPage');
+        $this->sortOrder = $this->property('sortOrder');
         $this->page['noCategoryMessage'] = $this->property('noCategoryMessage');
         $this->categories = $this->page['categories'] = $this->listCategories();
     }
@@ -98,7 +111,37 @@ class Categories extends ComponentBase
         $categories = $categories->filter(function($cat) {
             return $cat->getNestedPostCount() > 0;
         });
+        $categories = $this->sortCategories($categories);
         return $this->linkCategories($categories);
+    }
+
+    /**
+     * Sorts the categories (and their children recursively) by the selected
+     * order, while keeping the nested tree structure intact. The default
+     * "nest_left asc" keeps the backend defined order.
+     * @return Collection
+     */
+    protected function sortCategories($categories)
+    {
+        if (!$this->sortOrder || $this->sortOrder === 'nest_left asc') {
+            return $categories;
+        }
+
+        $parts     = explode(' ', $this->sortOrder);
+        $field     = $parts[0];
+        $direction = strtolower($parts[1] ?? 'asc');
+
+        $sorted = ($direction === 'desc'
+            ? $categories->sortByDesc($field)
+            : $categories->sortBy($field))->values();
+
+        $sorted->each(function ($category) {
+            if ($category->children && count($category->children) > 0) {
+                $category->setRelation('children', $this->sortCategories($category->children));
+            }
+        });
+
+        return $sorted;
     }
 
     /**
