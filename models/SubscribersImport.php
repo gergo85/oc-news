@@ -2,6 +2,7 @@
 
 use Backend\Models\ImportModel;
 use Indikator\News\Models\Subscribers as Item;
+use Indikator\News\Models\Categories;
 use Exception;
 
 class SubscribersImport extends ImportModel
@@ -26,12 +27,16 @@ class SubscribersImport extends ImportModel
                 $item = $this->findDuplicateItem($data) ?: Item::make();
                 $itemExists = $item->exists;
 
-                $except = ['id'];
+                $except = ['id', 'categories'];
                 foreach (array_except($data, $except) as $attribute => $value) {
                     $item->{$attribute} = $value ?: null;
                 }
 
                 $item->forceSave();
+
+                if ($categoryIds = $this->resolveCategories(array_get($data, 'categories', ''))) {
+                    $item->categories()->syncWithoutDetaching($categoryIds);
+                }
 
                 if ($itemExists) {
                     $this->logUpdated();
@@ -44,6 +49,32 @@ class SubscribersImport extends ImportModel
                 $this->logError($row, $ex->getMessage());
             }
         }
+    }
+
+    protected function resolveCategories($value)
+    {
+        if (!$value) {
+            return [];
+        }
+
+        $ids = [];
+        foreach (explode(',', $value) as $token) {
+            $token = trim($token);
+            if (!$token) {
+                continue;
+            }
+
+            if (is_numeric($token)) {
+                $ids[] = (int) $token;
+            } else {
+                $category = Categories::where('slug', $token)->first();
+                if ($category) {
+                    $ids[] = $category->id;
+                }
+            }
+        }
+
+        return $ids;
     }
 
     protected function findDuplicateItem($data)

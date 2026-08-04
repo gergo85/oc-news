@@ -132,7 +132,12 @@ return [
         'send_confirmation' => 'Bạn có chắc chắn muốn gửi bản tin đi',
         'resend' => 'Gửi lại bản tin',
         'resend_confirmation' => 'Bạn có chắc chắn muốn gửi lại bản tin này?',
-        'return' => 'Trở về'
+        'return' => 'Trở về',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => 'Đã kích hoạt thành công các bài viết đó',
@@ -151,7 +156,9 @@ return [
         'subscriber_confirmation_token_expired' => 'Liên kết xác nhận của bạn đã hết hạn, vui lòng đăng ký lại.',
         'subscriber_confirmation' => 'Bạn đã xác nhận thành công địa chỉ email của mình. Bạn sẽ nhận được các bản tin sắp tới.',
         'subscriber_already_confirmed' => 'Tài khoản của bạn đã được xác nhận.',
-        'news_clone_confirm' => 'Bạn có muốn sao chép bài đăng này không?'
+        'news_clone_confirm' => 'Bạn có muốn sao chép bài đăng này không?',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Cài đặt về cách gửi bản tin và chế độ xem thống kê.',

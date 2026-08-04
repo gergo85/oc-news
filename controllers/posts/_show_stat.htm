@@ -26,11 +26,11 @@
             </p>
             <p>
                 <strong><?= e(trans('indikator.news::lang.form.created_at')) ?></strong><br>
-                <?= $post->created_at ?>
+                <?= $post->created_at ? $post->created_at->locale(App::getLocale())->isoFormat('LLL') : '' ?>
             </p>
             <p>
                 <strong><?= e(trans('indikator.news::lang.form.updated_at')) ?></strong><br>
-                <?= $post->updated_at ?>
+                <?= $post->updated_at ? $post->updated_at->locale(App::getLocale())->isoFormat('LLL') : '' ?>
             </p>
         </div>
     </div>

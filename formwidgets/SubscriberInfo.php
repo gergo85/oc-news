@@ -3,6 +3,7 @@
 use Backend\Classes\FormField;
 use Backend\Classes\FormWidgetBase;
 use Request;
+use App;
 use Indikator\News\Models\Subscribers;
 
 class SubscriberInfo extends FormWidgetBase
@@ -22,12 +23,16 @@ class SubscriberInfo extends FormWidgetBase
         $subscriber = Subscribers::whereId(end($uriList))->first();
         $noData     = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
 
+        $locale = App::getLocale();
+
         if ($subscriber->registered_at == null) {
-            $this->vars['registered_at'] = substr($subscriber->created_at, 0, -3);
+            $this->vars['registered_at'] = $subscriber->created_at
+                ? $subscriber->created_at->locale($locale)->isoFormat('LLL')
+                : $noData;
             $this->vars['registered_ip'] = $noData;
         }
         else {
-            $this->vars['registered_at'] = substr($subscriber->registered_at, 0, -3);
+            $this->vars['registered_at'] = $subscriber->registered_at->locale($locale)->isoFormat('LLL');
             $this->vars['registered_ip'] = $subscriber->registered_ip;
         }
 
@@ -35,7 +40,7 @@ class SubscriberInfo extends FormWidgetBase
             $this->vars['confirmed_at'] = $this->vars['confirmed_ip'] = $noData;
         }
         else {
-            $this->vars['confirmed_at'] = substr($subscriber->confirmed_at, 0, -3);
+            $this->vars['confirmed_at'] = $subscriber->confirmed_at->locale($locale)->isoFormat('LLL');
             $this->vars['confirmed_ip'] = $subscriber->confirmed_ip;
         }
 
@@ -43,7 +48,7 @@ class SubscriberInfo extends FormWidgetBase
             $this->vars['unsubscribed_at'] = $this->vars['unsubscribed_ip'] = $noData;
         }
         else {
-            $this->vars['unsubscribed_at'] = substr($subscriber->unsubscribed_at, 0, -3);
+            $this->vars['unsubscribed_at'] = $subscriber->unsubscribed_at->locale($locale)->isoFormat('LLL');
             $this->vars['unsubscribed_ip'] = $subscriber->unsubscribed_ip;
         }
     }

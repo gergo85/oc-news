@@ -3,6 +3,7 @@
 use Backend\Classes\FormField;
 use Backend\Classes\FormWidgetBase;
 use Request;
+use App;
 use Indikator\News\Models\Posts;
 
 class PostInfo extends FormWidgetBase
@@ -22,7 +23,9 @@ class PostInfo extends FormWidgetBase
         $newsInfo = Posts::whereId(end($uriList))->first();
 
         $this->vars['statistics'] = $newsInfo->statistics;
-        $this->vars['updated_at'] = substr($newsInfo->updated_at, 0, -3);
+        $this->vars['updated_at'] = $newsInfo->updated_at
+            ? $newsInfo->updated_at->locale(App::getLocale())->isoFormat('LLL')
+            : null;
     }
 
     public function getSaveValue($value)

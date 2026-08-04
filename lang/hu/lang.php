@@ -106,6 +106,7 @@ return [
         'unsubscribed_at' => 'Leiratkozás ideje',
         'ip_address' => 'IP cím',
         'no_data' => 'Nincs adat',
+        'categories_import' => 'Kategóriák (azonosítók vagy slug-ok, vesszővel elválasztva)',
         // Naplózás
         'news' => 'Bejegyzés',
         'subscriber_name' => 'Feliratkozó neve',
@@ -132,7 +133,12 @@ return [
         'send_confirmation' => 'Valóban el akarja küldeni a hírlevelet?',
         'resend' => 'Hírlevél újraküldése',
         'resend_confirmation' => 'Valóban újra akarja küldeni a hírlevelet?',
-        'return' => 'Vissza'
+        'return' => 'Vissza',
+        'assign_categories' => 'Kategóriák hozzárendelése',
+        'assign_mode' => 'Hozzárendelés módja',
+        'assign_mode_add' => 'Hozzáadás a meglévő kategóriákhoz',
+        'assign_mode_replace' => 'Meglévő kategóriák cseréje',
+        'assign_mode_remove' => 'Eltávolítás a meglévő kategóriákból'
     ],
     'flash' => [
         'activate' => 'A bejegyzések sikeresen aktiválva lettek.',
@@ -151,7 +157,9 @@ return [
         'subscriber_confirmation_token_expired' => 'Az elfogadás határideje lejárt, kérjük regisztráljon újból.',
         'subscriber_confirmation' => 'Sikeresen elfogadta a feliratkozást. Hamarosan meg fogja kapni hírlevelünket.',
         'subscriber_already_confirmed' => 'A feliratkozása már el lett fogadva.',
-        'news_clone_confirm' => 'Valóban másolni akarja ezt a hírt?'
+        'news_clone_confirm' => 'Valóban másolni akarja ezt a hírt?',
+        'categories_assigned' => 'A kiválasztott feliratkozók kategóriái sikeresen frissítve lettek.',
+        'no_categories' => 'Nincsenek elérhető kategóriák.'
     ],
     'backend_settings' => [
         'description' => 'A levélküldésre és a statisztikára vonatkozó beállítások.',

@@ -106,6 +106,7 @@ return [
         'unsubscribed_at' => 'Unsubscribed date',
         'ip_address' => 'IP Address',
         'no_data' => 'No data',
+        'categories_import' => 'Categories (IDs or slugs, comma-separated)',
         // Logs
         'news' => 'Post',
         'subscriber_name' => 'Subscriber name',
@@ -132,7 +133,12 @@ return [
         'send_confirmation' => 'Do you want to send the newsletter?',
         'resend' => 'Resend newsletter',
         'resend_confirmation' => 'Do you want to resend the newsletter?',
-        'return' => 'Return'
+        'return' => 'Return',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => 'Successfully activated those posts.',
@@ -151,7 +157,9 @@ return [
         'subscriber_confirmation_token_expired' => 'Your confirmation link expired, please signup again.',
         'subscriber_confirmation' => 'You successfully confirmed your email address. You will receive upcoming newsletters.',
         'subscriber_already_confirmed' => 'Your account is already confirmed.',
-        'news_clone_confirm' => 'Do you want this clone this post?'
+        'news_clone_confirm' => 'Do you want this clone this post?',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Settings about sending newsletters and statistics view.',

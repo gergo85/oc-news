@@ -35,7 +35,7 @@ class Posts extends ComponentBase
                 'title'       => 'indikator.news::lang.settings.pagination_title',
                 'description' => 'indikator.news::lang.settings.pagination_description',
                 'type'        => 'string',
-                'default'     => '{{ :page }}'
+                'default'     => ''
             ],
             'postsPerPage' => [
                 'title'             => 'indikator.news::lang.settings.per_page_title',
@@ -133,18 +133,20 @@ class Posts extends ComponentBase
         $this->page['currentCategorySlug'] = $this->category ? $this->category->slug : null;
         $this->posts = $this->page['posts'] = $this->listPosts();
 
-        if ($pageNumberParam = $this->paramName('pageNumber')) {
-            $currentPage = $this->property('pageNumber');
-
-            if ($currentPage > ($lastPage = $this->posts->lastPage()) && $currentPage > 1) {
-                return Redirect::to($this->currentPageUrl([$pageNumberParam => $lastPage]));
-            }
+        $currentPage = $this->currentPage();
+        if ($currentPage > ($lastPage = $this->posts->lastPage()) && $currentPage > 1) {
+            return Redirect::to($this->currentPageUrl([$this->pageParam => $lastPage]));
         }
     }
 
     protected function prepareVars()
     {
-        $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
+        // If no explicit URL param is configured, use the component alias so that
+        // multiple instances on the same page each get their own pagination parameter
+        // (e.g. ?newsPostsPage=2) and do not interfere with each other.
+        $configured = $this->paramName('pageNumber');
+        $this->pageParam = $this->page['pageParam'] = $configured ?: ($this->alias . 'Page');
+
         $this->noPostsMessage = $this->page['noPostsMessage'] = $this->property('noPostsMessage');
         $this->searchFilter = $this->page['searchFilter'] = trim(input('search'));
 
@@ -164,7 +166,8 @@ class Posts extends ComponentBase
         }
 
         $posts = NewsPost::with('categories')->listFrontEnd([
-            'page'     => $this->property('pageNumber'),
+            'page'     => $this->currentPage(),
+            'pageName' => $this->pageParam,
             'sort'     => $this->property('sortOrder'),
             'perPage'  => $this->property('postsPerPage'),
             'featured' => $this->property('postFeatured'),
@@ -190,6 +193,16 @@ class Posts extends ComponentBase
         });
 
         return $posts;
+    }
+
+    protected function currentPage()
+    {
+        // When an explicit URL param is configured ({{ :param }}), use the
+        // property value (handles both route segments and query strings).
+        // Otherwise fall back to the query string using the alias-based param name.
+        return $this->paramName('pageNumber')
+            ? (int) $this->property('pageNumber')
+            : (int) input($this->pageParam, 1);
     }
 
     protected function loadCategory()

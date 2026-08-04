@@ -19,3 +19,4 @@ columns:
     unsubscribed_ip: indikator.news::lang.form.ip_address
     created_at: indikator.news::lang.form.created_at
     updated_at: indikator.news::lang.form.updated_at
+    categories: indikator.news::lang.form.categories_import

@@ -132,7 +132,12 @@ return [
         'send_confirmation' => '確定送出電子報？',
         'resend' => '重新寄送',
         'resend_confirmation' => '確定重新寄送？',
-        'return' => '返回'
+        'return' => '返回',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => '文章發布成功。',
@@ -151,7 +156,9 @@ return [
         'subscriber_confirmation_token_expired' => '您的連結已失效，請重新註冊。',
         'subscriber_confirmation' => '已成功確認您的信箱，您將可收到最新的電子報。',
         'subscriber_already_confirmed' => '您的信箱已通過認證。',
-        'news_clone_confirm' => '是否要複製這則新聞？'
+        'news_clone_confirm' => '是否要複製這則新聞？',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => '電子報及統計畫面設定',

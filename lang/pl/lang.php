@@ -110,7 +110,12 @@ return [
         'test' => 'Wyślij pocztę testową',
         'resend' => 'Wyślij ponownie biuletyn',
         'resend_confirmation' => 'Czy na pewno chcesz wysłać biuletyn?',
-        'return' => 'Powrót'
+        'return' => 'Powrót',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => 'Pomyślnie aktywowano zaznaczone posty.',
@@ -120,7 +125,9 @@ return [
         'delete' => 'Czy na pewno chcesz usunąć zaznaczone elementy?',
         'remove' => 'Pomyślnie usunięto zaznaczone posty.',
         'newsletter_resend_success' => 'Newsletter został z powodzeniem wysłany.',
-        'newsletter_resend_error' => 'Podczas wysyłania biuletynu wystąpił błąd. Przed ponownym wysyłaniem zapoznaj się z logu, aby uzyskać więcej informacji na temat aktualnego stanu.'
+        'newsletter_resend_error' => 'Podczas wysyłania biuletynu wystąpił błąd. Przed ponownym wysyłaniem zapoznaj się z logu, aby uzyskać więcej informacji na temat aktualnego stanu.',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Ustawienia sterowania',

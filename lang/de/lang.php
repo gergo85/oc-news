@@ -122,6 +122,11 @@ return [
         'resend' => 'Newsletter erneut versenden',
         'resend_confirmation' => 'Sind Sie sich sicher, dass Sie den Newsletter erneut versenden möchten?',
         'return' => 'Zurück',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories',
         'copy_content_to_newsletter' => 'Inhalt nach Newsletter Inhalt kopieren'
     ],
     'flash' => [
@@ -140,7 +145,9 @@ return [
         'subscriber_confirmation_token_expired' => 'Der Bestätigungslink ist nicht mehr gültig. Bitte abonnieren Sie erneut den Newsletter.',
         'subscriber_confirmation' => 'Sie haben Ihre Emailadresse erfolgreich bestätigt. Sie erhalten in Zukunft unseren Newsletter.',
         'subscriber_already_confirmed' => 'Sie haben bereits Ihre Emailadresse bestätigt.',
-        'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?'
+        'news_clone_confirm' => 'Möchten Sie wirklich diesen Eintrag kopieren?',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Einstellungen verwalten',

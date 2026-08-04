@@ -273,6 +273,7 @@ class Posts extends Model
         extract(array_merge([
             'page'     => 1,
             'perPage'  => 10,
+            'pageName' => 'page',
             'sort'     => 'created_at',
             'search'   => '',
             'status'   => 1,
@@ -337,7 +338,7 @@ class Posts extends Model
             }
         }
 
-        return $query->paginate($perPage, $page);
+        return $query->paginate($perPage, ['*'], $pageName, $page);
     }
 
     public function scopeIsPublished($query)

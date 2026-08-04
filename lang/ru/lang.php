@@ -110,7 +110,12 @@ return [
         'test' => 'Отправить тестовую почту',
         'resend' => 'Переслать новостную рассылку',
         'resend_confirmation' => 'Вы уверены, что хотите отправить рассылку?',
-        'return' => 'Вернуть'
+        'return' => 'Вернуть',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => 'Этот пост успешно активирован.',
@@ -120,7 +125,9 @@ return [
         'delete' => 'Вы действительно хотите удалить эту запись?',
         'remove' => 'Запись успешно удалена.',
         'newsletter_resend_success' => 'Письмо успешно отправлено повторно.',
-        'newsletter_resend_error' => 'При отправке письма произошла ошибка. Перед повторной отправкой повторно загляните в журнал, чтобы получить дополнительную информацию о текущем состоянии.'
+        'newsletter_resend_error' => 'При отправке письма произошла ошибка. Перед повторной отправкой повторно загляните в журнал, чтобы получить дополнительную информацию о текущем состоянии.',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Настройки управления',

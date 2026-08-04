@@ -114,7 +114,12 @@ return [
         'send_confirmation' => 'Você deseja enviar a newsletter?',
         'resend' => 'Reenviar newsletter',
         'resend_confirmation' => 'Você deseja reenviar a newsletter?',
-        'return' => 'Voltar'
+        'return' => 'Voltar',
+        'assign_categories' => 'Assign categories',
+        'assign_mode' => 'Assignment mode',
+        'assign_mode_add' => 'Add to existing categories',
+        'assign_mode_replace' => 'Replace existing categories',
+        'assign_mode_remove' => 'Remove from existing categories'
     ],
     'flash' => [
         'activate' => 'Postagens ativadas com sucesso.',
@@ -127,7 +132,9 @@ return [
         'newsletter_send_success' => 'Newsletter enviada com sucesso.',
         'newsletter_send_error' => 'Um erro ocorreu ao enviar newsletter. Antes de reenviar verifique o log para obter o status atualizado!',
         'newsletter_resend_success' => 'Newsletter reenviada com sucesso.',
-        'newsletter_resend_error' => 'Um erro ocorreu ao reenviar newsletter. Antes de reenviar verifique o log para obter o status atualizado.'
+        'newsletter_resend_error' => 'Um erro ocorreu ao reenviar newsletter. Antes de reenviar verifique o log para obter o status atualizado.',
+        'categories_assigned' => 'Successfully updated categories for selected subscribers.',
+        'no_categories' => 'No categories available.'
     ],
     'backend_settings' => [
         'description' => 'Configurações de envio de newsletters e estatísticas de visualizações.',

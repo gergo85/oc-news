@@ -3,6 +3,7 @@
 use Backend\Classes\FormField;
 use Backend\Classes\FormWidgetBase;
 use Request;
+use App;
 use Indikator\News\Models\Categories;
 use Indikator\News\Models\Posts;
 use Db;
@@ -26,7 +27,9 @@ class CategoryInfo extends FormWidgetBase
         $this->vars['posts']       = Posts::inCategory($uriList[5])->count();
         $this->vars['subscribers'] = Db::table('indikator_news_relations')->where('categories_id', $category->id)->count();
         $this->vars['sort_order']  = $category->sort_order;
-        $this->vars['updated_at']  = substr($category->updated_at, 0, -3);
+        $this->vars['updated_at']  = $category->updated_at
+            ? $category->updated_at->locale(App::getLocale())->isoFormat('LLL')
+            : null;
     }
 
     public function getSaveValue($value)

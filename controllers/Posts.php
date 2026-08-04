@@ -224,8 +224,10 @@ class Posts extends Controller
     public function onShowStat()
     {
         $this->vars['post'] = $post = Item::whereId(post('id'))->first();
-        $this->vars['last_send_at'] = ($post->last_send_at) ? $post->last_send_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
-        $this->vars['published_at'] = ($post->published_at) ? $post->published_at : '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $locale = App::getLocale();
+        $noData = '<em>'.e(trans('indikator.news::lang.form.no_data')).'</em>';
+        $this->vars['last_send_at'] = $post->last_send_at ? $post->last_send_at->locale($locale)->isoFormat('LLL') : $noData;
+        $this->vars['published_at'] = $post->published_at ? $post->published_at->locale($locale)->isoFormat('LLL') : $noData;
 
         return $this->makePartial('show_stat');
     }

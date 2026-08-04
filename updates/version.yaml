@@ -148,3 +148,8 @@
 1.15.1:
     - Fixed update failed and column issue.
     - Fixed the category filter on the Posts list.
+1.16.0:
+    - Localized date formats in backend info widgets.
+    - Fixed pagination when multiple post list components are on the same page.
+    - Added bulk category assignment for subscribers from the list view.
+    - Added categories column support for subscriber CSV import.

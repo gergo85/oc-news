@@ -3,6 +3,7 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 use Indikator\News\Models\Subscribers as Item;
+use Indikator\News\Models\Categories;
 use Indikator\News\Models\Logs;
 use Db;
 use Flash;
@@ -54,6 +55,51 @@ class Subscribers extends Controller
             $this->changeStatus(post('checked'), 1, 2);
             $this->setMessage('unsubscribe');
         }
+
+        return $this->listRefresh();
+    }
+
+    public function onGetCategoriesForm()
+    {
+        if (!$this->isSelected()) {
+            return;
+        }
+
+        $this->vars['categories'] = Categories::orderBy('name')->get();
+        $this->vars['checked']    = post('checked', []);
+
+        return $this->makePartial('assign_categories');
+    }
+
+    public function onAssignCategories()
+    {
+        if (!$this->isSelected()) {
+            return $this->listRefresh();
+        }
+
+        $categoryIds = array_filter(array_map('intval', (array) post('categories', [])));
+        $mode        = post('assign_mode', 'add');
+
+        foreach ((array) post('checked') as $subscriberId) {
+            $subscriber = Item::find((int) $subscriberId);
+
+            if (!$subscriber) {
+                continue;
+            }
+
+            switch ($mode) {
+                case 'replace':
+                    $subscriber->categories()->sync($categoryIds);
+                    break;
+                case 'remove':
+                    $subscriber->categories()->detach($categoryIds);
+                    break;
+                default:
+                    $subscriber->categories()->syncWithoutDetaching($categoryIds);
+            }
+        }
+
+        Flash::success(Lang::get('indikator.news::lang.flash.categories_assigned'));
 
         return $this->listRefresh();
     }
